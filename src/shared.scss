@@ -16,3 +16,8 @@
 .paragraph {
     text-transform: uppercase;
 }
+
+.fit {
+    flex-grow: 1;
+    display: flex;
+}

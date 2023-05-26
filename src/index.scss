@@ -5,11 +5,29 @@ body {
   font-family: Cabin, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+  color: #FFF;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --bs-primary: #3876D2;
+  --bs-primary-rgb: 56, 118, 210;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  background: linear-gradient(#3876D2, #10428B);
+  margin: 0;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
