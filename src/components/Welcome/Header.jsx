@@ -10,29 +10,29 @@ import HeaderCommon from "../common/HeaderCommon";
 function Header() {
     // To-do: user state
     return <HeaderCommon>
-    <Nav id="icons">
-        <Nav.Link>
-            <FaFacebookF />
-        </Nav.Link>
-        <Nav.Link>
-            <FaTwitter />
-        </Nav.Link>
-        <Nav.Link>
-            <AiFillInstagram />
-        </Nav.Link>
-        <Nav.Link>
-            <FaLinkedin />
-        </Nav.Link>
-    </Nav>
-    <Nav id="entries">
-        <Nav.Link as={Link} to="/">HOME</Nav.Link>
-        <Nav.Link as={Link} to="/welcome/contact">CONTACT US</Nav.Link>
-        <Nav.Link as={Link} to="/welcome/about">ABOUT US</Nav.Link>
-    </Nav>
-    <Nav>
-        <Nav.Link as={Link} to="/signup">SIGN UP</Nav.Link>
-    </Nav>
-</HeaderCommon>
+        <Nav id="icons">
+            <Nav.Link>
+                <FaFacebookF />
+            </Nav.Link>
+            <Nav.Link>
+                <FaTwitter />
+            </Nav.Link>
+            <Nav.Link>
+                <AiFillInstagram />
+            </Nav.Link>
+            <Nav.Link>
+                <FaLinkedin />
+            </Nav.Link>
+        </Nav>
+        <Nav id="entries">
+            <Nav.Link as={Link} to="/">HOME</Nav.Link>
+            <Nav.Link as={Link} to="/welcome/contact">CONTACT US</Nav.Link>
+            <Nav.Link as={Link} to="/welcome/about">ABOUT US</Nav.Link>
+        </Nav>
+        <Nav>
+            <Nav.Link as={Link} to="/signup">SIGN UP</Nav.Link>
+        </Nav>
+    </HeaderCommon>
 }
 
 export default Header;
