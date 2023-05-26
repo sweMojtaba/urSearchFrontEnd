@@ -8,12 +8,12 @@ function Slide(props) {
     const [activeTags, setActiveTags] = useState(["", "", "", ""]);
 
     useEffect(() => {
-        setActiveTags((prev) => {
-            const newActiveTags = [...prev];
+        setActiveTags(() => {
+            const newActiveTags = ["", "", "", ""];
             newActiveTags[props.activeIndex] = "active";
             return newActiveTags;
         })
-    }, [props])
+    }, [props.activeIndex])
 
 
     // To-do: memo SlideButtons
@@ -25,6 +25,7 @@ function Slide(props) {
             src={slideButton}
             alt={"Go to slide "+(num+1)}
             className={activeTags[num]}
+            key={num}
             />
         })
         return Buttons;
