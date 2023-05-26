@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Header from "./Header";
 import { Container } from "react-bootstrap";
 import Slide from "./Slide";
@@ -43,6 +43,19 @@ function Welcome() {
         return () => clearInterval(interval);
     }, []);
 
+    const goToSlide1 = useCallback(() => {
+        setActiveIndex(0);
+    }, []);
+    const goToSlide2 = useCallback(() => {
+        setActiveIndex(1);
+    }, []);
+    const goToSlide3 = useCallback(() => {
+        setActiveIndex(2);
+    }, []);
+    const goToSlide4 = useCallback(() => {
+        setActiveIndex(3);
+    }, []);
+
     return <>
     <Header/>
     <div className="main">
@@ -52,6 +65,10 @@ function Welcome() {
                 slogan={slidesInfo[activeIndex].slogan}
                 text={slidesInfo[activeIndex].text}
                 activeIndex={activeIndex}
+                goToSlide1={goToSlide1}
+                goToSlide2={goToSlide2}
+                goToSlide3={goToSlide3}
+                goToSlide4={goToSlide4}
             />
         </Container>
     </div>

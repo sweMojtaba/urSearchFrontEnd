@@ -1,41 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import "./styles.scss";
 
-import slideButton from "../../assets/slideButton.png";
+import SlideButtons from "./SlideButtons";
 
 function Slide(props) {
-    const [activeTags, setActiveTags] = useState(["", "", "", ""]);
-
-    useEffect(() => {
-        setActiveTags(() => {
-            const newActiveTags = ["", "", "", ""];
-            newActiveTags[props.activeIndex] = "active";
-            return newActiveTags;
-        })
-    }, [props.activeIndex])
-
-
-    // To-do: memo SlideButtons
-    const SlideButtons = () => {
-        const nums = [0,1,2,3];
-        const Buttons = nums.map((num) => {
-            return <img
-            onClick={props["goToSlide"+(num+1)]}
-            src={slideButton}
-            alt={"Go to slide "+(num+1)}
-            className={activeTags[num]}
-            key={num}
-            />
-        })
-        return Buttons;
-    }
 
     return <div id="slide" style={{ backgroundImage: `url(${props.img})` }}>
         <h1 className="slogan">{props.slogan}</h1>
         <p className="text">{props.text}</p>
         <div id="slideButtons">
-            <SlideButtons/>
+            <SlideButtons
+                activeIndex={props.activeIndex}
+                goToSlide1={props.goToSlide1}
+                goToSlide2={props.goToSlide2}
+                goToSlide3={props.goToSlide3}
+                goToSlide4={props.goToSlide4}
+            />
         </div>
     </div>
 }

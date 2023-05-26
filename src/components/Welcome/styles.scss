@@ -15,11 +15,11 @@
     height: 2em;
 }
 
-#slideButtons > img.active {
+#slideButtons > a > img.active {
     height: 80%;
 }
 
-#slideButtons > img {
+#slideButtons > a > img {
     height: 50%;
     margin: 0 0.3em;
 }
