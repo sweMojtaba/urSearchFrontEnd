@@ -4,7 +4,22 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-size: 95%;
+    background-size: 70%;
     background-repeat: no-repeat;
     background-position: right 0% bottom 0%;
+}
+
+#slideButtons {
+    position: absolute;
+    bottom: 5em;
+    height: 2em;
+}
+
+#slideButtons > img.active {
+    height: 80%;
+}
+
+#slideButtons > img {
+    height: 50%;
+    margin: 0 0.3em;
 }

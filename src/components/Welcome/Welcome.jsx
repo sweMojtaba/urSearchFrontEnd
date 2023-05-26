@@ -6,7 +6,6 @@ import slide1 from "../../assets/slide1.png"
 
 function Welcome() {
     // To-do: add other slides
-    // To-do: make slide buttons clickable
     return <>
     <Header/>
     <div className="main">
@@ -15,6 +14,7 @@ function Welcome() {
                 img={slide1}
                 slogan="Find research positions"
                 text="Work with top labs and professors in your university!"
+                activeIndex={0}
             />
         </Container>
     </div>
