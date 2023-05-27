@@ -9,8 +9,9 @@ import HeaderCommon from "../common/HeaderCommon";
 
 function Header() {
     // To-do: user state
-    return <HeaderCommon>
+    return <HeaderCommon interfaceRoot="/welcome">
         <Nav id="icons">
+            {/* To-do: add sharing links (backend) */}
             <Nav.Link>
                 <FaFacebookF />
             </Nav.Link>
@@ -25,7 +26,7 @@ function Header() {
             </Nav.Link>
         </Nav>
         <Nav id="entries">
-            <Nav.Link as={Link} to="/">HOME</Nav.Link>
+            <Nav.Link as={Link} to="/welcome">HOME</Nav.Link>
             <Nav.Link as={Link} to="/welcome/contact">CONTACT US</Nav.Link>
             <Nav.Link as={Link} to="/welcome/about">ABOUT US</Nav.Link>
         </Nav>

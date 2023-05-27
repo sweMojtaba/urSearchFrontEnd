@@ -1,11 +1,12 @@
 import React, { memo, useEffect, useState } from "react";
 
-import "./styles.scss";
+import "./slides.scss";
 
 import slideButton from "../../assets/slideButton.png";
 
+const nums = [0, 1, 2, 3];
+
 function SlideButtons(props) {
-    const [nums, setNums] = useState([0, 1, 2, 3]);
     const [activeTags, setActiveTags] = useState(["", "", "", ""]);
 
     useEffect(() => {

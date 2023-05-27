@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Welcome from '../Welcome/Welcome';
+import Slides from '../Welcome/Slides';
 import UserContext from './UserContext';
+import Layout from '../Welcome/Layout';
+import Contact from '../Welcome/Contact';
+import About from '../Welcome/About';
 
 function InterfaceSwitch() {
     const [userState, setUserState] = useState(0);
@@ -15,12 +18,18 @@ function InterfaceSwitch() {
     }, [])
     return <UserContext.Provider value={[userState, setUserState]}>
         <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<Welcome/>} />
-            <Route path="/welcome" element={<Welcome/>} />
-            <Route path="" />
-        </Routes>
-    </BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Layout />} >
+                    <Route index element={<Slides/>}/>
+                </Route>
+                <Route path="/welcome" element={<Layout />} >
+                    <Route index element={<Slides/>}/>
+                    <Route path="/welcome/contact" element={<Contact/>}/>
+                    <Route path="/welcome/about" element={<About/>}/>
+                </Route>
+                <Route path="" />
+            </Routes>
+        </BrowserRouter>
     </UserContext.Provider>
 }
 
