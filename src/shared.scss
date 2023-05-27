@@ -9,13 +9,34 @@
     font-style: italic;
 }
 
+.heading {
+    font-size: 1.5em;
+    font-weight: 600;
+    font-style: italic;
+}
+
 .text {
-    font-size: 1.2em;
+    font-family: Roboto;
     font-weight: 400;
 }
 
 .paragraph {
     text-transform: uppercase;
+    font-family: montserrat;
+    letter-spacing: 0.1em;
+    line-height: 1.8em;
+}
+
+@media screen and (max-width: 576px) {
+    .heading {
+        font-size: 1.2em;
+    }
+    .text {
+        font-size: 0.9em;
+    }
+    .paragraph {
+        font-size: 0.8em;
+    }
 }
 
 .fit {

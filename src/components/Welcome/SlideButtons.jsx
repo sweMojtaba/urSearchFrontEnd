@@ -2,7 +2,7 @@ import React, { memo, useEffect, useState } from "react";
 
 import "./slides.scss";
 
-import slideButton from "../../assets/slideButton.png";
+import slideButton from "../../assets/item1.png";
 
 const nums = [0, 1, 2, 3];
 

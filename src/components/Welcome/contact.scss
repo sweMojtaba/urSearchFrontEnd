@@ -1,0 +1,32 @@
+.line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0.5em 0;
+}
+
+.line > p {
+    margin: 0;
+    display: block;
+}
+
+.primary-line {
+    height: 1.8em;
+}
+
+.line > img {
+    margin: 0 0.5em;
+}
+
+.primary-line > img {
+    height:80%;
+}
+
+.secondary-line {
+    height: 1.5em;
+    margin-left: 3em;
+}
+
+.secondary-line > img {
+    height: 100%;
+}

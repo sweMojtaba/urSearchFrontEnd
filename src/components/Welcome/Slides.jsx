@@ -6,6 +6,7 @@ import slide3 from "../../assets/slide3.png"
 import slide4 from "../../assets/slide4.png"
 
 import "./slides.scss";
+import { Container } from "react-bootstrap";
 
 const slidesInfo = [
     {
@@ -58,17 +59,19 @@ function Slides() {
     }, []);
 
     return <div id="slide" style={{ backgroundImage: `url(${slidesInfo[activeIndex].img})` }}>
-        <h1 className="slogan">{slidesInfo[activeIndex].slogan}</h1>
-        <p className="text">{slidesInfo[activeIndex].text}</p>
-        <div id="slideButtons">
-            <SlideButtons
-                activeIndex={activeIndex}
-                goToSlide1={goToSlide1}
-                goToSlide2={goToSlide2}
-                goToSlide3={goToSlide3}
-                goToSlide4={goToSlide4}
-            />
-        </div>
+        <Container>
+            <h1 className="slogan">{slidesInfo[activeIndex].slogan}</h1>
+            <p className="text">{slidesInfo[activeIndex].text}</p>
+            <div id="slideButtons">
+                <SlideButtons
+                    activeIndex={activeIndex}
+                    goToSlide1={goToSlide1}
+                    goToSlide2={goToSlide2}
+                    goToSlide3={goToSlide3}
+                    goToSlide4={goToSlide4}
+                />
+            </div>
+        </Container>
     </div>
 }
 
