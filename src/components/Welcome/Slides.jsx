@@ -4,9 +4,12 @@ import slide1 from "../../assets/slide1.png"
 import slide2 from "../../assets/slide2.png"
 import slide3 from "../../assets/slide3.png"
 import slide4 from "../../assets/slide4.png"
+import go from "../../assets/go.svg"
+
+import { Button, Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 import "./slides.scss";
-import { Container } from "react-bootstrap";
 
 const slidesInfo = [
     {
@@ -60,8 +63,15 @@ function Slides() {
 
     return <div id="slide" style={{ backgroundImage: `url(${slidesInfo[activeIndex].img})` }}>
         <Container>
-            <h1 className="slogan">{slidesInfo[activeIndex].slogan}</h1>
+            <h2 className="slogan">{slidesInfo[activeIndex].slogan}</h2>
             <p className="text">{slidesInfo[activeIndex].text}</p>
+            <div className="flex-box">
+                <Button id="go" as={Link} to="/signup">
+                    <p>Start Searching</p>
+                    <img src={go} alt="go to sign up" />
+                </Button>
+                <div className="space-holder" />
+            </div>
             <div id="slideButtons">
                 <SlideButtons
                     activeIndex={activeIndex}

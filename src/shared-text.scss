@@ -42,4 +42,17 @@
 .fit {
     flex-grow: 1;
     display: flex;
+    background-image: url("./assets/ursearch-background.png");
+    background-position: 50% 25%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.flex-box {
+    display: flex;
+    flex-direction: row;
+}
+
+.space-holder {
+    flex-grow: 1;
 }

@@ -31,7 +31,8 @@ function Header() {
             <Nav.Link as={Link} to="/welcome/about">ABOUT US</Nav.Link>
         </Nav>
         <Nav>
-            <Nav.Link as={Link} to="/signup">SIGN UP</Nav.Link>
+            <Nav.Link as={Link} to="/auth/signup">SIGN UP</Nav.Link>
+            <Nav.Link as={Link} to="/auth/login">LOG IN</Nav.Link>
         </Nav>
     </HeaderCommon>
 }

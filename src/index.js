@@ -5,6 +5,9 @@ import reportWebVitals from './reportWebVitals';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.scss';
+import "./shared-text.scss"
+import "./shared-layout.scss"
+import "./shared-elements.scss"
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
