@@ -8,6 +8,8 @@ import About from '../welcome/About';
 import AuthLayout from '../auth/Layout';
 import Signup from '../auth/p1/Signup';
 import Login from '../auth/p1/Login';
+import SignupRole from '../auth/p2/Signup';
+import LoginRole from '../auth/p2/Login';
 
 function InterfaceSwitch() {
     const [userState, setUserState] = useState(0);
@@ -19,27 +21,28 @@ function InterfaceSwitch() {
             setUserState(parseInt(userStateStored));
         }
     }, [])
+    useEffect(() => {
+        localStorage.setItem("userState", userState);
+    }, [userState])
     return <UserContext.Provider value={[userState, setUserState]}>
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<WelcomeLayout />} >
                     <Route index element={<Slides />} />
                 </Route>
-                <Route path="/welcome" element={<WelcomeLayout />} >
+                <Route path="welcome" element={<WelcomeLayout />} >
                     <Route index element={<Slides />} />
-                    <Route path="/welcome/contact" element={<Contact />} />
-                    <Route path="/welcome/about" element={<About />} />
+                    <Route path="contact" element={<Contact />} />
+                    <Route path="about" element={<About />} />
                 </Route>
-                <Route path="/auth" element={<AuthLayout />}>
-                    <Route path="/auth/signup">
+                <Route path="auth" element={<AuthLayout />}>
+                    <Route path="signup">
                         <Route index element={<Signup />} />
-                        <Route path='/auth/signup/individual' element/>
-                        <Route path='/auth/signup/lab' element/>
+                        <Route path=':role' element={<SignupRole />} />
                     </Route>
-                    <Route path="/auth/login">
+                    <Route path="login">
                         <Route index element={<Login />} />
-                        <Route path='/auth/login/individual' element/>
-                        <Route path='/auth/login/lab' element/>
+                        <Route path=':role' element={<LoginRole />} />
                     </Route>
                 </Route>
             </Routes>
