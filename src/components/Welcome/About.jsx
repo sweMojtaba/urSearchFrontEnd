@@ -1,6 +1,6 @@
 import React from "react";
 
-import item1 from "../../assets/item1.png"
+import item1 from "../../assets/item1.svg"
 import { Container } from "react-bootstrap";
 
 

@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from "react";
 
-import slideButton from "../../assets/item1.png";
+import slideButton from "../../assets/item1.svg";
 
 const nums = [0, 1, 2, 3];
 

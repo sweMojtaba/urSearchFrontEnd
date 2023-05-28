@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 
-import item1 from "../../assets/item1.png"
-import item2 from "../../assets/item2.png"
+import item1 from "../../assets/item1.svg"
+import item2 from "../../assets/item2.svg"
 
 import "./contact.scss";
 
