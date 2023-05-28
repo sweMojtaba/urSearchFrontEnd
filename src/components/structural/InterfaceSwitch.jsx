@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Slides from '../Welcome/Slides';
+import Slides from '../welcome/Slides';
 import UserContext from './UserContext';
-import WelcomeLayout from '../Welcome/Layout';
-import Contact from '../Welcome/Contact';
-import About from '../Welcome/About';
+import WelcomeLayout from '../welcome/Layout';
+import Contact from '../welcome/Contact';
+import About from '../welcome/About';
 import AuthLayout from '../auth/Layout';
-import Signup from '../auth/Signup';
-import Login from '../auth/Login';
+import Signup from '../auth/p1/Signup';
+import Login from '../auth/p1/Login';
 
 function InterfaceSwitch() {
     const [userState, setUserState] = useState(0);
@@ -31,8 +31,16 @@ function InterfaceSwitch() {
                     <Route path="/welcome/about" element={<About />} />
                 </Route>
                 <Route path="/auth" element={<AuthLayout />}>
-                    <Route path="/auth/signup" element={<Signup />} />
-                    <Route path="/auth/login" element={<Login />} />
+                    <Route path="/auth/signup">
+                        <Route index element={<Signup />} />
+                        <Route path='/auth/signup/individual' element/>
+                        <Route path='/auth/signup/lab' element/>
+                    </Route>
+                    <Route path="/auth/login">
+                        <Route index element={<Login />} />
+                        <Route path='/auth/login/individual' element/>
+                        <Route path='/auth/login/lab' element/>
+                    </Route>
                 </Route>
             </Routes>
         </BrowserRouter>
