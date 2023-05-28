@@ -66,7 +66,7 @@ function Slides() {
             <h2 className="slogan">{slidesInfo[activeIndex].slogan}</h2>
             <p className="text">{slidesInfo[activeIndex].text}</p>
             <div className="flex-box">
-                <Button id="go" as={Link} to="/signup">
+                <Button variant="light" id="go" as={Link} to="/signup">
                     <p>Start Searching</p>
                     <img src={go} alt="go to sign up" />
                 </Button>

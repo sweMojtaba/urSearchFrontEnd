@@ -1,13 +1,11 @@
 import React from "react";
 
-import aboutImg from "../../assets/about.png";
-
 import item1 from "../../assets/item1.png"
 import { Container } from "react-bootstrap";
 
 
 function About() {
-    return <div id="slide" style={{ backgroundImage: `url(${aboutImg})` }}>
+    return <div id="slide">
         <Container>
             <div className="line primary-line">
                 <img src={item1} alt="item1" />

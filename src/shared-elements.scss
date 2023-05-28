@@ -1,3 +1,7 @@
+.btn-primary, .btn-light {
+    border-radius: 1.5em;
+}
+
 .btn-primary {
     --bs-btn-color: #fff;
     --bs-btn-bg: transparent;
@@ -13,7 +17,6 @@
     --bs-btn-disabled-color: #b1b1b1;
     --bs-btn-disabled-bg: transparent;
     --bs-btn-disabled-border-color: #b1b1b1;
-    border-radius: 1.5em;
     --bs-btn-padding-x: 1.5rem;
     border: #FFF 2px solid;
     text-transform: uppercase;

@@ -1,11 +1,12 @@
 #go {
     --bs-btn-bg: #00F0FF;
     --bs-btn-color: #000;
+    --bs-btn-border-color: #00f0ff;
+    --bs-btn-hover-bg: #FFF;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    border: #00f0ff 2px solid;
 }
 
 #go > p {
@@ -19,6 +20,10 @@
 #go > img {
     height: 1rem;
     margin-left: 0.5rem;
+}
+
+#go > img > svg:hover {
+    fill: #fff;
 }
 
 #slideButtons {
