@@ -1,17 +1,17 @@
 import React, { useContext, useState } from "react";
-import RoleWrapper from "./RoleWrapper";
 import UserContext from "../../structural/UserContext";
-import { useNavigate } from "react-router-dom";
-import RoleContext from "./RoleContext";
+import { useNavigate, useParams } from "react-router-dom";
 import fakeLogin from "./fakeLogin";
 import { Button, Container, Form } from "react-bootstrap";
+import SSOButton from "./SSOButton";
 
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const params = useParams(); // {role: xxx}
+    const [role, setRole] = useState(params.role);
 
     const [userState, setUserState] = useContext(UserContext);
-    const [role, setRole] = useContext(RoleContext);
 
     const navigate = useNavigate();
 
@@ -51,25 +51,28 @@ function Login() {
         }
     }
 
+    const handleSSO = () => {
+
+    }
+
     // To-do: styling
-    return <RoleWrapper>
-        <Container className="sparse-content">
+    return <Container className="sparse-content">
             <h1>Login</h1>
             <Form>
                 <Form.Group className="mb-3">
-                    <Form.Label>User Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter username" value={username} onChange={handleUsernameChange} />
+                    <Form.Control type="text" placeholder="Email" value={username} onChange={handleUsernameChange} />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Enter password" value={password} onChange={handlePasswordChange} />
+                <Form.Group className="mb-5" controlId="formBasicPassword">
+                    <Form.Control type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
                 </Form.Group>
-                <Button variant="primary" type="submit" onClick={handleSubmit}>
-                    Submit
-                </Button>
+                <div className="line">
+                    <Button variant="primary" className="btn-inline-2" type="submit" onClick={handleSubmit}>
+                        Submit
+                    </Button>
+                    <SSOButton/>
+                </div>
             </Form>
         </Container>
-    </RoleWrapper>
 }
 
 export default Login;

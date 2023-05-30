@@ -10,6 +10,7 @@ import Signup from '../auth/p1/Signup';
 import Login from '../auth/p1/Login';
 import SignupRole from '../auth/p2/Signup';
 import LoginRole from '../auth/p2/Login';
+import UnderConstruction from '../common/UnderConstruction';
 
 function InterfaceSwitch() {
     const [userState, setUserState] = useState(0);
@@ -29,6 +30,7 @@ function InterfaceSwitch() {
             <Routes>
                 <Route path="/" element={<WelcomeLayout />} >
                     <Route index element={<Slides />} />
+                    <Route path="/under-construction" element={<UnderConstruction />} />
                 </Route>
                 <Route path="welcome" element={<WelcomeLayout />} >
                     <Route index element={<Slides />} />

@@ -24,6 +24,70 @@
     font-size: 1.2rem;
     letter-spacing: .1em;
     display: block;
-    width: 20rem;
+    width: 100%;
+    max-width: 20rem;
     margin: 0.5rem 0;
+}
+
+.btn-inline-1 {
+    width: fit-content;
+    flex-grow: 1;
+}
+
+.btn-inline-2 {
+    @extend .btn-inline-1;
+    flex-grow: 2;
+}
+
+form {
+    width: 100%;
+    max-width: 30rem;
+}
+
+.form-control {
+    color: #FFF;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px #FFF solid;
+    border-radius: 0%;
+    text-transform: uppercase;
+    font-family: "Bebas Neue";
+    font-size: 1.2rem;
+    letter-spacing: .1em;
+    box-shadow: none;
+}
+.form-control:focus {
+    @extend .form-control
+}
+
+.form-check-input {
+    margin-right: 5px;
+    background-color: transparent;
+    border-color: #FFF;
+}
+
+.form-check-input:checked {
+    background-color: transparent;
+    border-color: #FFF;
+}
+
+.form-check-label {
+    text-transform: uppercase;
+    font-family: montserrat;
+    font-size: 0.9em;
+    display: inline;
+}
+
+a {
+    color: inherit;
+}
+
+a:hover {
+    color: #b1b1b1;
+}
+
+.dividing-line {
+    height: 0.2em;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
 }
