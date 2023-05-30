@@ -3,7 +3,10 @@ import UserContext from "../../structural/UserContext";
 import { useNavigate, useParams } from "react-router-dom";
 import fakeLogin from "./fakeLogin";
 import { Button, Container, Form } from "react-bootstrap";
+import { FaUserAlt, FaKey } from "react-icons/fa";
 import SSOButton from "./SSOButton";
+
+import "./styles.scss";
 
 function Login() {
     const [username, setUsername] = useState("");
@@ -57,22 +60,24 @@ function Login() {
 
     // To-do: styling
     return <Container className="sparse-content">
-            <h1>Login</h1>
-            <Form>
-                <Form.Group className="mb-3">
-                    <Form.Control type="text" placeholder="Email" value={username} onChange={handleUsernameChange} />
-                </Form.Group>
-                <Form.Group className="mb-5" controlId="formBasicPassword">
-                    <Form.Control type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
-                </Form.Group>
-                <div className="line">
-                    <Button variant="primary" className="btn-inline-2" type="submit" onClick={handleSubmit}>
-                        Submit
-                    </Button>
-                    <SSOButton/>
-                </div>
-            </Form>
-        </Container>
+        <h1>Login</h1>
+        <Form>
+            <Form.Group className="mb-3 line">
+                <FaUserAlt className="icon-inline" />
+                <Form.Control type="text" placeholder="Email" value={username} onChange={handleUsernameChange} />
+            </Form.Group>
+            <Form.Group className="mb-5 line" controlId="formBasicPassword">
+                <FaKey className="icon-inline" />
+                <Form.Control type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
+            </Form.Group>
+            <div className="line">
+                <Button variant="primary" className="btn-inline-2" type="submit" onClick={handleSubmit}>
+                    Submit
+                </Button>
+                <SSOButton />
+            </div>
+        </Form>
+    </Container>
 }
 
 export default Login;

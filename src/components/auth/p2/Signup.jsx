@@ -3,7 +3,10 @@ import UserContext from "../../structural/UserContext";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import fakeSignup from "./fakeSignup";
 import { Button, Container, Form } from "react-bootstrap";
+import { FaUserAlt, FaKey } from "react-icons/fa";
 import SSOButton from "./SSOButton";
+
+import "./styles.scss";
 
 function Signup() {
     const [username, setUsername] = useState("");
@@ -55,10 +58,12 @@ function Signup() {
     return <Container className="sparse-content">
         <h1>Sign Up</h1>
         <Form>
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-3 line">
+                <FaUserAlt className="icon-inline" />
                 <Form.Control type="text" placeholder="Email" value={username} onChange={handleUsernameChange} />
             </Form.Group>
-            <Form.Group className="mb-5" controlId="formBasicPassword">
+            <Form.Group className="mb-5 line" controlId="formBasicPassword">
+                <FaKey className="icon-inline" />
                 <Form.Control type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
@@ -70,7 +75,7 @@ function Signup() {
                 <Button variant="primary" className="btn-inline-2" type="submit" onClick={handleSubmit}>
                     Submit
                 </Button>
-                <SSOButton/>
+                <SSOButton />
             </div>
         </Form>
         <div className="dividing-line" />

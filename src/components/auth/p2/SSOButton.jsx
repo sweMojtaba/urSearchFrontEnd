@@ -9,7 +9,8 @@ const tooltip = (
 
 function SSOButton() {
     const handleSSO = () => {
-        alert("Single Sign-On function is still under development...")
+        alert("Single Sign-On function is still under development. Please use email and password instead.")
+        // To-do: enable SSO
     }
 
     return <OverlayTrigger placement="bottom" overlay={tooltip}>
@@ -19,7 +20,6 @@ function SSOButton() {
             onClick={handleSSO}
         >
             SSO
-            {/* To-do: enable */}
         </Button>
     </OverlayTrigger>
 }
