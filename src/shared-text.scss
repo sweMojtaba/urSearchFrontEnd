@@ -27,6 +27,11 @@
     line-height: 1.8em;
 }
 
+.note {
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.8);
+}
+
 @media screen and (max-width: 576px) {
     .heading {
         font-size: 1.2em;

@@ -7,6 +7,7 @@ import { FaUserAlt, FaKey } from "react-icons/fa";
 import SSOButton from "./SSOButton";
 
 import "./styles.scss";
+import getOtherRole from "./getOtherRole";
 
 function Signup() {
     const [username, setUsername] = useState("");
@@ -77,6 +78,7 @@ function Signup() {
                 </Button>
                 <SSOButton />
             </div>
+            <p className="note">You are signing up as {role}. <Link to={`/auth/signup/${getOtherRole(role)}`}>Sign up as {getOtherRole(role)} instead.</Link></p>
         </Form>
         <div className="dividing-line" />
         <p className="paragraph">

@@ -1,12 +1,13 @@
 import React, { useContext, useState } from "react";
 import UserContext from "../../structural/UserContext";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import fakeLogin from "./fakeLogin";
 import { Button, Container, Form } from "react-bootstrap";
 import { FaUserAlt, FaKey } from "react-icons/fa";
 import SSOButton from "./SSOButton";
 
 import "./styles.scss";
+import getOtherRole from "./getOtherRole";
 
 function Login() {
     const [username, setUsername] = useState("");
@@ -60,7 +61,7 @@ function Login() {
 
     // To-do: styling
     return <Container className="sparse-content">
-        <h1>Login</h1>
+        <h1>Log In</h1>
         <Form>
             <Form.Group className="mb-3 line">
                 <FaUserAlt className="icon-inline" />
@@ -76,7 +77,12 @@ function Login() {
                 </Button>
                 <SSOButton />
             </div>
+            <p className="note">You are loging in as {role}. <Link to={`/auth/signup/${getOtherRole(role)}`}>Log in as {getOtherRole(role)} instead.</Link></p>
         </Form>
+        <div className="dividing-line" />
+        <p className="paragraph">
+            Doesn't have an account? <Link to={`/auth/signup/${role}`}>Sign up</Link>.
+        </p>
     </Container>
 }
 
