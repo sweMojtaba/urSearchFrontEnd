@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../../structural/UserContext";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import fakeLogin from "./fakeLogin";
@@ -8,6 +8,7 @@ import SSOButton from "./SSOButton";
 
 import "./styles.scss";
 import getOtherRole from "./getOtherRole";
+import useRedirectWithUserState from "../../common/useRedirectWithUserState";
 
 function Login() {
     const [username, setUsername] = useState("");
@@ -18,6 +19,17 @@ function Login() {
     const [userState, setUserState] = useContext(UserContext);
 
     const navigate = useNavigate();
+
+    const redirectWithUserState = useRedirectWithUserState(
+        userState,
+        userState => userState !== 0,
+        "You are already logged in",
+        "/under-construction" // To-do
+    )
+
+    useEffect(() => {
+        setTimeout(redirectWithUserState, 1000);
+    }, [userState])
 
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
@@ -44,7 +56,7 @@ function Login() {
                         setUserState(2);
                     }
                     alert("Successfully logged in!");
-                    navigate("/"); // To-do
+                    navigate("/import"); // To-do
                 }
                 return res.json();
             }).then((data) => {

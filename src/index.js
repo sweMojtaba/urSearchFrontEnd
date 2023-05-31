@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 
 import "bootstrap/dist/js/bootstrap.bundle.min.js"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "./shared-variables.scss"
 import './index.scss';
 import "./shared-text.scss"
 import "./shared-layout.scss"

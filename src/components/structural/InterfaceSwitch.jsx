@@ -11,33 +11,40 @@ import Login from '../auth/p1/Login';
 import SignupRole from '../auth/p2/Signup';
 import LoginRole from '../auth/p2/Login';
 import UnderConstruction from '../common/UnderConstruction';
+import Redirect from '../common/Redirect';
+import Import from '../import/Import';
 
 function InterfaceSwitch() {
-    const [userState, setUserState] = useState(0);
-    useEffect(() => {
+    const [userState, setUserState] = useState(() => {
         const userStateStored = localStorage.getItem("userState");
         if (userStateStored === null) {
-            setUserState(0);
+            return 0
         } else {
-            setUserState(parseInt(userStateStored));
+            return parseInt(userStateStored);
         }
-    }, [])
+    });
+
     useEffect(() => {
         localStorage.setItem("userState", userState);
+        console.log(`User state changed to ${userState}`)
     }, [userState])
+
     return <UserContext.Provider value={[userState, setUserState]}>
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<WelcomeLayout />} >
                     <Route index element={<Slides />} />
+                    {/* Miscellaneous */}
                     <Route path="/under-construction" element={<UnderConstruction />} />
+                    <Route path="/redirect" element={<Redirect />} />
+                    <Route path="import" element={<Import/>} />
                 </Route>
                 <Route path="welcome" element={<WelcomeLayout />} >
                     <Route index element={<Slides />} />
                     <Route path="contact" element={<Contact />} />
                     <Route path="about" element={<About />} />
                 </Route>
-                <Route path="auth" element={<AuthLayout />}>
+                <Route path="auth" element={<WelcomeLayout />}>
                     <Route path="signup">
                         <Route index element={<Signup />} />
                         <Route path=':role' element={<SignupRole />} />

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../../structural/UserContext";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import fakeSignup from "./fakeSignup";
@@ -8,10 +8,12 @@ import SSOButton from "./SSOButton";
 
 import "./styles.scss";
 import getOtherRole from "./getOtherRole";
+import useRedirectWithUserState from "../../common/useRedirectWithUserState";
 
 function Signup() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [termsCheck, setTermsCheck] = useState(false);
     const [userState, setUserState] = useContext(UserContext);
 
     const params = useParams(); // {role: xxx}
@@ -19,17 +21,33 @@ function Signup() {
 
     const navigate = useNavigate();
 
+    const redirectWithUserState = useRedirectWithUserState(
+        userState,
+        userState => userState !== 0,
+        "You are already logged in",
+        "/under-construction" // To-do
+    )
+
+    useEffect(() => {
+        setTimeout(redirectWithUserState, 1000);
+    }, [userState])
+
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
     }
     const handlePasswordChange = (event) => {
         setPassword(event.target.value);
     }
+    const handleTermsCheckChange = (event) => {
+        setTermsCheck(event.target.value);
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
         if (username === "" || password === "") {
             alert("You must provide both a username and password!");
+        } else if (termsCheck === false) {
+            alert("You must accept terms and conditions.")
         } else {
             // To-do: change fakeSignup to realSignup
             fakeSignup(username, password, role).then((res) => {
@@ -42,7 +60,7 @@ function Signup() {
                     } else if (role === "lab") {
                         setUserState(2);
                     }
-                    navigate("/"); // To-do
+                    navigate("/import"); // To-do
                 }
                 return res.json();
             }).then((data) => {
@@ -68,9 +86,8 @@ function Signup() {
                 <Form.Control type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check.Input type="checkbox" className="paragraph" />
+                <Form.Check.Input type="checkbox" className="paragraph" value={termsCheck} onChange={handleTermsCheckChange}/>
                 <Form.Check.Label>I have read and accepted the <Link to="/under-construction">terms and services</Link></Form.Check.Label>.
-
             </Form.Group>
             <div className="line">
                 <Button variant="primary" className="btn-inline-2" type="submit" onClick={handleSubmit}>
