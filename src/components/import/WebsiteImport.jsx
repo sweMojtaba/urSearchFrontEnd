@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Spinner } from "react-bootstrap";
-import { AiFillFilePdf } from "react-icons/ai"
+import { BiCodeCurly } from "react-icons/bi"
 import { useNavigate } from "react-router-dom";
 
 
-function WebsiteInput() {
+function WebsiteImport() {
     const [website, setWebsite] = useState("");
     const [importing, setImporting] = useState(false);
     const [disabled, setDisabled] = useState(true);
@@ -15,16 +15,29 @@ function WebsiteInput() {
 
     useEffect(() => {
         if (importing === true) {
-            setDisabled(false);
-        }
-        const expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
-        const regex = new RegExp(expression);
-        if (website.match(regex)) {
             setDisabled(true);
+            setImportButtonContent(() => <>
+                Importing
+                <Spinner
+                    animation="border"
+                    variant="light"
+                    className="ms-2"
+                    id="fileUploadSpinner"
+                />
+            </>)
         } else {
-            setDisabled(false);
+            const expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+            const regex = new RegExp(expression);
+            if (website.match(regex)) {
+                setDisabled(false);
+                setImportButtonContent(() => <>Import</>)
+            } else {
+                setDisabled(true);
+                setImportButtonContent(() => <>Not a valid url</>)
+
+            }
         }
-    },[importing, website])
+    }, [importing, website])
 
     const handleWebsiteChange = (event) => {
         setWebsite(event.target.value);
@@ -33,22 +46,11 @@ function WebsiteInput() {
     const handleImport = () => {
         // To-do: upload to back-end
         setImporting(true);
-        setImportButtonContent(() => {
-            return <>
-                Importing
-                <Spinner
-                    animation="border"
-                    variant="light"
-                    className="ms-2"
-                    id="fileUploadSpinner"
-                />
-            </>
-        })
         setTimeout(() => {
             setImportButtonContent(() => {
                 return <>Waiting for redirect...</>
             })
-            alert("Successfully imported your file!")
+            alert("Successfully imported your website!")
             setTimeout(() => navigate("/under-construction"), 1000)
         }, 3000)
     };
@@ -57,10 +59,10 @@ function WebsiteInput() {
     return <Form>
         <Form.Group className="mb-3 line">
             <Form.Label>
-                <AiFillFilePdf className="icon-inline" />
+                <BiCodeCurly className="icon-inline" />
             </Form.Label>
             <Form.Control
-                type="file"
+                type="text"
                 placeholder="Input your website url..."
                 onChange={handleWebsiteChange}
                 value={website}
@@ -77,4 +79,4 @@ function WebsiteInput() {
     </Form>
 }
 
-export default WebsiteInput;
+export default WebsiteImport;

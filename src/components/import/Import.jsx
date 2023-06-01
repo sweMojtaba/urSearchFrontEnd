@@ -6,6 +6,7 @@ import ResumeInput from "./ResumeInput";
 import { Link } from "react-router-dom";
 
 import "./styles.scss";
+import WebsiteImport from "./WebsiteImport";
 
 function Import() {
     const [userState, setUserState] = useContext(UserContext);
@@ -21,17 +22,30 @@ function Import() {
         redirectWithUserState();
     }, [])
 
+    useEffect(() => {
+        if (userState === 1) {
+            setTitle("Upload your resume...")
+        } else if (userState === 2) {
+            setTitle("Input your website url...")
+        }
+    }, [userState])
+
     return <Container className="sparse-content">
         <div>
             <h1>{title}</h1>
             <p className="subheading">And we'll complete your profile :)</p>
         </div>
         {
-            userState === 1
-                ?
-                <ResumeInput />
-                :
-                <></>
+            (() => {
+                switch (userState) {
+                    case 1:
+                        return <ResumeInput />
+                    case 2:
+                        return <WebsiteImport />
+                    case 0:
+                        return <></>
+                }
+            })()
         }
         <div className="dividing-line" />
         <p className="paragraph">
