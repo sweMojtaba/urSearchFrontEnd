@@ -10,7 +10,8 @@ import "./styles.scss";
 function Import() {
     const [userState, setUserState] = useContext(UserContext);
     const [title, setTitle] = useState("");
-    const redirectWithUserState = useRedirectWithUserState(userState,
+    const redirectWithUserState = useRedirectWithUserState(
+        userState,
         userState => userState === 0,
         "Looks like you haven't logged in yet",
         "/auth/login"
@@ -18,7 +19,7 @@ function Import() {
 
     useEffect(() => {
         redirectWithUserState();
-    }, [userState])
+    }, [])
 
     return <Container className="sparse-content">
         <div>

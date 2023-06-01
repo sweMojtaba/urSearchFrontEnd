@@ -6,9 +6,9 @@ import { AiFillInstagram } from "react-icons/ai"
 
 import "../common/header.scss";
 import HeaderCommon from "../common/HeaderCommon";
+import HeaderAuth from "../common/HeaderAuth";
 
 function Header() {
-    // To-do: user state
     return <HeaderCommon interfaceRoot="/welcome">
         <Nav id="icons">
             {/* To-do: add sharing links (backend) */}
@@ -30,10 +30,7 @@ function Header() {
             <Nav.Link as={Link} to="/welcome/contact">CONTACT US</Nav.Link>
             <Nav.Link as={Link} to="/welcome/about">ABOUT US</Nav.Link>
         </Nav>
-        <Nav>
-            <Nav.Link as={Link} to="/auth/signup">SIGN UP</Nav.Link>
-            <Nav.Link as={Link} to="/auth/login">LOG IN</Nav.Link>
-        </Nav>
+        <HeaderAuth />
     </HeaderCommon>
 }
 

@@ -28,3 +28,21 @@
     }
 }
 
+#profileDropdown {
+    --bs-dropdown-min-width: 0;
+    --bs-dropdown-bg: transparent;
+    --bs-dropdown-color: #FFF;
+    --bs-dropdown-link-color: #FFF;
+    --bs-dropdown-border-color: rgba(255, 255, 255, 0.5);
+    --bs-dropdown-divider-bg: #FFF;
+    --bs-dropdown-link-hover-color: #FFF;
+    --bs-dropdown-link-hover-bg: rgba(255, 255, 255, 0.2);
+    --bs-dropdown-link-active-color: #fff;
+    --bs-dropdown-link-active-bg: rgba(255, 255, 255, 0.3);
+    --bs-dropdown-link-disabled-color: #adb5bd;
+}
+
+#profileDropdown > .dropdown-item {
+    @extend .nav-link
+}
+

@@ -18,7 +18,7 @@ function HeaderCommon(props) {
     <Container>
         <Navbar.Brand as={Link} to={props.interfaceRoot}>
             <img
-                alt=""
+                alt="home"
                 src={Logo}
                 width="30"
                 height="30"
