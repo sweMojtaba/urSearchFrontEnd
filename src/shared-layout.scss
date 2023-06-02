@@ -20,3 +20,8 @@
     justify-content: center;
     margin: 0.5em 0;
 }
+
+.line-start {
+    @extend .line;
+    justify-content: start;
+}
