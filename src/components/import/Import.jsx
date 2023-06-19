@@ -7,20 +7,21 @@ import { Link } from "react-router-dom";
 
 import "./styles.scss";
 import WebsiteImport from "./WebsiteImport";
+import ErrorComponent from "../common/Error";
 
 function Import() {
     const [user, setUser] = useContext(UserContext);
     const [title, setTitle] = useState("");
     const redirectWithUserState = useRedirectWithUserState(
         user.state,
-        userState => userState !== 0,
+        userState => userState === 0,
         "Looks like you haven't logged in yet",
         "/auth/login"
     );
 
     useEffect(() => {
         redirectWithUserState();
-    }, [])
+    }, [redirectWithUserState])
 
     useEffect(() => {
         if (user.state === 1) {
@@ -44,6 +45,8 @@ function Import() {
                         return <WebsiteImport />
                     case 0:
                         return <></>
+                    default:
+                        return <ErrorComponent />
                 }
             })()
         }

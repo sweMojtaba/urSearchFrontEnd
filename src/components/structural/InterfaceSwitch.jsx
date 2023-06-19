@@ -14,27 +14,14 @@ import Redirect from '../common/Redirect';
 import Import from '../import/Import';
 import Profile from '../individual/Profile';
 import HeaderIndividual from '../individual/Header';
+import getUserStored from './getUserStored';
 
 function InterfaceSwitch() {
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState(getUserStored);
 
     useEffect(() => {
-        const userStateStored = localStorage.getItem("userState");
-        // console.log(userStateStored)
-        let state = parseInt(userStateStored);
-        if (isNaN(state)) {
-            state = 0;
-        }
-        console.log(state);
-        let name = localStorage.getItem("username");
-        if (name === null || name === undefined || isNaN(name)) {
-            name = "";
-        }
-        console.log(name);
-        setUser({
-            state,
-            name
-        });
+        const user = getUserStored();
+        setUser(user);
     }, [])
 
     useEffect(() => {

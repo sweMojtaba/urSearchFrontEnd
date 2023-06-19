@@ -9,6 +9,8 @@ function useRedirectWithUserState(userState, ifRedirect, note, target) {
                 note: note,
                 target: target
             }, replace: false})
+        } else {
+            console.log("Chose not to redirect");
         }
     }
     return redirectWithUserState;
