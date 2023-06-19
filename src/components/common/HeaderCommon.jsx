@@ -7,13 +7,13 @@ import "./header.scss";
 import { Link } from "react-router-dom";
 
 function HeaderCommon(props) {
-    const [userState, setUserState] = useContext(UserContext);
+    const [user, setUser] = useContext(UserContext);
     const [username, setUsername] = useState("");
     useEffect(() => {
-        if (userState !== 0) {
+        if (user.state !== 0) {
             setUsername(localStorage.getItem("username") ?? "");
         }
-    }, [userState])
+    }, [user.state])
     return <Navbar expand="md" collapseOnSelect bg="primary" variant="dark">
     <Container>
         <Navbar.Brand as={Link} to={props.interfaceRoot}>

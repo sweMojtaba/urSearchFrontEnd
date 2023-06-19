@@ -5,7 +5,6 @@ import UserContext from './UserContext';
 import WelcomeLayout from '../welcome/Layout';
 import Contact from '../welcome/Contact';
 import About from '../welcome/About';
-import AuthLayout from '../auth/Layout';
 import Signup from '../auth/p1/Signup';
 import Login from '../auth/p1/Login';
 import SignupRole from '../auth/p2/Signup';
@@ -13,23 +12,38 @@ import LoginRole from '../auth/p2/Login';
 import UnderConstruction from '../common/UnderConstruction';
 import Redirect from '../common/Redirect';
 import Import from '../import/Import';
+import Profile from '../individual/Profile';
+import HeaderIndividual from '../individual/Header';
 
 function InterfaceSwitch() {
-    const [userState, setUserState] = useState(() => {
-        const userStateStored = localStorage.getItem("userState");
-        if (userStateStored === null) {
-            return 0
-        } else {
-            return parseInt(userStateStored);
-        }
-    });
+    const [user, setUser] = useState({});
 
     useEffect(() => {
-        localStorage.setItem("userState", userState);
-        console.log(`User state changed to ${userState}`)
-    }, [userState])
+        const userStateStored = localStorage.getItem("userState");
+        // console.log(userStateStored)
+        let state = parseInt(userStateStored);
+        if (isNaN(state)) {
+            state = 0;
+        }
+        console.log(state);
+        let name = localStorage.getItem("username");
+        if (name === null || name === undefined || isNaN(name)) {
+            name = "";
+        }
+        console.log(name);
+        setUser({
+            state,
+            name
+        });
+    }, [])
 
-    return <UserContext.Provider value={[userState, setUserState]}>
+    useEffect(() => {
+        localStorage.setItem("userState", user.state);
+        localStorage.setItem("userName", user.name);
+        console.log("Local storage reset with", user);
+    }, [user])
+
+    return <UserContext.Provider value={[user, setUser]}>
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<WelcomeLayout />} >
@@ -53,6 +67,9 @@ function InterfaceSwitch() {
                         <Route index element={<Login />} />
                         <Route path=':role' element={<LoginRole />} />
                     </Route>
+                </Route>
+                <Route path="individual" element={<HeaderIndividual />} >
+                    <Route path="profile" index element={<Profile />} />
                 </Route>
             </Routes>
         </BrowserRouter>

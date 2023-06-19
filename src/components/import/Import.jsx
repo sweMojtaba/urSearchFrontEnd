@@ -9,11 +9,11 @@ import "./styles.scss";
 import WebsiteImport from "./WebsiteImport";
 
 function Import() {
-    const [userState, setUserState] = useContext(UserContext);
+    const [user, setUser] = useContext(UserContext);
     const [title, setTitle] = useState("");
     const redirectWithUserState = useRedirectWithUserState(
-        userState,
-        userState => userState === 0,
+        user.state,
+        userState => userState !== 0,
         "Looks like you haven't logged in yet",
         "/auth/login"
     );
@@ -23,12 +23,12 @@ function Import() {
     }, [])
 
     useEffect(() => {
-        if (userState === 1) {
+        if (user.state === 1) {
             setTitle("Upload your resume...")
-        } else if (userState === 2) {
+        } else if (user.state === 2) {
             setTitle("Input your website url...")
         }
-    }, [userState])
+    }, [user.state])
 
     return <Container className="sparse-content">
         <div>
@@ -37,7 +37,7 @@ function Import() {
         </div>
         {
             (() => {
-                switch (userState) {
+                switch (user.state) {
                     case 1:
                         return <ResumeInput />
                     case 2:

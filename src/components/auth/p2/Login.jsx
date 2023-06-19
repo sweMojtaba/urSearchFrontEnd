@@ -13,23 +13,33 @@ import useRedirectWithUserState from "../../common/useRedirectWithUserState";
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [loggedIn, setLoggedIn] = useState(false);
     const params = useParams(); // {role: xxx}
     const [role, setRole] = useState(params.role);
 
-    const [userState, setUserState] = useContext(UserContext);
+    const [user, setUser] = useContext(UserContext);
 
     const navigate = useNavigate();
 
     const redirectWithUserState = useRedirectWithUserState(
-        userState,
+        user.state,
         userState => userState !== 0,
         "You are already logged in",
         "/under-construction" // To-do
     )
 
     useEffect(() => {
-        setTimeout(redirectWithUserState, 1000);
-    }, [userState])
+        if (loggedIn === false) {
+            setTimeout(redirectWithUserState, 1000);
+        }
+    }, [user])
+
+    useEffect(() => {
+        if (loggedIn === true && user.state !== 0) {
+            alert("Successfully logged in!");
+            navigate("/import"); // To-do: already imported
+        }
+    }, [user, loggedIn])
 
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
@@ -51,12 +61,17 @@ function Login() {
                     alert("Incorrect password!");
                 } else if (res.status === 200) {
                     if (role === "individual") {
-                        setUserState(1);
+                        setUser({
+                            state: 1,
+                            name: username
+                        });
                     } else if (role === "lab") {
-                        setUserState(2);
+                        setUser({
+                            state: 2,
+                            name: username
+                        });
                     }
-                    alert("Successfully logged in!");
-                    navigate("/import"); // To-do
+                    setLoggedIn(true);
                 }
                 return res.json();
             }).then((data) => {

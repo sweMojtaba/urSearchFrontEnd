@@ -14,7 +14,7 @@ function Signup() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [termsCheck, setTermsCheck] = useState(false);
-    const [userState, setUserState] = useContext(UserContext);
+    const [user, setUser] = useContext(UserContext);
 
     const params = useParams(); // {role: xxx}
     const [role, setRole] = useState(params.role);
@@ -22,7 +22,7 @@ function Signup() {
     const navigate = useNavigate();
 
     const redirectWithUserState = useRedirectWithUserState(
-        userState,
+        user.state,
         userState => userState !== 0,
         "You are already logged in",
         "/under-construction" // To-do
@@ -30,7 +30,7 @@ function Signup() {
 
     useEffect(() => {
         setTimeout(redirectWithUserState, 1000);
-    }, [userState])
+    }, [user.state])
 
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
@@ -56,9 +56,15 @@ function Signup() {
                 } else if (res.status === 200) {
                     alert("Successfully registered!");
                     if (role === "individual") {
-                        setUserState(1);
+                        setUser({
+                            state: 1,
+                            name: username
+                        });
                     } else if (role === "lab") {
-                        setUserState(2);
+                        setUser({
+                            state: 1,
+                            name: username
+                        });
                     }
                     navigate("/import"); // To-do
                 }

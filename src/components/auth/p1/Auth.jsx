@@ -6,10 +6,10 @@ import UserContext from "../../structural/UserContext";
 
 function Auth(props) {
     const [title, setTitle] = useState("");
-    const [userState, setUserState] = useContext(UserContext);
+    const [user, setUser] = useContext(UserContext);
 
     const redirectWithUserState = useRedirectWithUserState(
-        userState,
+        user.state,
         userState => userState !== 0,
         "You are already logged in",
         "/under-construction" // To-do
@@ -17,7 +17,7 @@ function Auth(props) {
 
     useEffect(() => {
         setTimeout(redirectWithUserState, 1000);
-    }, [userState])
+    }, [user.state])
 
     useEffect(() => {
         if (props.name === "signup") {
