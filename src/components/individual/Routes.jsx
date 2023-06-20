@@ -1,14 +1,14 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Layout from "./Layout";
 import Profile from "./Profile"
 
-function IndividualRoutes() {
-    return <Routes>
-        <Route path="individual" element={<Layout />} >
+function useIndividualRoutes() {
+    return <>
+        <Route path="/individual" element={<Layout />} >
             <Route path="profile" index element={<Profile />} />
         </Route>
-    </Routes>
+    </>
 }
 
-export default IndividualRoutes;
+export default useIndividualRoutes;

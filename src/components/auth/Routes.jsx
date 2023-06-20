@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Layout from "../welcome/Layout";
 import Signup from "./p1/Signup";
 import Login from '../auth/p1/Login';
@@ -8,9 +8,9 @@ import LoginRole from '../auth/p2/Login';
 
 import "./styles.scss";
 
-function AuthRoutes() {
-    return <Routes>
-        <Route path="auth" element={<Layout />}>
+function useAuthRoutes() {
+    return <>
+        <Route path="/auth" element={<Layout />}>
             <Route path="signup">
                 <Route index element={<Signup />} />
                 <Route path=':role' element={<SignupRole />} />
@@ -20,7 +20,7 @@ function AuthRoutes() {
                 <Route path=':role' element={<LoginRole />} />
             </Route>
         </Route>
-    </Routes>
+    </>
 }
 
-export default AuthRoutes;
+export default useAuthRoutes;

@@ -7,12 +7,15 @@ import UnderConstruction from '../common/UnderConstruction';
 import Redirect from '../common/Redirect';
 import Import from '../import/Import';
 import getUserStored from './getUserStored';
-import AuthRoutes from '../auth/Routes';
-import WelcomeRoutes from '../welcome/Routes';
-import IndividualRoutes from '../individual/Routes';
+import useAuthRoutes from '../auth/Routes';
+import useIndividualRoutes from '../individual/Routes';
+import useWelcomeRoutes from '../welcome/Routes';
 
 function InterfaceSwitch() {
     const [user, setUser] = useState(getUserStored);
+    const welcomeRoutes = useWelcomeRoutes();
+    const authRoutes = useAuthRoutes();
+    const individualRoutes = useIndividualRoutes();
 
     useEffect(() => {
         const user = getUserStored();
@@ -25,6 +28,7 @@ function InterfaceSwitch() {
         console.log("Local storage reset with", user);
     }, [user])
 
+    // https://github.com/remix-run/react-router/discussions/10160
     return <UserContext.Provider value={[user, setUser]}>
         <BrowserRouter>
             <Routes>
@@ -34,11 +38,11 @@ function InterfaceSwitch() {
                     <Route path="/under-construction" element={<UnderConstruction />} />
                     <Route path="/redirect" element={<Redirect />} />
                     <Route path="import" element={<Import />} />
+                    {welcomeRoutes}
+                    {authRoutes}
+                    {individualRoutes}
                 </Route>
             </Routes>
-            <WelcomeRoutes />
-            <AuthRoutes />
-            <IndividualRoutes />
         </BrowserRouter>
     </UserContext.Provider>
 }
