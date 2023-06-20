@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import "bootstrap/dist/js/bootstrap.bundle.min.js"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "./shared-variables.scss"
-import './index.scss';
-import "./shared-text.scss"
-import "./shared-layout.scss"
-import "./shared-elements.scss"
+import "./shared-styles/bootstrap-customized.scss";
+import './shared-styles/buttons.scss';
+import './shared-styles/form.scss';
+import './shared-styles/index.scss';
+import './shared-styles/layout.scss';
+import './shared-styles/text.scss';
+
+import App from './App';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -5,7 +5,6 @@ import { Container } from "react-bootstrap";
 import ResumeInput from "./ResumeInput";
 import { Link } from "react-router-dom";
 
-import "./styles.scss";
 import WebsiteImport from "./WebsiteImport";
 import ErrorComponent from "../common/Error";
 

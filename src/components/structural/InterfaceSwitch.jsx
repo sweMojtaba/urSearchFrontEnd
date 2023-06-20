@@ -3,18 +3,13 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Slides from '../welcome/Slides';
 import UserContext from './UserContext';
 import WelcomeLayout from '../welcome/Layout';
-import Contact from '../welcome/Contact';
-import About from '../welcome/About';
-import Signup from '../auth/p1/Signup';
-import Login from '../auth/p1/Login';
-import SignupRole from '../auth/p2/Signup';
-import LoginRole from '../auth/p2/Login';
 import UnderConstruction from '../common/UnderConstruction';
 import Redirect from '../common/Redirect';
 import Import from '../import/Import';
-import Profile from '../individual/Profile';
-import HeaderIndividual from '../individual/Header';
 import getUserStored from './getUserStored';
+import AuthRoutes from '../auth/Routes';
+import WelcomeRoutes from '../welcome/Routes';
+import IndividualRoutes from '../individual/Routes';
 
 function InterfaceSwitch() {
     const [user, setUser] = useState(getUserStored);
@@ -38,27 +33,12 @@ function InterfaceSwitch() {
                     {/* Miscellaneous */}
                     <Route path="/under-construction" element={<UnderConstruction />} />
                     <Route path="/redirect" element={<Redirect />} />
-                    <Route path="import" element={<Import/>} />
-                </Route>
-                <Route path="welcome" element={<WelcomeLayout />} >
-                    <Route index element={<Slides />} />
-                    <Route path="contact" element={<Contact />} />
-                    <Route path="about" element={<About />} />
-                </Route>
-                <Route path="auth" element={<WelcomeLayout />}>
-                    <Route path="signup">
-                        <Route index element={<Signup />} />
-                        <Route path=':role' element={<SignupRole />} />
-                    </Route>
-                    <Route path="login">
-                        <Route index element={<Login />} />
-                        <Route path=':role' element={<LoginRole />} />
-                    </Route>
-                </Route>
-                <Route path="individual" element={<HeaderIndividual />} >
-                    <Route path="profile" index element={<Profile />} />
+                    <Route path="import" element={<Import />} />
                 </Route>
             </Routes>
+            <WelcomeRoutes />
+            <AuthRoutes />
+            <IndividualRoutes />
         </BrowserRouter>
     </UserContext.Provider>
 }

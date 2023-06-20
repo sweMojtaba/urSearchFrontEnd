@@ -7,7 +7,7 @@ import "./contact.scss";
 
 function ContactInfo(props) {
     return <div className="contact-info">
-        <div className="line line-start primary-line">
+        <div className="primary-line line line-start">
             <img src={item1} alt="item1"/>
             <p className="heading">{props.team}</p>
         </div>

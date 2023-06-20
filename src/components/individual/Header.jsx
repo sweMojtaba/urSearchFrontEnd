@@ -1,7 +1,7 @@
 import React from "react";
 
-function HeaderIndividual() {
+function Header() {
     return <></>
 }
 
-export default HeaderIndividual;
+export default Header;

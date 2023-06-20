@@ -6,7 +6,6 @@ import { Button, Container, Form } from "react-bootstrap";
 import { FaUserAlt, FaKey } from "react-icons/fa";
 import SSOButton from "./SSOButton";
 
-import "./styles.scss";
 import getOtherRole from "./getOtherRole";
 import useRedirectWithUserState from "../../common/useRedirectWithUserState";
 
