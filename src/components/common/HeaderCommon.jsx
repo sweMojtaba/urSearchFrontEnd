@@ -18,7 +18,8 @@ function HeaderCommon(props) {
                 width="30"
                 height="30"
                 className="d-inline-block align-top"
-            />{' ' + user.name}
+            />{' '}
+            <span id="userName">{user.name}</span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-items" />
         <Navbar.Collapse id="navbar-items">

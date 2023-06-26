@@ -4,6 +4,12 @@
     @extend .link
 }
 
+#userName {
+    padding-left: 1em;
+    font-family: "Iceberg";
+    text-transform: uppercase;
+}
+
 #icons > .nav-link {
     padding: 0 0.2em;
 }
