@@ -6,7 +6,7 @@ import WelcomeLayout from '../welcome/Layout';
 import UnderConstruction from '../common/UnderConstruction';
 import Redirect from '../common/Redirect';
 import Import from '../import/Import';
-import getUserStored from './getUserStored';
+import getUserStored from './getUserStored.ts';
 import useAuthRoutes from '../auth/Routes';
 import useIndividualRoutes from '../individual/Routes';
 import useWelcomeRoutes from '../welcome/Routes';
@@ -23,7 +23,7 @@ function InterfaceSwitch() {
     }, [])
 
     useEffect(() => {
-        localStorage.setItem("userState", user.state);
+        localStorage.setItem("userState", user.state.toString());
         localStorage.setItem("userName", user.name);
         console.log("Local storage reset with", user);
     }, [user])
