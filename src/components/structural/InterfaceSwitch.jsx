@@ -38,10 +38,10 @@ function InterfaceSwitch() {
                     <Route path="/under-construction" element={<UnderConstruction />} />
                     <Route path="/redirect" element={<Redirect />} />
                     <Route path="import" element={<Import />} />
-                    {welcomeRoutes}
-                    {authRoutes}
-                    {individualRoutes}
                 </Route>
+                {welcomeRoutes}
+                {authRoutes}
+                {individualRoutes}
             </Routes>
         </BrowserRouter>
     </UserContext.Provider>
