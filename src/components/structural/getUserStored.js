@@ -4,8 +4,8 @@ export default function getUserStored() {
     if (isNaN(state)) {
         state = 0;
     }
-    let name = localStorage.getItem("username");
-    if (name === null || name === undefined || isNaN(name)) {
+    let name = localStorage.getItem("userName");
+    if (name === null || name === undefined) {
         name = "";
     }
     console.log("state:" + state + ", name:" + name);

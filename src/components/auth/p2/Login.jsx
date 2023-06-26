@@ -54,6 +54,8 @@ function Login() {
         } else {
             // To-do: change fakeSignup to realSignup
             fakeLogin(username, password, role).then((res) => {
+                console.log("Log in response code: ", res.status);
+                console.log("username: ", username);
                 if (res.status === 404) {
                     alert("Incorrect username!");
                 } else if (res.status === 401) {

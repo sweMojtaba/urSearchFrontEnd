@@ -8,12 +8,7 @@ import { Link } from "react-router-dom";
 
 function HeaderCommon(props) {
     const [user, setUser] = useContext(UserContext);
-    const [username, setUsername] = useState("");
-    useEffect(() => {
-        if (user.state !== 0) {
-            setUsername(localStorage.getItem("username") ?? "");
-        }
-    }, [user.state])
+
     return <Navbar expand="md" collapseOnSelect bg="primary" variant="dark">
     <Container>
         <Navbar.Brand as={Link} to={props.interfaceRoot}>
@@ -23,7 +18,7 @@ function HeaderCommon(props) {
                 width="30"
                 height="30"
                 className="d-inline-block align-top"
-            />{' ' + username}
+            />{' ' + user.name}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-items" />
         <Navbar.Collapse id="navbar-items">
