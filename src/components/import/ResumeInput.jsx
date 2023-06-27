@@ -35,7 +35,7 @@ function ResumeInput() {
                 return <>Waiting for redirect...</>
             })
             alert("Successfully uploaded your file!")
-            setTimeout(() => navigate("/under-construction"), 1000)
+            setTimeout(() => navigate("/individual/profile"), 1000)
         }, 3000)
     };
 

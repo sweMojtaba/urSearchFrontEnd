@@ -1,10 +1,10 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 
-function Profile() {
+function Search() {
     return <Container>
         
     </Container>
 }
 
-export default Profile;
+export default Search;

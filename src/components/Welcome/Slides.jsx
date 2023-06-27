@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import SlideButtons from "./SlideButtons";
 import slide1 from "../../assets/slide1.png"
 import slide2 from "../../assets/slide2.png"
@@ -10,6 +10,8 @@ import { Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import "./slides.scss";
+import useRedirectWithUserState from "../common/useRedirectWithUserState";
+import UserContext from "../structural/UserContext";
 
 const slidesInfo = [
     {
@@ -36,6 +38,20 @@ const slidesInfo = [
 
 function Slides() {
     const [activeIndex, setActiveIndex] = useState(0);
+    const [user, setUser] = useContext(UserContext);
+    const redirectIndividual = useRedirectWithUserState(
+        user.state,
+        userState => userState === 1,
+        "You are logged in. Redirecting you to your home page.",
+        "/individual/profile"
+    )
+    const redirectLab = useRedirectWithUserState(
+        user.state,
+        userState => userState === 2,
+        "You are logged in. Redirecting you to your home page.",
+        "/lab/profile"
+    )
+    
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -47,6 +63,16 @@ function Slides() {
         }, 3000);
         return () => clearInterval(interval);
     }, []);
+
+    useEffect(() => {
+        if (user.state === 1) {
+            redirectIndividual();
+        } else if (user.state === 2) {
+            redirectLab();
+        }
+    }, [user])
+
+    // navigate
 
     const goToSlide1 = useCallback(() => {
         setActiveIndex(0);

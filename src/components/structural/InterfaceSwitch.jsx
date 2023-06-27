@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Slides from '../welcome/Slides';
 import UserContext from './UserContext';
@@ -10,12 +10,15 @@ import getUserStored from './getUserStored.ts';
 import useAuthRoutes from '../auth/Routes';
 import useIndividualRoutes from '../individual/Routes';
 import useWelcomeRoutes from '../welcome/Routes';
+import IndividualLayout from "../individual/Layout";
+import Search from "../individual/Search"
 
 function InterfaceSwitch() {
     const [user, setUser] = useState(getUserStored);
     const welcomeRoutes = useWelcomeRoutes();
     const authRoutes = useAuthRoutes();
     const individualRoutes = useIndividualRoutes();
+    const switchHomeRoutes = useSwitchHomeRoutes(user.state);
 
     useEffect(() => {
         const user = getUserStored();
@@ -32,8 +35,8 @@ function InterfaceSwitch() {
     return <UserContext.Provider value={[user, setUser]}>
         <BrowserRouter>
             <Routes>
+                {switchHomeRoutes}
                 <Route path="/" element={<WelcomeLayout />} >
-                    <Route index element={<Slides />} />
                     {/* Miscellaneous */}
                     <Route path="/under-construction" element={<UnderConstruction />} />
                     <Route path="/redirect" element={<Redirect />} />
@@ -48,3 +51,23 @@ function InterfaceSwitch() {
 }
 
 export default InterfaceSwitch;
+
+function useHomeRoute(layoutElement, outletElement) {
+    return <Route path='/' element={layoutElement}>
+        <Route index element={outletElement} />
+    </Route>
+}
+
+function useSwitchHomeRoutes(userState) {
+    const welcomeHomeRoute = useHomeRoute(<WelcomeLayout/>, <Slides/>);
+    const individualHomeRoute = useHomeRoute(<IndividualLayout/>, <Search/>);
+    const labHomeRoute = useHomeRoute(<WelcomeLayout/>, <Slides/>);
+    switch(userState) {
+        case 0:
+            return welcomeHomeRoute;
+        case 1:
+            return individualHomeRoute;
+        case 2:
+            return labHomeRoute;
+    }
+}
