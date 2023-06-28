@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Nav } from "react-bootstrap";
-import UserContext from "../structural/UserContext";
+import UserContext from "../../structural/UserContext";
 import { Link } from "react-router-dom";
 import NavProfile from "./NavProfile";
 

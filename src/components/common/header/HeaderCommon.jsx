@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import Logo from "../../assets/logo.png";
-import UserContext from "../structural/UserContext";
+import Logo from "../../../assets/logo.png";
+import UserContext from "../../structural/UserContext";
 import { Container, Navbar } from "react-bootstrap";
 
 import "./header.scss";

@@ -6,7 +6,7 @@ import ResumeInput from "./ResumeInput";
 import { Link } from "react-router-dom";
 
 import WebsiteImport from "./WebsiteImport";
-import ErrorComponent from "../common/Error";
+import ErrorComponent from "../miscellaneous/Error";
 
 function Import() {
     const [user, setUser] = useContext(UserContext);

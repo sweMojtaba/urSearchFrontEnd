@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import { IoMdConstruct } from "react-icons/io";
 
-import "./common.scss"
+import "./styles.scss"
 
 function UnderConstruction() {
     return <Container className="sparse-content">

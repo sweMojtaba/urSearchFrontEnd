@@ -1,9 +1,9 @@
 import React from "react";
-import HeaderCommon from "../common/HeaderCommon";
+import HeaderCommon from "../common/header/HeaderCommon";
 import { Link } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 import { AiOutlineSearch } from "react-icons/ai"
-import HeaderAuth from "../common/HeaderAuth";
+import HeaderAuth from "../common/header/HeaderAuth";
 
 function Header() {
     return <HeaderCommon>

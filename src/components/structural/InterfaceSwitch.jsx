@@ -3,8 +3,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Slides from '../welcome/Slides';
 import UserContext from './UserContext';
 import WelcomeLayout from '../welcome/Layout';
-import UnderConstruction from '../common/UnderConstruction';
-import Redirect from '../common/Redirect';
+import UnderConstruction from '../miscellaneous/UnderConstruction';
+import Redirect from '../miscellaneous/Redirect';
 import Import from '../import/Import';
 import getUserStored from './getUserStored.ts';
 import useAuthRoutes from '../auth/Routes';
@@ -45,6 +45,9 @@ function InterfaceSwitch() {
                 {welcomeRoutes}
                 {authRoutes}
                 {individualRoutes}
+                <Route path='*' element={<WelcomeLayout />}>
+                    <Route element={<UnderConstruction />} />
+                </Route>
             </Routes>
         </BrowserRouter>
     </UserContext.Provider>
@@ -59,10 +62,10 @@ function useHomeRoute(layoutElement, outletElement) {
 }
 
 function useSwitchHomeRoutes(userState) {
-    const welcomeHomeRoute = useHomeRoute(<WelcomeLayout/>, <Slides/>);
-    const individualHomeRoute = useHomeRoute(<IndividualLayout/>, <Search/>);
-    const labHomeRoute = useHomeRoute(<WelcomeLayout/>, <Slides/>);
-    switch(userState) {
+    const welcomeHomeRoute = useHomeRoute(<WelcomeLayout />, <Slides />);
+    const individualHomeRoute = useHomeRoute(<IndividualLayout />, <Search />);
+    const labHomeRoute = useHomeRoute(<WelcomeLayout />, <Slides />); // TO-DO: change to lab elements
+    switch (userState) {
         case 0:
             return welcomeHomeRoute;
         case 1:

@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { FaFacebookF, FaTwitter, FaLinkedin } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai"
 
-import "../common/header.scss";
-import HeaderCommon from "../common/HeaderCommon";
-import HeaderAuth from "../common/HeaderAuth";
+import "../common/header/header.scss";
+import HeaderCommon from "../common/header/HeaderCommon";
+import HeaderAuth from "../common/header/HeaderAuth";
 
 function Header() {
     return <HeaderCommon interfaceRoot="/welcome">
