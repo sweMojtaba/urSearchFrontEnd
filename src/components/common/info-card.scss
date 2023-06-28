@@ -1,0 +1,41 @@
+.info-card {
+    border: 2px solid #fff;
+    padding: 1em;
+    font-size: smaller;
+    margin: 2em 0;
+}
+
+.info-card-with-img {
+    position: relative;
+}
+
+.info-card-with-img > img {
+    height: 6em;
+    width: 6em;
+    position: absolute;
+    top: -2em;
+    left: -1em;
+    // border: 2px solid #fff;
+}
+
+.info-card-with-img > .info-card {
+    margin-top: 2em;
+}
+
+.info-card-with-img > .info-card > .heading {
+    padding-left: 2em;
+}
+
+.info-card-with-img > .info-card > ul:nth-child(1) {
+    padding-left: 2em;
+}
+
+.compact > * {
+    margin: 0;
+    // letter-spacing: normal;
+    font-size: smaller;
+}
+
+.compact {
+    margin: 1em 0;
+}

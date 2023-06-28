@@ -3,12 +3,12 @@ import { Button, Container } from "react-bootstrap";
 
 import "./info-card.scss"
 
-export default function InfoCard({ title, children, buttonText, buttonAction }) {
+export default function InfoCard({ compact, title, children, buttonText, buttonAction }) {
     return <Container className="info-card">
-        <h2>{title}</h2>
-        <ul>
+        <p className="heading">{title}</p>
+        <div className={"paragraph".concat(compact ? " compact" : "")}>
             {children}
-        </ul>
+        </div>
         <Button onClick={buttonAction}>{buttonText}</Button>
     </Container>
 }

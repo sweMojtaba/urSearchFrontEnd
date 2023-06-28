@@ -21,6 +21,15 @@
     margin: 0.5em 0;
 }
 
+.line > p {
+    margin: 0;
+    display: block;
+}
+
+.line > img {
+    margin: 0 0.5em;
+}
+
 .line-start {
     @extend .line;
     justify-content: start;

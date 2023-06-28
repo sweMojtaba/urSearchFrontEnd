@@ -7,7 +7,7 @@ import { Container } from "react-bootstrap";
 function About() {
     return <div id="slide">
         <Container>
-            <div className="line primary-line">
+            <div className="line primary-line line-start">
                 <img src={item1} alt="item1" />
                 <p className="heading">Everything started from a friendship...</p>
             </div>

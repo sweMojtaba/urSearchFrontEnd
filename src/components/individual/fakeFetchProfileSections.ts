@@ -4,11 +4,17 @@ export function fetchPersonalInfo() {
         "degree": "B.S.",
         "major": "Computer Sciences",
         "school": "University of Wisconsin - Madison",
-        "class": 2024,
+        "classYear": 2024,
         "GPA": 3.89,
         "phone": 6085728750,
         "email": "javid2@wisc.edu"
     };
+}
+
+export function fetchGPAhidden() {
+    return {
+        GPAhidden: true
+    }
 }
 
 export function fetchDocuments() {
