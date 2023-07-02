@@ -20,10 +20,8 @@ export default function PersonalInfo() {
     const { GPAhidden } = useMemo(fetchGPAhidden, [user]);
 
     return <InfoCardWithImg
-        compact={true}
         title={name}
-        buttonText="add"
-        buttonAction={() => console.log("documents")}
+        buttonPresent={false}
         img={profileImg}
     >
 

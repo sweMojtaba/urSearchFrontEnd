@@ -22,6 +22,10 @@ export function fetchDocuments() {
         {
             "name": "resume",
             "url": "file1/address/hosted/in/the/backend.com"
+        },
+        {
+            "name": "self-introduction",
+            "url": "file1/address/hosted/in/the/backend.com"
         }
     ]
 }

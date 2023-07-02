@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../structural/UserContext";
-import useRedirectWithUserState from "../common/useRedirectWithUserState";
+import useRedirectWithUserState from "../common/hooks/useRedirectWithUserState";
 import { Container } from "react-bootstrap";
 import ResumeInput from "./ResumeInput";
 import { Link } from "react-router-dom";

@@ -7,7 +7,7 @@ import { FaUserAlt, FaKey } from "react-icons/fa";
 import SSOButton from "./SSOButton";
 
 import getOtherRole from "./getOtherRole";
-import useRedirectWithUserState from "../../common/useRedirectWithUserState";
+import useRedirectWithUserState from "../../common/hooks/useRedirectWithUserState";
 
 function Signup() {
     const [username, setUsername] = useState("");

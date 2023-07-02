@@ -10,7 +10,7 @@ import { Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import "./slides.scss";
-import useRedirectWithUserState from "../common/useRedirectWithUserState";
+import useRedirectWithUserState from "../common/hooks/useRedirectWithUserState";
 import UserContext from "../structural/UserContext";
 
 const slidesInfo = [

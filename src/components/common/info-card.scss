@@ -5,6 +5,14 @@
     margin: 2em 0;
 }
 
+.info-card > .main-info > * {
+    margin: 0;
+}
+
+.info-card > .main-info {
+    margin: 1em 0;
+}
+
 .info-card-with-img {
     position: relative;
 }
@@ -28,14 +36,4 @@
 
 .info-card-with-img > .info-card > ul:nth-child(1) {
     padding-left: 2em;
-}
-
-.compact > * {
-    margin: 0;
-    // letter-spacing: normal;
-    font-size: smaller;
-}
-
-.compact {
-    margin: 1em 0;
 }

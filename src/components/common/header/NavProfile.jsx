@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Dropdown, Nav } from "react-bootstrap";
 import profile from "../../../assets/profile.svg";
-import useRedirectWithUserState from "../useRedirectWithUserState";
+import useRedirectWithUserState from "../hooks/useRedirectWithUserState";
 import UserContext from "../../structural/UserContext";
 import { Link } from "react-router-dom";
 
