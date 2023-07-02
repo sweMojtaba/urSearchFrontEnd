@@ -1,9 +1,9 @@
 import React, { useContext, useMemo } from "react";
 import { fetchGPAhidden, fetchPersonalInfo } from "./fakeFetchProfileSections.ts";
-import UserContext from "../structural/UserContext.jsx";
-import InfoCardWithImg from "../common/InfoCardWithImg.jsx";
+import UserContext from "../../structural/UserContext.jsx";
+import InfoCardWithImg from "../../common/InfoCardWithImg.jsx";
 
-import profileImg from "../../assets/profileSolid.svg";
+import profileImg from "../../../assets/profileSolid.svg";
 
 export default function PersonalInfo() {
     const [user, setUser] = useContext(UserContext)
