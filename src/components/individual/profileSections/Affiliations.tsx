@@ -3,7 +3,7 @@ import { fetchAffiliations } from "./fakeFetchProfileSections";
 import InfoCard from "../../common/InfoCard";
 import SmallLi from "../../common/SmallLi";
 import { Form } from "react-bootstrap";
-import useAddButtonProps from "../../common/hooks/useAddButtonProps";
+import { useAddButtonProps } from "../../common/hooks/useButtonProps";
 
 export default function Affiliations() {
     const [reload, setReload] = useState(false);
@@ -21,10 +21,10 @@ export default function Affiliations() {
     }, [reload]);
 
     return <InfoCard
-        title="Documents"
+        title="Affiliations"
         buttonProps={buttonProps}
         buttonPresent={true}>
-        {affiliations.map(document => <SmallLi text={document.name} url={document.url} key={document.name} />)}
+        {affiliations.map(affiliation => <SmallLi text={affiliation.name} url={affiliation.url} key={affiliation.name} />)}
         <Form.Control type="text" placeholder="New Affiliation" value={newAffiliation} onChange={(event) => setNewAffiliation(event.target.value)} />
     </InfoCard>
 }

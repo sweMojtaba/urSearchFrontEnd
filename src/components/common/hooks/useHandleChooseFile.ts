@@ -1,8 +1,10 @@
+import { useCallback } from "react";
+
 export default function useHandleChooseFile(
     setSelectedFile: React.Dispatch<React.SetStateAction<File | undefined>>
 ): () => void {
     
-    const handleChooseFile = () => {
+    const handleChooseFile = useCallback(() => {
         const fileSelector = document.createElement('input');
         fileSelector.setAttribute('type', 'file');
 
@@ -13,6 +15,7 @@ export default function useHandleChooseFile(
         };
 
         fileSelector.click();
-    }
+    }, []);
+    
     return handleChooseFile;
 }
