@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { fetchDocuments } from "./fakeFetchProfileSections.ts";
 import InfoCard from "../../common/InfoCard.jsx";
 import SmallLi from "../../common/SmallLi.jsx";

@@ -5,7 +5,6 @@ import UserContext from './UserContext';
 import WelcomeLayout from '../welcome/Layout';
 import UnderConstruction from '../miscellaneous/UnderConstruction';
 import Redirect from '../miscellaneous/Redirect';
-import Import from '../import/Import';
 import getUserStored from './getUserStored.ts';
 import useAuthRoutes from '../auth/Routes';
 import useIndividualRoutes from '../individual/Routes';
@@ -40,13 +39,13 @@ function InterfaceSwitch() {
                     {/* Miscellaneous */}
                     <Route path="/under-construction" element={<UnderConstruction />} />
                     <Route path="/redirect" element={<Redirect />} />
-                    <Route path="import" element={<Import />} />
                 </Route>
                 {welcomeRoutes}
                 {authRoutes}
                 {individualRoutes}
                 <Route path='*' element={<WelcomeLayout />}>
                     <Route element={<UnderConstruction />} />
+                    {/* TO-DO: 404 */}
                 </Route>
             </Routes>
         </BrowserRouter>

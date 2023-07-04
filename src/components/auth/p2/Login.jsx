@@ -35,8 +35,9 @@ function Login() {
 
     useEffect(() => {
         if (loggedIn === true && user.state !== 0) {
+            const basePath = user.state === 1 ? "/individual" : "/lab";
             alert("Successfully logged in!");
-            navigate("/import"); // To-do: already imported
+            navigate(basePath + "/import"); // To-do: already imported
         }
     }, [user, loggedIn])
 

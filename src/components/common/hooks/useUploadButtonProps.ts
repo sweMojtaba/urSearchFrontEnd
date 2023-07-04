@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import useHandleChooseFile from "./useHandleChooseFile.ts";
-import fakePostFile from "../utils/fakePostFile.ts";
+import fakeResponse from "../utils/fakeResponse.ts";
 
-interface UploadButtonProps {
+export interface ProfileSectionButtonProps {
     buttonText: string;
     buttonAction: () => void;
     disabled: boolean;
 }
 
-function useUploadButtonProps(uploadUrl: string): UploadButtonProps  {
+function useUploadButtonProps(uploadUrl: string): ProfileSectionButtonProps  {
 
     const [file, setFile] = useState<File | undefined>(undefined);
     const [uploading, setUploading] = useState(false);
@@ -19,7 +19,7 @@ function useUploadButtonProps(uploadUrl: string): UploadButtonProps  {
         if (file !== undefined) {
             setUploading(true);
             try {
-                fakePostFile(file).then((response) => {
+                fakeResponse().then((response) => {
                     if (response.status === 200) {
                         alert("file uploaded successfully");
                         setFile(undefined);

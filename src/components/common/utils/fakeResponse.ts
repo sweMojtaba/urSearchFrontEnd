@@ -1,4 +1,4 @@
-export default function fakePostFile(file: File): Promise<Response> {
+export default function fakeResponse(): Promise<Response> {
     const response = new Response(JSON.stringify({}));
     return new Promise((resolve) => {
         setTimeout(() => {
