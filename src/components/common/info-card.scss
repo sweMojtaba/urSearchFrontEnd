@@ -11,6 +11,10 @@
     margin: 0
 }
 
+.info-card > .first-line > .heading {
+    font-size: 2em;
+}
+
 .info-card > .main-info > * {
     margin: 0;
 }
@@ -32,7 +36,7 @@
     width: 6em;
     position: absolute;
     top: -2em;
-    left: -1em;
+    left: -2em;
     // border: 2px solid #fff;
 }
 
