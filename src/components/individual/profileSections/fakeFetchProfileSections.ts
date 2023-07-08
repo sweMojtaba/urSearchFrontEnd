@@ -92,9 +92,9 @@ export function fetchPublications() {
     ]
 }
 
-export function fetchVideos() {
+export function fetchVideo() {
     return {
-        "url": "url/to/video/hosted/on/backend.mp4"
+        "url": "url/to/video/hosted/on/backend.webm"
     }
 }
 

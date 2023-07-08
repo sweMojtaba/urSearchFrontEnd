@@ -2,7 +2,6 @@ import React, { useMemo } from "react";
 import { fetchDocuments } from "./fakeFetchProfileSections.ts";
 import InfoCard from "../../common/InfoCard.jsx";
 import SmallLi from "../../common/SmallLi.jsx";
-import useUploadButtonProps from "../../common/hooks/useButtonProps.ts";
 
 export default function Documents() {
     const documents = useMemo(fetchDocuments, []);

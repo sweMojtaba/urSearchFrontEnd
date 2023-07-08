@@ -5,6 +5,7 @@ import PersonalInfo from "./profileSections/PersonalInfo";
 import Affiliations from "./profileSections/Affiliations";
 import Experiences from "./profileSections/Experiences";
 import Projects from "./profileSections/Projects";
+import Video from "./profileSections/Video";
 
 function Profile() {
     return <Container>
@@ -17,6 +18,7 @@ function Profile() {
             <Col md={8} xl={6}>
                 <Experiences />
                 <Projects />
+                <Video />
             </Col>
         </Row>
     </Container>
