@@ -6,12 +6,6 @@ import useUploadButtonProps from "../../common/hooks/useButtonProps.ts";
 
 export default function Documents() {
     const documents = useMemo(fetchDocuments, []);
-    // const [buttonProps, setButtonProps] = useState({
-    //     buttonText: "add",
-    //     buttonAction: () => console.log("documents"),
-    //     disabled: false
-    // });
-    const uploadButtonProps = useUploadButtonProps("url/to/upload/documents");
 
     // useEffect(() => {
     //     setButtonProps(uploadButtonProps);
@@ -24,8 +18,7 @@ export default function Documents() {
 
     return <InfoCard
         title="Documents"
-        buttonProps={uploadButtonProps}
-        buttonPresent={true}>
+        editFunc={() => {console.log("TO-DO: edit documents")}}>
         {documents.map(document => <SmallLi text={document.name} url={document.url} key={document.name} />)}
     </InfoCard>
 }

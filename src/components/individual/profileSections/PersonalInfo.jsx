@@ -21,8 +21,8 @@ export default function PersonalInfo() {
 
     return <InfoCardWithImg
         title={name}
-        buttonPresent={false}
         img={profileImg}
+        editFunc={() => {console.log("TO-DO: edit personal info")}}
     >
 
         <p>{degree} {major}</p>

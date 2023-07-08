@@ -5,6 +5,12 @@
     margin: 2em 0;
 }
 
+.info-card > .first-line {
+    display: flex;
+    justify-content: space-between;
+    margin: 0
+}
+
 .info-card > .main-info > * {
     margin: 0;
 }
@@ -34,10 +40,6 @@
     margin-top: 2em;
 }
 
-.info-card-with-img > .info-card > .heading {
-    padding-left: 2em;
-}
-
-.info-card-with-img > .info-card > ul:nth-child(1) {
+.info-card-with-img > .info-card > .first-line > .heading {
     padding-left: 2em;
 }

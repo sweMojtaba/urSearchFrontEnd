@@ -22,9 +22,8 @@ export default function Affiliations() {
 
     return <InfoCard
         title="Affiliations"
-        buttonProps={buttonProps}
-        buttonPresent={true}>
+        editFunc={() => {console.log("TO-Do: edit affiliations")}}
+        >
         {affiliations.map(affiliation => <SmallLi text={affiliation.name} url={affiliation.url} key={affiliation.name} />)}
-        <Form.Control type="text" placeholder="New Affiliation" value={newAffiliation} onChange={(event) => setNewAffiliation(event.target.value)} />
     </InfoCard>
 }
