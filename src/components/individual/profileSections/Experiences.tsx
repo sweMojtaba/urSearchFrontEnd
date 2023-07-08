@@ -15,7 +15,7 @@ export default function Experiences(): JSX.Element {
                 key={experience.name}
                 title={experience.name}
                 subtitle={experience.role}
-                note={experience.start + " - " + experience.end}
+                note={experience.start + " – " + experience.end}
                 />
         })}
     </InfoCard>
