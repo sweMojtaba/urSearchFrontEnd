@@ -66,7 +66,7 @@ export function useUploadButtonProps(uploadUrl: string): ProfileSectionButtonPro
 
     const [file, setFile] = useState<File | undefined>(undefined);
     const [uploading, setUploading] = useState(false);
-    const [buttonText, setButtonText] = useState("add");
+    const [buttonText, setButtonText] = useState("choose a file");
     const handleChooseFile = useHandleChooseFile(setFile);
 
     useEffect(() => {
@@ -75,7 +75,7 @@ export function useUploadButtonProps(uploadUrl: string): ProfileSectionButtonPro
             try {
                 fakeResponse().then((response) => {
                     if (response.status === 200) {
-                        alert("file uploaded successfully");
+                        alert("file uploaded successfully. With a functional backend, you should be able to see the added item in the list. Now we are just faking it.");
                         setFile(undefined);
                         setUploading(false);
                     } else {
@@ -94,7 +94,7 @@ export function useUploadButtonProps(uploadUrl: string): ProfileSectionButtonPro
         if (uploading) {
             setButtonText("Uploading " + file?.name);
         } else {
-            setButtonText("add")
+            setButtonText("choose a file")
         }
         // console.log("uploading: " + uploading + ", file: " + file?.name + ", buttonText: " + buttonText);
     }, [uploading, file])
