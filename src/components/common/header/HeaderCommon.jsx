@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 function HeaderCommon(props) {
     const [user, setUser] = useContext(UserContext);
 
-    return <Navbar expand="md" collapseOnSelect bg="primary" variant="dark">
+    return <Navbar expand="md" collapseOnSelect bg="primary" variant="dark" className="sticky-top">
     <Container>
         <Navbar.Brand as={Link} to={props.interfaceRoot}>
             <img

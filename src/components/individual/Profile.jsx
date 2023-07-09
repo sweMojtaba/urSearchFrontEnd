@@ -6,9 +6,13 @@ import Affiliations from "./profileSections/Affiliations";
 import Experiences from "./profileSections/Experiences";
 import Projects from "./profileSections/Projects";
 import Video from "./profileSections/Video";
+import Skills from "./profileSections/Skills";
+
+import "./profile.scss";
+import Accomplishments from "./profileSections/Accomplishments";
 
 function Profile() {
-    return <Container>
+    return <Container className="scroll-page">
         <Row>
             <Col md={4} xl={3}>
                 <PersonalInfo />
@@ -19,6 +23,10 @@ function Profile() {
                 <Experiences />
                 <Projects />
                 <Video />
+            </Col>
+            <Col md={12} xl={3} id="lastCol">
+                <Skills />
+                <Accomplishments />
             </Col>
         </Row>
     </Container>
