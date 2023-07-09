@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { fetchDocuments } from "./fakeFetchProfileSections.ts";
-import InfoCard from "../../common/InfoCard";
-import SmallLi from "../../common/SmallLi.jsx";
+import InfoCard from "../../cards/InfoCard.tsx";
+import SmallLi from "../../cards/SmallLi.jsx";
 
 export default function Documents() {
     const documents = useMemo(fetchDocuments, []);

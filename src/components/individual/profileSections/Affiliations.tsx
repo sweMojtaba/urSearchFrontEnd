@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { fetchAffiliations } from "./fakeFetchProfileSections";
-import InfoCard from "../../common/InfoCard";
-import SmallLi from "../../common/SmallLi";
+import InfoCard from "../../cards/InfoCard";
+import SmallLi from "../../cards/SmallLi";
 
 export default function Affiliations() {
     const [reload, setReload] = useState(false);

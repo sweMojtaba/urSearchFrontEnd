@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { fetchVideo } from "./fakeFetchProfileSections";
-import InfoCard from "../../common/InfoCard";
+import InfoCard from "../../cards/InfoCard";
 
 export default function Video(): JSX.Element {
     const video = useMemo(fetchVideo, []);

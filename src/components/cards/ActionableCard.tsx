@@ -1,4 +1,4 @@
-import { CardButtonProps } from "./hooks/useButtonProps";
+import { CardButtonProps } from "../common/hooks/useButtonProps";
 
 export interface ActionableCardProps {
     title: string;

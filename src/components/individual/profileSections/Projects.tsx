@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { fetchProjects } from "./fakeFetchProfileSections";
-import InfoCard from "../../common/InfoCard";
-import BigLi from "../../common/BigLi";
+import InfoCard from "../../cards/InfoCard";
+import BigLi from "../../cards/BigLi";
 import {ReactComponent as ProjectImg} from "../../../assets/project.svg";
 
 export default function Projects(): JSX.Element {
