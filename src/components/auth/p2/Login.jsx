@@ -16,7 +16,7 @@ function Login() {
     const params = useParams(); // {role: xxx}
     const [role, setRole] = useState(params.role);
 
-    const [user, setUser] = useContext(UserContext);
+    const {user, setUser} = useContext(UserContext);
 
     const navigate = useNavigate();
 

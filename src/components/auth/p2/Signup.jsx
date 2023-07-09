@@ -13,7 +13,7 @@ function Signup() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [termsCheck, setTermsCheck] = useState(false);
-    const [user, setUser] = useContext(UserContext);
+    const {user, setUser} = useContext(UserContext);
 
     const params = useParams(); // {role: xxx}
     const [role, setRole] = useState(params.role);

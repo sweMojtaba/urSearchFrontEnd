@@ -38,7 +38,7 @@ const slidesInfo = [
 
 function Slides() {
     const [activeIndex, setActiveIndex] = useState(0);
-    const [user, setUser] = useContext(UserContext);
+    const {user, setUser} = useContext(UserContext);
     const redirectIndividual = useRedirectWithUserState(
         user.state,
         userState => userState === 1,

@@ -6,7 +6,7 @@ import UserContext from "../../structural/UserContext";
 
 function Auth(props) {
     const [title, setTitle] = useState("");
-    const [user, setUser] = useContext(UserContext);
+    const {user, setUser} = useContext(UserContext);
 
     const redirectWithUserState = useRedirectWithUserState(
         user.state,

@@ -9,7 +9,7 @@ import WebsiteImport from "./WebsiteImport";
 import ErrorComponent from "../miscellaneous/Error";
 
 function Import() {
-    const [user, setUser] = useContext(UserContext);
+    const {user, setUser} = useContext(UserContext);
     const [title, setTitle] = useState("");
     const redirectWithUserState = useRedirectWithUserState(
         user.state,

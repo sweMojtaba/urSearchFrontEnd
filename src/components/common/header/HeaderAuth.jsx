@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import NavProfile from "./NavProfile";
 
 function HeaderAuth() {
-    const [user, setUser] = useContext(UserContext);
+    const {user, setUser} = useContext(UserContext);
     
     if (user.state === 0) {
         return <Nav>

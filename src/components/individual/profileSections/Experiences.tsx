@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import { fetchExperiences } from "./fakeFetchProfileSections";
 import InfoCard from "../../common/InfoCard";
 import BigLi from "../../common/BigLi";
+import {ReactComponent as WorkImg} from "../../../assets/work.svg";
 
 export default function Experiences(): JSX.Element {
     const experiences = useMemo(fetchExperiences, []);
@@ -16,6 +17,7 @@ export default function Experiences(): JSX.Element {
                 title={experience.name}
                 subtitle={experience.role}
                 note={experience.start + " – " + experience.end}
+                Img={WorkImg}
                 />
         })}
     </InfoCard>

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 
 function NavProfile() {
-    const [user, setUser] = useContext(UserContext);
+    const {user, setUser} = useContext(UserContext);
     const [target, setTarget] = useState("");
     const [loggedOut, setLoggedOut] = useState(false);
     const redirectWithUserState = useRedirectWithUserState(

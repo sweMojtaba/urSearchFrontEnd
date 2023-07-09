@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import { fetchProjects } from "./fakeFetchProfileSections";
 import InfoCard from "../../common/InfoCard";
 import BigLi from "../../common/BigLi";
+import {ReactComponent as ProjectImg} from "../../../assets/project.svg";
 
 export default function Projects(): JSX.Element {
     const projects = useMemo(fetchProjects, []);
@@ -16,6 +17,7 @@ export default function Projects(): JSX.Element {
                 title={project.name}
                 subtitle={project.description}
                 note={project.start + " – " + project.end}
+                Img={ProjectImg}
                 />
         })}
     </InfoCard>

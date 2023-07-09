@@ -31,7 +31,7 @@ function InterfaceSwitch() {
     }, [user])
 
     // https://github.com/remix-run/react-router/discussions/10160
-    return <UserContext.Provider value={[user, setUser]}>
+    return <UserContext.Provider value={{user, setUser}}>
         <BrowserRouter>
             <Routes>
                 {switchHomeRoutes}

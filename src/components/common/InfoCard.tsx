@@ -1,17 +1,23 @@
-import React, { useEffect } from "react";
-import { Button, Container } from "react-bootstrap";
-import edit from "../../assets/edit.svg";
+import React from "react";
+import { Container } from "react-bootstrap";
+import {ReactComponent as Edit} from "../../assets/edit.svg";
 
 import "./info-card.scss"
 
-export default function InfoCard({ title, children, editFunc }) {
+export interface InfoCardProps {
+    title: string;
+    children: React.ReactNode;
+    editFunc: () => void;
+}
+
+export default function InfoCard({ title, children, editFunc }: InfoCardProps) {
     // useEffect(() => {
     //     console.log(buttonProps);
     // }, [buttonProps]);
     return <Container className="info-card">
         <div className="first-line line line-start">
             <p className="heading">{title}</p>
-            <img src={edit} alt="edit" onClick={editFunc}/>
+            <Edit onClick={editFunc}/>
         </div>
         <div className="paragraph main-info">
             {children}

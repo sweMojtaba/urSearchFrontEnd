@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import useHandleChooseFile from "./useHandleChooseFile";
 import fakeResponse from "../utils/fakeResponse";
 
-export interface ProfileSectionButtonProps {
+export interface CardButtonProps {
     buttonText: string;
     buttonAction: () => void;
     disabled: boolean;
@@ -14,7 +14,7 @@ export function useAddButtonProps(
     setText: React.Dispatch<React.SetStateAction<string>>,
     setReload: React.Dispatch<React.SetStateAction<boolean>>
 ):
-    ProfileSectionButtonProps {
+    CardButtonProps {
     const [adding, setAdding] = useState(false);
     const [buttonText, setButtonText] = useState("add");
 
@@ -62,7 +62,7 @@ export function useAddButtonProps(
 }
 
 
-export function useUploadButtonProps(uploadUrl: string): ProfileSectionButtonProps  {
+export function useUploadButtonProps(uploadUrl: string): CardButtonProps  {
 
     const [file, setFile] = useState<File | undefined>(undefined);
     const [uploading, setUploading] = useState(false);

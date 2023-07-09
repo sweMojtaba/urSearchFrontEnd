@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { fetchDocuments } from "./fakeFetchProfileSections.ts";
-import InfoCard from "../../common/InfoCard.jsx";
+import InfoCard from "../../common/InfoCard";
 import SmallLi from "../../common/SmallLi.jsx";
 
 export default function Documents() {
