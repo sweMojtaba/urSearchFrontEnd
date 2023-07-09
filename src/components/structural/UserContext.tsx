@@ -16,15 +16,6 @@ export interface UserContextType {
     setUser: React.Dispatch<React.SetStateAction<User>>;
 }
 
-const UserContext = createContext({
-    user: {
-        name: "",
-        state: UserState.NOT_LOGGED_IN
-    },
-    setUser: () => {}
-});
-// 0: not logged in
-// 1: logged in as an applicant
-// 2: logged in as lab
+const UserContext = createContext({} as UserContextType);
 
 export default UserContext;

@@ -23,10 +23,6 @@
     margin: 1em 0;
 }
 
-.info-card > .btn-primary .iframe {
-    margin: auto
-}
-
 .info-card > .main-info > video {
     width: 100%;
     height: auto;
@@ -37,8 +33,8 @@
 }
 
 .info-card-with-img > .img-on-card {
-    height: 6em;
-    width: 6em;
+    height: 5em;
+    width: 5em;
     position: absolute;
     top: -2em;
     left: -2em;
@@ -50,5 +46,14 @@
 }
 
 .info-card-with-img > .info-card > .first-line > .heading {
-    padding-left: 2em;
+    padding-left: 1.5em;
+}
+
+.actionable-card {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.actionable-card > .btn.active {
+    color: #72F07F;
+    border-color: #72F07F;
 }

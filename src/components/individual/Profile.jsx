@@ -10,6 +10,7 @@ import Skills from "./profileSections/Skills";
 
 import "./profile.scss";
 import Accomplishments from "./profileSections/Accomplishments";
+import QuickApply from "./profileSections/QuickApply";
 
 function Profile() {
     return <Container className="scroll-page">
@@ -27,6 +28,7 @@ function Profile() {
             <Col md={12} xl={3} id="lastCol">
                 <Skills />
                 <Accomplishments />
+                <QuickApply />
             </Col>
         </Row>
     </Container>

@@ -7,7 +7,7 @@ import "./info-card.scss"
 export interface InfoCardProps {
     title: string;
     children: React.ReactNode;
-    editFunc: () => void;
+    editFunc?: () => void;
 }
 
 export default function InfoCard({ title, children, editFunc }: InfoCardProps) {
