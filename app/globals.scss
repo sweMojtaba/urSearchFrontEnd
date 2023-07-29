@@ -1,0 +1,277 @@
+// bootstrap-customized------------------------------------
+$form-file-button-color: #FFF;
+$form-file-button-bg: transparent;
+
+
+@import 'bootstrap/scss/bootstrap';
+
+// buttons--------------------------------------------------
+.btn-primary, .btn-light {
+  border-radius: 1.5em;
+}
+
+
+.btn-primary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: #FFF;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: rgba(255, 255, 255, 0.1);
+  --bs-btn-hover-border-color: #fff;
+  --bs-btn-focus-shadow-rgb: 49,132,253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: rgba(255, 255, 255, 0.1);
+  --bs-btn-active-border-color: #fff;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #b1b1b1;
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: #b1b1b1;
+  --bs-btn-padding-x: 1.5rem;
+  border: #FFF 2px solid;
+  text-transform: uppercase;
+  font-family: "Bebas Neue";
+  font-size: 1.2rem;
+  letter-spacing: .1em;
+  display: block;
+  width: 100%;
+  max-width: 20rem;
+  margin: 0.5rem 0;
+}
+
+.btn-inline-1 {
+  width: fit-content;
+  flex-grow: 1;
+}
+
+.btn-inline-2 {
+  @extend .btn-inline-1;
+  flex-grow: 2;
+}
+
+// form-----------------------------------------------------
+form {
+  width: 100%;
+  max-width: 30rem;
+}
+
+form > button {
+  justify-content: center;
+  margin: auto;
+}
+
+.form-control {
+  color: #FFF;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px #FFF solid;
+  border-radius: 0%;
+  font-family: Roboto;
+  font-size: 1.2rem;
+  letter-spacing: .1em;
+  box-shadow: none;
+}
+
+.form-control:focus {
+  @extend .form-control
+}
+
+.form-check-input {
+  margin-right: 5px;
+  background-color: transparent;
+  border-color: #FFF;
+}
+
+.form-check-input:checked {
+  background-color: transparent;
+  border-color: #FFF;
+}
+
+.form-check-label {
+  text-transform: uppercase;
+  font-family: montserrat;
+  font-size: 0.9em;
+  display: inline;
+}
+
+// index----------------------------------------------------
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,600;1,600&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Iceberg&display=swap');
+
+body {
+  margin: 0;
+  font-family: Cabin, 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  color: #FFF;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --bs-primary: #3876D2;
+  --bs-primary-rgb: 56, 118, 210;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  background: linear-gradient(#3876D2, #10428B);
+  margin: 0;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2 {
+  font-weight: 600;
+  font-style: italic;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: #b1b1b1;
+}
+
+.dividing-line {
+  height: 0.2em;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+// layout---------------------------------------------------
+.sparse-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sparse-content:nth-child(1) {
+  padding-top: 2rem;
+}
+
+.sparse-content > * {
+  margin: 2rem 0;
+}
+
+.line {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5em 0;
+}
+
+.line > p {
+  margin: 0;
+  display: block;
+}
+
+.line > img {
+  margin: 0 0.5em;
+}
+
+.line-start {
+  @extend .line;
+  justify-content: start;
+}
+
+// text-----------------------------------------------------
+.link {
+  font-weight: 400;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+.slogan {
+  font-weight: 600;
+  font-style: italic;
+}
+
+.heading {
+  font-size: 2.5em;
+  font-weight: 600;
+  font-style: italic;
+}
+.subheading {
+  font-size: 1.5em;
+  font-style: italic;
+}
+
+.text {
+  font-family: Roboto;
+  font-weight: 400;
+}
+
+.paragraph {
+  text-transform: uppercase;
+  font-family: montserrat;
+  letter-spacing: 0.1em;
+  line-height: 1.8em;
+}
+
+.note {
+  font-style: italic;
+  text-transform: none;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.2em;
+}
+
+@media screen and (max-width: 576px) {
+  .heading {
+      font-size: 1.2em;
+  }
+  .text {
+      font-size: 0.9em;
+  }
+  .paragraph {
+      font-size: 0.8em;
+  }
+}
+
+.fit {
+  flex-grow: 1;
+  display: flex;
+  background-image: url("./ursearch-background.png");
+  background-position: 50% 25%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.flex-box {
+  display: flex;
+  flex-direction: row;
+}
+
+.space-holder {
+  flex-grow: 1;
+}
+
+.stand-out {
+  font-size: 1.2em !important;
+  margin: 0.5em 0 !important;
+}
+
+.secondary-text {
+  color: rgba(255, 255, 255, 0.5)
+}
