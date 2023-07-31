@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const DEFAULT_STATE = 0;
 const DEFAULT_NAME = '';
@@ -12,7 +12,7 @@ export default function useUserStored(): { state: number, name: string } {
         let state: number = isNaN(parseInt(userStateStored!)) ? DEFAULT_STATE : parseInt(userStateStored!);
         return state;
     });
-    
+
     const [name, setName] = useState<string>(() => {
         let name: string | null = localStorage.getItem("userName");
         name = name ?? DEFAULT_NAME;
