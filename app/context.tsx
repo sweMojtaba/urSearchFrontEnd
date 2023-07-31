@@ -1,6 +1,6 @@
 'use client';
 
-import getUserStored from "@/utils/getUserStored";
+import useUserStored from "@/utils/useUserStored";
 import { createContext, useState } from "react";
 
 export enum UserState {
@@ -24,7 +24,8 @@ export const UserContext = createContext({} as UserContextType);
 export default function InitializedUserContextProvider({ children}: { children: React.ReactNode }) {
     // current solution: initialize user context using localStorage
     // in the future: maybe cookies / api (TO-DO)
-    const [user, setUser] = useState(getUserStored);
+    const userStored = useUserStored();
+    const [user, setUser] = useState<User>(userStored);
 
     return <UserContext.Provider value={{user, setUser}}>
         {children}
