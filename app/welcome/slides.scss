@@ -9,6 +9,14 @@
     padding-bottom: 4em;
 }
 
+.fit-image {
+    position: fixed;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    right: 0;
+}
+
 #go {
     --bs-btn-bg: #00F0FF;
     --bs-btn-color: #000;

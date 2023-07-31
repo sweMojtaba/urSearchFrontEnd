@@ -1,7 +1,7 @@
 "use client"
 
 import { useCallback, useContext, useEffect, useState } from "react";
-import slideButton from "../../components/item1.svg";
+import SlideButton from "../../components/item1.svg";
 import { UserContext } from "../context";
 import useRedirectWithUserState, { RedirectNotes } from "@/utils/useRedirectWithUserState";
 import Link from "next/link";
@@ -47,9 +47,9 @@ function SlideButtons(props: SlideButtonsProps): JSX.Element[] {
             key={num}
             href={`#slide${num + 1}`}
         >
-            <img
+            <Image
                 onClick={() => handleClick(num)}
-                src={slideButton}
+                src={SlideButton}
                 alt={"Go to slide " + (num + 1)}
                 className={activeTags[num]}
             />
@@ -134,12 +134,12 @@ function Slides(): JSX.Element {
         setActiveIndex(3);
     }, []);
 
-    return <div id="slide" style={{ backgroundImage: `url(${slidesInfo[activeIndex].img})` }}>
+    return <div id="slide">
         <Container>
             <h2 className="slogan">{slidesInfo[activeIndex].slogan}</h2>
             <p className="text">{slidesInfo[activeIndex].text}</p>
             <div className="flex-box">
-                <Link href="/auth/signup">
+                <Link href="/auth/signup" className="button-link">
                     <Button variant="light" id="go">
                         <p>Start Searching</p>
                         <Image src={Go} alt="go to sign up" />
@@ -154,6 +154,7 @@ function Slides(): JSX.Element {
                 />
             </div>
         </Container>
+        <Image src={slidesInfo[activeIndex].img} alt="slide" className="fit-image"/>
     </div>
 }
 
