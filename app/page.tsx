@@ -1,8 +1,22 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client'
+import { useRouter } from 'next/navigation'
+import { useContext, useEffect } from 'react';
+import { UserContext } from './context';
 
 export default function Home() {
-  return (
-    <></>
-  )
+  const router = useRouter();
+  const {user, setUser} = useContext(UserContext);
+
+  useEffect(() => {
+    if (user.state === 1) {
+      router.push('/applicant');
+    } else if (user.state === 2) {
+      router.push('/lab');
+    } else {
+      router.push('/welcome');
+    }
+  })
+
+  return <>App Dir Root</>
+
 }
