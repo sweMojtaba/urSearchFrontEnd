@@ -9,6 +9,11 @@ export enum UserState {
     LAB = 2
 }
 
+export enum RoleType {
+    APPLICANT = "applicant",
+    LAB = "lab"
+}
+
 export interface User {
     name: string;
     state: UserState;
