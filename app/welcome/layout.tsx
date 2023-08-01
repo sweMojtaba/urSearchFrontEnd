@@ -7,6 +7,8 @@ import { AiFillInstagram } from "react-icons/ai"
 
 import Link from "next/link";
 
+import "./slides.scss";
+
 function Header() {
     return <HeaderCommon interfaceRoot="/welcome">
         <ClientNav id="icons">

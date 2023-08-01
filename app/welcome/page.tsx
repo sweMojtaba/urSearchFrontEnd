@@ -1,7 +1,7 @@
 "use client"
 
 import { useCallback, useContext, useEffect, useState } from "react";
-import SlideButton from "../../components/item1.svg";
+import SlideButton from "../../assets-common/item1.svg";
 import { UserContext } from "../context";
 import useRedirectWithUserState, { RedirectNotes } from "@/utils/useRedirectWithUserState";
 import Link from "next/link";
@@ -12,7 +12,6 @@ import Slide4 from "./slide4.png"
 import Go from "./go.svg"
 import { Button, Container } from "react-bootstrap";
 
-import "./slides.scss";
 import Image from "next/image";
 
 // SlideButtons--------------------------------------------------------------
