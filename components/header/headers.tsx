@@ -10,7 +10,7 @@ import "./header.scss";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "@/app/context";
 import Link from "next/link";
-import useRedirectWithUserState from "@/utils/useRedirectWithUserState";
+import useRedirectWithUserState, { RedirectNotes } from "@/utils/useRedirectWithUserState";
 
 export function HeaderCommon({
     interfaceRoot,
@@ -48,7 +48,7 @@ function NavProfile() {
     const redirectWithUserState = useRedirectWithUserState(
         user.state,
         userState => userState !== 0,
-        "You have successfully logged out.",
+        RedirectNotes.LOGGING_OUT,
         "/welcome"
     )
 

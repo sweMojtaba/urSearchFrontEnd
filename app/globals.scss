@@ -267,6 +267,11 @@ form > button {
   margin: auto;
 }
 
+.line > .form-select {
+  flex: 1;
+  margin-left: 1em;
+}
+
 .form-control {
   color: #FFF;
   background-color: transparent;

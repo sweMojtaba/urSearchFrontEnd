@@ -7,21 +7,19 @@ import { RoleType, getOtherRole } from "@/app/context";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { AuthType } from "./authUtils";
+import { useMemo } from "react";
 
 const functionalityToStates: { [key in AuthType]: {
     title: string,
-    text1: string,
-    text2: string,
+    text1: string
 } } = {
     [AuthType.LOGIN]: {
         title: "Log In",
-        text1: "You are logging in as",
-        text2: "Log in as"
+        text1: "Log in as"
     },
     [AuthType.SIGNUP]: {
         title: "Sign Up",
-        text1: "You are signing up as",
-        text2: "Sign up as"
+        text1: "Sign up as"
     }
 }
 
@@ -32,8 +30,15 @@ export default function AuthForm({ handleLogin, functionality }: {
 ): JSX.Element {
 
     const params = useSearchParams();
-    const role: RoleType = params.get("role") as RoleType;
-    const { title, text1, text2 } = functionalityToStates[functionality];
+    const roleParam = params.get("role");
+    const role: RoleType | null = useMemo(() => {
+        if (roleParam === null) {
+            return null;
+        } else {
+            return roleParam as RoleType;
+        }
+    }, [roleParam])
+    const { title, text1 } = functionalityToStates[functionality];
 
     return <Container className="sparse-content">
         <h1>{title}</h1>
@@ -48,6 +53,7 @@ export default function AuthForm({ handleLogin, functionality }: {
             </Form.Group>
             <Form.Group className="mb-3 line">
                 <FaUserCheck className="icon-inline" />
+                <Form.Label className="label-inline">{text1}</Form.Label>
                 <Form.Select aria-label="select role" id="role" name="role" required>
                     <option value="applicant" defaultChecked={role === RoleType.APPLICANT}>Applicant</option>
                     <option value="lab" defaultChecked={role === RoleType.LAB}>Lab</option>
@@ -61,7 +67,6 @@ export default function AuthForm({ handleLogin, functionality }: {
                     SSO via Your Institution
                 </Button>
             </div>
-            <p className="note">{text1} {role}. <Link href={`/auth/signup?role=${getOtherRole(role)}`}>{text2} {getOtherRole(role)} instead.</Link></p>
         </Form>
         <div className="dividing-line" />
         <p className="paragraph">
