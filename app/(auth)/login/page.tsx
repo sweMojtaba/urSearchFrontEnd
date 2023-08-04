@@ -46,6 +46,7 @@ export default function Login() {
                 } else if (res.status === 401) {
                     alert("Incorrect password!");
                 } else if (res.status === 200) {
+                    alert("Login successful!");
                     router.push(`/import?role=${role}`)
                 }
                 return res.json();

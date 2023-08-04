@@ -48,6 +48,7 @@ export default function Signup() {
                     if (res.status === 409) {
                         alert("That username has already been taken!");
                     } else if (res.status === 200) {
+                        alert("Signup successful!");
                         router.push(`/import?role=${role}`)
                     }
                     return res.json();

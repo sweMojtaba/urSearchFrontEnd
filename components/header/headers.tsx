@@ -100,8 +100,8 @@ export function HeaderAuth() {
     
     if (user.state === 0) {
         return <Nav>
-            <Nav.Link as={Link} href="/auth/signup">SIGN UP</Nav.Link>
-            <Nav.Link as={Link} href="/auth/login">LOG IN</Nav.Link>
+            <Nav.Link as={Link} href="/signup">SIGN UP</Nav.Link>
+            <Nav.Link as={Link} href="/login">LOG IN</Nav.Link>
         </Nav>
     } else if (user.state === 1 || user.state === 2) {
         return <NavProfile/>

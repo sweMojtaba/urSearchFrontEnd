@@ -76,7 +76,7 @@ export default function AuthForm({ handleSubmit, functionality }: {
         </Form>
         <div className="dividing-line" />
         <p className="paragraph">
-            Doesn't have an account? <Link href={`/auth/signup?role=${role}`}>Sign up</Link>.
+            Doesn't have an account? <Link href={`/signup?role=${role}`}>Sign up</Link>.
         </p>
     </Container>
 }

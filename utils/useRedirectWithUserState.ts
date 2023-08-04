@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 // Define the Enum
 export enum RedirectNotes {
     LOGGED_IN,
+    LOGGED_OUT,
     LOGGING_OUT
 }
 
@@ -19,6 +20,10 @@ export const RedirectNoteToParam: { [key in RedirectNotes]: RedirectParams } = {
     [RedirectNotes.LOGGED_IN]: {
         message: "You are already logged in.",
         param: "loggedIn"
+    },
+    [RedirectNotes.LOGGED_OUT]: {
+        message: "You are not logged in.",
+        param: "loggedOut"
     },
     [RedirectNotes.LOGGING_OUT]: {
         message: "You have successfully logged out.",

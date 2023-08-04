@@ -138,7 +138,7 @@ function Slides(): JSX.Element {
             <h2 className="slogan">{slidesInfo[activeIndex].slogan}</h2>
             <p className="text">{slidesInfo[activeIndex].text}</p>
             <div className="flex-box">
-                <Link href="/auth/signup" className="button-link">
+                <Link href="/signup" className="button-link">
                     <Button variant="light" id="go">
                         <p>Start Searching</p>
                         <Image src={Go} alt="go to sign up" />
