@@ -14,6 +14,16 @@ export enum RoleType {
     LAB = "lab"
 }
 
+export function getOtherRole (role: RoleType) {
+    if (role === RoleType.APPLICANT) {
+        return RoleType.LAB;
+    } else if (role === RoleType.LAB) {
+        return RoleType.APPLICANT;
+    } else {
+        throw new Error("Invalid role");
+    }
+}
+
 export interface User {
     name: string;
     state: UserState;

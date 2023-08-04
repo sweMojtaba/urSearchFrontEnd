@@ -6,11 +6,11 @@ import { UserContext } from "../context";
 import Link from "next/link";
 import { AuthType } from "./authUtils";
 
-function Auth({ role }: { role: AuthType }) {
+function Auth({ functionality }: { functionality: AuthType }) {
     const [title, setTitle] = useState("");
     const { user, setUser } = useContext(UserContext);
 
-    const redirectWithUserState = useRedirectWithUserState(
+    const redirectWhenLoggedIn = useRedirectWithUserState(
         user.state,
         userState => userState !== 0,
         RedirectNotes.LOGGED_IN,
@@ -18,24 +18,24 @@ function Auth({ role }: { role: AuthType }) {
     )
 
     useEffect(() => {
-        setTimeout(redirectWithUserState, 1000);
+        setTimeout(redirectWhenLoggedIn, 1000);
     }, [user.state])
 
     useEffect(() => {
-        if (role === AuthType.SIGNUP) {
+        if (functionality === AuthType.SIGNUP) {
             setTitle("Sign Up")
-        } else if (role === AuthType.LOGIN) {
+        } else if (functionality === AuthType.LOGIN) {
             setTitle("Log In")
         }
-    }, [role])
+    }, [functionality])
 
     return <Container className="sparse-content">
         <h1>{title}</h1>
         <Button>
-            <Link href={`/auth/${role}/individual`} className="button-link">individual</Link>
+            <Link href={`/auth/${functionality}?role=individual`} className="button-link">individual</Link>
         </Button>
         <Button>
-            <Link href={`/auth/${role}/lab`} className="button-link">lab</Link>
+            <Link href={`/auth/${functionality}?role=lab`} className="button-link">lab</Link>
         </Button>
     </Container>
 }
