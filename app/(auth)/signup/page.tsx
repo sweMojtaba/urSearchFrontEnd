@@ -1,8 +1,9 @@
 "use client" // must specify this to use client-side fetch (handleSubmit not used as a server action)
-import { RoleType } from "@/app/context";
+import { RoleType, UserContext } from "@/app/context";
 import { AuthType, extractForm } from "../authUtils";
 import AuthForm from "../form";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
 
 async function fakeSignup(username: string, password: string, role: RoleType) {
     console.log("Faking signup by sending request to badger chat...")
@@ -24,6 +25,7 @@ async function fakeSignup(username: string, password: string, role: RoleType) {
 
 export default function Signup() {
     const router = useRouter();
+    const {user, setUser} = useContext(UserContext);
 
     function handleSignup(event: React.FormEvent<HTMLFormElement>): void {
         event.preventDefault();
@@ -49,7 +51,11 @@ export default function Signup() {
                         alert("That username has already been taken!");
                     } else if (res.status === 200) {
                         alert("Signup successful!");
-                        router.push(`/import?role=${role}`)
+                        setUser({
+                            name: username,
+                            state: role === RoleType.APPLICANT ? 1 : 2
+                        })
+                        router.push('import')
                     }
                     return res.json();
                 }).then((data) => {

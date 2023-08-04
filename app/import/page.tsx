@@ -1,33 +1,33 @@
 "use client"
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Container } from "react-bootstrap";
-import { UserContext, UserState } from "../context";
+import { UserContext } from "../context";
 import useRedirectWithUserState, { RedirectNotes } from "@/utils/useRedirectWithUserState";
-import { RedirectType } from "next/dist/client/components/redirect";
+import ResumeInput from "./resume";
+import WebsiteImport from "./website";
+import Link from "next/link";
 
 
 function Import() {
     const {user, setUser} = useContext(UserContext);
-    const [title, setTitle] = useState("");
-    const redirectWithUserState = useRedirectWithUserState(
+
+    const redirectWhenNotLoggedIn = useRedirectWithUserState(
         user.state,
         userState => userState === 0,
         RedirectNotes.LOGGED_OUT,
         "/login"
     );
-
-    useEffect(() => {
-        redirectWithUserState();
-    }, [redirectWithUserState])
-
-    useEffect(() => {
+    
+    const [title, setTitle] = useState(() => {
         if (user.state === 1) {
-            setTitle("Upload your resume...")
+            return "Upload your resume";
         } else if (user.state === 2) {
-            setTitle("Input your website url...")
+            return "Import your website";
+        } else {
+            redirectWhenNotLoggedIn();
         }
-    }, [user.state])
+    });
 
     return <Container className="sparse-content">
         <div>
@@ -35,22 +35,11 @@ function Import() {
             <p className="subheading">And we'll complete your profile :)</p>
         </div>
         {
-            (() => {
-                switch (user.state) {
-                    case 1:
-                        return <ResumeInput />
-                    case 2:
-                        return <WebsiteImport />
-                    case 0:
-                        return <></>
-                    default:
-                        return <ErrorComponent />
-                }
-            })()
+            user.state === 1 ? <ResumeInput /> : <WebsiteImport />
         }
         <div className="dividing-line" />
         <p className="paragraph">
-            Or <Link to="/under-construction">Skip</Link> for now.
+            Or <Link href="/under-construction">Skip</Link> for now.
         </p>
 
     </Container>

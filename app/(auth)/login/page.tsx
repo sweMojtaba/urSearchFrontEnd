@@ -1,9 +1,10 @@
 "use client" // must specify this to use client-side fetch (handleSubmit not used as a server action)
 
-import { RoleType } from "@/app/context";
+import { RoleType, UserContext } from "@/app/context";
 import { AuthType, extractForm } from "../authUtils";
 import AuthForm from "../form";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
 
 async function fakeLogin(username: string, password: string, role: RoleType) {
     console.log("Faking login by sending request to badger chat...")
@@ -25,6 +26,7 @@ async function fakeLogin(username: string, password: string, role: RoleType) {
 
 export default function Login() {
     const router = useRouter();
+    const {user, setUser} = useContext(UserContext);
 
     function handleLogin(event: React.FormEvent<HTMLFormElement>): void {
         event.preventDefault();
@@ -47,7 +49,11 @@ export default function Login() {
                     alert("Incorrect password!");
                 } else if (res.status === 200) {
                     alert("Login successful!");
-                    router.push(`/import?role=${role}`)
+                    setUser({
+                        name: username,
+                        state: role === RoleType.APPLICANT ? 1 : 2
+                    })
+                    router.push('import')
                 }
                 return res.json();
             }).then((data) => {
