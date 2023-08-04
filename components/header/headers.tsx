@@ -54,7 +54,7 @@ function NavProfile() {
 
     useEffect(() => {
         if (user.state === 1) {
-            setTarget("/profile/individual");
+            setTarget("/profile/individual"); // To-do
         } else if (user.state === 2) {
             setTarget("/profile/lab");
         }

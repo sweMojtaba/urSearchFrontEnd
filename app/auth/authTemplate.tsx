@@ -1,14 +1,21 @@
 "use client"
+
 import { useContext, useEffect, useState } from "react";
 import { Button, Container } from "react-bootstrap";
 import useRedirectWithUserState, { RedirectNotes } from "@/utils/useRedirectWithUserState";
-import { UserContext } from "../context";
-import Link from "next/link";
+import { RoleType, UserContext } from "../context";
 import { AuthType } from "./authUtils";
+import { useRouter } from "next/navigation";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
+
+function GoToNext(router: AppRouterInstance, functionality: AuthType, role: RoleType) {
+    router.push(`/auth/${functionality}?role=${role}`);
+}
 
 function Auth({ functionality }: { functionality: AuthType }) {
     const [title, setTitle] = useState("");
     const { user, setUser } = useContext(UserContext);
+    const router = useRouter();
 
     const redirectWhenLoggedIn = useRedirectWithUserState(
         user.state,
@@ -31,11 +38,11 @@ function Auth({ functionality }: { functionality: AuthType }) {
 
     return <Container className="sparse-content">
         <h1>{title}</h1>
-        <Button>
-            <Link href={`/auth/${functionality}?role=individual`} className="button-link">individual</Link>
+        <Button onClick={() => GoToNext(router, functionality, RoleType.APPLICANT)}>
+            Applicant
         </Button>
-        <Button>
-            <Link href={`/auth/${functionality}?role=lab`} className="button-link">lab</Link>
+        <Button onClick={() => GoToNext(router, functionality, RoleType.LAB)}>
+            lab
         </Button>
     </Container>
 }

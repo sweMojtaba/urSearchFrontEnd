@@ -1,7 +1,5 @@
 import { RoleType } from "@/app/context";
-import { useRouter, useSearchParams } from "next/navigation";
-import LoginForm from "./form";
-
+import { useRouter } from "next/navigation";
 
 async function fakeLogin(username: string, password: string, role: RoleType) {
     console.log("Faking login by sending request to badger chat...")
@@ -14,18 +12,19 @@ async function fakeLogin(username: string, password: string, role: RoleType) {
         },
         body: JSON.stringify({
             "username": username,
-            "password": password
+            "password": password,
+            "role": role
         })
     })
     return res;
 }
 
-function handleLogin(event: React.FormEvent<HTMLFormElement>): void {
+export default function handleLogin(event: React.FormEvent<HTMLFormElement>): void {
     event.preventDefault();
     const username = (event.currentTarget.elements.namedItem('username') as HTMLInputElement).value;
     const password = (event.currentTarget.elements.namedItem('password') as HTMLInputElement).value;
-    const params = useSearchParams();
-    const role: RoleType = params.get("role") as RoleType;
+    const roleInput = (event.currentTarget.elements.namedItem('role') as HTMLInputElement).value;
+    const role: RoleType = roleInput === "applicant" ? RoleType.APPLICANT : RoleType.LAB;
     const router = useRouter();
 
     if (username === "" || password === "") {
@@ -49,8 +48,4 @@ function handleLogin(event: React.FormEvent<HTMLFormElement>): void {
             console.log(error);
         })
     }
-}
-
-export default function useHandleLogin() {
-    return <LoginForm handleLogin={handleLogin} />
 }
