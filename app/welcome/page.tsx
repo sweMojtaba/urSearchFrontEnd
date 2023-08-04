@@ -89,13 +89,13 @@ function Slides(): JSX.Element {
         user.state,
         userState => userState === 1,
         RedirectNotes.LOGGED_IN,
-        "/individual/profile"
+        "/individual/profile" // To-do
     )
     const redirectLab = useRedirectWithUserState(
         user.state,
         userState => userState === 2,
         RedirectNotes.LOGGED_IN,
-        "/lab/profile"
+        "/lab/profile" // To-do
     )
 
 

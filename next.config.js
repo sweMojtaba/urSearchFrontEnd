@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     // experimental: {
-    //     appDir: true,
-    //     serverComponentsExternalPackages: ["react-bootstrap"]
+    //     serverActions: true,
     // }
 }
 

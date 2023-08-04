@@ -11,17 +11,17 @@ export function extractForm(event: React.FormEvent<HTMLFormElement>): {
     username: string,
     password: string,
     role: RoleType,
-    router: AppRouterInstance
+    termsCheck?: boolean
  } {
     const username = (event.currentTarget.elements.namedItem('username') as HTMLInputElement).value;
     const password = (event.currentTarget.elements.namedItem('password') as HTMLInputElement).value;
     const roleInput = (event.currentTarget.elements.namedItem('role') as HTMLInputElement).value;
+    const termsCheck = (event.currentTarget.elements.namedItem('termsCheck') as HTMLInputElement)?.checked;
     const role: RoleType = roleInput === "applicant" ? RoleType.APPLICANT : RoleType.LAB;
-    const router = useRouter();
     return {
         username,
         password,
         role,
-        router
+        termsCheck
     }
 }
