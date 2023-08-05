@@ -1,0 +1,59 @@
+.info-card {
+    border: 2px solid #fff;
+    padding: 1em;
+    font-size: smaller;
+    margin: 2em 0;
+}
+
+.info-card > .first-line {
+    display: flex;
+    justify-content: space-between;
+    margin: 0
+}
+
+.info-card > .first-line > .heading {
+    font-size: 2em;
+}
+
+.info-card > .main-info > * {
+    margin: 0;
+}
+
+.info-card > .main-info {
+    margin: 1em 0;
+}
+
+.info-card > .main-info > video {
+    width: 100%;
+    height: auto;
+}
+
+.info-card-with-img {
+    position: relative;
+}
+
+.info-card-with-img > .img-on-card {
+    height: 5em;
+    width: 5em;
+    position: absolute;
+    top: -2em;
+    left: -2em;
+    // border: 2px solid #fff;
+}
+
+.info-card-with-img > .info-card {
+    margin-top: 2em;
+}
+
+.info-card-with-img > .info-card > .first-line > .heading {
+    padding-left: 1.5em;
+}
+
+.actionable-card {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.actionable-card > .btn.active {
+    color: #72F07F;
+    border-color: #72F07F;
+}

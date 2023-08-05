@@ -1,0 +1,29 @@
+.small-li > a {
+    text-decoration: none;
+}
+
+.info-card > .main-info > .small-li {
+    margin-bottom: 0.5em;
+}
+
+.big-li.line {
+    margin-top: 1em;
+}
+
+.big-li > .main-line {
+    margin-left: 1em;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.big-li > .main-line > .main-item {
+    margin-right: 0.5em;
+}
+
+.big-li > .main-line > .main-item > .subtitle {
+    font-size: 0.8em;
+    line-height: 120%;
+}

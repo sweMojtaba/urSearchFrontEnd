@@ -32,7 +32,7 @@ function Import() {
     return <Container className="sparse-content">
         <div>
             <h1>{title}</h1>
-            <p className="subheading">And we'll complete your profile :)</p>
+            <p className="subheading">And we&rsquo;ll complete your profile :)</p>
         </div>
         {
             user.state === 1 ? <ResumeInput /> : <WebsiteImport />

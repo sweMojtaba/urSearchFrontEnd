@@ -1,7 +1,7 @@
 'use client'
 
 import { PropsWithChildren, ComponentProps } from "react"
-import { Col, Container, Dropdown, Nav, Navbar, Row } from "react-bootstrap"
+import { Button, Col, Container, Dropdown, Nav, Navbar, Row } from "react-bootstrap"
 
 export function withClient<PropsType extends PropsWithChildren>(
     ComponentToBeWrapped: React.ComponentType<PropsType>
@@ -20,6 +20,8 @@ export const ClientRow = withClient<ComponentProps<typeof Row>>(Row);
 
 export const ClientNav = withClient<ComponentProps<typeof Nav>>(Nav);
 export const ClientNavLink = withClient<ComponentProps<typeof Nav.Link>>(Nav.Link);
+
+export const ClientButton = withClient<ComponentProps<typeof Button>>(Button);
 // The following bootstrap components are only used in client components
 // export const ClientNavItem = withClient<ComponentProps<typeof Nav.Item>>(Nav.Item);
 

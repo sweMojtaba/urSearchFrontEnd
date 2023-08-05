@@ -5,7 +5,7 @@ import { UserContext } from './context';
 
 export default function Home() {
   const router = useRouter();
-  const {user, setUser} = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     if (user.state === 1) {
