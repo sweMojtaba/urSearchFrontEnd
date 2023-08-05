@@ -1,3 +1,5 @@
+"use client"
+
 import { ClientButton, ClientContainer } from "@/client-wrappers/bootstrap";
 import Edit from "./edit.svg";
 
@@ -15,7 +17,7 @@ export function InfoCard({ title, children, editFunc }: InfoCardProps) {
     return <ClientContainer className="info-card">
         <div className="first-line line line-start">
             <p className="heading">{title}</p>
-            <Edit onClick={editFunc} />
+            <Image src={Edit} alt="edit" onClick={editFunc} />
         </div>
         <div className="paragraph main-info">
             {children}

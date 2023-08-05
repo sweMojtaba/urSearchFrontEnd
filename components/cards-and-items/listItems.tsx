@@ -9,11 +9,10 @@ export function SmallLi({ text, url }: { text: string, url: string }) {
     </div>
 }
 
-
 interface BigLiProps {
     title: string;
     subtitle: string;
-    note: string; // used as time
+    note: string;
     Img: React.FunctionComponent<any>;
 }
 

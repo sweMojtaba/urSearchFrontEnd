@@ -1,3 +1,5 @@
+"use client" // needed because I need to pass a function to cards
+
 import { CardWithImg, InfoCard, PassableInfoCardProps } from "@/components/cards-and-items/cards";
 import { fetchDocuments, fetchGPAhidden, fetchPersonalInfo } from "./fetchProfileSections";
 import { SmallLi } from "@/components/cards-and-items/listItems";
@@ -42,7 +44,8 @@ export function Documents() {
 
     return <InfoCard
         title="Documents"
-        editFunc={() => { console.log("TO-DO: edit documents") }}>
+        editFunc={() => { console.log("TO-DO: edit documents") }}
+        >
         {documents.map(document => <SmallLi text={document.name} url={document.url} key={document.name} />)}
     </InfoCard>
 }
