@@ -2,20 +2,17 @@
 import { UserState } from "@/app/context";
 import { useRouter } from "next/navigation";
 
-// Define the Enum
 export enum RedirectNotes {
     LOGGED_IN,
     LOGGED_OUT,
     LOGGING_OUT
 }
 
-// Define the interface for the RedirectParams
 interface RedirectParams {
     message: string;
     param: string;
 }
 
-// Define the object map
 export const RedirectNoteToParam: { [key in RedirectNotes]: RedirectParams } = {
     [RedirectNotes.LOGGED_IN]: {
         message: "You are already logged in.",

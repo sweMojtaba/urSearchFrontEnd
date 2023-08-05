@@ -1,6 +1,5 @@
 'use client';
 
-import useUserStored from "@/utils/useUserStored";
 import { createContext, useState } from "react";
 
 export enum UserState {
@@ -27,6 +26,26 @@ export function getOtherRole (role: RoleType) {
 export interface User {
     name: string;
     state: UserState;
+}
+
+const DEFAULT_STATE = 0;
+const DEFAULT_NAME = '';
+
+function useUserStored(): { state: number, name: string } {
+    const [state, setState] = useState<number>(() => {
+        const userStateStored: string | null = localStorage.getItem("userState");
+        // TO-DO: wrap this in a react hook
+        let state: number = isNaN(parseInt(userStateStored!)) ? DEFAULT_STATE : parseInt(userStateStored!);
+        return state;
+    });
+
+    const [name, setName] = useState<string>(() => {
+        let name: string | null = localStorage.getItem("userName");
+        name = name ?? DEFAULT_NAME;
+        return name;
+    });
+
+    return { state, name };
 }
 
 export interface UserContextType {

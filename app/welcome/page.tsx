@@ -5,11 +5,11 @@ import SlideButton from "../../assets-common/item1.svg";
 import { UserContext } from "../context";
 import useRedirectWithUserState, { RedirectNotes } from "@/utils/useRedirectWithUserState";
 import Link from "next/link";
-import Slide1 from "./slide1.png"
-import Slide2 from "./slide2.png"
-import Slide3 from "./slide3.png"
-import Slide4 from "./slide4.png"
-import Go from "./go.svg"
+import Slide1 from "./assets/slide1.png"
+import Slide2 from "./assets/slide2.png"
+import Slide3 from "./assets/slide3.png"
+import Slide4 from "./assets/slide4.png"
+import Go from "./assets/go.svg"
 import { Button, Container } from "react-bootstrap";
 
 import Image from "next/image";
