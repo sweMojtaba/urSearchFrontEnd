@@ -1,7 +1,7 @@
 "use client"
 
 import { useCallback, useContext, useEffect, useState } from "react";
-import SlideButton from "../../assets-common/item1.svg";
+import SlideButton from "../../assets/item1.svg";
 import { UserContext } from "../context";
 import useRedirectWithUserState, { RedirectNotes } from "@/utils/useRedirectWithUserState";
 import Link from "next/link";
@@ -89,7 +89,7 @@ function Slides(): JSX.Element {
         user.state,
         userState => userState === 1,
         RedirectNotes.LOGGED_IN,
-        "/individual/profile" // To-do
+        "/applicant-profile" // To-do
     )
     const redirectLab = useRedirectWithUserState(
         user.state,

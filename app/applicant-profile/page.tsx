@@ -1,5 +1,5 @@
 import { ClientCol, ClientContainer, ClientRow } from "@/client-wrappers/bootstrap";
-import { Documents, PersonalInfo } from "./profileSections";
+import { Affiliations, Documents, Experiences, PersonalInfo, Projects } from "./profileSections";
 
 
 export default function Profile() {
@@ -8,11 +8,11 @@ export default function Profile() {
             <ClientCol md={4} xl={3}>
                 <PersonalInfo />
                 <Documents />
-                {/* <Affiliations /> */}
+                <Affiliations />
             </ClientCol>
             <ClientCol md={8} xl={6}>
-                {/* <Experiences /> */}
-                {/* <Projects /> */}
+                <Experiences />
+                <Projects />
                 {/* <Video /> */}
             </ClientCol>
             <ClientCol md={12} xl={3} id="lastCol">

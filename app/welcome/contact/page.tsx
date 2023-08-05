@@ -1,6 +1,6 @@
 import ContactImg from "./contact.png";
-import Item1 from "@/assets-common/item1.svg"
-import Item2 from "@/assets-common/item2.svg"
+import Item1 from "@/assets/item1.svg"
+import Item2 from "@/assets/item2.svg"
 
 import "./contact.scss"
 import Image from "next/image";

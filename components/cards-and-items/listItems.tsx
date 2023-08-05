@@ -1,5 +1,6 @@
 import "./listItems.scss"
-import Item1 from "@/assets-common/item1.svg"
+import Item1 from "@/assets/item1.svg"
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
 
 export function SmallLi({ text, url }: { text: string, url: string }) {
@@ -13,12 +14,12 @@ interface BigLiProps {
     title: string;
     subtitle: string;
     note: string;
-    Img: React.FunctionComponent<any>;
+    ImgSrc: StaticImport;
 }
 
-export function BigLi({ title, subtitle, note, Img}: BigLiProps): JSX.Element {
+export function BigLi({ title, subtitle, note, ImgSrc}: BigLiProps): JSX.Element {
     return <div className="line line-start big-li">
-        <Img />
+        <Image src={ImgSrc} alt="image for list item" />
         <div className="main-line">
             <div className="main-item">
                 <div className="title">{title}</div>

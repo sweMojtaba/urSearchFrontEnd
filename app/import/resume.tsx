@@ -40,7 +40,7 @@ function ResumeInput() {
                 return <>Waiting for redirect...</>
             })
             alert("Successfully uploaded your file!")
-            setTimeout(() => router.push("/individual/profile"), 1000)
+            setTimeout(() => router.push("/applicant-profile"), 1000)
         }, 3000)
     };
 

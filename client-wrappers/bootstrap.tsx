@@ -1,7 +1,7 @@
 'use client'
 
 import { PropsWithChildren, ComponentProps } from "react"
-import { Button, Col, Container, Dropdown, Nav, Navbar, Row } from "react-bootstrap"
+import { Button, Col, Container, Nav, Row } from "react-bootstrap"
 
 export function withClient<PropsType extends PropsWithChildren>(
     ComponentToBeWrapped: React.ComponentType<PropsType>

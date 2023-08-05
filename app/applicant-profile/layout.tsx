@@ -6,11 +6,11 @@ import "./profile.scss";
 import { ClientContainer, ClientNav, ClientNavLink } from "@/client-wrappers/bootstrap";
 
 function Header() {
-    return <HeaderCommon interfaceRoot="/individual">
+    return <HeaderCommon interfaceRoot="/applicant-profile">
         <ClientNav id="entries">
-            <ClientNavLink as={Link} href="/individual/profile">Your Profile</ClientNavLink>
-            <ClientNavLink as={Link} href="/individual/applications">Applications</ClientNavLink>
-            <ClientNavLink as={Link} href="/individual/search">
+            <ClientNavLink as={Link} href="/applicant-profile">Your Profile</ClientNavLink>
+            <ClientNavLink as={Link} href="/applications-sent">Applications</ClientNavLink>
+            <ClientNavLink as={Link} href="/search-for-jobs">
                 <span>Jobs</span>
                 <AiOutlineSearch />
             </ClientNavLink>

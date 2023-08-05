@@ -1,4 +1,4 @@
-import Item1 from "@/assets-common/item1.svg"
+import Item1 from "@/assets/item1.svg"
 import Image from "next/image";
 import { ClientContainer } from "@/client-wrappers/bootstrap";
 

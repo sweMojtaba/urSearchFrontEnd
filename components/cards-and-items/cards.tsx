@@ -1,4 +1,4 @@
-"use client"
+"use client" // needed for onClick interactions to work
 
 import { ClientButton, ClientContainer } from "@/client-wrappers/bootstrap";
 import Edit from "./edit.svg";
