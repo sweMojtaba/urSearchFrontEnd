@@ -64,7 +64,7 @@ function NavProfile() {
         if (user.state === 0 && loggedOut) {
             redirectWithUserState();
         }
-    }, [user.state, loggedOut])
+    }, [user.state, loggedOut, redirectWithUserState])
 
     const handleLogout = () => {
         setUser({

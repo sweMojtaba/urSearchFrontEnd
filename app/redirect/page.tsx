@@ -31,7 +31,7 @@ function Redirect() {
 
     useEffect(() => {
         setTimeout(() => {
-            router.push(target);
+            router.push(target); // TO-DO: use redirect from next/navigation
         }, 3000)
     }, [router, target])
 

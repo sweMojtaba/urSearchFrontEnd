@@ -77,7 +77,7 @@ export type CardWithImgProps = InfoCardWithImgProps | ActionableCardWithImgProps
 
 export function CardWithImg({ CardComponent, cardProps, children, ImgSrc }: CardWithImgProps): JSX.Element {
     return <div className="info-card-with-img">
-        <Image src={ImgSrc} alt="image for card" />
+        <Image src={ImgSrc} alt="image for card" className="img-on-card" />
         <CardComponent
             {...cardProps}>
             {children}
