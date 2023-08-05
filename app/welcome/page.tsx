@@ -116,7 +116,7 @@ function Slides(): JSX.Element {
         } else if (user.state === 2) {
             redirectLab();
         }
-    }, [user])
+    }, [redirectIndividual, redirectLab, user])
 
     // navigate
 

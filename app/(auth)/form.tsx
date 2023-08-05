@@ -11,15 +11,21 @@ import { useMemo } from "react";
 
 const functionalityToStates: { [key in AuthType]: {
     title: string,
-    text1: string
+    text1: string,
+    text2: string,
+    link1: JSX.Element
 } } = {
     [AuthType.LOGIN]: {
         title: "Log In",
-        text1: "Log in as"
+        text1: "Log in as",
+        text2: "Doesn't have an account?",
+        link1: <Link href="/signup">Sign up</Link>
     },
     [AuthType.SIGNUP]: {
         title: "Sign Up",
-        text1: "Sign up as"
+        text1: "Sign up as",
+        text2: "Already have an account?",
+        link1: <Link href="/login">Log in</Link>
     }
 }
 
@@ -38,7 +44,7 @@ export default function AuthForm({ handleSubmit, functionality }: {
             return roleParam as RoleType;
         }
     }, [roleParam])
-    const { title, text1 } = functionalityToStates[functionality];
+    const { title, text1, text2, link1 } = functionalityToStates[functionality];
 
     return <Container className="sparse-content">
         <h1>{title}</h1>
@@ -76,7 +82,7 @@ export default function AuthForm({ handleSubmit, functionality }: {
         </Form>
         <div className="dividing-line" />
         <p className="paragraph">
-            Doesn't have an account? <Link href={`/signup?role=${role}`}>Sign up</Link>.
+            {text2} {link1}
         </p>
     </Container>
 }
