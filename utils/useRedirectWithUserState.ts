@@ -5,10 +5,11 @@ import { useRouter } from "next/navigation";
 export enum RedirectNotes {
     LOGGED_IN,
     LOGGED_OUT,
-    LOGGING_OUT
+    LOGGING_OUT,
+    NOT_AUTHORIZED
 }
 
-interface RedirectParams {
+export interface RedirectParams {
     message: string;
     param: string;
 }
@@ -25,6 +26,10 @@ export const RedirectNoteToParam: { [key in RedirectNotes]: RedirectParams } = {
     [RedirectNotes.LOGGING_OUT]: {
         message: "You have successfully logged out.",
         param: "loggedOut"
+    },
+    [RedirectNotes.NOT_AUTHORIZED]: {
+        message: "You are not authorized to view this page.",
+        param: "notAuthorized"
     }
 }
 

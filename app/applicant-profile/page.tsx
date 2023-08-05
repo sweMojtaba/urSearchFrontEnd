@@ -1,8 +1,9 @@
 import { ClientCol, ClientContainer, ClientRow } from "@/client-wrappers/bootstrap";
 import { Affiliations, Documents, Experiences, PersonalInfo, Projects } from "./profileSections";
+import { ApplicantExclusiveComponentWrapper } from "@/utils/UserExlusiveComponentWrapper";
 
 
-export default function Profile() {
+function Profile() {
     return <ClientContainer className="scroll-page">
         <ClientRow>
             <ClientCol md={4} xl={3}>
@@ -23,3 +24,5 @@ export default function Profile() {
         </ClientRow>
     </ClientContainer>
 }
+
+export default ApplicantExclusiveComponentWrapper(Profile);
