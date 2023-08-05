@@ -1,7 +1,7 @@
 // "use client" // needed for ApplicantExclusion wrapper
 
 import { ClientCol, ClientContainer, ClientRow } from "@/client-wrappers/bootstrap";
-import { Affiliations, Documents, Experiences, PersonalInfo, Projects } from "./profileSections";
+import { Accomplishments, Affiliations, Documents, Experiences, PersonalInfo, Projects, QuickApply, Skills, Video } from "./profileSections";
 // import { withApplicantExclusion } from "@/utils/withUserExclusion";
 
 
@@ -16,12 +16,12 @@ function Profile() {
             <ClientCol md={8} xl={6}>
                 <Experiences />
                 <Projects />
-                {/* <Video /> */}
+                <Video />
             </ClientCol>
             <ClientCol md={12} xl={3} id="lastCol">
-                {/* <Skills /> */}
-                {/* <Accomplishments /> */}
-                {/* <QuickApply /> */}
+                <Skills />
+                <Accomplishments />
+                <QuickApply />
             </ClientCol>
         </ClientRow>
     </ClientContainer>

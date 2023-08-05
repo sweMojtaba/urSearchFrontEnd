@@ -1,13 +1,14 @@
 "use client" // needed because I need to pass a function to cards
 
-import { CardWithImg, InfoCard, PassableInfoCardProps } from "@/components/cards-and-items/cards";
-import { fetchAffiliations, fetchDocuments, fetchExperiences, fetchGPAhidden, fetchPersonalInfo, fetchProjects } from "./fetchProfileSections";
+import { ActionableCard, CardWithImg, InfoCard, PassableInfoCardProps } from "@/components/cards-and-items/cards";
+import { fetchAccomplishments, fetchAffiliations, fetchDocuments, fetchExperiences, fetchGPAhidden, fetchPersonalInfo, fetchProjects, fetchSkills, fetchVideo } from "./fetchProfileSections";
 import { BigLi, SmallLi } from "@/components/cards-and-items/listItems";
 import Profile from "./profileSolid.svg"
 import { useContext, useMemo, useState } from "react";
 import { UserContext } from "../context";
 import WorkIcon from "./work.svg"
 import ProjectIcon from "./project.svg"
+import fakeResponse from "@/utils/fakeResponse";
 
 export function PersonalInfo() {
     const {user, setUser} = useContext(UserContext);
@@ -104,5 +105,100 @@ export function Projects() {
                 />
         })}
     </InfoCard>
+
+}
+
+export function Video(): JSX.Element {
+    const video = useMemo(fetchVideo, []);
+
+
+    return <InfoCard
+        title="Let me introduce myself..."
+        editFunc={() => { console.log("TO-DO: edit video") }}
+    >
+        {/* <iframe src="https://www.youtube.com/embed/GYkq9Rgoj8E" width={560} height={315} title="video" allowFullScreen={true} /> */}
+        <video controls>
+            <source src={video.url} type="video/webm" />
+        </video>
+    </InfoCard>
+}
+
+export function Skills() {
+    const [reload, setReload] = useState(false);
+    const skills = useMemo(fetchSkills, [reload]);
+
+    return <InfoCard
+        title="Skills"
+        editFunc={() => {console.log("TO-Do: edit skills")}}
+        >
+        {skills.map(skill => <SmallLi text={skill} url="" key={skill} />)}
+    </InfoCard>
+}
+
+export function Accomplishments() {
+    const [reload, setReload] = useState(false);
+    const accomplishments = useMemo(fetchAccomplishments, [reload]);
+
+    return <InfoCard
+        title="Accomplishments"
+        editFunc={() => {console.log("TO-Do: edit skills")}}
+        >
+        {accomplishments.map(accomplishment => <SmallLi text={accomplishment} url="" key={accomplishment} />)}
+    </InfoCard>
+}
+
+enum ButtonText {
+    ACTIVATED = "Activated",
+    ACTIVATING = "Activating...",
+    NOT_ACTIVATED = "Quick Apply!"
+}
+
+const ButtonStatus = {
+    NOT_ACTIVATED: {
+        buttonText: ButtonText.NOT_ACTIVATED,
+        buttonDisabled: false,
+        buttonActive: false
+    },
+    ACTIVATING: {
+        buttonText: ButtonText.ACTIVATING,
+        buttonDisabled: true,
+        buttonActive: false
+    },
+    ACTIVATED: {
+        buttonText: ButtonText.ACTIVATED,
+        buttonDisabled: false,
+        buttonActive: true
+    }
+};
+
+export function QuickApply() {
+    const [buttonStatus, setButtonStatus] = useState(ButtonStatus.NOT_ACTIVATED);
+
+    const handleClick = () => {
+        setButtonStatus(ButtonStatus.ACTIVATING);
+        fakeResponse().then((res) => {
+            if (res.status === 200) {
+                if (buttonStatus.buttonActive) {
+                    setButtonStatus(ButtonStatus.NOT_ACTIVATED);
+                } else {
+                    setButtonStatus(ButtonStatus.ACTIVATED);
+                }
+            }
+        })
+    }
+
+    return <ActionableCard
+        title="Quick Apply!"
+        buttonProps={{
+            buttonText: buttonStatus.buttonText,
+            buttonAction: handleClick,
+            disabled: buttonStatus.buttonDisabled,
+            active: buttonStatus.buttonActive
+        }}
+    >
+        <p className="note">
+            Your resume, profile information and video will be used for applications that have the Quick Apply function! Save yourself some time!
+        </p>
+    </ActionableCard>
 
 }
