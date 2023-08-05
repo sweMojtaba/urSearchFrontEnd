@@ -1,8 +1,9 @@
 "use client"
 
-import { UserContext, UserState } from "@/app/context";
+import { UserState } from "@/app/context-utils";
 import { useContext, useEffect } from "react";
 import useRedirectWithUserState, { RedirectNotes } from "./useRedirectWithUserState";
+import { UserContext } from "@/app/context";
 
 export default function useUserExclusiveComponent(desiredUserState: UserState): void {
     const { user, setUser } = useContext(UserContext);
@@ -13,4 +14,18 @@ export default function useUserExclusiveComponent(desiredUserState: UserState): 
         "/welcome"
     )
     useEffect(redirectIfNotApplicant, [user.state, redirectIfNotApplicant]);
+}
+
+export function withApplicantExclusion(Component: React.ComponentType<any>): React.ComponentType<any> {
+    return function WrappedComponent() {
+        useUserExclusiveComponent(UserState.APPLICANT);
+        return <Component />
+    }
+}
+
+export function withLabExclusion(Component: React.ComponentType<any>): React.ComponentType<any> {
+    return function WrappedComponent() {
+        useUserExclusiveComponent(UserState.LAB);
+        return <Component />
+    }
 }

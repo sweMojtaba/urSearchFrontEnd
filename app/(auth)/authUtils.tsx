@@ -1,6 +1,4 @@
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
-import { RoleType } from "../context";
-import { useRouter } from "next/navigation";
+import { RoleType } from "../context-utils";
 
 export enum AuthType {
     LOGIN = "login",

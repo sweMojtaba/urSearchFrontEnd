@@ -1,5 +1,5 @@
 'use client'
-import { UserState } from "@/app/context";
+import { UserState } from "@/app/context-utils";
 import { useRouter } from "next/navigation";
 
 export enum RedirectNotes {

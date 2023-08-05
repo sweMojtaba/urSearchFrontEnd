@@ -1,32 +1,7 @@
 'use client';
 
 import { createContext, useState } from "react";
-
-export enum UserState {
-    NOT_LOGGED_IN = 0,
-    APPLICANT = 1,
-    LAB = 2
-}
-
-export enum RoleType {
-    APPLICANT = "applicant",
-    LAB = "lab"
-}
-
-export function getOtherRole (role: RoleType) {
-    if (role === RoleType.APPLICANT) {
-        return RoleType.LAB;
-    } else if (role === RoleType.LAB) {
-        return RoleType.APPLICANT;
-    } else {
-        throw new Error("Invalid role");
-    }
-}
-
-export interface User {
-    name: string;
-    state: UserState;
-}
+import { User, UserContextType } from "./context-utils";
 
 const DEFAULT_STATE = 0;
 const DEFAULT_NAME = '';
@@ -46,11 +21,6 @@ function useUserStored(): { state: number, name: string } {
     });
 
     return { state, name };
-}
-
-export interface UserContextType {
-    user: User;
-    setUser: React.Dispatch<React.SetStateAction<User>>;
 }
 
 export const UserContext = createContext({} as UserContextType);

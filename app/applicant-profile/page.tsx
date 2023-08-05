@@ -1,6 +1,8 @@
+"use client" // needed for ApplicantExclusion wrapper
+
 import { ClientCol, ClientContainer, ClientRow } from "@/client-wrappers/bootstrap";
 import { Affiliations, Documents, Experiences, PersonalInfo, Projects } from "./profileSections";
-import { ApplicantExclusiveComponentWrapper } from "@/utils/UserExlusiveComponentWrapper";
+import { withApplicantExclusion } from "@/utils/withUserExclusion";
 
 
 function Profile() {
@@ -25,4 +27,4 @@ function Profile() {
     </ClientContainer>
 }
 
-export default ApplicantExclusiveComponentWrapper(Profile);
+export default withApplicantExclusion(Profile);

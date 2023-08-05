@@ -1,6 +1,7 @@
 "use client" // must specify this to use client-side fetch (handleSubmit not used as a server action)
 
-import { RoleType, UserContext } from "@/app/context";
+import { RoleType } from "@/app/context-utils";
+import { UserContext } from "@/app/context";
 import { AuthType, extractForm } from "../authUtils";
 import AuthForm from "../form";
 import { useRouter } from "next/navigation";

@@ -3,7 +3,7 @@
 import { Button, Container, Form } from "react-bootstrap";
 import { FaUserAlt, FaKey, FaUserCheck } from "react-icons/fa";
 
-import { RoleType } from "@/app/context";
+import { RoleType } from "@/app/context-utils";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { AuthType } from "./authUtils";
