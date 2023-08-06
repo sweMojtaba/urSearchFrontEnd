@@ -1,6 +1,7 @@
 // import "bootstrap/dist/js/bootstrap.bundle.min.js" Error occurred
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './globals.scss'
+import "./globalStyles.scss"
 
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'

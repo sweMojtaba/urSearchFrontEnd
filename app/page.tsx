@@ -1,4 +1,6 @@
 'use client'
+
+// TO-DO: try to do redirect without a flash: https://theodorusclarence.com/blog/nextjs-redirect-no-flashing
 import { useRouter } from 'next/navigation'
 import { useContext, useEffect } from 'react';
 import { UserContext } from './context';

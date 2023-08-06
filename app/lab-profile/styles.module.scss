@@ -1,0 +1,32 @@
+@use "@/app/globalStyles.scss";
+
+.scrollPage {
+    margin-bottom: 2rem;
+    margin-top: 2rem
+}
+
+.poster {
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    right: 0;
+}
+
+.headerLineHolder {
+    position: relative;
+}
+
+.headerLine {
+    @extend .line;
+    position: absolute;
+    top: -4em;
+}
+
+.schoolIcon {
+    height: 5em;
+    width: auto;
+}
+
+.header {
+    font-size: 5em;
+}
