@@ -1,5 +1,7 @@
 'use client';
 
+// TO-DO: use React-Query to get and synchronize user state from server and manage the state.
+
 import { createContext, useState } from "react";
 import { User, UserContextType } from "./context-utils";
 
