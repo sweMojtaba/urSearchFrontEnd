@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo } from "react";
+import React, { useContext, useMemo } from "react";
 import { fetchGPAhidden, fetchPersonalInfo } from "./fakeFetchProfileSections.ts";
 import UserContext from "../../structural/UserContext";
 import CardWithImg, { PassableInfoCardProps } from "../../cards/CardWithImg.tsx";
@@ -7,7 +7,7 @@ import { ReactComponent as ProfileImg } from "../../../assets/profileSolid.svg";
 import InfoCard from "../../cards/InfoCard.tsx";
 
 export default function PersonalInfo() {
-    const { user, setUser } = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext);
     const {
         name,
         degree,
@@ -25,10 +25,6 @@ export default function PersonalInfo() {
             editFunc: () => { console.log("TO-DO: edit personal info") }
         }
     }, [name])
-
-    useEffect(() => {
-        setUser(prev => ({ ...prev, name }));
-    }, [name, setUser])
 
     return <CardWithImg
         CardComponent={InfoCard}

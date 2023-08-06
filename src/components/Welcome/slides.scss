@@ -1,3 +1,14 @@
+#slide {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right 0% bottom 0%;
+    padding-bottom: 4em;
+}
+
 #go {
     --bs-btn-bg: #00F0FF;
     --bs-btn-color: #000;
