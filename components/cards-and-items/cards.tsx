@@ -17,7 +17,9 @@ export function InfoCard({ title, children, editFunc }: InfoCardProps) {
     return <ClientContainer className="info-card">
         <div className="first-line line line-start">
             <p className="heading">{title}</p>
-            <Image src={Edit} alt="edit" onClick={editFunc} />
+            {editFunc &&
+                <Image src={Edit} alt="edit" onClick={editFunc} />
+            }
         </div>
         <div className="paragraph main-info">
             {children}
