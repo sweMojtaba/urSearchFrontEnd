@@ -1,6 +1,6 @@
 "use client" // needed for onClick interactions to work
 
-import { ClientButton, ClientContainer } from "@/client-wrappers/bootstrap";
+import { Button, Container } from "@/client-wrappers/bootstrap";
 import Edit from "./edit.svg";
 
 import "./info-card.scss"
@@ -14,7 +14,7 @@ export interface InfoCardProps {
 }
 
 export function InfoCard({ title, children, editFunc }: InfoCardProps) {
-    return <ClientContainer className="info-card">
+    return <Container className="info-card">
         <div className="first-line line line-start">
             <p className="heading">{title}</p>
             {editFunc &&
@@ -24,7 +24,7 @@ export function InfoCard({ title, children, editFunc }: InfoCardProps) {
         <div className="paragraph main-info">
             {children}
         </div>
-    </ClientContainer>
+    </Container>
 }
 
 export interface ActionableCardProps {
@@ -41,7 +41,7 @@ export interface ActionableCardButtonProps {
 }
 
 export function ActionableCard({ title, children, buttonProps }: ActionableCardProps): JSX.Element {
-    return <ClientContainer className="info-card actionable-card">
+    return <Container className="info-card actionable-card">
         <div className="first-line line line-start">
             <p className="heading">{title}</p>
         </div>
@@ -49,13 +49,13 @@ export function ActionableCard({ title, children, buttonProps }: ActionableCardP
             {children}
         </div>
         {buttonProps &&
-            <ClientButton
+            <Button
                 onClick={buttonProps.buttonAction}
                 disabled={buttonProps.disabled}
                 active={buttonProps.active}>
                 {buttonProps.buttonText}
-            </ClientButton>}
-    </ClientContainer>
+            </Button>}
+    </Container>
 }
 
 export type PassableInfoCardProps = Omit<InfoCardProps, "children">;

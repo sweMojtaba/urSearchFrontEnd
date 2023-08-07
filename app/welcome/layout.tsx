@@ -1,7 +1,7 @@
 import { HeaderAuth, HeaderCommon } from "@/components/header/headers";
 import { PropsWithChildren } from "react";
 
-import { ClientContainer, ClientNav, ClientNavLink } from "@/client-wrappers/bootstrap";
+import { Container, Nav, NavLink } from "@/client-wrappers/bootstrap";
 import { FaFacebookF, FaTwitter, FaLinkedin } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai"
 
@@ -11,26 +11,26 @@ import "./slides.scss";
 
 function Header() {
     return <HeaderCommon interfaceRoot="/welcome">
-        <ClientNav id="icons">
+        <Nav id="icons">
             {/* To-do: add sharing links (backend) */}
-            <ClientNavLink>
+            <NavLink>
                 <FaFacebookF />
-            </ClientNavLink>
-            <ClientNavLink>
+            </NavLink>
+            <NavLink>
                 <FaTwitter />
-            </ClientNavLink>
-            <ClientNavLink>
+            </NavLink>
+            <NavLink>
                 <AiFillInstagram />
-            </ClientNavLink>
-            <ClientNavLink>
+            </NavLink>
+            <NavLink>
                 <FaLinkedin />
-            </ClientNavLink>
-        </ClientNav>
-        <ClientNav id="entries">
-            <ClientNavLink as={Link} href="/welcome">HOME</ClientNavLink>
-            <ClientNavLink as={Link} href="/welcome/contact">CONTACT US</ClientNavLink>
-            <ClientNavLink as={Link} href="/welcome/about">ABOUT US</ClientNavLink>
-        </ClientNav>
+            </NavLink>
+        </Nav>
+        <Nav id="entries">
+            <NavLink as={Link} href="/welcome">HOME</NavLink>
+            <NavLink as={Link} href="/welcome/contact">CONTACT US</NavLink>
+            <NavLink as={Link} href="/welcome/about">ABOUT US</NavLink>
+        </Nav>
         <HeaderAuth />
     </HeaderCommon>
 }
@@ -39,9 +39,9 @@ export default function Layout({ children }: PropsWithChildren<{}>) {
     return <>
         <Header />
         <div className="main">
-            <ClientContainer fluid className="fit">
+            <Container fluid className="fit">
                 {children}
-            </ClientContainer>
+            </Container>
         </div>
     </>
 }

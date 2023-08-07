@@ -4,7 +4,7 @@ import Item2 from "@/assets/item2.svg"
 
 import "./contact.scss"
 import Image from "next/image";
-import { ClientCol, ClientContainer, ClientRow } from "@/client-wrappers/bootstrap";
+import { Col, Container, Row } from "@/client-wrappers/bootstrap";
 
 function ContactInfo({team, phone, email}: {team: string, phone: string, email: string}) {
     return <div className="contact-info">
@@ -25,38 +25,38 @@ function ContactInfo({team, phone, email}: {team: string, phone: string, email: 
 
 function Contact() {
     return <div id="slide">
-        <ClientContainer>
-            <ClientRow>
-                <ClientCol lg={4}>
+        <Container>
+            <Row>
+                <Col lg={4}>
                     <ContactInfo
                         team="Technical Support"
                         email="tech@urSearch.com"
                         phone="+1 (608) 572 8750"
                     />
-                </ClientCol>
-                <ClientCol lg={4}>
+                </Col>
+                <Col lg={4}>
                     <ContactInfo
                         team="Data & Marketing"
                         email="data@urSearch.com"
                         phone="+1 (608) 572 8750"
                     />
-                </ClientCol>
-            </ClientRow>
-            <ClientCol lg={6}>
+                </Col>
+            </Row>
+            <Col lg={6}>
                 <ContactInfo
                     team="Customer Support & Feedback"
                     email="customer@urSearch.com"
                     phone="+1 (608) 572 8750"
                 />
-            </ClientCol>
-            <ClientCol lg={6}>
+            </Col>
+            <Col lg={6}>
                 <ContactInfo
                     team="Affiliates"
                     email="affiliates@urSearch.com"
                     phone="+1 (608) 572 8750"
                 />
-            </ClientCol>
-        </ClientContainer>
+            </Col>
+        </Container>
         <Image src={ContactImg} alt="slide" className="fit-image"/>
     </div>
 }

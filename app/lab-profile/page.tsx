@@ -2,7 +2,7 @@ import Image from "next/image";
 import { fetchLabInfo, fetchLabKeywords, fetchResources, fetchReviews, fetchRating, fetchQuickApply } from "./fetchProfileSections";
 import Poster from "./assets/posterPlaceholder.png"
 import SchoolIcon from "./assets/schoolIconPlaceholder.png"
-import { ClientCol, ClientContainer, ClientRow } from "@/client-wrappers/bootstrap";
+import { Col, Container, Row } from "@/client-wrappers/bootstrap";
 import { InfoCard } from "@/components/cards-and-items/cards";
 
 import styles from "./styles.module.scss"
@@ -20,37 +20,37 @@ export default function LabProfile() {
 
     return <div className={styles.scrollPage}>
         <Image src={Poster} alt="poster of lab" className={styles.poster} />
-        <ClientContainer className={styles.headerLineHolder}>
-            <ClientRow className={styles.headerLine}>
+        <Container className={styles.headerLineHolder}>
+            <Row className={styles.headerLine}>
                 <Image src={SchoolIcon} alt="school icon" className={styles.schoolIcon} />
                 <h1 className={styles.header}>{labName}</h1>
-            </ClientRow>
-            <ClientRow>
+            </Row>
+            <Row>
                 header line trailing
-                <ClientCol md={6}>
+                <Col md={6}>
                     {/* <Info data={labInfo}/> */}
-                </ClientCol>
-                <ClientCol md={6}>
+                </Col>
+                <Col md={6}>
                     {/* <Keywords data={labKeywords}/> */}
-                </ClientCol>
-            </ClientRow>
-            <ClientRow>
-                <ClientCol md={4}>
+                </Col>
+            </Row>
+            <Row>
+                <Col md={4}>
                     {/* <Resources data={resources}/> */}
-                </ClientCol>
-                <ClientCol md={8}>
+                </Col>
+                <Col md={8}>
                     <Reviews data={reviews} />
-                    <ClientRow>
-                        <ClientCol md={6}>
+                    <Row>
+                        <Col md={6}>
                             {/* <PostNewOpportunity /> */}
-                        </ClientCol>
-                        <ClientCol md={6}>
+                        </Col>
+                        <Col md={6}>
                             {/* <QuickApply data={quickApply}/> */}
-                        </ClientCol>
-                    </ClientRow>
-                </ClientCol>
-            </ClientRow>
-        </ClientContainer>
+                        </Col>
+                    </Row>
+                </Col>
+            </Row>
+        </Container>
     </div>
 }
 
