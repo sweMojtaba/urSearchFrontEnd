@@ -60,7 +60,7 @@ export function fetchReviews() {
             timestamp: "2020-01-01"
         },
         {
-            rating: 4,
+            rating: 4.5,
             text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl quis aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl. Sed euismod, nisl quis aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl.",
             timestamp: "2020-01-01"
         }

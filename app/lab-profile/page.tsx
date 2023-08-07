@@ -1,7 +1,9 @@
 import Image from "next/image";
 import { fetchLabInfo, fetchLabKeywords, fetchResources, fetchReviews, fetchRating, fetchQuickApply } from "./fetchProfileSections";
-import Poster from "./posterPlaceholder.png"
-import SchoolIcon from "./schoolIconPlaceholder.png"
+import Poster from "./assets/posterPlaceholder.png"
+import SchoolIcon from "./assets/schoolIconPlaceholder.png"
+import ReviewProfile from "./assets/reviewProfile.svg"
+import StarSolid from "./assets/star-solid.svg"
 
 import styles from "./styles.module.scss"
 import { ClientCol, ClientContainer, ClientRow } from "@/client-wrappers/bootstrap";
@@ -24,6 +26,7 @@ export default function LabProfile() {
                 <h1 className={styles.header}>{labName}</h1>
             </ClientRow>
             <ClientRow>
+                header line trailing
                 <ClientCol md={6}>
                     {/* <Info data={labInfo}/> */}
                 </ClientCol>
@@ -36,7 +39,7 @@ export default function LabProfile() {
                     {/* <Resources data={resources}/> */}
                 </ClientCol>
                 <ClientCol md={8}>
-                    <Reviews data={reviews}/>
+                    <Reviews data={reviews} />
                     <ClientRow>
                         <ClientCol md={6}>
                             {/* <PostNewOpportunity /> */}
@@ -51,26 +54,62 @@ export default function LabProfile() {
     </div>
 }
 
-function Reviews({ data }: { data: {
-    rating: number,
-    text: string,
-    timestamp: string
-}[] }) {
+function Reviews({ data }: {
+    data: {
+        rating: number,
+        text: string,
+        timestamp: string
+    }[]
+}) {
     return <InfoCard
         title="Reviews"
     >
-        {data.map((review, i) => <Review key={i} data={review}/>)}
+        {data.map((review, i) => <Review key={i} data={review} />)}
     </InfoCard>
 }
 
-function Review({ data }: { data: {
-    rating: number,
-    text: string,
-    timestamp: string
-} }) {
+function Review({ data }: {
+    data: {
+        rating: number,
+        text: string,
+        timestamp: string
+    }
+}) {
     return <div className={styles.review}>
-        <div className={styles.rating}>{data.rating}</div>
-        <div className={styles.text}>{data.text}</div>
-        <div className={styles.timestamp}>{data.timestamp}</div>
+        <Image src={ReviewProfile} alt="profile picture" className={styles.profilePicture} />
+        <div className={styles.reviewContent}>
+            <RatingToStars rating={data.rating} />
+            <div className={styles.text}>{data.text}</div>
+            <div className={styles.timestamp}>{data.timestamp}</div>
+        </div>
     </div>
+}
+
+
+/**
+ * @param rating must be between 0 and 5
+ * @returns A components of stars that represent the rating
+ */
+function RatingToStars({ rating }: { rating: number }): JSX.Element {
+    const starFullnessLevels = Array.from({ length: Math.ceil(rating) }, (_, i) => {
+        const remainingRating = rating - i;
+        return remainingRating > 1 ? 1 : remainingRating;
+    });
+
+    return (
+        <>
+            {starFullnessLevels.map((fullness, i) => (
+                <Star key={i} fullness={fullness} />
+            ))}
+        </>
+    );
+}
+
+function Star({ fullness }: { fullness: number }): JSX.Element {
+    return <Image
+        src={StarSolid}
+        alt="star"
+        width={20 * fullness}
+        height={20}
+    />
 }
