@@ -2,12 +2,12 @@ import Image from "next/image";
 import { fetchLabInfo, fetchLabKeywords, fetchResources, fetchReviews, fetchRating, fetchQuickApply } from "./fetchProfileSections";
 import Poster from "./assets/posterPlaceholder.png"
 import SchoolIcon from "./assets/schoolIconPlaceholder.png"
-import ReviewProfile from "./assets/reviewProfile.svg"
-import StarSolid from "./assets/star-solid.svg"
-
-import styles from "./styles.module.scss"
 import { ClientCol, ClientContainer, ClientRow } from "@/client-wrappers/bootstrap";
 import { InfoCard } from "@/components/cards-and-items/cards";
+
+import styles from "./styles.module.scss"
+import { Review } from "./client-side-components";
+
 
 export default function LabProfile() {
     const labName = "Ricke Lab"; // update after the new state management is done
@@ -66,50 +66,4 @@ function Reviews({ data }: {
     >
         {data.map((review, i) => <Review key={i} data={review} />)}
     </InfoCard>
-}
-
-function Review({ data }: {
-    data: {
-        rating: number,
-        text: string,
-        timestamp: string
-    }
-}) {
-    return <div className={styles.review}>
-        <Image src={ReviewProfile} alt="profile picture" className={styles.profilePicture} />
-        <div className={styles.reviewContent}>
-            <RatingToStars rating={data.rating} />
-            <div className={styles.text}>{data.text}</div>
-            <div className={styles.timestamp}>{data.timestamp}</div>
-        </div>
-    </div>
-}
-
-
-/**
- * @param rating must be between 0 and 5
- * @returns A components of stars that represent the rating
- */
-function RatingToStars({ rating }: { rating: number }): JSX.Element {
-    const starFullnessLevels = Array.from({ length: Math.ceil(rating) }, (_, i) => {
-        const remainingRating = rating - i;
-        return remainingRating > 1 ? 1 : remainingRating;
-    });
-
-    return (
-        <>
-            {starFullnessLevels.map((fullness, i) => (
-                <Star key={i} fullness={fullness} />
-            ))}
-        </>
-    );
-}
-
-function Star({ fullness }: { fullness: number }): JSX.Element {
-    return <Image
-        src={StarSolid}
-        alt="star"
-        width={20 * fullness}
-        height={20}
-    />
 }
