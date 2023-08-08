@@ -1,8 +1,9 @@
 import { BigLi } from "@/components/cards-and-items/listItems";
 import WorkIcon from "../applicant-profile/work.svg"
-import { Container } from "@/client-wrappers/bootstrap";
-import styles from "./styles.module.scss"
+import { Button, Container } from "@/client-wrappers/bootstrap";
 import Link from "next/link";
+
+import styles from "./styles.module.scss";
 
 export default function Opportunities() {
     return <Container className="medium-content">
@@ -14,5 +15,9 @@ export default function Opportunities() {
             url="/opportunity?id=1"
             ImgSrc={WorkIcon}
         />
+        <Link href="/post-opportunity" className={styles.pageEndButton + " button-link"}>
+            <Button>Post New Opportunity</Button>
+        </Link>
+        {/* TO-DO: open to idea */}
     </Container>
 }
