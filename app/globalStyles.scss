@@ -91,6 +91,7 @@
 
 // text-----------------------------------------------------
 .link {
+    font-family: Cabin;
     font-weight: 400;
     font-style: italic;
     text-transform: uppercase;
@@ -217,6 +218,12 @@
 .btn-inline-2 {
     @extend .btn-inline-1;
     flex-grow: 2;
+}
+
+.accordion-header {
+    font-family: Cabin;
+    font-weight: 700;
+    font-style: italic;
 }
 
 // form-----------------------------------------------------  

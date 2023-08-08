@@ -16,12 +16,12 @@ interface BigLiProps {
     subtitle: string;
     note: string;
     url?: string;
-    ImgSrc: StaticImport;
+    ImgSrc: StaticImport | string;
 }
 
 function BigLiContent({ title, subtitle, note, ImgSrc }: BigLiProps) {
     return <div className="line line-start big-li">
-        <Image src={ImgSrc} alt="image for list item" />
+        <Image src={ImgSrc} alt="image for list item" width={27} height={27} />
         <div className="main-line">
             <div className="main-item">
                 <div className="title">{title}</div>

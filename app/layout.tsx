@@ -4,10 +4,7 @@ import './globals.scss'
 import "./globalStyles.scss"
 
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import InitializedUserContextProvider from './context';
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -22,7 +19,7 @@ export default function RootLayout({
   return (
     <InitializedUserContextProvider>
       <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <body>{children}</body>
       </html>
     </InitializedUserContextProvider>
   )

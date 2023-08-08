@@ -11,7 +11,7 @@ $form-file-button-bg: transparent;
 
 body {
   margin: 0;
-  font-family: Cabin, 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
+  font-family: 'Roboto', Lato, Cabin, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   color: #FFF;
@@ -19,6 +19,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   --bs-primary: #3876D2;
   --bs-primary-rgb: 56, 118, 210;
+  --bs-body-color: #FFF;
+  --bs-body-bg: transparent;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -29,23 +31,14 @@ code {
     monospace;
 }
 
-h1,
-h2 {
+h1,h2,h3,h4,h5,h6 {
+  font-family: Cabin;
+}
+
+h1,h2 {
   font-weight: 600;
   font-style: italic;
 }
-
-h1 {
-  font-size: 3rem;
-}
-
-h2 {
-  font-size: 2.5rem;
-}
-
-// .spartse-content>h1,h2,h3,h4,h5,h6 {
-//   text-align: center;
-// }
 
 a {
   color: inherit;
