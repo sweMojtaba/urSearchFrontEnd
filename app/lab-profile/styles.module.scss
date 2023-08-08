@@ -17,6 +17,8 @@
     position: relative;
     top: -4em;
     margin-bottom: -2em;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .schoolIcon {
@@ -39,4 +41,18 @@
     height: 1em;
     width: auto;
     overflow:auto;
+}
+
+.avgRating {
+    @extend .line;
+    justify-content: flex-end;
+    align-items: end;
+    position: relative;
+    top: -3em;
+    margin-bottom: -3em;
+}
+
+.avgRating > p {
+    font-size: 1.2em;
+    margin-left: 1em;
 }

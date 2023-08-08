@@ -29,15 +29,16 @@ export function InfoCard({ title, children, editFunc }: InfoCardProps) {
 
 export interface ActionableCardProps {
     title: string;
-    children: React.ReactNode;
+    children?: React.ReactNode;
     buttonProps?: ActionableCardButtonProps;
 }
 
 export interface ActionableCardButtonProps {
     buttonText: string;
-    buttonAction: () => void;
-    disabled: boolean;
-    active: boolean;
+    href?: string;
+    buttonAction?: () => void;
+    disabled?: boolean;
+    active?: boolean;
 }
 
 export function ActionableCard({ title, children, buttonProps }: ActionableCardProps): JSX.Element {
@@ -50,9 +51,10 @@ export function ActionableCard({ title, children, buttonProps }: ActionableCardP
         </div>
         {buttonProps &&
             <Button
+                href={buttonProps.href}
                 onClick={buttonProps.buttonAction}
-                disabled={buttonProps.disabled}
-                active={buttonProps.active}>
+                disabled={buttonProps.disabled ?? false}
+                active={buttonProps.active ?? false}>
                 {buttonProps.buttonText}
             </Button>}
     </Container>

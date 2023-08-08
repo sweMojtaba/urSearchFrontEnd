@@ -153,7 +153,7 @@ enum ButtonText {
     NOT_ACTIVATED = "Quick Apply!"
 }
 
-const ButtonStatus = {
+export const ButtonStatus = {
     NOT_ACTIVATED: {
         buttonText: ButtonText.NOT_ACTIVATED,
         buttonDisabled: false,

@@ -3,10 +3,10 @@ import Item1 from "@/assets/item1.svg"
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
 
-export function SmallLi({ text, url }: { text: string, url: string }) {
+export function SmallLi({ text, url }: { text: string, url?: string }) {
     return <div className="line line-start small-li">
         <Image src={Item1} alt="item1" />
-        <a href={url}>{text}</a>
+        {url ? <a href={url}>{text}</a> : <span>{text}</span>}
     </div>
 }
 
@@ -17,7 +17,7 @@ interface BigLiProps {
     ImgSrc: StaticImport;
 }
 
-export function BigLi({ title, subtitle, note, ImgSrc}: BigLiProps): JSX.Element {
+export function BigLi({ title, subtitle, note, ImgSrc }: BigLiProps): JSX.Element {
     return <div className="line line-start big-li">
         <Image src={ImgSrc} alt="image for list item" />
         <div className="main-line">
@@ -27,6 +27,6 @@ export function BigLi({ title, subtitle, note, ImgSrc}: BigLiProps): JSX.Element
             </div>
             <div className="note">{note}</div>
         </div>
-        
+
     </div>
 }

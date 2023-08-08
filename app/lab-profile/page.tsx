@@ -1,18 +1,18 @@
 import Image from "next/image";
-import { fetchLabInfo, fetchLabKeywords, fetchResources, fetchReviews, fetchRating, fetchQuickApply } from "./fetchProfileSections";
+import { fetchLabInfo, fetchLabKeywords, fetchResources, fetchReviews, fetchRating, fetchQuickApply, LabKeywords } from "./fetchProfileSections";
 import Poster from "./assets/posterPlaceholder.png"
 import SchoolIcon from "./assets/schoolIconPlaceholder.png"
 import { Col, Container, Row } from "@/client-wrappers/bootstrap";
-import { InfoCard } from "@/components/cards-and-items/cards";
+import { ActionableCard, InfoCard } from "@/components/cards-and-items/cards";
 
 import styles from "./styles.module.scss"
-import { Review } from "./client-side-components";
+import { AvgRating, Info, Keywords, QuickApply, Resources, Review } from "./client-side-components";
 
 
 export default function LabProfile() {
     const labName = "Ricke Lab"; // update after the new state management is done
     const labInfo = fetchLabInfo();
-    const labKeywords = fetchLabKeywords();
+    const labKeywords: LabKeywords = fetchLabKeywords();
     const resources = fetchResources();
     const reviews = fetchReviews();
     const rating = fetchRating();
@@ -26,44 +26,55 @@ export default function LabProfile() {
                 <h1 className={styles.header}>{labName}</h1>
             </Row>
             <Row>
-                header line trailing
                 <Col md={6}>
-                    {/* <Info data={labInfo}/> */}
+                    <Info data={labInfo} />
                 </Col>
                 <Col md={6}>
-                    {/* <Keywords data={labKeywords}/> */}
+                    <Keywords data={labKeywords} />
                 </Col>
             </Row>
             <Row>
                 <Col md={4}>
-                    {/* <Resources data={resources}/> */}
+                    <Resources data={resources} />
                 </Col>
                 <Col md={8}>
-                    <Reviews data={reviews} />
-                    <Row>
-                        <Col md={6}>
-                            {/* <PostNewOpportunity /> */}
-                        </Col>
-                        <Col md={6}>
-                            {/* <QuickApply data={quickApply}/> */}
-                        </Col>
-                    </Row>
+                    <Reviews reviews={reviews} rating={rating} />
+                </Col>
+            </Row>
+            <Row>
+                <Col md={6} className={styles.smallCard}>
+                    <PostNewOpportunity />
+                </Col>
+                <Col md={6} className={styles.smallCard}>
+                    <QuickApply quickApply={quickApply}/>
                 </Col>
             </Row>
         </Container>
     </div>
 }
 
-function Reviews({ data }: {
-    data: {
+function Reviews({ reviews, rating }: {
+    reviews: {
         rating: number,
         text: string,
         timestamp: string
-    }[]
+    }[],
+    rating: number
 }) {
     return <InfoCard
         title="Reviews"
     >
-        {data.map((review, i) => <Review key={i} data={review} />)}
+        <AvgRating rating={rating} />
+        {reviews.map((review, i) => <Review key={i} data={review} />)}
     </InfoCard>
+}
+
+function PostNewOpportunity() {
+    return <ActionableCard
+        title="Post New Opportunities!"
+        buttonProps={{
+            buttonText: "＞",
+            href: "/post-opportunity"
+        }}
+    />
 }

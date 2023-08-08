@@ -1,4 +1,13 @@
-export function fetchLabInfo() {
+export type LabInfo = {
+    university: string,
+    department: string,
+    labTitle: string,
+    address: string,
+    phone: string,
+    email: string
+}
+
+export function fetchLabInfo(): LabInfo {
     const labInfo = {
         university: "University of Wisconsin–Madison",
         department: "Department of Urology",
@@ -8,6 +17,12 @@ export function fetchLabInfo() {
         email: "ricke@urology.wisc.edu",
     }
     return labInfo;
+}
+
+export type LabKeywords = {
+    type: string,
+    field: string,
+    keywords: string[]
 }
 
 export function fetchLabKeywords() {
@@ -22,6 +37,11 @@ export function fetchLabKeywords() {
     }
     return labKeywords;
 }
+
+export type LabResources = {
+    title: string,
+    link: string
+}[]
 
 export function fetchResources() {
     const resources: { title: string, link: string }[] = [
@@ -50,6 +70,7 @@ export function fetchResources() {
             link: "https://www.urology.wisc.edu/research/research-labs/ricke-lab/staff/"
         }
     ]
+    return resources;
 }
 
 export function fetchReviews() {
