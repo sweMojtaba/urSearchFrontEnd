@@ -29,13 +29,8 @@ code {
     monospace;
 }
 
-#root {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-h1, h2 {
+h1,
+h2 {
   font-weight: 600;
   font-style: italic;
 }
@@ -54,10 +49,11 @@ h2 {
 
 a {
   color: inherit;
+  transition: color 0.2s ease-in-out;
 }
 
 a:hover {
-  color: #b1b1b1;
+  color: #72F07F;
 }
 
 form {
@@ -65,7 +61,7 @@ form {
   max-width: 30rem;
 }
 
-form > button {
+form>button {
   justify-content: center;
   margin: auto;
 }
