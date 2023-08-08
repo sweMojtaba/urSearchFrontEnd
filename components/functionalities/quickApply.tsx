@@ -8,10 +8,8 @@ export type ButtonTextEnum = {
     NOT_ACTIVATED: string;
 }
 
-export type ButtonStatusKey = keyof ButtonTextEnum;
-
 export interface ButtonStatus {
-    buttonText: ButtonTextEnum[ButtonStatusKey];
+    buttonText: ButtonTextEnum[keyof ButtonTextEnum];
     buttonDisabled: boolean;
     buttonActive: boolean;
 };

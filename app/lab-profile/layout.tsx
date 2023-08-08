@@ -7,7 +7,7 @@ function Header() {
     return <HeaderCommon interfaceRoot="/lab-profile">
         <Nav id="entries">
             <NavLink as={Link} href="/lab-profile">Your Profile</NavLink>
-            <NavLink as={Link} href="/opportunities-posted">Opportunities Posted</NavLink>
+            <NavLink as={Link} href="/opportunities">Opportunities Posted</NavLink>
         </Nav>
         <HeaderAuth />
     </HeaderCommon>
