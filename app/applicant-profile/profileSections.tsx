@@ -1,6 +1,6 @@
 "use client" // needed because I need to pass a function to cards
 
-import { ActionableCard, CardWithImg, InfoCard, PassableInfoCardProps } from "@/components/cards-and-items/cards";
+import { CardWithImg, InfoCard, PassableInfoCardProps } from "@/components/cards-and-items/cards";
 import { fetchAccomplishments, fetchAffiliations, fetchDocuments, fetchExperiences, fetchGPAhidden, fetchPersonalInfo, fetchProjects, fetchSkills, fetchVideo } from "./fetchProfileSections";
 import { BigLi, SmallLi } from "@/components/cards-and-items/listItems";
 import Profile from "./profileSolid.svg"
@@ -9,9 +9,10 @@ import { UserContext } from "../context";
 import WorkIcon from "./work.svg"
 import ProjectIcon from "./project.svg"
 import fakeResponse from "@/utils/fakeResponse";
+import { ButtonTextEnum, QuickApplyTemplate, createButtonStatus } from "@/components/functionalities/quickApply";
 
 export function PersonalInfo() {
-    const {user, setUser} = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
     const {
         name,
         degree,
@@ -23,6 +24,7 @@ export function PersonalInfo() {
         email
     } = useMemo(fetchPersonalInfo, [user]);
     const { GPAhidden } = useMemo(fetchGPAhidden, [user]);
+    // TO-DO: move data fetching to server components
     const cardProps: PassableInfoCardProps = useMemo(() => {
         return {
             title: name,
@@ -51,7 +53,7 @@ export function Documents() {
     return <InfoCard
         title="Documents"
         editFunc={() => { console.log("TO-DO: edit documents") }}
-        >
+    >
         {documents.map(document => <SmallLi text={document.name} url={document.url} key={document.name} />)}
     </InfoCard>
 }
@@ -62,8 +64,8 @@ export function Affiliations() {
 
     return <InfoCard
         title="Affiliations"
-        editFunc={() => {console.log("TO-Do: edit affiliations")}}
-        >
+        editFunc={() => { console.log("TO-Do: edit affiliations") }}
+    >
         {affiliations.map(affiliation => <SmallLi text={affiliation.name} url={affiliation.url} key={affiliation.name} />)}
     </InfoCard>
 }
@@ -82,7 +84,7 @@ export function Experiences() {
                 subtitle={experience.role}
                 note={experience.start + " – " + experience.end}
                 ImgSrc={WorkIcon}
-                />
+            />
         })}
     </InfoCard>
 
@@ -102,7 +104,7 @@ export function Projects() {
                 subtitle={project.description}
                 note={project.start + " – " + project.end}
                 ImgSrc={ProjectIcon}
-                />
+            />
         })}
     </InfoCard>
 
@@ -129,8 +131,8 @@ export function Skills() {
 
     return <InfoCard
         title="Skills"
-        editFunc={() => {console.log("TO-Do: edit skills")}}
-        >
+        editFunc={() => { console.log("TO-Do: edit skills") }}
+    >
         {skills.map(skill => <SmallLi text={skill} url="" key={skill} />)}
     </InfoCard>
 }
@@ -141,64 +143,29 @@ export function Accomplishments() {
 
     return <InfoCard
         title="Accomplishments"
-        editFunc={() => {console.log("TO-Do: edit skills")}}
-        >
+        editFunc={() => { console.log("TO-Do: edit skills") }}
+    >
         {accomplishments.map(accomplishment => <SmallLi text={accomplishment} url="" key={accomplishment} />)}
     </InfoCard>
 }
 
-enum ButtonText {
-    ACTIVATED = "Activated",
-    ACTIVATING = "Activating...",
-    NOT_ACTIVATED = "Quick Apply!"
+
+const buttonTextEnum: ButtonTextEnum = {
+    ACTIVATED: "Activated",
+    ACTIVATING: "Activating...",
+    NOT_ACTIVATED: "Accept Quick Apply!"
 }
 
-export const ButtonStatus = {
-    NOT_ACTIVATED: {
-        buttonText: ButtonText.NOT_ACTIVATED,
-        buttonDisabled: false,
-        buttonActive: false
-    },
-    ACTIVATING: {
-        buttonText: ButtonText.ACTIVATING,
-        buttonDisabled: true,
-        buttonActive: false
-    },
-    ACTIVATED: {
-        buttonText: ButtonText.ACTIVATED,
-        buttonDisabled: false,
-        buttonActive: true
-    }
-};
+const buttonStatus = createButtonStatus(buttonTextEnum);
 
-export function QuickApply() {
-    const [buttonStatus, setButtonStatus] = useState(ButtonStatus.NOT_ACTIVATED);
-
-    const handleClick = () => {
-        setButtonStatus(ButtonStatus.ACTIVATING);
-        fakeResponse().then((res) => {
-            if (res.status === 200) {
-                if (buttonStatus.buttonActive) {
-                    setButtonStatus(ButtonStatus.NOT_ACTIVATED);
-                } else {
-                    setButtonStatus(ButtonStatus.ACTIVATED);
-                }
-            }
-        })
-    }
-
-    return <ActionableCard
-        title="Quick Apply!"
-        buttonProps={{
-            buttonText: buttonStatus.buttonText,
-            buttonAction: handleClick,
-            disabled: buttonStatus.buttonDisabled,
-            active: buttonStatus.buttonActive
-        }}
-    >
-        <p className="note">
-            Your resume, profile information and video will be used for applications that have the Quick Apply function! Save yourself some time!
-        </p>
-    </ActionableCard>
-
+export function QuickApply({ quickApply }: { quickApply: boolean }) {
+    return (
+        <QuickApplyTemplate
+            initialStatus={quickApply ? buttonStatus.ACTIVATED : buttonStatus.NOT_ACTIVATED}
+            buttonStatus={buttonStatus}
+            fetchFunction={fakeResponse} // Replace with the specific fetch function
+            title="Quick Apply!"
+            note="Your resume, profile information and video will be used for applications that have the Quick Apply function! Save yourself some time!"
+        />
+    );
 }

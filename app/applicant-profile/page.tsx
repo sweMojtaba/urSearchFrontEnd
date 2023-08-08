@@ -21,7 +21,8 @@ function Profile() {
             <Col md={12} xl={3} id="lastCol">
                 <Skills />
                 <Accomplishments />
-                <QuickApply />
+                <QuickApply quickApply={true}/>
+                {/* TO-DO: fetch data in server component */}
             </Col>
         </Row>
     </Container>

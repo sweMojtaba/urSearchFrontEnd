@@ -6,12 +6,11 @@ import '@smastrom/react-rating/style.css';
 import styles from "./styles.module.scss"
 import Image from "next/image";
 import { LabInfo, LabKeywords, LabResources } from "./fetchProfileSections";
-import { ActionableCard, InfoCard } from "@/components/cards-and-items/cards";
+import { InfoCard } from "@/components/cards-and-items/cards";
 import { SmallLi } from "@/components/cards-and-items/listItems";
 import { Button } from "react-bootstrap";
-import { useState } from "react";
-import { ButtonStatus } from "../applicant-profile/profileSections";
 import fakeResponse from "@/utils/fakeResponse";
+import { ButtonTextEnum, QuickApplyTemplate, createButtonStatus } from "@/components/functionalities/quickApply";
 
 export function AvgRating({ rating }: { rating: number }) {
     return <div className={styles.avgRating}>
@@ -76,34 +75,22 @@ export function Resources({ data }: { data: LabResources }) {
     </InfoCard>
 }
 
+const buttonTextEnum: ButtonTextEnum = {
+    ACTIVATED: "Activated",
+    ACTIVATING: "Activating...",
+    NOT_ACTIVATED: "Accept Quick Apply!"
+}
+
+const buttonStatus = createButtonStatus(buttonTextEnum);
+
 export function QuickApply({ quickApply }: { quickApply: boolean }) {
-    const [buttonStatus, setButtonStatus] = useState(quickApply ? ButtonStatus.ACTIVATED : ButtonStatus.NOT_ACTIVATED);
-
-    const handleClick = () => {
-        setButtonStatus(ButtonStatus.ACTIVATING);
-        fakeResponse().then((res) => {
-            if (res.status === 200) {
-                if (buttonStatus.buttonActive) {
-                    setButtonStatus(ButtonStatus.NOT_ACTIVATED);
-                } else {
-                    setButtonStatus(ButtonStatus.ACTIVATED);
-                }
-            }
-        }) // TO-DO: replace with actual API call
-    }
-
-    return <ActionableCard
-        title="Accept Quick Applications!"
-        buttonProps={{
-            buttonText: buttonStatus.buttonText,
-            buttonAction: handleClick,
-            disabled: buttonStatus.buttonDisabled,
-            active: buttonStatus.buttonActive
-        }}
-    >
-        <p className="note">
-            In addition to applicant&rsquo;s resume, and Profile information, Receive a Video, in which the applicants try to present themselves and impress you. The video can be used instead of a entry level interview to judge and evaluate the applicant’s values and character.
-        </p>
-    </ActionableCard>
-
+    return (
+        <QuickApplyTemplate
+            initialStatus={quickApply ? buttonStatus.ACTIVATED : buttonStatus.NOT_ACTIVATED}
+            buttonStatus={buttonStatus}
+            fetchFunction={fakeResponse} // Replace with the specific fetch function
+            title="Accepting Quick Applications!"
+            note="In addition to applicant&rsquo;s resume, and Profile information, Receive a Video, in which the applicants try to present themselves and impress you. The video can be used instead of an entry-level interview to judge and evaluate the applicant’s values and character."
+        />
+    );
 }
