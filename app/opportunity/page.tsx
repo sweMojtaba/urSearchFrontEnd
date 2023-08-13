@@ -23,7 +23,6 @@ export default function Page() {
 }
 
 function PostInfo({ data }: { data: Post }) {
-    const accordionHeaders = ["requirements", "responsibilities", "perks", "questions"];
 
     const accordionItems: { [key: string]: string[] } = {
         requirements: data.requirements,
@@ -59,7 +58,9 @@ function PostInfo({ data }: { data: Post }) {
 }
 
 function Applicants({ data }: { data: Applicant[] }) {
-    return <>
+    return <InfoCard
+        title="Applicants"
+    >
         {data.map((applicant, i) => <BigLi
             key={i}
             title={applicant.name}
@@ -67,5 +68,5 @@ function Applicants({ data }: { data: Applicant[] }) {
             note=""
             ImgSrc={applicant.profilePicture}
         />)}
-    </>
+    </InfoCard>
 }

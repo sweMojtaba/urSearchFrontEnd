@@ -220,7 +220,7 @@
     flex-grow: 2;
 }
 
-.accordion-header {
+.accordion-header > button {
     font-family: Cabin;
     font-weight: 700;
     font-style: italic;
