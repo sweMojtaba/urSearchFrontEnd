@@ -48,6 +48,7 @@
     flex: 0 0 auto;
     padding: 0 0 0 1rem;
     width: fit-content;
+    cursor: pointer;
 }
 
 .row > button {
@@ -271,4 +272,166 @@ p {
     flex-direction: column;
     justify-content: center;
     width: 100%;
+}
+
+.popup-hidden {
+    position: absolute;
+    top: -100rem;
+    left: 0;
+    z-index: 1000;
+    padding: 0 5rem;
+}
+
+.popup-visible {
+    @extend .popup-hidden;
+    top: 3.50rem;
+}
+
+.advanced-filters-container {
+    border: 4px solid #FFF;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 1.02343px 1.02343px 8.18742px 0px rgba(0, 0, 0, 0.12);
+    width: 100%;
+    padding: 1rem 2rem;
+    color: #000;
+    font-family: Cabin;
+}
+
+.black {
+    color: #000;
+    border-color: #000;
+}
+
+.black:hover {
+    color: #000;
+    border-color: #000;
+}
+
+.sigma-black {
+    color: black;;
+}
+
+.sigma-black:hover {
+    color: black;;
+}
+
+.form-control .black {
+    padding-left: 0.5rem;
+}
+
+.form-control .black::placeholder {
+    color: #000;
+}
+
+.filter-search-options {
+    font-family: Bebas Neue;
+    font-size: 1.75rem;
+    border: none;
+    color: #000;
+    height: 2rem;
+    background-color: transparent;
+    margin-top: 1rem;
+    width: 80%;
+}
+
+.filter-search-options::placeholder {
+    font-family: Bebas Neue;
+    font-size: 1.75rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.filter-search-options:focus {
+    outline: none;
+}
+
+.form-title {
+    font-size: 1.875rem;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.margin-top {
+    margin-top: 3rem;
+}
+
+.others {
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+}
+
+.checkbox-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkbox-container label {
+    color: #000;
+    font-family: Montserrat;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-left: 1rem;
+}
+
+.checkbox-container input[type="checkbox"] {
+    appearance: none;
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 2px solid #000;
+    border-radius: 0;
+    color: #000;
+    cursor: pointer;
+}
+
+.checkbox-container input[type="checkbox"]:checked {
+    background-color: #000;
+}
+
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.checkbox-container input[type="radio"] {
+    appearance: none;
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 2px solid #000;
+    border-radius: 50%;
+    color: #000;
+    cursor: pointer;
+}
+
+.checkbox-container input[type="radio"]:checked {
+    background-color: #000;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-top: 10rem;
+}
+
+.footer-buttons {
+    display: flex;
+}
+
+.footer-buttons button {
+    font-size: 1.125rem;
+    width: fit-content;
+    padding: 0.25rem 2rem;
+    margin-right: 1rem;
+}
+
+.footer p {
+    font-family: Montserrat;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }

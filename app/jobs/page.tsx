@@ -1,8 +1,9 @@
 "use client";
 
-import { Button, Col, Container, Nav, Row, NavLink } from "@/client-wrappers/bootstrap";
+import { useState } from "react";
+import { Container, Row } from "@/client-wrappers/bootstrap";
+import { SearchBar, ReccomendedCard, SavedJobs, SavedFilters, AdvancedFiltersPopUp } from "./components";
 import "./jobs.scss";
-import { SearchBar, ReccomendedCard, SavedJobs, SavedFilters } from "./components";
 
 // Static data for now
 const reccomendedCardData = [
@@ -12,10 +13,19 @@ const reccomendedCardData = [
     { company: "BioLife Lab", location: "Biochemistry Lab", sigma: false, affiliation: "University of Wisconsin - Madison", typeOfPosition: "Research Assistance", description: "Biochemistry is not all finals with a class average of F, or memorizing 20 pages of formulas. Get experienced through our micro-molecular genome study, and research cancer.", bookmarked: true },
 ];
 
-export default function Jobs() {
+export default function JobsPage() {
+    const [advancedFilterIsVisible, setadvancedFilterIsVisible] = useState(false);
+
+    const advancedFilterStatus = () => {
+        setadvancedFilterIsVisible(true);
+    };
+
     return (
         <Container>
-            <SearchBar />
+            <Row>
+                <AdvancedFiltersPopUp advancedFilterIsVisible={advancedFilterIsVisible} />
+            </Row>
+            <SearchBar advancedFilterStatus={advancedFilterStatus} />
             <h2>Reccomended...</h2>
             <Row>
                 {reccomendedCardData.map((card, index) => {
