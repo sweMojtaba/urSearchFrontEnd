@@ -1,0 +1,274 @@
+.main {
+    padding-bottom: 10rem;
+}
+
+.top-margin {
+    margin-top: 2rem;
+}
+
+.form-control {
+    display: flex;
+    margin-top: 4rem;
+}
+
+.form-search-input {
+    font-family: Bebas Neue;
+    font-weight: 400;
+    letter-spacing: 2px;
+    background-color: transparent;
+    color: #FFF;
+    border: none;
+    outline: none;
+    flex: 1;
+}
+
+.form-search-input:focus {
+    box-shadow: none;
+}
+
+.form-search-input::placeholder {
+    color: #FFF;
+    text-transform: uppercase;
+}
+
+.form-search-input::-webkit-search-decoration,
+.form-search-input::-webkit-search-cancel-button,
+.form-search-input::-webkit-search-results-button,
+.form-search-input::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+}
+
+.pr {
+    flex: 0 0 auto;
+    padding: 0 1rem 0 0;
+    width: fit-content;
+}
+
+.pl {
+    flex: 0 0 auto;
+    padding: 0 0 0 1rem;
+    width: fit-content;
+}
+
+.row > button {
+    width: fit-content;
+    margin: 0.75rem;
+}
+
+.sigma {
+    border-color: #F2C50F;
+}
+
+.sigma:hover {
+    border-color: #F2C50F;
+}
+
+.sigma-img {
+    margin-left: 0.25rem;
+}
+
+h2 {
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Cabin;
+    font-size: 2rem;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.card {
+    height: 18rem;
+    border: 0.25rem solid #FFF;
+    border-radius: 0;
+    padding: 0.625rem;
+    background: rgba(255, 255, 255, 0.30);
+    box-shadow: 1.02343px 1.02343px 8.18742px 0px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-row {
+    display: flex;
+    align-items: center;
+}
+
+h3 {
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Cabin;
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+}
+
+h5 {
+    color: #CF3030;
+    font-family: Montserrat;
+    font-size: 0.4375rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 0.125rem;
+}
+
+.right-aligned {
+    margin-left: 5rem;
+}
+
+.uw-logo {
+    position: relative;
+    top: 3.25rem;
+    left: -1rem;
+    border-radius: 50%;
+    border: 0.25rem solid #FFF;
+    z-index: 100;
+}
+
+h4 {
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 0.5rem 0 0 0;
+}
+
+.affiliation {
+    @extend h4;
+    color: #000;
+    font-size: 0.5rem;
+    text-shadow: none;
+    opacity: 0.8;
+    margin-top: 0;
+}
+
+.position {
+    @extend h4;
+    color: #000;
+    font-size: 0.5rem;
+    text-shadow: none;
+    margin-top: 0.25rem;
+}
+
+p {
+    @extend h4;
+    font-size: 0.5rem;
+}
+
+.saved-jobs-container {
+    border: 0.25rem solid #FFF;
+    padding: 1rem;
+}
+
+.saved-jobs {
+    padding: 2rem 0;
+}
+
+.job-info {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.jobs-left {
+    display: flex;
+    align-items: center;
+}
+
+.jobs-left h6 {
+    font-family: Cabin;
+    font-size: 0.875rem;
+    font-style: italic;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.jobs-left p {
+    font-family: Montserrat;
+    font-size: 0.625rem;
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.jobs-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.jobs-right > p {
+    font-size: 0.6875rem;
+    font-family: Cabin;
+    font-style: italic;
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+
+.small-button {
+    font-size: 1rem;
+    padding: 0 3rem;
+}
+
+.sigma-button {
+    @extend .small-button;
+    border-color: #F2C50F;
+}
+
+.saved-filters-container {
+    border: 0.25rem solid #FFF;
+    padding: 1rem 4rem 1rem 1rem;
+    height: 100%;
+}
+
+.saved-filters {
+    padding: 2rem 0;
+}
+
+.filter-info {
+    display: flex;
+    padding: 0.25rem 0;
+    width: 100%;
+}
+
+.filter-info h6 {
+    font-family: Montserrat;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-decoration-line: underline;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.filter-time {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.filter-info p {
+    opacity: 0.9;
+    font-family: Montserrat;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
