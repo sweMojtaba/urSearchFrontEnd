@@ -1,6 +1,6 @@
 "use client";
 
-import { CardWithImg, InfoCard, PassableInfoCardProps } from "@/components/cards-and-items/cards";
+import { JobCard } from "@/components/cards-and-items/cards";
 import { SearchBarWithAdvancedFilters } from "@/components/functionalities/filters";
 
 import { BigLi } from "@/components/cards-and-items/listItems";
@@ -47,34 +47,18 @@ const reccomendedCardData = [
     description:
       "Commissioned by the federal government, our internship program provides top of the industry experience in software security, through private contracts with leading tech giants.",
     bookmarked: false,
-  },
-  {
-    company: "BioLife Lab",
-    location: "Biochemistry Lab",
-    sigma: false,
-    affiliation: "University of Wisconsin - Madison",
-    typeOfPosition: "Research Assistance",
-    description:
-      "Biochemistry is not all finals with a class average of F, or memorizing 20 pages of formulas. Get experienced through our micro-molecular genome study, and research cancer.",
-    bookmarked: true,
-  },
+  }
 ];
 
 export default function Opportunities() {
     return (
         <Container className="medium-content">
-            {/* <Container>
-                <Row>
-                    <AdvancedFiltersPopUp advancedFilterIsVisible={advancedFilterIsVisible} />
-                </Row>
-            <SearchBar advancedFilterStatus={advancedFilterStatus} />
-            </Container> */}
-
             <SearchBarWithAdvancedFilters />
 
+
             <Row>
-                <Col sm={10}>
-                    <h3>Results</h3>
+                <Col sm={9}>
+                    <h2>Results:</h2>
                     <BigLi
                         title="Research Assistant"
                         subtitle="Posted on 2021-01-01"
@@ -84,16 +68,15 @@ export default function Opportunities() {
                     />
                 </Col>
                 <Col>
-                    <h3>Top Matches</h3>
+                    <h2>Top Matches:</h2>
+                    <Col>
+                      {reccomendedCardData.map((card, index) => {
+                          return <JobCard key={index} company={card.company} location={card.location} sigma={card.sigma} affiliation={card.affiliation} typeOfPosition={card.typeOfPosition} description={card.description} bookmarked={card.bookmarked} />;
+                      })}
+                    </Col>
                 </Col>
             </Row>
-            <Link
-                href="/post-opportunity"
-                className={styles.pageEndButton + " button-link"}
-            >
-                <Button>Post New Opportunity</Button>
-            </Link>
-            <h3>"Propose Idea" listings are ...</h3>
+            <h2>“Propose Idea” listings are an opportunity for you to share your Research or Innovation with a recruiting team and if accepted, use their resources and collaborate with them to bring your idea to Life.</h2>
         </Container>
     );
 }

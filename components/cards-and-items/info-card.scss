@@ -57,3 +57,68 @@
     color: #72F07F;
     border-color: #72F07F;
 }
+
+.right-aligned {
+    margin-left: 5rem;
+}
+
+// This is currently the logo for every profile picture.
+// Do we need to change this when we eventually put real photos in?
+.uw-logo {
+    position: relative;
+    top: 3.25rem;
+    left: -1rem;
+    border-radius: 50%;
+    border: 0.25rem solid #FFF;
+    z-index: 100;
+}
+
+.card {
+    height: 18rem;
+    border: 0.25rem solid #FFF;
+    border-radius: 0;
+    padding: 0.625rem;
+    background: rgba(255, 255, 255, 0.30);
+    box-shadow: 1.02343px 1.02343px 8.18742px 0px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-row {
+    display: flex;
+    align-items: center;
+}
+
+h4 {
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 0.5rem 0 0 0;
+}
+
+p {
+    @extend h4;
+    font-size: 0.5rem;
+}
+
+.affiliation {
+    @extend h4;
+    color: #000;
+    font-size: 0.5rem;
+    text-shadow: none;
+    opacity: 0.8;
+    margin-top: 0;
+}
+
+.position {
+    @extend h4;
+    color: #000;
+    font-size: 0.5rem;
+    text-shadow: none;
+    margin-top: 0.25rem;
+}
