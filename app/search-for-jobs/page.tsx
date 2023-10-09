@@ -5,17 +5,9 @@ import { SearchBarWithAdvancedFilters } from "@/components/functionalities/filte
 
 import { BigLi } from "@/components/cards-and-items/listItems";
 import WorkIcon from "../applicant-profile/work.svg";
-import { Button, Container, Col, Row } from "@/client-wrappers/bootstrap";
+import { Container, Col, Row } from "@/client-wrappers/bootstrap";
 
-import { useState } from "react";
-import Link from "next/link";
-
-import Image from "react-bootstrap/Image";
-
-// import Row from "react-bootstrap/Row";
-// import Col from "react-bootstrap/Col";
-
-import styles from "./styles.module.scss";
+import "./search-for-jobs.scss";
 
 const reccomendedCardData = [
   {
@@ -54,10 +46,8 @@ export default function Opportunities() {
     return (
         <Container className="medium-content">
             <SearchBarWithAdvancedFilters />
-
-
             <Row>
-                <Col sm={9}>
+                <Col sm={9} className="results">
                     <h2>Results:</h2>
                     <BigLi
                         title="Research Assistant"
