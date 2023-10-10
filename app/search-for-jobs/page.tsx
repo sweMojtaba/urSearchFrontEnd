@@ -2,9 +2,6 @@
 
 import { JobCard, JobResultCard } from "@/components/cards-and-items/cards";
 import { SearchBarWithAdvancedFilters } from "@/components/functionalities/filters";
-
-import { BigLi } from "@/components/cards-and-items/listItems";
-import WorkIcon from "../applicant-profile/work.svg";
 import { Container, Col, Row } from "@/client-wrappers/bootstrap";
 
 import "./search-for-jobs.scss";
