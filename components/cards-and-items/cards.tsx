@@ -125,3 +125,25 @@ export function JobCard({ company, location, sigma, affiliation, typeOfPosition,
         </Col>
     );
 }
+
+export function JobResultCard() {
+    let viewPercentage = true;
+    return (
+        <Row className="job-results-card">
+            <Col className="card-row">
+                <Image src={"/uw-logo.png"} alt="UW Madison Logo" width={60} height={60} className="job-results-photo" />
+                <Col>
+                    <h3>Lab Name</h3>
+                    <h4><i>Research Assistant</i></h4>
+                </Col>
+            </Col>
+            <Col lg={5} className="job-results-end">
+                {viewPercentage ? <h3>70%</h3> : <></>}
+                <div className="job-results-see-more">
+                    <Button>See More</Button>
+                </div>
+                <Image src={true ? "/bookmark-filled.png" : "/bookmark-empty.png"} alt="Bookmark Status" width={36} height={36} className="bookmark-icon" />
+            </Col>
+        </Row>
+    );
+}

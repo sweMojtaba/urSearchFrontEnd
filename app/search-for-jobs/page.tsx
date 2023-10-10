@@ -1,6 +1,6 @@
 "use client";
 
-import { JobCard } from "@/components/cards-and-items/cards";
+import { JobCard, JobResultCard } from "@/components/cards-and-items/cards";
 import { SearchBarWithAdvancedFilters } from "@/components/functionalities/filters";
 
 import { BigLi } from "@/components/cards-and-items/listItems";
@@ -47,15 +47,11 @@ export default function Opportunities() {
         <Container className="medium-content">
             <SearchBarWithAdvancedFilters />
             <Row>
-                <Col sm={9} className="results">
-                    <h2>Results:</h2>
-                    <BigLi
-                        title="Research Assistant"
-                        subtitle="Posted on 2021-01-01"
-                        note="5 Applicants"
-                        url="/job?id=1"
-                        ImgSrc={WorkIcon}
-                    />
+                <Col md={12} lg={8} className="results-box">
+                    <h2 id="title">Results:</h2>
+                    {Array.from({ length: 12 }, (_, index) => (
+                        <JobResultCard key={index} />
+                    ))}
                 </Col>
                 <Col>
                     <h2>Top Matches:</h2>
