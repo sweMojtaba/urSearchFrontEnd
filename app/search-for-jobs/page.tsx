@@ -43,23 +43,26 @@ export default function Opportunities() {
     return (
         <Container className="medium-content">
             <SearchBarWithAdvancedFilters />
-            <Row>
-                <Col md={12} lg={8} className="results-box">
+            <div id="jobs-container">
+                <div id="results-container">
                     <h2 id="title">Results:</h2>
                     {Array.from({ length: 12 }, (_, index) => (
                         <JobResultCard key={index} />
                     ))}
-                </Col>
-                <Col>
-                    <h2>Top Matches:</h2>
-                    <Col>
+                </div>
+                <div id="top-matches-container">
+                    <h2 id="top-matches">Top Matches:</h2>
+                    <div>
                       {reccomendedCardData.map((card, index) => {
                           return <JobCard key={index} company={card.company} location={card.location} sigma={card.sigma} affiliation={card.affiliation} typeOfPosition={card.typeOfPosition} description={card.description} bookmarked={card.bookmarked} />;
                       })}
-                    </Col>
-                </Col>
-            </Row>
-            <h2>“Propose Idea” listings are an opportunity for you to share your Research or Innovation with a recruiting team and if accepted, use their resources and collaborate with them to bring your idea to Life.</h2>
+                    </div>
+                </div>
+            </div>
+            <div id="footer">
+              <h1 id="exclamation">!</h1>
+              <h2>“Propose Idea” listings are an opportunity for you to share your Research or Innovation with a recruiting team and if accepted, use their resources and collaborate with them to bring your idea to Life.</h2>
+            </div>
         </Container>
     );
 }

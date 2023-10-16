@@ -101,7 +101,7 @@ interface JobCardProps {
 
 export function JobCard({ company, location, sigma, affiliation, typeOfPosition, description, bookmarked }: JobCardProps) {
     return (
-        <Col>
+        <div className="job-card">
             <Image src={"/uw-logo.png"} alt="UW Madison Logo" width={96} height={96} className="uw-logo" />
             <div className="card">
                 <div>
@@ -122,28 +122,28 @@ export function JobCard({ company, location, sigma, affiliation, typeOfPosition,
                     <Image src={bookmarked ? "/bookmark-filled.png" : "/bookmark-empty.png"} alt="Bookmark Status" width={36} height={36} className="bookmark-icon" />
                 </div>
             </div>
-        </Col>
+        </div>
     );
 }
 
 export function JobResultCard() {
     let viewPercentage = true;
     return (
-        <Row className="job-results-card">
-            <Col className="card-row">
-                <Image src={"/uw-logo.png"} alt="UW Madison Logo" width={60} height={60} className="job-results-photo" />
+        <div className="job-results-card">
+            <div className="card-row">
+                <Image src={"/uw-logo.png"} alt="UW Madison Logo" width={50} height={50} className="job-results-photo" />
                 <Col>
                     <h3>Lab Name</h3>
                     <h4><i>Research Assistant</i></h4>
                 </Col>
-            </Col>
-            <Col lg={5} className="job-results-end">
-                {viewPercentage ? <h3>70%</h3> : <></>}
-                <div className="job-results-see-more">
-                    <Button>See More</Button>
+            </div>
+            <div className="job-results-end">
+                {viewPercentage ? <h3 className="job-results-percentage">70%</h3> : <></>}
+                <div>
+                    <Button className="job-results-see-more">See More</Button>
                 </div>
-                <Image src={true ? "/bookmark-filled.png" : "/bookmark-empty.png"} alt="Bookmark Status" width={36} height={36} className="bookmark-icon" />
-            </Col>
-        </Row>
+                <Image src={true ? "/bookmark-filled.png" : "/bookmark-empty.png"} alt="Bookmark Status" width={36} height={36} className="job-results-bookmark" />
+            </div>
+        </div>
     );
 }
