@@ -2,7 +2,8 @@
 
 import { JobCard, JobResultCard } from "@/components/cards-and-items/cards";
 import { SearchBarWithAdvancedFilters } from "@/components/functionalities/filters";
-import { Container, Col, Row } from "@/client-wrappers/bootstrap";
+import { Container } from "@/client-wrappers/bootstrap";
+
 
 import "./search-for-jobs.scss";
 
