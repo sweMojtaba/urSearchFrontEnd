@@ -27,7 +27,7 @@
 }
 
 .status-board {
-    width: 75%; 
+    width: 70%; 
     border: white solid; 
     .status-job {
         display: flex; 
@@ -38,7 +38,7 @@
 }
 
 .more-opportunity {
-    border: white solid; 
+    border: white solid;  
 }
 
 .job-board {
@@ -53,7 +53,7 @@
     border-bottom: white solid; 
     font-size: 24px; 
     padding-left: 20px; 
-    font-family: Cabin;
+    font-family: Bebas Neue;
 }
 
 .search-field::placeholder {
@@ -76,4 +76,8 @@
 
 .more-opportunity {
     margin-bottom: 30px;
+}
+
+.more-opportunity-board {
+    width: 25%; 
 }

@@ -99,10 +99,12 @@ const moreOpportunitiesData = [
 export function SimilarOpportunities() {
     const displayList = moreOpportunitiesData.map((job) =>
     <div className="more-opportunity">
-        <div>{job.company}</div>
-        <div>{job.position.toUpperCase()}</div>
-        <div>{job.affiliation.toUpperCase()}</div>
-        <div>{job.type.toUpperCase()}</div>
+        <div style={{fontFamily: "Cabin", fontStyle: "italic", fontSize: "30px"}}>{job.company}</div>
+        <div style={{fontSize: "8px"}}>{job.position.toUpperCase()}</div>
+        <div style={{fontSize: "9px"}}>{job.affiliation.toUpperCase()}</div>
+        <div style={{fontSize: "11px"}}>{job.type.toUpperCase()}</div>
+        <div style={{fontSize: "14px"}}>DESCRIPTION</div>
+        <div style={{fontSize: "11px"}}>{job.description.toUpperCase()}</div>
         <Button>See More</Button>
     </div>
     );
