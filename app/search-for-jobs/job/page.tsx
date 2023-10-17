@@ -88,7 +88,7 @@ export default function Job() {
                     <h2>&lt; Back to List</h2>
                 </div>
                 <div>
-                    <h2>Next &gt;</h2>
+                    <h2>Next Job &gt;</h2>
                 </div>
             </div>
         </Container>
