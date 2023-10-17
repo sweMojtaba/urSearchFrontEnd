@@ -123,12 +123,13 @@ h4 {
     justify-content: space-between;
 }
 
-// #job-buttons button {
-//     margin: 1em 0em;
-//     display: flex;
-//     justify-content: center;
-// }
+#job-buttons div {
+    margin: 1em 0em;
+    display: flex;
+    justify-content: center;
+}
 
-// #job-buttons button * {
-//     font-size: 1em;
-// }
+#job-buttons div h2 {
+    font-size: 2em;
+    margin: auto;
+}

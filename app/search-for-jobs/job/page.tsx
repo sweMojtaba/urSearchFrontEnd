@@ -84,14 +84,12 @@ export default function Job() {
                 </div>
             </div>
             <div id="job-buttons">
-                <Button>
-                    <h1>&lt;</h1>
-                    <h1>Back to List</h1>
-                </Button>
-                <Button>
-                    <h1>Next</h1>
-                    <h1>&gt;</h1>
-                </Button>
+                <div>
+                    <h2>&lt; Back to List</h2>
+                </div>
+                <div>
+                    <h2>Next &gt;</h2>
+                </div>
             </div>
         </Container>
     );
