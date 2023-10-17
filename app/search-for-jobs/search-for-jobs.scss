@@ -1,10 +1,51 @@
-.results-box {
+#jobs-container {
+    display: grid;
+    grid-template-columns: 75% 25%;
+
+    // When the screen is smaller than 992px, change the grid to a single column
+    @media (max-width: 992px) {
+        grid-template-columns: 100%;
+    }
+} 
+
+#results-container {
     border: 4px solid #fff;
-    padding: 1em;
+    padding: 2em;
     font-size: smaller;
     margin: 0em 2em 0em 0em;
+
+    // When screen is smaller than 992px, remove the right margin
+    @media (max-width: 992px) {
+        margin: 0em;
+    }
 }
 
 #title {
     margin: 0.5em;
+}
+
+#top-matches-container {
+    display: block;
+
+    // When the screen is smaller than 992px, hide the top matches
+    @media (max-width: 992px) {
+        display: none;
+    }
+}
+
+#top-matches {
+    font-weight: bold;
+    border-bottom: 8px solid rgba(12, 74, 110, 0.5);
+    padding-bottom: 0.5em;
+}
+
+#footer {
+    display: flex;
+    align-items: center;
+    margin-top: -1rem;
+}
+
+#exclamation {
+    font-size: 10em;
+    margin-right: 0.1em;
 }
