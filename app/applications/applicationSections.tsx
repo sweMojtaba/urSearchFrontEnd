@@ -1,4 +1,9 @@
 import { Button } from "@/client-wrappers/bootstrap"
+import { JobCard, JobResultCard } from "@/components/cards-and-items/cards";
+import { SearchBarWithAdvancedFilters } from "@/components/functionalities/filters";
+import { Container, Col, Row } from "@/client-wrappers/bootstrap";
+import Image from "next/image";
+
 
 export function SearchBar() {
     return <div>
@@ -40,7 +45,7 @@ const statusData = [
         company: "Telesec Labs", 
         position: "Data Analyst", 
         date: "4/13/2023", 
-        status: "Accepted",
+        status: "Rejected",
         sigma: true
     }
 ];
@@ -69,7 +74,7 @@ export function StatusBoard() {
 const moreOpportunitiesData = [
     {
         company: "ResNet Labs", 
-        position: "Machine Learning Lab", 
+        location: "Machine Learning Lab", 
         affiliation: "University of Wisconsin - Madison", 
         type: "Research Opportunity", 
         description: "AI is taking over the modern world, and we are a part of it. ResNet Labs have been a part of leading research in AI and Machine Learning for over 3 decades",
@@ -78,7 +83,7 @@ const moreOpportunitiesData = [
     }, 
     {
         company: "TechSec", 
-        position: "Software Security Lab", 
+        location: "Software Security Lab", 
         affiliation: "University of Wisconsin - Madison", 
         type: "Internship", 
         description: "Commissioned by the federal government, our internship program provides top of the industry experience in software security, through private contracts with leading tech giants.",
@@ -87,7 +92,7 @@ const moreOpportunitiesData = [
     }, 
     {
         company: "BioLife Lab", 
-        position: "Biochemisty Lab", 
+        location: "Biochemisty Lab", 
         affiliation: "University of Wisconsin - Madison", 
         type: "Research Assistance", 
         description: "Biochemistry is not all finals with a class average of F, or memorizing 20 pages of formulas. Get experienced through our micro-molecular genome study, and research cancer.",
@@ -114,4 +119,42 @@ export function SimilarOpportunities() {
         {displayList}
     </div>
     )
+}
+
+export function SimilarOpportunity() {
+    return (
+    <div className="more-opportunity-board">
+    <h2>Similar Opportunities</h2>
+    <Col>
+        {moreOpportunitiesData.map((card, index) => {
+            return <JobCard key={index} company={card.company} location={card.location} sigma={card.sigma} affiliation={card.affiliation} typeOfPosition={card.position} description={card.description} bookmarked={card.saved} />;
+        })}
+    </Col>
+    </div>
+    )
+}
+
+export function JobStatusCards() {
+    const displayList = statusData.map(card => 
+        <Row className="job-results-card">
+        <Col className="card-row">
+            <Image src={"/uw-logo.png"} alt="UW Madison Logo" width={60} height={60} className="job-results-photo" />
+            <Col>
+                <h5><i>{card.company.toUpperCase()}</i> {card.sigma && <Image src={"/sigma.png"} alt="Sigma" width={24} height={24} className="sigma-img" />}</h5>
+                <h4><i>{card.position}</i></h4>
+            </Col>
+        </Col>
+        <Col lg={5} className="job-results-end">
+            <Col>
+                <p>{card.date}</p>
+                <h3><i>{card.status.toUpperCase()}</i></h3>
+            </Col>
+        </Col>
+    </Row>)
+    
+    return (<div className="status-board">
+        <h2>Application Status</h2>
+        {displayList}
+    </div>
+    );
 }
