@@ -1,0 +1,91 @@
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+    #lastCol {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    #lastCol > * {
+        margin: 0 0.5rem;
+    }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,600;1,600&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Iceberg&display=swap');
+
+.scroll-page {
+    margin-bottom: 2rem;
+    margin-top: 2rem
+}
+
+.option-list {
+    display: flex; 
+}
+
+.search-field {
+    width: 100%; 
+}
+
+.status-board {
+    width: 70%; 
+    border: white solid; 
+    .status-job {
+        display: flex; 
+        justify-content: space-between; 
+        border-bottom: black solid; 
+    }
+    padding: 20px; 
+}
+
+.more-opportunity {
+    border: white solid;  
+}
+
+.job-board {
+    display: flex; 
+    justify-content: space-between;
+}
+
+.search-field {
+    background-color: inherit; 
+    color: white; 
+    border: none; 
+    border-bottom: white solid; 
+    font-size: 24px; 
+    padding-left: 20px; 
+    font-family: Bebas Neue;
+}
+
+.search-field::placeholder {
+    background-color: inherit; 
+    color: white; 
+    border: none; 
+    font-size: 24px; 
+    font-family: inherit;
+}
+
+.option-list {
+    flex-wrap: wrap; 
+    justify-content: start;
+    button {
+        width: 180px; 
+        height: 40px; 
+    }
+    font-family: Cabin; 
+}
+
+.more-opportunity {
+    margin-top: 30px;
+}
+
+.more-opportunity-board {
+    width: 25%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.job-results-end {
+    text-align: right;
+}
