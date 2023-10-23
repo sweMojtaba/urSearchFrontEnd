@@ -28,9 +28,9 @@ export function SearchBar() {
 }
 
 const proposalData = [
-    { name: "Mojtaba Javid", title: "Osteoblasts Cell Regeneration", date: "4/13/2023", image: "/_next/static/media/schoolIconPlaceholder.7d1493fd.png", id: 0 },
+    { name: "Mojtaba Javid", title: "Osteoblasts Cell Regeneration", date: "4/13/2023", image: "uw-logo.png", id: 0 },
     { name: "Heisenberg", title: "Study of Blue Crystals", date: "4/13/2023", id: 1 },
-    { name: "Mojtaba Javid", title: "Brainwave Communication Study", date: "4/11/2023", image: "/_next/static/media/schoolIconPlaceholder.7d1493fd.png", id: 2 },
+    { name: "Mojtaba Javid", title: "Brainwave Communication Study", date: "4/11/2023", image: "uw-logo.png", id: 2 },
 ];
 
 export function ProposalList() {

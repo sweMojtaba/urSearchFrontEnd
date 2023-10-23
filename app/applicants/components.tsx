@@ -29,7 +29,7 @@ export function SearchBar() {
 }
 
 const applicantData = [
-    { name: "Mojtaba Javid", date: "4/13/2023", percent: "84", image: "/_next/static/media/schoolIconPlaceholder.7d1493fd.png", id: 0 },
+    { name: "Mojtaba Javid", date: "4/13/2023", percent: "84", image: "uw-logo.png", id: 0 },
     { name: "Frank Taylor", date: "4/13/2023", percent: "77", id: 1 },
     { name: "Marie Curie", date: "4/11/2023", percent: "71", id: 2 },
     { name: "Niel Guy", date: "3/1/2023", percent: "63", id: 3 },
@@ -86,6 +86,48 @@ export function TopMatches() {
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0.25481 -8.59499e-05H903.744V10H0.25481V-8.59499e-05Z" fill="black" fill-opacity="0.1" />
                 </svg>
             </div>
+            {topMatchData.map((student) => (
+                <TopMatchItem key={student.id} name={student.name} degree={student.degree} school={student.school} gradYear={student.gradYear} phone={student.phone} email={student.email} quickApplicant={student.quickApplicant} percent={student.percent} image={student.image} />
+            ))}
         </>
+    );
+}
+
+const topMatchData = [
+    { name: "Mojtaba Javid", degree: "BS. Computer Sciences", school: "University of Wisconsin - Madison", gradYear: 2024, phone: "(608) 572-8750", email: "javid2@wisc.edu", quickApplicant: true, percent: 84, image: "uw-logo.png", id: 0 },
+    { name: "Frank Taylor", degree: "BS. Biology", school: "University of Wisconsin - Madison", gradYear: 2025, phone: "(608) 572-8750", email: "ftaylor@wisc.edu", quickApplicant: true, percent: 77, id: 1 },
+    { name: "Marie Curie", degree: "BS. Chemistry", school: "University of Wisconsin - Madison", gradYear: 2024, phone: "(608) 572-8750", email: "macrurie@wisc.edu", quickApplicant: false, percent: 71, id: 2 },
+];
+
+interface TopMatchItemInterface {
+    name: string;
+    degree: string;
+    school: string;
+    gradYear: number;
+    phone: string;
+    email: string;
+    quickApplicant: boolean;
+    percent: number;
+    image?: string;
+}
+
+function TopMatchItem({ name, degree, school, gradYear, phone, email, quickApplicant, percent, image }: TopMatchItemInterface) {
+    return (
+        <div className="top-applicant-container">
+            <Image alt="profile picture" src={image ? image : "/_next/static/media/profile.420b852d.svg"} width={96} height={96} className={image ? "img-border" : ""}></Image>
+            <div className="right-aligned">
+                <h4>{name}</h4>
+                <h6>{degree}</h6>
+            </div>
+            <p className="mt">{school}</p>
+            <p>{gradYear}</p>
+            <p className="mt">{phone}</p>
+            <p>{email}</p>
+            {quickApplicant && <p className="quick-applicant">Quick Applicant</p>}
+            <div className="footer">
+                <Button>Review Profile</Button>
+                <p>%{percent}</p>
+            </div>
+        </div>
     );
 }
