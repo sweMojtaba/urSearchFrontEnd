@@ -128,22 +128,57 @@ export function JobCard({ company, location, sigma, affiliation, typeOfPosition,
 
 export function JobResultCard() {
     let viewPercentage = true;
+
     return (
-        <div className="job-results-card">
+        <div className="results-card">
             <div className="card-row">
-                <Image src={"/uw-logo.png"} alt="UW Madison Logo" width={50} height={50} className="job-results-photo" />
+                <Image src={"/uw-logo.png"} alt="UW Madison Logo" width={50} height={50} className="results-photo" />
                 <Col>
                     <h3>Lab Name</h3>
                     <h4><i>Research Assistant</i></h4>
                 </Col>
             </div>
-            <div className="job-results-end">
-                {viewPercentage ? <h3 className="job-results-percentage">70%</h3> : <></>}
+            <div className="results-end">
+                {viewPercentage ? <h3 className="results-percentage">70%</h3> : <></>}
                 <div>
-                    <Button className="job-results-see-more">See More</Button>
+                    <Button className="results-button">See More</Button>
                 </div>
-                <Image src={true ? "/bookmark-filled.png" : "/bookmark-empty.png"} alt="Bookmark Status" width={36} height={36} className="job-results-bookmark" />
+                <Image src={true ? "/bookmark-filled.png" : "/bookmark-empty.png"} alt="Bookmark Status" width={36} height={36} className="results-bookmark" />
             </div>
         </div>
     );
 }
+
+export function OpportunityResultCard() {
+    let allowEdit = true;
+    let isSigma = true;
+
+    return (
+        <div className="results-card">
+            <div className="card-row">
+                <Image src={"/uw-logo.png"} alt="UW Madison Logo" width={50} height={50} className="results-photo-opportunity" />
+                <Col>
+                    <div className="results-title">
+                        <h3><i>Lab Name</i></h3>
+                        {isSigma && <Image src={"/sigma.png"} alt="Sigma" width={24} height={24} className="results-sigma" />}
+                    </div>
+                    <h4>Research Assistant</h4>
+                </Col>
+            </div>
+            <div className="results-end-opportunity">
+                {allowEdit ? 
+                    <div>
+                        <Button className="results-button-opportunity">Edit</Button>
+                    </div>
+                    :
+                    <>
+                    </>
+                }
+                <div>
+                    <Button className="results-button-opportunity">View Applicants</Button>
+                </div>
+            </div>
+        </div>
+    );
+}
+
