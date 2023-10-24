@@ -1,0 +1,80 @@
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+    #lastCol {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    #lastCol > * {
+        margin: 0 0.5rem;
+    }
+}
+
+.scroll-page {
+    margin-bottom: 2rem;
+    margin-top: 2rem
+}
+
+.white-bg {
+    background-color: rgba(#FFF, 0.3);
+}
+
+.interview, .interview:hover {
+    color: #FFC700;
+    border-color: #FFC700;
+}
+
+.accept, .accept:hover {
+    color: #24FF00;
+    border-color: #24FF00;
+}
+
+.reject, .reject:hover {
+    color: #FF6060;
+    border-color: #FF6060;
+}
+
+.email-container {
+    background-color: #FFF;
+    padding: 1rem;
+    color: #000;
+    font-family: Bebas Neue;
+    font-size: 2rem;
+    letter-spacing: 2px;
+}
+
+.email-container h5 {
+    color: #000;
+    font-family: Bebas Neue;
+    font-size: 2.25rem;
+    letter-spacing: 2px;
+    text-shadow: none;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.email-container p {
+    color: #000;
+    font-family: Bebas Neue;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    text-shadow: none;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.email-container button, .email-container button:hover {
+    color: #000;
+    border-color: #000;
+    width: 75%;
+    max-width: none;
+    padding: 0;
+    font-family: Bebas Neue;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    text-shadow: none;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

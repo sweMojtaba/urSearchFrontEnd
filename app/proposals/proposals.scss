@@ -1,0 +1,100 @@
+.main {
+    padding-bottom: 10rem;
+}
+
+.top-margin {
+    margin-top: 2rem;
+}
+
+.form-control {
+    display: flex;
+    margin-top: 4rem;
+}
+
+.form-search-input {
+    font-family: Bebas Neue;
+    font-weight: 400;
+    letter-spacing: 2px;
+    background-color: transparent;
+    color: #FFF;
+    border: none;
+    outline: none;
+    flex: 1;
+}
+
+.form-search-input:focus {
+    box-shadow: none;
+}
+
+.form-search-input::placeholder {
+    color: #FFF;
+    text-transform: uppercase;
+}
+
+.form-search-input::-webkit-search-decoration,
+.form-search-input::-webkit-search-cancel-button,
+.form-search-input::-webkit-search-results-button,
+.form-search-input::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+}
+
+.pr {
+    flex: 0 0 auto;
+    padding: 0 1rem 0 0;
+    width: fit-content;
+}
+
+.row > button {
+    width: fit-content;
+    margin: 0.75rem;
+}
+
+.proposal-container {
+    border: 0.25rem solid #FFF;
+    margin-top: 3rem;
+    padding: 1rem;
+}
+
+.proposal-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.proposals-left {
+    display: flex;
+    align-items: center;
+}
+
+.proposals-left h6 {
+    font-family: Cabin;
+    font-size: 0.875rem;
+    font-style: italic;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.proposals-left p {
+    font-family: Montserrat;
+    font-size: 0.625rem;
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.proposals-right {
+    display: flex;
+}
+
+.proposals-right button {
+    margin: 1.5rem 0.5rem 0.5rem 0;
+    width: fit-content;
+}
+
+.profile-picture {
+    border-radius: 50%;
+    margin-right: 1rem;
+}
