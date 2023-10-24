@@ -3,7 +3,7 @@ import WorkIcon from "../applicant-profile/work.svg"
 import { Button, Container } from "@/client-wrappers/bootstrap";
 import Link from "next/link";
 
-import { JobResultCard, OpportunityResultCard } from "@/components/cards-and-items/cards";
+import { OpportunityResultCard } from "@/components/cards-and-items/cards";
 
 import styles from "./styles.module.scss";
 import "./global_styles_override.scss";

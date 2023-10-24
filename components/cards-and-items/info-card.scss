@@ -147,6 +147,11 @@ p {
     @media (max-width: 992px) {
         grid-template-columns: 50% 50%;
     }
+
+    &-opportunity {
+        @extend .results-card;
+        border-bottom: 0.6em solid rgba(12, 74, 110, 0.3);
+    }
 }
 
 .results-photo {

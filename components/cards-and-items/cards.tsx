@@ -133,7 +133,7 @@ export function JobResultCard() {
         <div className="results-card">
             <div className="card-row">
                 <Image src={"/uw-logo.png"} alt="UW Madison Logo" width={50} height={50} className="results-photo" />
-                <Col>
+                <Col className="results-title-container">
                     <h3>Lab Name</h3>
                     <h4><i>Research Assistant</i></h4>
                 </Col>
@@ -154,10 +154,10 @@ export function OpportunityResultCard() {
     let isSigma = true;
 
     return (
-        <div className="results-card">
+        <div className="results-card-opportunity">
             <div className="card-row">
                 <Image src={"/uw-logo.png"} alt="UW Madison Logo" width={50} height={50} className="results-photo-opportunity" />
-                <Col>
+                <Col className="results-title-container">
                     <div className="results-title">
                         <h3><i>Lab Name</i></h3>
                         {isSigma && <Image src={"/sigma.png"} alt="Sigma" width={24} height={24} className="results-sigma" />}
