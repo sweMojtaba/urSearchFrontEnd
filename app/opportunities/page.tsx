@@ -1,5 +1,3 @@
-import { BigLi } from "@/components/cards-and-items/listItems";
-import WorkIcon from "../applicant-profile/work.svg"
 import { Button, Container } from "@/client-wrappers/bootstrap";
 import Link from "next/link";
 
