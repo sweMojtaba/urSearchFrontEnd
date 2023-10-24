@@ -1,7 +1,7 @@
 "use client"; // needed because I need to pass a function to cards
 
 import { CardWithImg, InfoCard, PassableInfoCardProps } from "@/components/cards-and-items/cards";
-import { fetchAccomplishments, fetchAffiliations, fetchDocuments, fetchExperiences, fetchGPAhidden, fetchPersonalInfo, fetchProjects, fetchSkills, fetchVideo, fetchApplicationInfo } from "./fetchProposalData";
+import { fetchAffiliations, fetchDocuments, fetchGPAhidden, fetchPersonalInfo, fetchVideo } from "./fetchProposalData";
 import { BigLi, SmallLi } from "@/components/cards-and-items/listItems";
 import Profile from "./profileSolid.svg";
 import { useContext, useMemo, useState } from "react";
@@ -44,12 +44,20 @@ export function PersonalInfo() {
     );
 }
 
+export function More() {
+    return (
+        <InfoCard title="More...">
+            <Button>View Profile</Button>
+        </InfoCard>
+    );
+}
+
 export function Documents() {
     const documents = useMemo(fetchDocuments, []);
 
     return (
         <InfoCard
-            title="Documents"
+            title="Proposal and Documents"
             editFunc={() => {
                 console.log("TO-DO: edit documents");
             }}
@@ -84,7 +92,7 @@ export function Video(): JSX.Element {
 
     return (
         <InfoCard
-            title="Let me introduce myself..."
+            title="Proposal Video"
             editFunc={() => {
                 console.log("TO-DO: edit video");
             }}

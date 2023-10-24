@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Col, Container, Row } from "@/client-wrappers/bootstrap";
-import { Affiliations, Documents, PersonalInfo, Video, Shadow, FunctionButtons, Email } from "./components";
+import { Affiliations, Documents, PersonalInfo, Video, Shadow, FunctionButtons, Email, More } from "./components";
 // import { withApplicantExclusion } from "@/utils/withUserExclusion";
 
 function ReviewProfile() {
@@ -31,15 +31,14 @@ function ReviewProfile() {
                     </Col>
                 ) : (
                     <>
-                        <Col md={4} xl={3}>
+                        <Col md={3}>
                             <PersonalInfo />
                             <Affiliations />
+                            <More />
                         </Col>
-                        <Col md={8} xl={6}>
-                            <Video />
-                        </Col>
-                        <Col md={12} xl={3} id="lastCol">
+                        <Col md={9} id="lastCol">
                             <Documents />
+                            <Video />
                         </Col>
                     </>
                 )}
