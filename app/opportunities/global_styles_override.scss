@@ -1,0 +1,14 @@
+// Custom CSS global override.
+
+.bg-primary { // Modifies the background color of the header
+    background-color: #0DA1CF !important;
+}
+
+.main { // Modifies the background color of the main content area
+    background: linear-gradient(#0DA1CF, #2A5D99);
+}
+
+.btn-primary {
+    max-width: 1000rem; // Allows the buttons to be wide
+    width: 80%;
+}
