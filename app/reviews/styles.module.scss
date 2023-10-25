@@ -1,0 +1,78 @@
+@use "@/app/globalStyles.scss";
+
+.scrollPage {
+    margin-bottom: 2rem;
+    margin-top: 2rem
+}
+
+.poster {
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    right: 0;
+}
+
+.headerLine {
+    @extend .line;
+    position: relative;
+    top: -4em;
+    margin-bottom: -2em;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.schoolIcon {
+    height: 5em;
+    width: auto;
+}
+
+.header {
+    font-size: 5em;
+    width: auto;
+}
+
+.review {
+    @extend .line;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    padding-top: 1em;
+}
+
+.rating {
+    height: 1em;
+    width: auto;
+    overflow:auto;
+}
+
+.avgRating {
+    @extend .line;
+    justify-content: flex-end;
+    align-items: end;
+    position: relative;
+    top: -3em;
+    margin-bottom: -3em;
+}
+
+.avgRating > p {
+    font-size: 1.2em;
+    margin-left: 1em;
+}
+
+.reviewBoard {
+    border: white solid; 
+}
+
+.left {
+    display: flex; 
+    align-items: flex-start;
+    margin-left: 10px; 
+    margin-top: 20px; 
+    flex-direction: column;
+}
+
+.right {
+    display: flex; 
+    align-items: center;
+    align-content: end;
+    flex-direction: row-reverse;
+    margin-right: 20px; 
+}
