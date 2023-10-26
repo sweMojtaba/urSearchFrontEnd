@@ -30,7 +30,7 @@ export default function Job() {
                         <div>
                             <h4>Description</h4>
                             <p>
-                            Dr. Ricke's research program encompasses basic and translational sciences as it pertains to the pathogenesis of the lower urinary tract. The synergy of both sciences allows his lab to explore both molecular underlying mechanisms associated with disease progression, but also to pre-clinically treat the same pathways, which may lead to the therapies of tomorrow.
+                            Dr. Ricke&apos;s research program encompasses basic and translational sciences as it pertains to the pathogenesis of the lower urinary tract. The synergy of both sciences allows his lab to explore both molecular underlying mechanisms associated with disease progression, but also to pre-clinically treat the same pathways, which may lead to the therapies of tomorrow.
                             </p>
                         </div>
                         <div>
