@@ -81,15 +81,19 @@ export function LabReviews() {
             </Col>
         </Row>
         {reviews.map((review) => { return (
-            <Row style={{borderBottom: "solid #2356A1 10px", marginRight: "10px", marginLeft: "10px", display: "flex", flexDirection: "row"}}>
-                <Col className={styles.left} >
-                    <div><p style={{fontFamily: "Cabin"}}>{review.date}</p></div>
-                    <div><p style={{fontFamily: "Montserrat"}}>{review.review.toUpperCase()}</p></div>
+            <Row style={{borderBottom: "solid #2356A1 10px", display: "flex", flexDirection: "row", margin: "0 5px"}}>
+                <Col className={styles.left} style={{display: "flex", flexDirection: "row"}}>
+                    <Image src={"/uw-logo.png"} alt="UW Madison Logo" width={20} height={20} className="job-results-photo" style={{marginRight: "10px", marginTop: "5px"}}/>
+                    <div>
+                        <div><p style={{fontFamily: "Cabin"}}>{review.date}</p></div>
+                        <div><p style={{fontFamily: "Montserrat"}}>{review.review.toUpperCase()}</p></div>
+                    </div>
                 </Col>
-                <div>
+                <div className={styles.individualReview}>
                     {Array.from({ length: 5 }, (_) => (
-                            <Image src={FullStar} alt="full star" style={{scale: 0.8}}/>
+                            <Image src={FullStar} alt="full star"/>
                         ))}
+                    <h1>5</h1>
                 </div>
             </Row>
         )

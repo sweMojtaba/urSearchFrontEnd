@@ -76,3 +76,11 @@
     flex-direction: row-reverse;
     margin-right: 20px; 
 }
+
+.individualReview {
+    scale: 0.5;
+    text-align: right;
+    display: flex; 
+    width: 20%; 
+    align-items: baseline; 
+}
