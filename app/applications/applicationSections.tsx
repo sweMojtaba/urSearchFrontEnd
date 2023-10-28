@@ -19,13 +19,23 @@ export function SearchBar() {
     </div>
 }
 
-const statusData = [
+// TEMPORARY TYPE FOR NON-HYDRATION
+type StatusJob = {
+    company: string, 
+    position: string, 
+    date: string,
+    status: string,
+    sigma: boolean
+    saved?: boolean
+}
+
+const statusData: StatusJob[] = [
     {
         company: "Ricke Lab", 
         position: "Research Assistant", 
         date: "4/13/2023", 
         status: "Under Review",
-        sigma: true
+        sigma: true,
     }, 
     {
         company: "Happy Lab", 
@@ -52,8 +62,8 @@ const statusData = [
 
 export function StatusBoard() {
 
-    const displayList = statusData.map((job) => 
-    <div className="status-job">
+    const displayList = statusData.map((job, i) => 
+    <div key={i} className="status-job">
         <div style={{textAlign: "left"}}>
             <div>{job.company.toUpperCase() + (job.sigma ? "()" : "")}</div>
             <div>{job.position.toUpperCase()}</div>
@@ -71,11 +81,24 @@ export function StatusBoard() {
     </div>
 }
 
-const moreOpportunitiesData = [
+// TEMPORARY TYPE FOR NON-HYDRATION
+type MoreOpportunitiesJob = {
+    company: string, 
+    location: string,
+    position: string, 
+    affiliation: string, 
+    type: string, 
+    description: string,
+    saved: boolean, 
+    sigma: boolean
+}
+
+const moreOpportunitiesData: MoreOpportunitiesJob[] = [
     {
         company: "ResNet Labs", 
         location: "Machine Learning Lab", 
         affiliation: "University of Wisconsin - Madison", 
+        position: "Research Assistant",
         type: "Research Opportunity", 
         description: "AI is taking over the modern world, and we are a part of it. ResNet Labs have been a part of leading research in AI and Machine Learning for over 3 decades",
         saved: true, 
@@ -85,6 +108,7 @@ const moreOpportunitiesData = [
         company: "TechSec", 
         location: "Software Security Lab", 
         affiliation: "University of Wisconsin - Madison", 
+        position: "Research Assistant",
         type: "Internship", 
         description: "Commissioned by the federal government, our internship program provides top of the industry experience in software security, through private contracts with leading tech giants.",
         saved: false, 
@@ -94,6 +118,7 @@ const moreOpportunitiesData = [
         company: "BioLife Lab", 
         location: "Biochemisty Lab", 
         affiliation: "University of Wisconsin - Madison", 
+        position: "Research Assistant",
         type: "Research Assistance", 
         description: "Biochemistry is not all finals with a class average of F, or memorizing 20 pages of formulas. Get experienced through our micro-molecular genome study, and research cancer.",
         saved: true, 
@@ -102,8 +127,8 @@ const moreOpportunitiesData = [
 ]
 
 export function SimilarOpportunities() {
-    const displayList = moreOpportunitiesData.map((job) =>
-    <div className="more-opportunity">
+    const displayList = moreOpportunitiesData.map((job, i) =>
+    <div key={i} className="more-opportunity">
         <div style={{fontFamily: "Cabin", fontStyle: "italic", fontSize: "30px"}}>{job.company}</div>
         <div style={{fontSize: "8px"}}>{job.position.toUpperCase()}</div>
         <div style={{fontSize: "9px"}}>{job.affiliation.toUpperCase()}</div>
@@ -135,8 +160,8 @@ export function SimilarOpportunity() {
 }
 
 export function JobStatusCards() {
-    const displayList = statusData.map(card => 
-        <Row className="job-results-card">
+    const displayList = statusData.map((card, i) => 
+        <Row key={i} className="job-results-card">
         <Col className="card-row">
             <Image src={"/uw-logo.png"} alt="UW Madison Logo" width={60} height={60} className="job-results-photo" />
             <Col>

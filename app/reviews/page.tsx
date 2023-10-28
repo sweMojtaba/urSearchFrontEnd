@@ -1,3 +1,7 @@
+"use client"
+// With the current stylesheet this needs to be a client component.
+// In the future use "styles.scss" instead of "styles.module.scss"
+
 import Image from "next/image";
 import Poster from "./assets/posterPlaceholder.png"
 import SchoolIcon from "./assets/schoolIconPlaceholder.png"
@@ -7,7 +11,7 @@ import { Col, Container, Row } from "@/client-wrappers/bootstrap";
 
 import styles from "./styles.module.scss"
 
-export function Lab() {
+function Lab() {
     const labName = "Ricke Lab"; 
 
     return <div className={styles.scrollPage}>
@@ -69,19 +73,19 @@ const reviews = [
     }
 ]
 
-export function LabReviews() {
+function LabReviews() {
     return (<div className={styles.reviewBoard}>
         <Row>
             <Col className={styles.left}><h2>Reviews</h2></Col>
             <Col className={styles.right}>
                 <h4>5</h4>
-                {Array.from({ length: 5 }, (_) => (
-                        <Image src={FullStar} alt="full star" style={{scale: 0.8}}/>
+                {Array.from({ length: 5 }, (_, i) => (
+                        <Image key={i} src={FullStar} alt="full star" style={{scale: 0.8}}/>
                     ))}
             </Col>
         </Row>
-        {reviews.map((review) => { return (
-            <Row style={{borderBottom: "solid #2356A1 10px", display: "flex", flexDirection: "row", margin: "0 5px"}}>
+        {reviews.map((review, i) => { return (
+            <Row key={i} style={{borderBottom: "solid #2356A1 10px", display: "flex", flexDirection: "row", margin: "0 5px"}}>
                 <Col className={styles.left} style={{display: "flex", flexDirection: "row"}}>
                     <Image src={"/uw-logo.png"} alt="UW Madison Logo" width={20} height={20} className="job-results-photo" style={{marginRight: "10px", marginTop: "5px"}}/>
                     <div>
@@ -90,8 +94,8 @@ export function LabReviews() {
                     </div>
                 </Col>
                 <div className={styles.individualReview}>
-                    {Array.from({ length: 5 }, (_) => (
-                            <Image src={FullStar} alt="full star"/>
+                    {Array.from({ length: 5 }, (_, i) => (
+                            <Image key={i} src={FullStar} alt="full star"/>
                         ))}
                     <h1>5</h1>
                 </div>
