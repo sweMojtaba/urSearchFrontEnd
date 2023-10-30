@@ -25,3 +25,8 @@
     background-color: #000; /* Color of the line */
     margin-right: 10px; /* Adjust the space between the line and the text */ 
 }
+
+#navbar-items {
+    display: flex; 
+    justify-content: flex-end;
+}

@@ -38,17 +38,20 @@ export default function LabProfile() {
                     <Resources data={resources} />
                 </Col>
                 <Col md={8}>
-                    <Reviews reviews={reviews} rating={rating} />
+                    <Row>
+                        <Reviews reviews={reviews} rating={rating} />
+                    </Row>
+                    <Row>
+                        <Col md={6} className={styles.smallCard}>
+                            <PostNewOpportunity />
+                        </Col>
+                        <Col md={6} className={styles.smallCard}>
+                            <QuickApply quickApply={quickApply}/>
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
-            <Row>
-                <Col md={6} className={styles.smallCard}>
-                    <PostNewOpportunity />
-                </Col>
-                <Col md={6} className={styles.smallCard}>
-                    <QuickApply quickApply={quickApply}/>
-                </Col>
-            </Row>
+
         </Container>
     </div>
 }

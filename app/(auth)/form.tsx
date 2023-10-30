@@ -8,6 +8,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { AuthType } from "./authUtils";
 import { useMemo } from "react";
+import "./auth.scss"
 
 const functionalityToStates: { [key in AuthType]: {
     title: string,
@@ -51,7 +52,7 @@ export default function AuthForm({ handleSubmit, functionality }: {
         <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3 line">
                 <FaUserAlt className="icon-inline" />
-                <Form.Control type="text" placeholder="Username" id="username" name="username" required />
+                <Form.Control type="text" placeholder="Username" id="username" name="username"  required />
             </Form.Group>
             <Form.Group className="mb-5 line">
                 <FaKey className="icon-inline" />

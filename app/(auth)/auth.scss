@@ -26,3 +26,9 @@
     background-color: #000; /* Color of the line */
     margin-right: 10px; /* Adjust the space between the line and the text */ 
 }
+
+input:-webkit-autofill {
+    /* Your custom styles here */
+    background-color: blue; /* Change the background color */
+    color: red /* Change the text color */
+}

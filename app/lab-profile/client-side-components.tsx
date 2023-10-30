@@ -8,7 +8,7 @@ import Image from "next/image";
 import { LabInfo, LabKeywords, LabResources } from "./fetchProfileSections";
 import { InfoCard } from "@/components/cards-and-items/cards";
 import { SmallLi } from "@/components/cards-and-items/listItems";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import fakeResponse from "@/utils/fakeResponse";
 import { ButtonTextEnum, QuickApplyTemplate, createButtonStatus } from "@/components/functionalities/quickApply";
 
@@ -63,16 +63,28 @@ export function Keywords({ data }: { data: LabKeywords }) {
 
 export function Resources({ data }: { data: LabResources }) {
     return <InfoCard
-        title="Resources"
-        editFunc={() => { console.log("TO-DO: edit") }}
-    >
-        {data.map((resource, i) => <Button
-            key={i}
-            href={resource.link}>
-            {resource.title}
-        </Button>)
-        }
-    </InfoCard>
+            title="Resources"
+            editFunc={() => { console.log("TO-DO: edit") }}
+        >
+            {data.map((resource, i) => <Button
+                key={i}
+                href={resource.link}>
+                {resource.title}
+            </Button>)
+            }
+            <Form style={{marginTop: "100px"}}>
+                <Form.Group className="mb-3 line">
+                    <Form.Control type="text" placeholder="TITLE" id="title" name="title"  required />
+                </Form.Group>
+                <Form.Group className="mb-5 line">
+                    <Form.Control type="text" placeholder="LINK" id="link" name="link" required />
+                </Form.Group>
+                <Button>
+                    Add
+                </Button>
+            </Form>
+        </InfoCard>
+
 }
 
 const buttonTextEnum: ButtonTextEnum = {
