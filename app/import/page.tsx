@@ -7,6 +7,7 @@ import useRedirectWithUserState, { RedirectNotes } from "@/utils/useRedirectWith
 import ResumeInput from "./resume";
 import WebsiteImport from "./website";
 import Link from "next/link";
+import "./styles.scss"
 
 
 function Import() {
@@ -29,20 +30,26 @@ function Import() {
         }
     });
 
-    return <Container className="sparse-content">
-        <div>
-            <h1>{title}</h1>
-            <p className="subheading">And we&rsquo;ll complete your profile :)</p>
-        </div>
-        {
-            user.state === 1 ? <ResumeInput /> : <WebsiteImport />
-        }
-        <div className="dividing-line" />
-        <p className="paragraph">
-            Or <Link href="/under-construction">Skip</Link> for now.
-        </p>
+    return <div style={{display: "flex", width: "100%"}}>
+        <Container className="sparse-content">
+            <div>
+                <h1>{title}</h1>
+                <p className="subheading">And we&rsquo;ll complete your profile :)</p>
+            </div>
+            {
+                user.state === 1 ? <ResumeInput /> : <WebsiteImport />
+            }
+            <div className="dividing-line" />
+            <p className="paragraph">
+                Or <Link href="/under-construction">Skip</Link> for now.
+            </p>
 
-    </Container>
+        </Container>
+        <div className="verticalPhrase">
+            <div className="vertLine"></div>
+            <span>Build your profile: </span>
+        </div>
+    </div>
 }
 
 export default Import;
