@@ -6,6 +6,7 @@ import { AuthType, extractForm } from "../authUtils";
 import AuthForm from "../form";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
+import "../auth.scss";
 
 async function fakeLogin(username: string, password: string, role: RoleType) {
     console.log("Faking login by sending request to badger chat...")
@@ -64,5 +65,11 @@ export default function Login() {
             })
         }
     }
-    return <AuthForm handleSubmit={handleLogin} functionality={AuthType.LOGIN} />
+    return <div style={{display: "flex", width: "100%"}}>
+        <AuthForm handleSubmit={handleLogin} functionality={AuthType.LOGIN} />
+        <div className="verticalPhrase">
+            <div className="vertLine"></div>
+            <span>Your time is here!</span>
+        </div>
+    </div>
 }

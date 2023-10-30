@@ -1,5 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+
 .icon-inline {
     width: 2em;
     height: 2em;
     margin-right: 1em;
+}
+
+.verticalPhrase {
+    display: flex; 
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-family: 'Pacifico';
+    color: #FFE600; 
+    font-size: 12px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    align-items: center;
+}
+
+.vertLine {
+    flex-grow: 0.5;
+    height: 1px;
+    background-color: #000; /* Color of the line */
+    margin-right: 10px; /* Adjust the space between the line and the text */ 
 }

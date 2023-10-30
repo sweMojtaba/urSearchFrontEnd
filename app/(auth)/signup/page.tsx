@@ -67,5 +67,11 @@ export default function Signup() {
             }
         }
     }
-    return <AuthForm handleSubmit={handleSignup} functionality={AuthType.SIGNUP} />
+    return <div>
+        <AuthForm handleSubmit={handleSignup} functionality={AuthType.SIGNUP} />
+        <div className="verticalPhrase">
+            <div className="vertLine"></div>
+            <span>Let's shake the world!</span>
+        </div>
+    </div>
 }
