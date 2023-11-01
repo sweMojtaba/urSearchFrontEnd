@@ -4,12 +4,17 @@
 
 // layout---------------------------------------------------
 .main {
-    background: linear-gradient(#3876D2, #10428B);
+    background: linear-gradient( #3876D2 0%, #10428B 100%);
     margin: 0;
     width: 100%;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+}
+
+.main-lab {
+    @extend .main;
+    background: linear-gradient(#0DA1CF 0%, #2A5D99 86.4%);
 }
 
 .dividing-line {
@@ -88,6 +93,9 @@
     height: 100%;
 }
 
+.bg-lab {
+    background-color: #0DA1CF;
+}
 
 // text-----------------------------------------------------
 .link {
@@ -153,6 +161,11 @@
     background-position: 50% 25%;
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.fit-no-image {
+    flex-grow: 1;
+    display: flex;
 }
 
 .flex-box {
