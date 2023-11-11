@@ -39,7 +39,7 @@ function Header() {
                 <NavLink as={Link} href="/welcome/contact">
                     CONTACT US
                 </NavLink>
-                <NavLink as={Link} href="/welcome/about">
+                <NavLink as={Link} href="/about">
                     ABOUT US
                 </NavLink>
             </Nav>

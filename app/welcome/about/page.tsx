@@ -11,7 +11,7 @@ function About() {
                     <p className="heading">Everything started from a friendship...</p>
                 </div>
                 <p className="paragraph" style={{ marginTop: "2em" }}>
-                    After Meeting at a party, Ryan a pre-dent student shared his Idea with Mojtaba Javid. They started to meet more regularly and developed the idea toward something unique. Founded by UW-Madison’s Ricke Lab, they started to grow the team, and Welcomed Alicia to the ursearch family. They spent 2 month advancing their skills and finalizing a prototype, and now...
+                After Meeting at a party, Ryan a pre-dent student shared his Idea with Mojtaba. They started to meet more regularly and developed the idea toward something unique. Founded by UW-Madison’s Ricke Lab, they started to grow their team, and Welcomed other talented programmers to the ursearch family. Their shared prospect: Making research more available and diverse for all students...
                 </p>
             </Container>
         </div>

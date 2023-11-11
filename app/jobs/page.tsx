@@ -26,7 +26,7 @@ export default function JobsPage() {
                 <AdvancedFiltersPopUp advancedFilterIsVisible={advancedFilterIsVisible} />
             </Row>
             <SearchBar advancedFilterStatus={advancedFilterStatus} />
-            <h2>Reccomended...</h2>
+            <h2>Recommended...</h2>
             <Row>
                 {reccomendedCardData.map((card, index) => {
                     return <ReccomendedCard key={index} company={card.company} location={card.location} sigma={card.sigma} affiliation={card.affiliation} typeOfPosition={card.typeOfPosition} description={card.description} bookmarked={card.bookmarked} />;

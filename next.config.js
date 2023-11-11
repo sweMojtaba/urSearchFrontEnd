@@ -9,6 +9,14 @@ const nextConfig = {
                 pathname: "/howto/img*"
             }
         ],
+    }, 
+    rewrites: () => {
+        return [
+            {
+                source: '/about', 
+                destination: '/welcome/about'
+            }
+        ]
     }
 }
 
