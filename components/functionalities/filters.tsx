@@ -1,7 +1,7 @@
 "use client";
 
 import { Button, Container, Col, Row } from "@/client-wrappers/bootstrap";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./filters.scss";
 import Image from "next/image";
 
@@ -183,6 +183,23 @@ export function SearchBarWithAdvancedFilters() {
     const advancedFilterStatus = () => {
         setadvancedFilterIsVisible(true);
     };
+
+    const useEscape = () => {
+        useEffect(() => {
+            const handleEsc = (event) => {
+                if (event.keyCode === 27) 
+                    setadvancedFilterIsVisible(false);
+            };
+            window.addEventListener('keydown', handleEsc);
+    
+            return () => {
+                window.removeEventListener('keydown', handleEsc);
+            };
+        }, []);
+    }
+
+    useEscape(); 
+    
 
     return (
         <Container>
