@@ -1,39 +1,46 @@
-'use client';
+"use client";
 
 // TO-DO: use React-Query to get and synchronize user state from server and manage the state.
 
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { User, UserContextType } from "./context-utils";
 
 const DEFAULT_STATE = 0;
-const DEFAULT_NAME = '';
+const DEFAULT_NAME = "";
 
-function useUserStored(): { state: number, name: string } {
-    const [state, setState] = useState<number>(() => {
+function useUserStored(): User {
+    const [state, setState] = useState<number>(DEFAULT_STATE);
+    const [name, setName] = useState<string>(DEFAULT_NAME);
+
+    useEffect(() => {
         const userStateStored: string | null = localStorage.getItem("userState");
-        // TO-DO: wrap this in a react hook
-        let state: number = isNaN(parseInt(userStateStored!)) ? DEFAULT_STATE : parseInt(userStateStored!);
-        return state;
-    });
+        const state: number = isNaN(parseInt(userStateStored!)) ? DEFAULT_STATE : parseInt(userStateStored!);
+        const userName: string | null = localStorage.getItem("userName");
+        const name: string = userName || DEFAULT_NAME;
 
-    const [name, setName] = useState<string>(() => {
-        let name: string | null = localStorage.getItem("userName");
-        name = name ?? DEFAULT_NAME;
-        return name;
-    });
+        setState(state);
+        setName(name);
+    }, []);
 
-    return { state, name };
+    return { name, state };
 }
 
 export const UserContext = createContext({} as UserContextType);
 
-export default function InitializedUserContextProvider({ children}: { children: React.ReactNode }) {
+export default function InitializedUserContextProvider({ children }: { children: React.ReactNode }) {
     // current solution: initialize user context using localStorage
     // in the future: maybe cookies / api (TO-DO)
-    const userStored = useUserStored();
-    const [user, setUser] = useState<User>(userStored);
+    const userStoredData = useUserStored();
+    const [user, setUser] = useState<User>({ name: DEFAULT_NAME, state: DEFAULT_STATE });
 
-    return <UserContext.Provider value={{user, setUser}}>
-        {children}
-    </UserContext.Provider>
+    useEffect(() => {
+        setUser((prevUser) => {
+            if (prevUser.name === userStoredData.name && prevUser.state === userStoredData.state) {
+                return prevUser;
+            }
+            return userStoredData;
+        });
+    }, [userStoredData]);
+
+    return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>;
 }

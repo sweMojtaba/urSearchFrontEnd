@@ -49,6 +49,8 @@ function NavProfile() {
     }, [user.state, loggedOut, redirectWithUserState]);
 
     const handleLogout = () => {
+        localStorage.removeItem("userName");
+        localStorage.removeItem("userState");
         setUser({
             state: 0,
             name: "",
@@ -75,18 +77,16 @@ function NavProfile() {
 export function HeaderAuth() {
     const { user, setUser } = useContext(UserContext);
 
-    if (user.state === 0) {
-        return (
-            <Nav>
-                <Nav.Link as={Link} href="/signup">
-                    SIGN UP
-                </Nav.Link>
-                <Nav.Link as={Link} href="/login">
-                    LOG IN
-                </Nav.Link>
-            </Nav>
-        );
-    } else if (user.state === 1 || user.state === 2) {
-        return <NavProfile />;
-    }
+    return user.state === 0 ? (
+        <Nav>
+            <Nav.Link as={Link} href="/signup">
+                SIGN UP
+            </Nav.Link>
+            <Nav.Link as={Link} href="/login">
+                LOG IN
+            </Nav.Link>
+        </Nav>
+    ) : (
+        <NavProfile />
+    );
 }
