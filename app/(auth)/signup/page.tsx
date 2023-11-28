@@ -48,12 +48,12 @@ export default function Signup() {
                             alert("That username has already been taken!");
                         } else if (res.status === 200) {
                             alert("Signup successful!");
+                            localStorage.setItem("userName", username);
+                            localStorage.setItem("userState", (role === RoleType.APPLICANT ? 1 : 2).toString());
                             setUser({
                                 name: username,
                                 state: role === RoleType.APPLICANT ? 1 : 2,
                             });
-                            localStorage.setItem("userName", username);
-                            localStorage.setItem("userState", (role === RoleType.APPLICANT ? 1 : 2).toString());
                             router.push("import");
                         }
                         return res.json();
