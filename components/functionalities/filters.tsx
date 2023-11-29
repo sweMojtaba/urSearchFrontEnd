@@ -186,20 +186,20 @@ export function SearchBarWithAdvancedFilters() {
 
     const useEscape = () => {
         useEffect(() => {
-            const handleEsc = (event) => {
-                if (event.keyCode === 27) 
+            const handleEsc = (event: KeyboardEvent) => {
+                if (event.key === "Escape" || event.key === "Esc") {
                     setadvancedFilterIsVisible(false);
+                }
             };
-            window.addEventListener('keydown', handleEsc);
-    
+            window.addEventListener("keydown", handleEsc);
+
             return () => {
-                window.removeEventListener('keydown', handleEsc);
+                window.removeEventListener("keydown", handleEsc);
             };
         }, []);
-    }
+    };
 
-    useEscape(); 
-    
+    useEscape();
 
     return (
         <Container>
