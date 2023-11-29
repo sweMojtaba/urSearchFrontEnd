@@ -10,6 +10,7 @@ import "./header.scss";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "@/app/context";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import useRedirectWithUserState, { RedirectNotes } from "@/utils/useRedirectWithUserState";
 
 export function HeaderCommon({ interfaceRoot, children }: { interfaceRoot: string; children: React.ReactNode }) {
@@ -33,6 +34,7 @@ function NavProfile() {
     const [target, setTarget] = useState("");
     const [loggedOut, setLoggedOut] = useState(false);
     const redirectWithUserState = useRedirectWithUserState(user.state, (userState) => userState !== 0, RedirectNotes.LOGGING_OUT, "/welcome");
+    const router = useRouter();
 
     useEffect(() => {
         if (user.state === 1) {
@@ -52,10 +54,11 @@ function NavProfile() {
         localStorage.removeItem("userName");
         localStorage.removeItem("userState");
         setUser({
-            state: 0,
             name: "",
+            state: 0,
         }); // make sure user.state cannot be changed to 0 except by handleLogout
         setLoggedOut(true); // Otherwise HeaderAuth might have a discrepency between user.state and loggedOut
+        router.push("welcome");
         // To-do: send to backend
     };
 
