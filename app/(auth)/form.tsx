@@ -52,7 +52,7 @@ export default function AuthForm({ handleSubmit, functionality }: {
         <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3 line">
                 <FaUserAlt className="icon-inline" />
-                <Form.Control type="text" placeholder="Username" id="username" name="username"  required />
+                <Form.Control type="text" placeholder="Email" id="username" name="username" required />
             </Form.Group>
             <Form.Group className="mb-5 line">
                 <FaKey className="icon-inline" />
@@ -73,11 +73,11 @@ export default function AuthForm({ handleSubmit, functionality }: {
                 </Form.Group>
             }
             <div className="line">
-                <Button variant="primary" className="btn-inline-2" type="submit">
+                <Button variant="primary" className="btn-inline-2" type="submit" style={{width: "75%", marginRight: "15px"}}>
                     Submit
                 </Button>
                 <Button variant="primary" className="btn-inline-2" disabled>
-                    SSO via Your Institution
+                    SSO
                 </Button>
             </div>
         </Form>

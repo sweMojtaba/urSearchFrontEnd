@@ -28,7 +28,7 @@ function ContactInfo({ team, address, phone, email }: { team: string; address?: 
             {email && (
                 <div className="line line-start secondary-line">
                     <Image src={Item2} alt="item2" />
-                    <p className="text">Email: {email}</p>
+                    <a href={`mailto:${email}`} className="text">Email: {email}</a>
                 </div>
             )}
         </div>
@@ -38,7 +38,7 @@ function ContactInfo({ team, address, phone, email }: { team: string; address?: 
 function Contact() {
     return (
         <div id="slide">
-            <Container>
+            <Container style={{zIndex: "2"}}>
                 <Row>
                     <Col lg={4}>
                         <ContactInfo team="Technical Support Team:" email="tech@urSearch.com" phone="+1 (608) 572 8750" />
@@ -54,7 +54,7 @@ function Contact() {
                     <ContactInfo team="Affiliates:" address="Ricke Lab, 1685 Highland Avenue Madison, WI 53705" email="contact@urology.wisc.edu" />
                 </Col>
             </Container>
-            <Image src={ContactImg} alt="slide" className="fit-image" />
+            <Image src={ContactImg} alt="slide" className="fit-image"/>
         </div>
     );
 }

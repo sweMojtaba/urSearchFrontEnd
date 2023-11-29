@@ -27,8 +27,16 @@
     margin-right: 10px; /* Adjust the space between the line and the text */ 
 }
 
-input:-webkit-autofill {
+input::-webkit-autofill {
     /* Your custom styles here */
     background-color: blue; /* Change the background color */
     color: red /* Change the text color */
+}
+
+#username::placeholder {
+    color: white; 
+}
+
+#password::placeholder {
+    color: white; 
 }
