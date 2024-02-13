@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Col, Row, Button } from "@/client-wrappers/bootstrap"
+import { Col, Row, Button, Container } from "@/client-wrappers/bootstrap"
 import { Form } from 'react-bootstrap'
 import './styles.scss';
 
@@ -30,8 +30,8 @@ export function BugReportButton() {
     function BugReportPopUp({bugReportPopUpIsVisible} : {bugReportPopUpIsVisible : boolean}) {
         return (
             <Col xs={24} className={`popup-${bugReportPopUpIsVisible ? "visible" : "hidden"}`}>
-                {/** <div className="overlay" /> */ }
-                <Form className="bug-report-form">
+                <div className="overlay"></div>
+                <Form className="bug-report-form" style={{"zIndex": 102}}>      
                     <h2>Report A Problem!</h2>
                     <Form.Group>
                         <Form.Control as="input" type="text" placeholder="Title" className="report-form-title"/>
