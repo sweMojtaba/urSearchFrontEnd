@@ -30,13 +30,14 @@ export function BugReportButton() {
     function BugReportPopUp({bugReportPopUpIsVisible} : {bugReportPopUpIsVisible : boolean}) {
         return (
             <Col xs={24} className={`popup-${bugReportPopUpIsVisible ? "visible" : "hidden"}`}>
-                <Form>
+                {/** <div className="overlay" /> */ }
+                <Form className="bug-report-form">
                     <h2>Report A Problem!</h2>
                     <Form.Group>
                         <Form.Control as="input" type="text" placeholder="Title" className="report-form-title"/>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Control as="textarea"  placeholder="Description" className="report-form-description"/>
+                        <Form.Control as="textarea" rows={5}  placeholder="Description" className="report-form-description"/>
                     </Form.Group>
                     <Button onClick={()=>{setBugReportIsVisible(false)}}>Cancel</Button>
                     <Button variant="primary" type="submit">Submit</Button>
@@ -48,7 +49,7 @@ export function BugReportButton() {
     return (
     <div>
         <Button onClick={bugReportStatus}>
-
+            ?
         </Button>
         <BugReportPopUp bugReportPopUpIsVisible={bugReportIsVisible} />
     </div>
