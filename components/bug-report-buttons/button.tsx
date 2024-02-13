@@ -39,8 +39,13 @@ export function BugReportButton() {
                     <Form.Group>
                         <Form.Control as="textarea" rows={5}  placeholder="Description" className="report-form-description"/>
                     </Form.Group>
-                    <Button onClick={()=>{setBugReportIsVisible(false)}}>Cancel</Button>
-                    <Button variant="primary" type="submit">Submit</Button>
+                    <div style={{"display": "flex"}}>
+                        <div style={{"width": "50%"}}></div>
+                        <div style={{"display": "flex", "width": "50%", }}>
+                            <Button className="form-btn" onClick={()=>{setBugReportIsVisible(false)}}>Cancel</Button>
+                            <Button className="form-btn" variant="primary" type="submit">Submit</Button>
+                        </div>
+                    </div>
                 </Form>
             </Col>
         )

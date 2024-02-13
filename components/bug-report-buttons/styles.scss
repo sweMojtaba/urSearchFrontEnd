@@ -19,21 +19,33 @@
 }
 
 .bug-report-form {
+    flex-shrink: 0;
     z-index: 4; 
-    border: black solid; 
     padding: 10px; 
     border-radius: 10px; 
     background: linear-gradient(180deg, #3876D2 0%, #10428B 100%);
+    width: 4000px;  
+    height: 600px;
+    max-width: 1000px;
+    max-height: 450px;
+    padding: 20px; 
 }
 
 .report-form-title, .report-form-title:focus {
     border: none; 
-    border-radius: 20px; 
+    border-radius: 10px; 
     background-color: white;
-    margin-bottom: 10px;
+    margin-top: 24px;
+    height: 44px; 
     color: black; 
 }
 
 .report-form-description, .report-form-description:focus {
-    @extend .report-form-title
+    @extend .report-form-title;
+    height: 200px; 
+    margin-bottom: 20px;
+}
+
+.form-btn {
+    width: 45%; 
 }
