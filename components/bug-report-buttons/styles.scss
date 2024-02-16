@@ -29,6 +29,9 @@
     max-width: 1000px;
     max-height: 450px;
     padding: 20px; 
+    position:fixed; 
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .report-form-title, .report-form-title:focus {
