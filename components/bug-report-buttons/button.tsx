@@ -53,9 +53,7 @@ export function BugReportButton() {
 
     return (
     <div>
-        <Button onClick={bugReportStatus}>
-            ?
-        </Button>
+        <Button className="button" onClick={bugReportStatus}>?</Button>
         <BugReportPopUp bugReportPopUpIsVisible={bugReportIsVisible} />
     </div>
     );
