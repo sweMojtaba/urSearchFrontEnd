@@ -6,6 +6,7 @@ import { Button, Col, Container, Row } from "@/client-wrappers/bootstrap";
 import { ActionableCard, InfoCard } from "@/components/cards-and-items/cards";
 
 import styles from "./styles.module.scss"
+import "../opportunities/global_styles_override.scss";
 import { AvgRating, Info, Keywords, QuickApply, Resources, Review } from "./client-side-components";
 
 
