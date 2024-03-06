@@ -2,7 +2,7 @@ import Image from "next/image";
 import { fetchLabInfo, fetchLabKeywords, fetchResources, fetchReviews, fetchRating, fetchQuickApply, LabKeywords } from "./fetchProfileSections";
 import Poster from "./assets/posterPlaceholder.png"
 import SchoolIcon from "./assets/schoolIconPlaceholder.png"
-import { Col, Container, Row } from "@/client-wrappers/bootstrap";
+import { Button, Col, Container, Row } from "@/client-wrappers/bootstrap";
 import { ActionableCard, InfoCard } from "@/components/cards-and-items/cards";
 
 import styles from "./styles.module.scss"
@@ -16,7 +16,7 @@ export default function LabProfile() {
     const resources = fetchResources();
     const reviews = fetchReviews();
     const rating = fetchRating();
-    const quickApply = fetchQuickApply();
+    let quickApply = {quickApply: fetchQuickApply()};
 
     return <div className={styles.scrollPage}>
         <Image src={Poster} alt="poster of lab" className={styles.poster} />
@@ -27,7 +27,7 @@ export default function LabProfile() {
             </Row>
             <Row>
                 <Col md={6}>
-                    <Info data={labInfo} />
+                    <Info data={labInfo}/>
                 </Col>
                 <Col md={6}>
                     <Keywords data={labKeywords} />
@@ -53,6 +53,7 @@ export default function LabProfile() {
             </Row>
 
         </Container>
+        <h2>{quickApply && "! Activate Quick Applications, and save some time"}</h2>
     </div>
 }
 
@@ -64,12 +65,15 @@ function Reviews({ reviews, rating }: {
     }[],
     rating: number
 }) {
-    return <InfoCard
+    reviews.map((review, i) => console.log(review));
+    return <div><InfoCard
         title="Reviews"
     >
         <AvgRating rating={rating} />
         {reviews.map((review, i) => <Review key={i} data={review} />)}
+        <Button>See All</Button>
     </InfoCard>
+    </div>
 }
 
 function PostNewOpportunity() {

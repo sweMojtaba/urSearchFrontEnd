@@ -10,7 +10,7 @@ import { InfoCard } from "@/components/cards-and-items/cards";
 import { SmallLi } from "@/components/cards-and-items/listItems";
 import { Button, Form } from "react-bootstrap";
 import fakeResponse from "@/utils/fakeResponse";
-import { ButtonTextEnum, QuickApplyTemplate, createButtonStatus } from "@/components/functionalities/quickApply";
+import { ButtonTextEnum, QuickApplyTemplate, createButtonStatus, ButtonStatusEnum } from "@/components/functionalities/quickApply";
 
 export function AvgRating({ rating }: { rating: number }) {
     return <div className={styles.avgRating}>
@@ -29,11 +29,11 @@ export function Review({ data }: {
     return <div className={styles.review}>
         <Image src={ReviewProfile} alt="profile picture" className={styles.profilePicture} />
         <div className={styles.reviewContent}>
-            <div>
-                <Rating value={data.rating} readOnly={true} style={{ maxWidth: "10em" }} />
-            </div>
-            <div>{data.text}</div>
             <div>{data.timestamp}</div>
+            <div>{data.text}</div>   
+        </div>
+        <div>
+            <Rating value={data.rating} readOnly={true} style={{ maxWidth: "10em", minWidth: "8.5em" }} />
         </div>
     </div>
 }
@@ -43,10 +43,10 @@ export function Info({ data }: { data: LabInfo }) {
         title={data.university}
         editFunc={() => { console.log("TO-DO: edit") }}
     >
-        <p>{data.department}</p>
-        <p>{data.address}</p>
-        <p>{data.phone}</p>
-        <p>{data.email}</p>
+        <p style={{fontSize: "15px"}}>{data.department}</p>
+        <p style={{fontSize: "15px"}}>{data.address}</p>
+        <p style={{fontSize: "15px"}}>{data.phone}</p>
+        <p style={{fontSize: "15px"}}>{data.email}</p>
     </InfoCard>
 }
 
@@ -95,7 +95,8 @@ const buttonTextEnum: ButtonTextEnum = {
 
 const buttonStatus = createButtonStatus(buttonTextEnum);
 
-export function QuickApply({ quickApply }: { quickApply: boolean }) {
+export function QuickApply({ quickApply }: { quickApply: {quickApply : boolean} }) {
+    quickApply.quickApply = !quickApply.quickApply
     return (
         <QuickApplyTemplate
             initialStatus={quickApply ? buttonStatus.ACTIVATED : buttonStatus.NOT_ACTIVATED}
