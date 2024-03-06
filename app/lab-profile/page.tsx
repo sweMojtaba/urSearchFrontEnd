@@ -6,7 +6,6 @@ import { Button, Col, Container, Row } from "@/client-wrappers/bootstrap";
 import { ActionableCard, InfoCard } from "@/components/cards-and-items/cards";
 
 import styles from "./styles.module.scss"
-import "../opportunities/global_styles_override.scss";
 import { AvgRating, Info, Keywords, QuickApply, Resources, Review } from "./client-side-components";
 
 
@@ -66,7 +65,7 @@ function Reviews({ reviews, rating }: {
     }[],
     rating: number
 }) {
-    reviews.map((review, i) => console.log(review));
+    // reviews.map((review, i) => console.log(review));
     return <div><InfoCard
         title="Reviews"
     >
@@ -79,10 +78,11 @@ function Reviews({ reviews, rating }: {
 
 function PostNewOpportunity() {
     return <ActionableCard
-        title="Post New Opportunities!"
+        title="Post New Opportunities! &emsp;"
+        children= <p className="note" style={{visibility: "hidden", fontSize: "12px"}}>In addition to applicant&rsquo;s resume, and Profile information, Receive a Video, in which the applicants try to present themselves and impress you. The video can be used instead of an entry-level interview to judge and evaluate the applicant’s values and character.</p>
         buttonProps={{
             buttonText: "＞",
-            href: "/post-opportunity"
+            href: "/opportunities/post"
         }}
     />
 }

@@ -38,6 +38,19 @@
     font-style: italic;
 }
 
+.bg-lab { // Modifies the background color of the header
+    background-color: #0DA1CF 
+}
+
 .bg-primary { // Modifies the background color of the header
-    background-color: #0DA1CF !important;
+    background-color: #0DA1CF 
+}
+
+.smallCard {
+    height: 100px; 
+}
+
+.actionable-card {
+    background-color: rgba(255, 255, 255, 0.2);
+    height: 20em;
 }
