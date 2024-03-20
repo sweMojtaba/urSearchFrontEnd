@@ -40,7 +40,7 @@ function Import() {
                 {user.state === 1 ? <ResumeInput /> : <WebsiteImport />}
                 <div className="dividing-line" />
                 <p className="paragraph">
-                    Or <Link href="/under-construction">Skip</Link> for now.
+                    Or <Link href="/applicant-profile">Skip</Link> for now.
                 </p>
             </Container>
             <div className="verticalPhrase">

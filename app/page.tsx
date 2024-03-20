@@ -11,9 +11,9 @@ export default function Home() {
 
   useEffect(() => {
     if (user.state === 1) {
-      router.push('/applicant');
+      router.push('/applicant-profile');
     } else if (user.state === 2) {
-      router.push('/lab');
+      router.push('/lab-profile');
     } else {
       router.push('/welcome');
     }
