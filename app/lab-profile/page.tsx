@@ -79,10 +79,11 @@ function Reviews({ reviews, rating }: {
 function PostNewOpportunity() {
     return <ActionableCard
         title="Post New Opportunities! &emsp;"
-        children= <p className="note" style={{visibility: "hidden", fontSize: "12px"}}>In addition to applicant&rsquo;s resume, and Profile information, Receive a Video, in which the applicants try to present themselves and impress you. The video can be used instead of an entry-level interview to judge and evaluate the applicant’s values and character.</p>
         buttonProps={{
             buttonText: "＞",
             href: "/opportunities/post"
         }}
-    />
+    >
+        <p className='note' style={{visibility: 'hidden', fontSize: '12px'}}>In addition to applicant&rsquo;s resume, and Profile information, Receive a Video, in which the applicants try to present themselves and impress you. The video can be used instead of an entry-level interview to judge and evaluate the applicant’s values and character.</p>
+    </ActionableCard>
 }
