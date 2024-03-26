@@ -8,19 +8,17 @@ import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import "../auth.scss";
 
-async function fakeLogin(username: string, password: string, role: RoleType) {
-    console.log("Faking login by sending request to badger chat...");
-    const res = await fetch("https://cs571.org/s23/hw6/api/login", {
+async function login(email: string, password: string, role: RoleType) {
+    // TODO Replace this with a public link
+    const url = String(process.env.NEXT_PUBLIC_API_URL) + "api/login";
+    const res = await fetch(url, {
         method: "POST",
-        credentials: "include",
         headers: {
-            "X-CS571-ID": "bid_30e5ed25e99b26f8f91c",
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            username: username,
-            password: password,
-            role: role,
+            "email": email,
+            "password": password,
         }),
     });
     return res;
@@ -35,13 +33,10 @@ export default function Login() {
         const { username, password, role } = extractForm(event);
 
         if (username === "" || password === "") {
-            alert("You must provide both a username and password!");
+            alert("You must provide both an email and password!");
         } else {
-            // To-do: change fakeSignup to realSignup
-            fakeLogin(username, password, role)
+            login(username, password, role)
                 .then((res) => {
-                    console.log("Log in response code: ", res.status);
-                    console.log("username: ", username);
                     if (res.status === 404) {
                         alert("Incorrect username!");
                     } else if (res.status === 401) {

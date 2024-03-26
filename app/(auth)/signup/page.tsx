@@ -7,18 +7,18 @@ import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import "../auth.scss";
 
-async function fakeSignup(username: string, password: string, role: RoleType) {
-    console.log("Faking signup by sending request to badger chat...");
-    const res = await fetch("https://www.cs571.org/s23/hw6/api/register", {
+async function signupCall(username: string, password: string, role: RoleType) {
+    // TODO Replace this with a public link
+    const url = String(process.env.NEXT_PUBLIC_API_URL) + "api/signup";
+    const res = await fetch(url, {
         method: "POST",
-        credentials: "include",
         headers: {
-            "X-CS571-ID": "bid_30e5ed25e99b26f8f91c",
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            username: username,
-            password: password,
+            "email": username,
+            "password": password,
+            "userType": role==RoleType.APPLICANT ? "person" : "recruiter"
         }),
     });
     return res;
@@ -35,14 +35,12 @@ export default function Signup() {
         if (username === "" || password === "") {
             alert("You must provide both a username and password!");
         } else {
-            // To-do: change fakeSignup to realSignup
             if (username === "" || password === "") {
                 alert("You must provide both a username and password!");
             } else if (termsCheck === false) {
                 alert("You must accept terms and conditions.");
             } else {
-                // To-do: change fakeSignup to realSignup
-                fakeSignup(username, password, role)
+                signupCall(username, password, role)
                     .then((res) => {
                         if (res.status === 409) {
                             alert("That username has already been taken!");
