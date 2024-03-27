@@ -13,7 +13,7 @@ export default function Opportunities() {
                 <h3 id={styles.title}>Posted Opportunties</h3>
                 <OpportunityResultCard />
                 <div id={styles.button_container}>
-                    <Link href="/post-opportunity" className={styles.pageEndButton + " button-link"}>
+                    <Link href="/opportunities/post" className={styles.pageEndButton + " button-link"}>
                         <Button>Post New Opportunity</Button>
                     </Link>
                     <Link href="/post-open-to-idea" className={styles.pageEndButton + " button-link"}>
