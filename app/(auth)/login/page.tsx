@@ -10,7 +10,9 @@ import "../auth.scss";
 
 async function login(email: string, password: string, role: RoleType) {
     // TODO Replace this with a public link
-    const url = String(process.env.NEXT_PUBLIC_API_URL) + "api/login";
+    // const url = String(process.env.NEXT_PUBLIC_API_URL) + "api/login";
+    const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/";
+    const url = baseUrl + "api/login";
     const res = await fetch(url, {
         method: "POST",
         headers: {
@@ -48,6 +50,8 @@ export default function Login() {
                             state: role === RoleType.APPLICANT ? 1 : 2,
                         });
                         localStorage.setItem("userName", username);
+                        localStorage.setItem("password", password);
+                        console.log(localStorage.accessToken);
                         localStorage.setItem("userState", (role === RoleType.APPLICANT ? 1 : 2).toString());
                         router.push("import");
                     }

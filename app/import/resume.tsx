@@ -5,6 +5,23 @@ import React, { ChangeEvent, useState } from "react";
 import { Button, Form, Spinner } from "react-bootstrap";
 import { AiFillFilePdf } from "react-icons/ai"
 
+async function uploadResume(file : File) {
+    // const url = String(process.env.NEXT_PUBLIC_API_URL) + "api/signup";
+    const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/";
+    const url = baseUrl + "api/jobseeker/me/parseresume";
+    const formData = new FormData(); 
+    formData.append('file', file, file.name);
+    const res = await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/pdf",
+            "Authorization": "Basic " + btoa(localStorage.getItem("userName") + ":" + localStorage.getItem("password")),
+        }, 
+        body: formData
+    });
+    return res;
+}
+
 
 function ResumeInput() {
     const [file, setFile] = useState<File | null>(null);
@@ -39,8 +56,20 @@ function ResumeInput() {
             setUploadButtonContent(() => {
                 return <>Waiting for redirect...</>
             })
-            alert("Successfully uploaded your file!")
-            setTimeout(() => router.push("/applicant-profile"), 1000)
+            uploadResume(file as File)
+                .then((res) => {
+                    if (res.status === 200) {
+                        alert("Successfully uploaded your file!")
+                        setTimeout(() => router.push("/applicant-profile"), 1000)
+                    }
+                    else {
+                        alert("Error " + res.status);
+                        setUploading(false);
+                        setUploadButtonContent(() => {
+                            return <>Upload</>
+                        })
+                    }
+                })
         }, 3000)
     };
 
