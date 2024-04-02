@@ -1,6 +1,29 @@
+import { useState } from "react";
+
+const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/";
+const url = baseUrl + "/api/jobseeker/20";
+let name = null; 
+
+async function fetchData() {
+    // TODO Replace this with a public link
+    const res = await fetch(url, {
+        method: "GET",
+        headers: {
+            "Accept": "application/json",
+        }
+    }).then((res) => res.json())
+    .then((res) => res.data.person)
+    .then((res) => {
+        for (const key in res) localStorage.setItem(key, res[key]);
+    })
+    .catch((error) => console.log(error));
+
+    return res; 
+}
+
 export function fetchPersonalInfo() {
-    return {
-        "name": "Mojtaba Javid",
+    let data = {
+        "name": "Moj",
         "degree": "B.S.",
         "major": "Computer Sciences",
         "school": "University of Wisconsin - Madison",
@@ -8,13 +31,18 @@ export function fetchPersonalInfo() {
         "GPA": 3.89,
         "phone": 6085728750,
         "email": "javid2@wisc.edu"
-    };
+    }
+    fetchData(); 
+    for (const key in data) data[key] = localStorage.getItem(key)
+    console.log(localStorage)
+    return data; 
 }
 
 export function fetchGPAhidden() {
-    return {
-        GPAhidden: true
+    let data = {
+        GPAhidden: localStorage.getItem("GPAhidden")
     }
+    return data
 }
 
 export function fetchDocuments() {
@@ -99,12 +127,9 @@ export function fetchVideo() {
 }
 
 export function fetchSkills() {
-    return [
-        "Python",
-        "Java",
-        "Figma",
-        "Javascript"
-    ]
+    var rawSkills = localStorage.getItem("skills")?.split(","); 
+    var skills = rawSkills.filter((value, index, array) => array.indexOf(value) === index).filter((value, index, array) => value.length > 0)
+    return skills; 
 }
 
 export function fetchAccomplishments() {
@@ -116,6 +141,6 @@ export function fetchAccomplishments() {
 
 export function fetchQuickApplyActivated() {
     return {
-        "quickApply": true
+        "quickApply": localStorage.getItem("isQuickApplyActivated")
     }
 }

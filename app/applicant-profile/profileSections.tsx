@@ -10,7 +10,6 @@ import WorkIcon from "./work.svg"
 import ProjectIcon from "./project.svg"
 import fakeResponse from "@/utils/fakeResponse";
 import { ButtonTextEnum, QuickApplyTemplate, createButtonStatus } from "@/components/functionalities/quickApply";
-import { Button } from 'react-bootstrap'
 
 export function PersonalInfo() {
     const { user, setUser } = useContext(UserContext);
