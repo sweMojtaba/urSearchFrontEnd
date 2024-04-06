@@ -14,9 +14,9 @@ async function uploadResume(file : File) {
     const res = await fetch(url, {
         method: "POST",
         headers: {
-            "Content-Type": "application/pdf",
-            "Authorization": "Basic " + btoa(localStorage.getItem("userName") + ":" + localStorage.getItem("password")),
+            "Authorization": "Basic " + btoa(localStorage.getItem("userName") + ":" + localStorage.getItem("password"))
         }, 
+        credentials: "include", 
         body: formData
     });
     return res;

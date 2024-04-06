@@ -17,7 +17,10 @@ async function login(email: string, password: string, role: RoleType) {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Credentials": "true",
+            "Access-Control-Allow-Origin": "http://localhost:3000/"
         },
+        credentials: "include", 
         body: JSON.stringify({
             "email": email,
             "password": password,
@@ -49,9 +52,10 @@ export default function Login() {
                             name: username,
                             state: role === RoleType.APPLICANT ? 1 : 2,
                         });
+                        console.log(res); 
+                        console.log(res.headers.getSetCookie);
                         localStorage.setItem("userName", username);
                         localStorage.setItem("password", password);
-                        console.log(localStorage.accessToken);
                         localStorage.setItem("userState", (role === RoleType.APPLICANT ? 1 : 2).toString());
                         router.push("import");
                     }
