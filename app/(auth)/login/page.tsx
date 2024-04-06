@@ -52,8 +52,6 @@ export default function Login() {
                             name: username,
                             state: role === RoleType.APPLICANT ? 1 : 2,
                         });
-                        console.log(res); 
-                        console.log(res.headers.getSetCookie);
                         localStorage.setItem("userName", username);
                         localStorage.setItem("password", password);
                         localStorage.setItem("userState", (role === RoleType.APPLICANT ? 1 : 2).toString());
