@@ -12,7 +12,7 @@ function Header() {
                 <NavLink as={Link} href="/applicant-profile">
                     Your Profile
                 </NavLink>
-                <NavLink as={Link} href="/applications-sent">
+                <NavLink as={Link} href="/applications">
                     Applications
                 </NavLink>
                 <NavLink as={Link} href="/search-for-jobs">

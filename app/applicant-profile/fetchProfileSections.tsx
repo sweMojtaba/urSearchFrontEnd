@@ -48,7 +48,7 @@ export function fetchGPAhidden() {
 }
 
 export function fetchDocuments() {
-    fetchData(); 
+    fetchData();
     const docsRaw = JSON.parse(localStorage.getItem("files") as string);
     var docs = []
     for (var j = 0; j < docsRaw.length; ++j) {
@@ -163,7 +163,7 @@ export function fetchSkills() {
     var rawSkills = JSON.parse(localStorage.getItem("skills") as string); 
     var skills = []
     if (rawSkills != null) 
-        skills = rawSkills.filter((value : string, index : number, array) => array.indexOf(value) === index).filter((value : string, index : Number) => value.length > 0)
+        skills = rawSkills.filter((value:string, index:number, array:string[]) => array.indexOf(value) === index).filter((value : string, index : Number) => value.length > 0)
     return skills; 
 }
 

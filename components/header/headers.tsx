@@ -40,7 +40,7 @@ function NavProfile() {
         if (user.state === 1) {
             setTarget("/applicant-profile"); // To-do
         } else if (user.state === 2) {
-            setTarget("/profile/lab");
+            setTarget("/lab-profile");
         }
     }, [user.state]);
 

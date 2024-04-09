@@ -52,7 +52,7 @@ function WebsiteImport() {
                 return <>Waiting for redirect...</>
             })
             alert("Successfully imported your website!")
-            setTimeout(() => router.push("/under-construction"), 1000)
+            setTimeout(() => router.push("/lab-profile"), 1000)
         }, 3000)
     };
 

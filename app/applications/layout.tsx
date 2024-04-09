@@ -9,7 +9,7 @@ function Header() {
     return <HeaderCommon interfaceRoot="/applications">
         <Nav id="entries">
             <NavLink as={Link} href="/applicant-profile">Your Profile</NavLink>
-            <NavLink as={Link} href="/applications-sent">Applications</NavLink>
+            <NavLink as={Link} href="/applications">Applications</NavLink>
             <NavLink as={Link} href="/search-for-jobs">
                 <span>Jobs</span>
                 <AiOutlineSearch />
