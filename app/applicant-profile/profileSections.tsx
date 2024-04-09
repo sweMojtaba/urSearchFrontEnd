@@ -48,6 +48,7 @@ export function PersonalInfo() {
 
 export function Documents() {
     const documents = useMemo(fetchDocuments, []);
+    // const documentsPopup = something;
 
     return <InfoCard
         title="Documents"
@@ -126,7 +127,7 @@ export function Video(): JSX.Element {
 
 export function Skills() {
     const [reload, setReload] = useState(false);
-    const skills = useMemo(fetchSkills, [reload]);
+    const skills: string[] = useMemo(fetchSkills, [reload]);
 
     return <InfoCard
         title="Skills"

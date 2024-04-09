@@ -1,3 +1,83 @@
+// EDITABLE INFO CARD START ------
+// THIS IS EXTREMELY TEMPORARY
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+.overlay {
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent black overlay */
+    z-index: 2; /* Ensure the overlay is above other content */
+}
+
+.popup-visible {
+    z-index: 1;
+    display: flex;
+}
+
+.popup-hidden {
+    z-index: -1;
+    display: none; 
+}
+
+.bug-report-form {
+    flex-shrink: 0;
+    z-index: 4; 
+    padding: 10px; 
+    border-radius: 10px; 
+    background: linear-gradient(180deg, #3876D2 0%, #10428B 100%);
+    width: 4000px;  
+    height: 600px;
+    max-width: 1000px;
+    max-height: 450px;
+    padding: 20px; 
+    position:fixed; 
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.report-form-title, .report-form-title:focus {
+    border: none; 
+    border-radius: 10px; 
+    background-color: white;
+    margin-top: 24px;
+    height: 44px; 
+    color: black; 
+}
+
+.report-form-description, .report-form-description:focus {
+    @extend .report-form-title;
+    height: 200px; 
+    margin-bottom: 20px;
+}
+
+.form-btn {
+    width: 45%; 
+}
+
+.button {
+    display: flex;
+    border-radius: 50%;
+    background-color: #00B2FF;
+    font-family: Inter;
+    font-weight: 800; 
+    font-size: 40px;
+    text-align: center; 
+    height: 61px; 
+    width: 64px; 
+    justify-content: center;
+    align-items: center;
+}
+
+.button:hover {
+    background-color: #1b02ff;
+}
+
+// EDITABLE INFO CARD END ------
+
 .info-card {
     border: 2px solid #fff;
     padding: 1em;
