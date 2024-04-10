@@ -1,6 +1,6 @@
 "use client" // needed because I need to pass a function to cards
 
-import { CardWithImg, InfoCard, PassableInfoCardProps } from "@/components/cards-and-items/cards";
+import { BulletPointCard, CardWithImg, InfoCard, PassableInfoCardProps } from "@/components/cards-and-items/cards";
 import { fetchAccomplishments, fetchAffiliations, fetchDocuments, fetchExperiences, fetchGPAhidden, fetchPersonalInfo, fetchProjects, fetchSkills, fetchVideo } from "./fetchProfileSections";
 import { BigLi, SmallLi } from "@/components/cards-and-items/listItems";
 import Profile from "./profileSolid.svg"
@@ -62,12 +62,12 @@ export function Affiliations() {
     const [reload, setReload] = useState(false);
     const affiliations = useMemo(fetchAffiliations, [reload]);
 
-    return <InfoCard
+    return <BulletPointCard
         title="Affiliations"
-        editFunc={() => { console.log("TO-Do: edit affiliations") }}
+        apiURL="https://example.org"
     >
         {affiliations.map(affiliation => <SmallLi text={affiliation.name} url={affiliation.url} key={affiliation.name} />)}
-    </InfoCard>
+    </BulletPointCard>
 }
 
 export function Experiences() {
@@ -129,24 +129,24 @@ export function Skills() {
     const [reload, setReload] = useState(false);
     const skills: string[] = useMemo(fetchSkills, [reload]);
 
-    return <InfoCard
+    return <BulletPointCard
         title="Skills"
-        editFunc={() => { console.log("TO-Do: edit skills") }}
+        apiURL="https://example.org"
     >
         {skills.map(skill => <SmallLi text={skill} url="" key={skill} />)}
-    </InfoCard>
+    </BulletPointCard>
 }
 
 export function Accomplishments() {
     const [reload, setReload] = useState(false);
     const accomplishments = useMemo(fetchAccomplishments, [reload]);
 
-    return <InfoCard
+    return <BulletPointCard
         title="Accomplishments"
-        editFunc={() => { console.log("TO-Do: edit skills") }}
+        apiURL="https://example.org"
     >
         {accomplishments.map(accomplishment => <SmallLi text={accomplishment} url="" key={accomplishment} />)}
-    </InfoCard>
+    </BulletPointCard>
 }
 
 
