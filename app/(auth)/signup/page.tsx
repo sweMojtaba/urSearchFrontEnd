@@ -9,7 +9,7 @@ import "../auth.scss";
 
 async function signupCall(username: string, password: string, role: RoleType) {
     // TODO Replace this with a public link
-    const url = String(process.env.NEXT_PUBLIC_API_URL) + "/api/signup";
+    const url = String(process.env.NEXT_PUBLIC_API_URL) + "api/signup";
     const res = await fetch(url, {
         method: "POST",
         headers: {
