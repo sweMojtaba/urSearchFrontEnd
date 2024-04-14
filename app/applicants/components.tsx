@@ -4,6 +4,7 @@ import { Row, Button, Image, Container } from "react-bootstrap";
 import "./aplicants.scss";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 export function SearchBar() {
     return (
@@ -53,25 +54,28 @@ interface applicantInterface {
 }
 
 export function ApplicantList() {
-    const labId = 1; // TODO get lab ID of the user
-    const url = process.env.NEXT_PUBLIC_API_URL + `api/lab/me/${labId}/applications`;
+    const url = process.env.NEXT_PUBLIC_API_URL + "api/lab/me/applications";
+    const searchParams = useSearchParams();
+    const jobId = searchParams.get("jobId");
     const [applicants, setApplicants] = useState<applicantInterface[]>([]);
 
     useEffect(() => {
         const fetchApplicants = async () => {
             const res = await fetch(url, {
+                method: "GET",
                 credentials: "include",
             });
             const data = await res.json();
             if (res.status === 200 && data.code == 0) {
-                setApplicants(data.data.applications);
+                const filteredApplicants = data.data.applications.filter((app: applicantInterface) => app.jobId == jobId);
+                setApplicants(filteredApplicants);
             } else {
                 console.log(data.msg);
             }
         };
 
         fetchApplicants();
-    }, [url]);
+    }, [url, jobId]);
 
     return (
         <Container className="applicant-container">
@@ -99,7 +103,7 @@ function ApplicantItem({ ID, name, date, percent, image }: ApplicantItemInterfac
         <>
             <div className="applicant-info">
                 <div className="applicants-left">
-                    <Image src={image || "/_next/static/media/profile.420b852d.svg"} alt="Profile Picture" width={54} height={54} className="profile-picture" />
+                    <Image src={image || "/profileSolid.svg"} alt="Profile Picture" width={54} height={54} className="profile-picture" />
                     <div>
                         <h6>{name}</h6>
                         <p>{date}</p>

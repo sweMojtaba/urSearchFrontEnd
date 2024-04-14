@@ -9,7 +9,7 @@ import { useSearchParams } from "next/navigation";
 
 function ReviewProfile() {
     const searchParams = useSearchParams();
-    const applicationId = searchParams.get("ID");
+    const applicationId = searchParams.get("ID") || "";
     const [applicationData, setApplicationData] = useState<applicationInterface>(defaultApplication);
     const [applicantData, setApplicantData] = useState<applicantInterface>(defaultApplicant);
     const [activeButton, setActiveButton] = useState<string | null>(null);
@@ -87,7 +87,7 @@ function ReviewProfile() {
                         <Col md={12} xl={3} id="lastCol">
                             <Skills skills={applicantData.skills} />
                             <Accomplishments accomplishments={applicantData.accomplishments} />
-                            <Documents documents={applicantData.files} />
+                            <Documents documents={applicantData.files} resume={applicationData.resumeBlobName} coverLetter={applicationData.coverLetterBlobName} applicationId={applicationId} />
                         </Col>
                     </>
                 )}

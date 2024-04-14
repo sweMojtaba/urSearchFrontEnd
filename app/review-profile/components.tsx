@@ -38,7 +38,49 @@ export function PersonalInfo({ name, degree, major, school, classYear, GPA, phon
     );
 }
 
-export function Documents({ documents }: DocumentsInterface) {
+export function Documents({ documents, resume, coverLetter, applicationId }: DocumentsInterface) {
+    const handleResumeDownload = async () => {
+        const url = process.env.NEXT_PUBLIC_API_URL + `api/lab/me/application/${applicationId}/resume`;
+
+        const res = await fetch(url, {
+            method: "GET",
+            credentials: "include",
+        });
+
+        if (res.status == 200) {
+            const blob = await res.blob();
+            const blobURL = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = blobURL;
+            a.download = resume;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(blobURL);
+        }
+    };
+
+    const handleCoverLetterDownload = async () => {
+        const url = process.env.NEXT_PUBLIC_API_URL + `api/lab/me/application/${applicationId}/coverletter`;
+
+        const res = await fetch(url, {
+            method: "GET",
+            credentials: "include",
+        });
+
+        if (res.status == 200) {
+            const blob = await res.blob();
+            const blobURL = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = blobURL;
+            a.download = coverLetter;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(blobURL);
+        }
+    };
+
     return (
         <InfoCard
             title="Documents"
@@ -46,6 +88,16 @@ export function Documents({ documents }: DocumentsInterface) {
                 console.log("TO-DO: edit documents");
             }}
         >
+            {resume.length > 0 && (
+                <div id="downloadable-document" onClick={handleResumeDownload}>
+                    <SmallLi text={resume} />
+                </div>
+            )}
+            {coverLetter.length > 0 && (
+                <div id="downloadable-document" onClick={handleCoverLetterDownload}>
+                    <SmallLi text={coverLetter} />
+                </div>
+            )}
             {documents && documents.map((document) => <SmallLi text={document.name} url={document.url} key={document.ID} />)}
         </InfoCard>
     );

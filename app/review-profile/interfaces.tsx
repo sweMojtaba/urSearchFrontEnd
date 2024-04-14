@@ -12,6 +12,9 @@ export interface PersonalInfoInterface {
 
 export interface DocumentsInterface {
     documents: fileObject[];
+    resume: string;
+    coverLetter: string;
+    applicationId: string;
 }
 
 export interface AffiliationsInterface {

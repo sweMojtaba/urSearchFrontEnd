@@ -78,3 +78,13 @@
     font-weight: 400;
     line-height: normal;
 }
+
+#downloadable-document {
+    cursor: pointer;
+    color: inherit;
+    transition: color 0.2s ease-in-out;
+}
+
+#downloadable-document:hover {
+    color: #72F07F;
+  }

@@ -11,17 +11,15 @@ import { useEffect, useState } from "react";
 
 export default function Opportunities() {
     const [jobs, setJobs] = useState<any[]>([]);
-    const recruiterLabId = 1;
-    const url = String(process.env.NEXT_PUBLIC_API_URL) + `/api/jobs/lab/${recruiterLabId}`;
-
-    // TODO, get mapping of all labs to their respective ID
-    const labIdMap: { [key: string]: string } = {
-        "1": "Ricke Lab",
-    };
 
     useEffect(() => {
+        const url = String(process.env.NEXT_PUBLIC_API_URL) + `api/jobs/me`;
+
         const getJobs = async () => {
-            const res = await fetch(url);
+            const res = await fetch(url, {
+                method: "GET",
+                credentials: "include",
+            });
             const data = await res.json();
             if (res.status == 200 && data.code == 0) {
                 setJobs(data.data.jobs);
@@ -29,13 +27,13 @@ export default function Opportunities() {
         };
 
         getJobs();
-    }, [url]);
+    }, []);
 
     return (
         <Container className="medium-content">
             <div id={styles.content_container}>
                 <h3 id={styles.title}>Posted Opportunties</h3>
-                {jobs.length > 0 && jobs.map((job) => <OpportunityResultCard key={job.ID} labName={labIdMap[job.labId]} title={job.title} jobId={job.ID} jobUserId={job.userId} />)}
+                {jobs.length > 0 && jobs.map((job) => <OpportunityResultCard key={job.ID} labName={job.labName} title={job.title} jobId={job.ID} jobUserId={job.userId} />)}
                 <div id={styles.button_container}>
                     <Link href="/opportunities/post" className={styles.pageEndButton + " button-link"}>
                         <Button>Post New Opportunity</Button>
