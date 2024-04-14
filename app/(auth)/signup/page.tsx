@@ -9,7 +9,9 @@ import "../auth.scss";
 
 async function signupCall(username: string, password: string, role: RoleType) {
     // TODO Replace this with a public link
-    const url = String(process.env.NEXT_PUBLIC_API_URL) + "api/signup";
+    //const url = String(process.env.NEXT_PUBLIC_API_URL) + "api/signup"; Changed by MO for beta deploy
+    const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/";
+    const url = baseUrl + "api/signup";
     const res = await fetch(url, {
         method: "POST",
         headers: {
