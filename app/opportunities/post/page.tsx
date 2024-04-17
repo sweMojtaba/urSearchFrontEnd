@@ -70,7 +70,9 @@ export default function PostOpportunity() {
         const formattedGPA = parseFloat(minGPA);
         formData.minGPA = isNaN(formattedGPA) ? 0 : formattedGPA;
 
-        const url = process.env.NEXT_PUBLIC_API_URL + "api/job/me";
+        const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/";
+        // const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+        const url = baseUrl + "api/job/me";
         const res = await fetch(url, {
             method: "POST",
             credentials: "include",
@@ -81,7 +83,7 @@ export default function PostOpportunity() {
         });
         const data = await res.json();
         if (res.status === 200 && data.code == 0) {
-            console.log("Success!");
+            console.log("Successful post!");
         } else {
             console.log(data.msg);
         }

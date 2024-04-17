@@ -54,7 +54,9 @@ interface applicantInterface {
 }
 
 export function ApplicantList() {
-    const url = process.env.NEXT_PUBLIC_API_URL + "api/lab/me/applications";
+    const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/";
+    // const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+    const url = baseUrl + "api/lab/me/applications";
     const searchParams = useSearchParams();
     const jobId = searchParams.get("jobId");
     const [applicants, setApplicants] = useState<applicantInterface[]>([]);
@@ -80,12 +82,16 @@ export function ApplicantList() {
     return (
         <Container className="applicant-container">
             <h2>Applicants</h2>
-            {applicants.map((applicant) => {
-                const date = new Date(applicant.CreatedAt);
-                const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-                // TODO, use actual % and user image
-                return <ApplicantItem key={applicant.ID} ID={applicant.ID} name={applicant.name} date={formattedDate} percent={"80"} image={applicant.image} />;
-            })}
+            {applicants.length > 0 ? (
+                applicants.map((applicant) => {
+                    const date = new Date(applicant.CreatedAt);
+                    const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+                    // TODO, use actual % and user image
+                    return <ApplicantItem key={applicant.ID} ID={applicant.ID} name={applicant.name} date={formattedDate} percent={"80"} image={applicant.image} />;
+                })
+            ) : (
+                <p>No Applicants</p>
+            )}
         </Container>
     );
 }
@@ -160,7 +166,7 @@ interface TopMatchItemInterface {
 function TopMatchItem({ name, degree, school, gradYear, phone, email, quickApplicant, percent, image }: TopMatchItemInterface) {
     return (
         <div className="top-applicant-container">
-            <Image alt="profile picture" src={image ? image : "/_next/static/media/profile.420b852d.svg"} width={96} height={96} className={image ? "img-border" : ""}></Image>
+            <Image alt="profile picture" src={image || "/profileSolid.svg"} width={96} height={96} className={image ? "img-border" : ""}></Image>
             <div className="right-aligned">
                 <h4>{name}</h4>
                 <h6>{degree}</h6>

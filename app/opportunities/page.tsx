@@ -13,7 +13,9 @@ export default function Opportunities() {
     const [jobs, setJobs] = useState<any[]>([]);
 
     useEffect(() => {
-        const url = String(process.env.NEXT_PUBLIC_API_URL) + `api/jobs/me`;
+        const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/";
+        // const baseUrl = String(process.env.NEXT_PUBLIC_API_URL);
+        const url = baseUrl + "api/jobs/me";
 
         const getJobs = async () => {
             const res = await fetch(url, {

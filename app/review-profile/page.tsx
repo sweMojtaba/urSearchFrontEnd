@@ -17,7 +17,9 @@ function ReviewProfile() {
 
     // Get the data for the application
     useEffect(() => {
-        const url = process.env.NEXT_PUBLIC_API_URL + `api/lab/me/application/${applicationId}`;
+        const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/";
+        // const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+        const url = baseUrl + `api/lab/me/application/${applicationId}`;
         const getApplicationProfile = async () => {
             const res = await fetch(url, {
                 method: "GET",
@@ -36,7 +38,9 @@ function ReviewProfile() {
 
     // Get the data for the applicant who applied
     useEffect(() => {
-        const url = process.env.NEXT_PUBLIC_API_URL + `api/jobseeker/${applicationData.jobSeekerId}`;
+        const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/";
+        // const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+        const url = baseUrl + `api/jobseeker/${applicationData.jobSeekerId}`;
         const getApplicantProfile = async () => {
             const res = await fetch(url, {
                 method: "GET",

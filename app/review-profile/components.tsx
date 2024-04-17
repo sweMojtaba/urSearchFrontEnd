@@ -40,7 +40,9 @@ export function PersonalInfo({ name, degree, major, school, classYear, GPA, phon
 
 export function Documents({ documents, resume, coverLetter, applicationId }: DocumentsInterface) {
     const handleResumeDownload = async () => {
-        const url = process.env.NEXT_PUBLIC_API_URL + `api/lab/me/application/${applicationId}/resume`;
+        const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/";
+        // const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+        const url = baseUrl + `api/lab/me/application/${applicationId}/resume`;
 
         const res = await fetch(url, {
             method: "GET",
@@ -61,7 +63,9 @@ export function Documents({ documents, resume, coverLetter, applicationId }: Doc
     };
 
     const handleCoverLetterDownload = async () => {
-        const url = process.env.NEXT_PUBLIC_API_URL + `api/lab/me/application/${applicationId}/coverletter`;
+        const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/";
+        // const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+        const url = baseUrl + `api/lab/me/application/${applicationId}/coverletter`;
 
         const res = await fetch(url, {
             method: "GET",
@@ -241,7 +245,9 @@ export function Shadow() {
 export function FunctionButtons({ activeButton, clicked, applicationId }: { activeButton: string | null; applicationId: string | null; clicked: (buttonName: string) => void }) {
     const handleDescision = async (descision: string) => {
         if (applicationId === null) return;
-        const url = process.env.NEXT_PUBLIC_API_URL + `api/lab/me/application/${applicationId}/status`;
+        const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/";
+        // const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+        const url = baseUrl + `api/lab/me/application/${applicationId}/status`;
         const res = await fetch(url, {
             method: "POST",
             credentials: "include",
