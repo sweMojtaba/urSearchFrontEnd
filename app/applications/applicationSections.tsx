@@ -172,6 +172,8 @@ export function JobStatusCards() {
     const { user, setUser } = useContext(UserContext);
     const statusData : StatusJob[] = useMemo(getData, [user])
 
+    
+
     const displayList = statusData.map((card, i) => 
         <Row key={i} className="job-results-card">
         <Col className="card-row">
