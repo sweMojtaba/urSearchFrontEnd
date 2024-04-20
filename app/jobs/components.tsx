@@ -4,6 +4,7 @@ import { Button, Col, Row } from "@/client-wrappers/bootstrap";
 import "./jobs.scss";
 import Image from "next/image";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 function SearchCriteria({ title, placeholder }: { title: string; placeholder: string }) {
     return (
@@ -331,6 +332,24 @@ interface SearchBarProps {
 }
 
 export function SearchBar({ advancedFilterStatus }: SearchBarProps) {
+    const router = useRouter(); 
+
+    function handleSearch(event) {
+        if (event.target.value) {
+            router.push("/jobs?query=" + event.target.value); 
+            router.refresh(); 
+        }
+        else {
+            alert("You must specify what you want to search for"); 
+        }
+    }
+
+    function handleKeyPress(event) {
+        if (event.key == "Enter") {
+            event.preventDefault(); 
+            handleSearch(event);  
+        }
+    }
 
     return (
         <>
@@ -344,7 +363,7 @@ export function SearchBar({ advancedFilterStatus }: SearchBarProps) {
                             fill="white"
                         />
                     </svg>
-                    <input type="search" placeholder="Search Jobs..." className="form-search-input"/>                    
+                    <input type="search" placeholder="Search Jobs..." className="form-search-input" onKeyDown={handleKeyPress}/>                    
                     <svg onClick={advancedFilterStatus} xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" className="pl">
                     <path
                             d="M20.6228 15C19.3999 15.002 18.211 15.4023 17.2358 16.1404C16.2606 16.8785 15.5522 17.9142 15.2177 19.0909H3.75459V22.1591H15.2177C15.5031 23.166 16.0636 24.0733 16.8362 24.7791C17.6088 25.4848 18.5629 25.9609 19.5913 26.1536C20.6196 26.3466 21.6812 26.2485 22.6569 25.8707C23.6325 25.4931 24.4836 24.8503 25.1141 24.0152C25.7445 23.1801 26.1296 22.1854 26.226 21.1433C26.3224 20.1009 26.1263 19.0526 25.6596 18.1159C25.1929 17.1791 24.4742 16.3912 23.5845 15.8408C22.6946 15.2903 21.6688 14.9992 20.6228 15ZM20.6228 23.1818C20.1173 23.1818 19.623 23.0319 19.2028 22.7509C18.7824 22.47 18.4549 22.0706 18.2615 21.6034C18.068 21.1363 18.0174 20.6222 18.116 20.1263C18.2147 19.6301 18.4581 19.1747 18.8154 18.8171C19.173 18.4595 19.6283 18.216 20.124 18.1173C20.6199 18.0187 21.1337 18.0693 21.6008 18.2628C22.0678 18.4563 22.467 18.7841 22.7477 19.2045C23.0286 19.6251 23.1784 20.1193 23.1784 20.625C23.1784 21.3032 22.9091 21.9534 22.4299 22.4329C21.9506 22.9125 21.3006 23.1818 20.6228 23.1818ZM14.7822 7.84092C14.4121 6.53472 13.5822 5.4065 12.4457 4.66446C11.3092 3.92243 9.94281 3.61666 8.5986 3.80358C7.25439 3.9905 6.02312 4.65749 5.13199 5.68148C4.24086 6.70546 3.75 8.01734 3.75 9.37503C3.75 10.7327 4.24086 12.0446 5.13199 13.0686C6.02312 14.0925 7.25439 14.7595 8.5986 14.9465C9.94281 15.1334 11.3092 14.8276 12.4457 14.0856C13.5822 13.3435 14.4121 12.2153 14.7822 10.9091H26.2453V7.84092H14.7822ZM9.37731 11.9318C8.87183 11.9318 8.37769 11.7819 7.95739 11.5009C7.53709 11.22 7.20951 10.8207 7.01608 10.3535C6.82264 9.88626 6.77203 9.37218 6.87064 8.8762C6.96924 8.38023 7.21268 7.92466 7.57011 7.56708C7.92754 7.2095 8.38292 6.96599 8.87869 6.86733C9.37448 6.76868 9.88834 6.81931 10.3553 7.01283C10.8224 7.20635 11.2215 7.53406 11.5024 7.95453C11.7832 8.375 11.9331 8.86932 11.9331 9.37503C11.9331 10.0531 11.6638 10.7035 11.1845 11.183C10.7052 11.6625 10.0551 11.9318 9.37731 11.9318Z"
