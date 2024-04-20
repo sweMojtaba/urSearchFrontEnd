@@ -264,7 +264,6 @@ export function QueryJobs(query : {"query" : string}) {
 
     if (localStorage.getItem("jobResultsList") != null) {
         let rawResults = JSON.parse(localStorage.getItem("jobResultsList") as string);
-        localStorage.removeItem("jobResultsList");
 
         for (let idx = 0; idx < rawResults.length; idx++) {
             results.push({
