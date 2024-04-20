@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Container, Row } from "@/client-wrappers/bootstrap";
-import { SearchBar, ReccomendedCard, SavedJobs, SavedFilters, AdvancedFiltersPopUp } from "./components";
+import { SearchBar, ReccomendedCard, SavedJobs, SavedFilters, AdvancedFiltersPopUp, QueryJobs } from "./components";
 import "./jobs.scss";
 
 // Static data for now
@@ -19,23 +19,47 @@ export default function JobsPage() {
     const advancedFilterStatus = () => {
         setadvancedFilterIsVisible(true);
     };
+    const urlParams = new URLSearchParams(window.location.search);
+    const myParam = urlParams.get('query');
+    console.log(myParam);
 
-    return (
-        <Container>
-            <Row>
-                <AdvancedFiltersPopUp advancedFilterIsVisible={advancedFilterIsVisible} />
-            </Row>
-            <SearchBar advancedFilterStatus={advancedFilterStatus} />
-            <h2>Recommended...</h2>
-            <Row>
-                {reccomendedCardData.map((card, index) => {
-                    return <ReccomendedCard key={index} company={card.company} location={card.location} sigma={card.sigma} affiliation={card.affiliation} typeOfPosition={card.typeOfPosition} description={card.description} bookmarked={card.bookmarked} />;
-                })}
-            </Row>
-            <Row className="top-margin">
-                <SavedJobs />
-                <SavedFilters />
-            </Row>
-        </Container>
-    );
+    if (myParam == null) {
+        return (
+            <Container>
+                <Row>
+                    <AdvancedFiltersPopUp advancedFilterIsVisible={advancedFilterIsVisible} />
+                </Row>
+                <SearchBar advancedFilterStatus={advancedFilterStatus} />
+                <h2>Recommended...</h2>
+                <Row>
+                    {reccomendedCardData.map((card, index) => {
+                        return <ReccomendedCard key={index} company={card.company} location={card.location} sigma={card.sigma} affiliation={card.affiliation} typeOfPosition={card.typeOfPosition} description={card.description} bookmarked={card.bookmarked} />;
+                    })}
+                </Row>
+                <Row className="top-margin">
+                    <SavedJobs />
+                    <SavedFilters />
+                </Row>
+            </Container>
+        );
+    }
+    else {
+        return (
+            <Container>
+                <Row>
+                    <AdvancedFiltersPopUp advancedFilterIsVisible={advancedFilterIsVisible} />
+                </Row>
+                <SearchBar advancedFilterStatus={advancedFilterStatus} />
+                <h2>Recommended...</h2>
+                <Row>
+                    {reccomendedCardData.map((card, index) => {
+                        return <ReccomendedCard key={index} company={card.company} location={card.location} sigma={card.sigma} affiliation={card.affiliation} typeOfPosition={card.typeOfPosition} description={card.description} bookmarked={card.bookmarked} />;
+                    })}
+                </Row>
+                <Row className="top-margin">
+                    <QueryJobs query={myParam} />
+                    <SavedFilters />
+                </Row>
+            </Container>
+        );    }
 }

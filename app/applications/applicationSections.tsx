@@ -1,8 +1,12 @@
+'use client'
 import { Button } from "@/client-wrappers/bootstrap"
 import { JobCard, JobResultCard } from "@/components/cards-and-items/cards";
 import { SearchBarWithAdvancedFilters } from "@/components/functionalities/filters";
 import { Container, Col, Row } from "@/client-wrappers/bootstrap";
 import Image from "next/image";
+import { getData } from "./fetchJobStatus";
+import { useContext, useMemo } from "react";
+import { UserContext } from "../context";
 
 
 export function SearchBar() {
@@ -29,38 +33,43 @@ type StatusJob = {
     saved?: boolean
 }
 
-const statusData: StatusJob[] = [
-    {
-        company: "Ricke Lab", 
-        position: "Research Assistant", 
-        date: "4/13/2023", 
-        status: "Under Review",
-        sigma: true,
-    }, 
-    {
-        company: "Happy Lab", 
-        position: "Lab Technician", 
-        date: "4/13/2023", 
-        status: "Interview Extended",
-        sigma: true
-    }, 
-    {
-        company: "AI Club", 
-        position: "Workshop Coordinator", 
-        date: "1/23/2022", 
-        status: "Accepted",
-        sigma: false
-    }, 
-    {
-        company: "Telesec Labs", 
-        position: "Data Analyst", 
-        date: "4/13/2023", 
-        status: "Rejected",
-        sigma: true
-    }
-];
+// const statusData: StatusJob[] = [
+//     {
+//         company: "Ricke Lab", 
+//         position: "Research Assistant", 
+//         date: "4/13/2023", 
+//         status: "Under Review",
+//         sigma: true,
+//     }, 
+//     {
+//         company: "Happy Lab", 
+//         position: "Lab Technician", 
+//         date: "4/13/2023", 
+//         status: "Interview Extended",
+//         sigma: true
+//     }, 
+//     {
+//         company: "AI Club", 
+//         position: "Workshop Coordinator", 
+//         date: "1/23/2022", 
+//         status: "Accepted",
+//         sigma: false
+//     }, 
+//     {
+//         company: "Telesec Labs", 
+//         position: "Data Analyst", 
+//         date: "4/13/2023", 
+//         status: "Rejected",
+//         sigma: true
+//     }
+// ];
+
+
 
 export function StatusBoard() {
+
+    const { user, setUser } = useContext(UserContext);
+    const statusData : StatusJob[] = useMemo(getData, [user])
 
     const displayList = statusData.map((job, i) => 
     <div key={i} className="status-job">
@@ -160,6 +169,9 @@ export function SimilarOpportunity() {
 }
 
 export function JobStatusCards() {
+    const { user, setUser } = useContext(UserContext);
+    const statusData : StatusJob[] = useMemo(getData, [user])
+
     const displayList = statusData.map((card, i) => 
         <Row key={i} className="job-results-card">
         <Col className="card-row">
