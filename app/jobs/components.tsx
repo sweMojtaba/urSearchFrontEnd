@@ -386,3 +386,106 @@ export function SearchBar({ advancedFilterStatus }: SearchBarProps) {
         </>
     );
 }
+
+export function Application() {
+
+    async function postApplication(labId : number, jobId: number, status: string, protectedVeteranType: number, disabilitiesType: number, coverLetterBlobName: string, isVideoAttached: boolean) {
+        const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/";
+        const url = baseUrl + "api/jobseeker/me/submitapplication";
+        const res = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Authorization": "Basic " + btoa(localStorage.getItem("userName") + ":" + localStorage.getItem("password"))
+            }, 
+            credentials: "include", 
+            body: JSON.stringify({
+                "labId": labId, 
+                "jobId": jobId, 
+                "status": status, 
+                "protectedVeteranType": protectedVeteranType, 
+                "disabilitiesType": disabilitiesType, 
+                "coverLetterBlobName": coverLetterBlobName, 
+                "isVideoAttached": isVideoAttached
+            })
+        });
+        return res;
+    }
+
+    function submitApplication() {
+        // Check veteran status
+        let protectedVeteranType = 0; 
+        let vet1 = document.getElementById("vet1").checked; 
+        let vet2 = document.getElementById("vet2").checked; 
+        let vet3 = document.getElementById("vet3").checked; 
+        if (!vet1  && !vet2 && !vet3) {
+            alert("Please indicate your veteran type"); 
+            return; 
+        }
+        else if (vet1) {
+            protectedVeteranType = 1; 
+        }
+        else if (vet2) {
+            protectedVeteranType = 0; 
+        }
+        else {
+            protectedVeteranType = 2;
+        }
+
+        let disabilitiesType = 0; 
+        let dis1 = document.getElementById("dis1").checked;
+        let dis2 = document.getElementById("dis2").checked;
+        let dis3 = document.getElementById("dis3").checked;
+        if (!dis1 && !dis2 && !dis3) {
+            alert("Please indicate your disability type"); 
+            return; 
+        }
+        else if (dis1) {
+            disabilitiesType = 1; 
+        }
+        else if (dis2) {
+            disabilitiesType = 0; 
+        }
+        else {
+            disabilitiesType = 2;
+        }
+
+        let video = document.getElementById("video").checked;        
+        let isVideoAttached = video; 
+
+        postApplication(1, 1, "submitted", protectedVeteranType, disabilitiesType, "cover-letter.pdf", isVideoAttached)
+            .then((res) => res.json())
+            .then((res) => console.log(res))
+            .catch((error) => console.log(error))
+    }
+
+    return <div>
+        <h2>ARE YOU A PROTECTED VETERAN?</h2>
+        <div className="protectedVet">
+            <input type="radio" id="vet1" name="vet" value="vet1"></input>
+            <label for="vet1">YES, I AM A PROTECTED VETERAN</label><br />
+            <input type="radio" id="vet2" name="vet" value="vet2"></input>
+            <label for="vet2">NO, I AM NOT A PROTECTED VETERAN</label><br />
+            <input type="radio" id="vet3" name="vet" value="vet3"></input>
+            <label for="vet3">I DO NOT WISH TO DISCLOSE THAT INFORMATION</label><br />
+        </div>
+        <h2>DO YOU HAVE ANY DISABILITIES?</h2>
+        <div className="disability">
+            <input type="radio" id="dis1" name="dis" value="dis1"></input>
+            <label for="dis1">YES, I HAVE DISABILITY/IES</label><br />
+            <input type="radio" id="dis2" name="dis" value="dis2"></input>
+            <label for="dis2">NO, I DO NOT HAVE DISABILITY/IES</label><br />
+            <input type="radio" id="dis3" name="dis" value="dis3"></input>
+            <label for="dis3">I DO NOT WISH TO DISCLOSE THAT INFORMATION</label><br />
+        </div>
+        <h2>VERIFYING THE FOLLOWING DOCUMENTS FOR SUBMISSION:</h2>
+        <div className="documents">
+            <input type="checkbox" id="resume" name="resume"></input>
+            <label for="resume">RESUME</label><br></br>
+            <input type="checkbox" id="cv" name="cv"></input>
+            <label for="cv">UPLOAD A COVER LETTER</label><br></br>
+            <input type="checkbox" id="video" name="video"></input>
+            <label for="video">SUBMIT THE VIDEO</label><br></br>
+        </div>
+        <Button onClick={submitApplication}>APPLY</Button>
+    </div>
+}

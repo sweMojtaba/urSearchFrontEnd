@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Container, Row } from "@/client-wrappers/bootstrap";
-import { SearchBar, ReccomendedCard, SavedJobs, SavedFilters, AdvancedFiltersPopUp, QueryJobs } from "./components";
+import { SearchBar, ReccomendedCard, SavedJobs, SavedFilters, AdvancedFiltersPopUp, QueryJobs, Application } from "./components";
 import "./jobs.scss";
 
 // Static data for now
@@ -60,6 +60,7 @@ export default function JobsPage() {
                     <QueryJobs query={myParam} />
                     <SavedFilters />
                 </Row>
+                <Application />
             </Container>
         );    }
 }
