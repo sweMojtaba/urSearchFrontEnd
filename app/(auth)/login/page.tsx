@@ -20,12 +20,13 @@ async function login(email: string, password: string, role: RoleType) {
             "Access-Control-Allow-Credentials": "true",
             "Access-Control-Allow-Origin": "http://localhost:3000/"
         },
-        credentials: "include", 
+        credentials: "include",
         body: JSON.stringify({
-            "email": email,
-            "password": password,
+            email: email,
+            password: password,
         }),
     });
+
     return res;
 }
 
@@ -48,19 +49,19 @@ export default function Login() {
                         alert("Incorrect password!");
                     } else if (res.status === 200) {
                         alert("Login successful!");
-                        setUser({
-                            name: username,
-                            state: role === RoleType.APPLICANT ? 1 : 2,
-                        });
-                        localStorage.setItem("userName", username);
-                        localStorage.setItem("password", password);
-                        localStorage.setItem("userState", (role === RoleType.APPLICANT ? 1 : 2).toString());
-                        router.push("import");
                     }
                     return res.json();
                 })
                 .then((data) => {
                     console.log(data);
+                    setUser({
+                        name: username,
+                        state: role === RoleType.APPLICANT ? 1 : 2,
+                    });
+                    localStorage.setItem("userName", username);
+                    localStorage.setItem("userState", (role === RoleType.APPLICANT ? 1 : 2).toString());
+                    localStorage.setItem("userId", data.data.ID);
+                    router.push("import");
                 })
                 .catch((error) => {
                     console.log(error);

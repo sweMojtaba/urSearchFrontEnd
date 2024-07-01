@@ -18,9 +18,9 @@ async function signupCall(username: string, password: string, role: RoleType) {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            "email": username,
-            "password": password,
-            "userType": role==RoleType.APPLICANT ? "person" : "recruiter"
+            email: username,
+            password: password,
+            userType: role == RoleType.APPLICANT ? "person" : "recruiter",
         }),
     });
     return res;
@@ -48,18 +48,19 @@ export default function Signup() {
                             alert("That username has already been taken!");
                         } else if (res.status === 200) {
                             alert("Signup successful!");
-                            localStorage.setItem("userName", username);
-                            localStorage.setItem("userState", (role === RoleType.APPLICANT ? 1 : 2).toString());
-                            setUser({
-                                name: username,
-                                state: role === RoleType.APPLICANT ? 1 : 2,
-                            });
-                            router.push("import");
                         }
                         return res.json();
                     })
                     .then((data) => {
                         console.log(data);
+                        setUser({
+                            name: username,
+                            state: role === RoleType.APPLICANT ? 1 : 2,
+                        });
+                        localStorage.setItem("userName", username);
+                        localStorage.setItem("userState", (role === RoleType.APPLICANT ? 1 : 2).toString());
+                        localStorage.setItem("userId", data.data.ID);
+                        router.push("import");
                     })
                     .catch((error) => {
                         console.log(error);
