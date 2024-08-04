@@ -35,6 +35,7 @@
     @extend .line;
     border-bottom: 2px solid rgba(0, 0, 0, 0.2);
     padding-top: 1em;
+    align-items: flex-start;
 }
 
 .rating {
@@ -55,4 +56,9 @@
 .avgRating > p {
     font-size: 1.2em;
     margin-left: 1em;
+}
+
+.actionable-card {
+    background-color: rgba(255, 255, 255, 0.2);
+    height: 20em !important;
 }

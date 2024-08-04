@@ -17,7 +17,7 @@ function Header() {
 export default function Layout({ children }: { children: React.ReactNode }) {
     return <>
         <Header />
-        <div className="main">
+        <div className="main-lab">
             <Container fluid className="fit">
                 {children}
             </Container>
