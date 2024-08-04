@@ -1,36 +1,43 @@
+/* Sets bottom padding of .main class to 10 rems */
 .main {
     padding-bottom: 10rem;
 }
 
+/* Adds top margin of 2 rems to .top-margin class */
 .top-margin {
     margin-top: 2rem;
 }
 
+/* Displays .form-control class elements as flex and adds top margin of 4 rems */
 .form-control {
     display: flex;
     margin-top: 4rem;
 }
 
+/* Styles the input field with .form-search-input class */
 .form-search-input {
-    font-family: Bebas Neue;
-    font-weight: 400;
-    letter-spacing: 2px;
-    background-color: transparent;
-    color: #FFF;
-    border: none;
-    outline: none;
-    flex: 1;
+    font-family: Bebas Neue; /* Sets font family to Bebas Neue */
+    font-weight: 400; /* Sets font weight to 400 */
+    letter-spacing: 2px; /* Adds 2px letter spacing */
+    background-color: transparent; /* Makes background color transparent */
+    color: #FFF; /* Sets text color to white */
+    border: none; /* Removes border */
+    outline: none; /* Removes outline */
+    flex: 1; /* Makes input take up remaining space */
 }
 
+/* Removes box shadow on focus for .form-search-input */
 .form-search-input:focus {
     box-shadow: none;
 }
 
+/* Styles the placeholder text in .form-search-input */
 .form-search-input::placeholder {
-    color: #FFF;
-    text-transform: uppercase;
+    color: #FFF; /* Sets placeholder text color to white */
+    text-transform: uppercase; /* Transforms placeholder text to uppercase */
 }
 
+/* Removes default search input styles for .form-search-input in WebKit browsers */
 .form-search-input::-webkit-search-decoration,
 .form-search-input::-webkit-search-cancel-button,
 .form-search-input::-webkit-search-results-button,
@@ -38,140 +45,162 @@
     -webkit-appearance: none;
 }
 
+/* Sets .pr class elements to not shrink or grow, adds padding and width fit-content */
 .pr {
     flex: 0 0 auto;
     padding: 0 1rem 0 0;
     width: fit-content;
 }
 
+/* Adds bottom margin of 3 rems to .mb class elements */
 .mb {
     margin-bottom: 3rem;
 }
 
+/* Styles button elements inside .row class */
 .row > button {
-    width: fit-content;
-    margin: 0.75rem;
+    width: fit-content; /* Sets width to fit-content */
+    margin: 0.75rem; /* Adds margin of 0.75 rems */
 }
 
+/* Styles the .applicant-container class with border and padding */
 .applicant-container {
-    border: 0.25rem solid #FFF;
-    padding: 1rem;
+    border: 0.25rem solid #FFF; /* Sets border to white, 0.25 rems thick */
+    padding: 1rem; /* Adds padding of 1 rem */
 }
 
+/* Sets .applicant-info class elements to flexbox and justifies content between */
 .applicant-info {
     display: flex;
     justify-content: space-between;
 }
 
+/* Sets .applicants-left class elements to flexbox and aligns items to the center */
 .applicants-left {
     display: flex;
     align-items: center;
 }
 
+/* Styles h6 elements inside .applicants-left class */
 .applicants-left h6 {
-    font-family: Cabin;
-    font-size: 0.875rem;
-    font-style: italic;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin: 0;
+    font-family: Cabin; /* Sets font family to Cabin */
+    font-size: 0.875rem; /* Sets font size to 0.875 rems */
+    font-style: italic; /* Sets font style to italic */
+    font-weight: 600; /* Sets font weight to 600 */
+    letter-spacing: 3px; /* Adds 3px letter spacing */
+    text-transform: uppercase; /* Transforms text to uppercase */
+    margin: 0; /* Removes margin */
 }
 
+/* Styles p elements inside .applicants-left class */
 .applicants-left p {
-    font-family: Montserrat;
-    font-size: 0.625rem;
-    font-style: italic;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin: 0;
+    font-family: Montserrat; /* Sets font family to Montserrat */
+    font-size: 0.625rem; /* Sets font size to 0.625 rems */
+    font-style: italic; /* Sets font style to italic */
+    font-weight: 700; /* Sets font weight to 700 */
+    letter-spacing: 3px; /* Adds 3px letter spacing */
+    text-transform: uppercase; /* Transforms text to uppercase */
+    margin: 0; /* Removes margin */
 }
 
+/* Sets .applicants-right class elements to flexbox and aligns items to the center, adds top padding */
 .applicants-right {
     display: flex;
     align-items: center;
     padding-top: 1.5rem;
 }
 
+/* Styles button elements inside .applicants-right class */
 .applicants-right button {
-    margin: 0 0.5rem 0.5rem 2rem;
-    width: fit-content;
+    margin: 0 0.5rem 0.5rem 2rem; /* Adds margin */
+    width: fit-content; /* Sets width to fit-content */
 }
 
+/* Styles .profile-picture class elements with border-radius and margin-right */
 .profile-picture {
-    border-radius: 50%;
-    margin-right: 1rem;
+    border-radius: 50%; /* Makes the picture round */
+    margin-right: 1rem; /* Adds right margin of 1 rem */
 }
 
+/* Styles .top-applicant-container class with position, border, padding, margin, and background color */
 .top-applicant-container {
-    position: relative;
-    border: 0.25rem solid #FFF;
-    padding: 1rem;
-    margin-top: 4rem;
-    background-color: rgba(255, 255, 255, 0.3);
+    position: relative; /* Sets position to relative */
+    border: 0.25rem solid #FFF; /* Sets border to white, 0.25 rems thick */
+    padding: 1rem; /* Adds padding of 1 rem */
+    margin-top: 4rem; /* Adds top margin of 4 rems */
+    background-color: rgba(255, 255, 255, 0.3); /* Sets background color with transparency */
 }
 
+/* Styles img elements inside .top-applicant-container class */
 .top-applicant-container img {
-    position: absolute;
-    top: -3rem;
-    left: -1rem;
-    border-radius: 50%;
-    z-index: 100;
-    background-color: white;
+    position: absolute; /* Sets position to absolute */
+    top: -3rem; /* Positions top -3 rems */
+    left: -1rem; /* Positions left -1 rem */
+    border-radius: 50%; /* Makes the image round */
+    z-index: 100; /* Sets z-index to 100 */
+    background-color: white; /* Sets background color to white */
 }
 
+/* Adds border to .img-border class elements */
 .img-border {
-    border: 0.25rem solid #FFF;
+    border: 0.25rem solid #FFF; /* Sets border to white, 0.25 rems thick */
 }
 
+/* Aligns text to the right for .right-aligned class elements */
 .right-aligned {
     text-align: right;
 }
 
+/* Styles h4 elements inside .top-applicant-container class */
 .top-applicant-container h4 {
-    font-family: Cabin;
-    font-size: 1.5rem;
-    font-style: italic;
-    font-weight: 500;
-    letter-spacing: 1px;
+    font-family: Cabin; /* Sets font family to Cabin */
+    font-size: 1.5rem; /* Sets font size to 1.5 rems */
+    font-style: italic; /* Sets font style to italic */
+    font-weight: 500; /* Sets font weight to 500 */
+    letter-spacing: 1px; /* Adds 1px letter spacing */
 }
 
+/* Styles h6 elements inside .top-applicant-container class */
 .top-applicant-container h6 {
-    font-family: Cabin;
-    font-size: 0.5rem;
-    font-style: italic;
-    font-weight: 500;
-    letter-spacing: 1px;
+    font-family: Cabin; /* Sets font family to Cabin */
+    font-size: 0.5rem; /* Sets font size to 0.5 rems */
+    font-style: italic; /* Sets font style to italic */
+    font-weight: 500; /* Sets font weight to 500 */
+    letter-spacing: 1px; /* Adds 1px letter spacing */
 }
 
+/* Styles p elements inside .top-applicant-container class */
 .top-applicant-container p {
-    font-family: Montserrat;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin: 0;
+    font-family: Montserrat; /* Sets font family to Montserrat */
+    font-size: 0.75rem; /* Sets font size to 0.75 rems */
+    font-weight: 700; /* Sets font weight to 700 */
+    letter-spacing: 2px; /* Adds 2px letter spacing */
+    text-transform: uppercase; /* Transforms text to uppercase */
+    margin: 0; /* Removes margin */
 }
 
+/* Styles .quick-applicant class with color and top margin */
 .quick-applicant {
-    color: #72F07F;
-    margin-top: 1rem !important;
+    color: #72F07F; /* Sets text color to a green shade */
+    margin-top: 1rem !important; /* Adds top margin of 1 rem, with important flag */
 }
 
+/* Styles .footer class with flexbox properties */
 .footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 1rem;
+    margin-top: 1rem; /* Adds top margin of 1 rem */
 }
 
+/* Styles button elements inside .footer class */
 .footer button {
-    padding: 0.25rem 0.75rem;
-    width: 10rem;
-    margin: 0;
+    padding: 0.25rem 0.75rem; /* Adds padding */
+    width: 10rem; /* Sets width to 10 rems */
+    margin: 0; /* Removes margin */
 }
 
+/* Adds top margin of 1 rem to .mt class, with important flag */
 .mt {
     margin-top: 1rem !important;
 }
