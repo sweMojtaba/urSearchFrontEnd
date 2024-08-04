@@ -1,4 +1,4 @@
-// "use client" // needed because I need to pass a function to cards
+"use client"; // needed because I need to pass a function to cards
 
 // Importing necessary components and functions
 import { CardWithImg, InfoCard, PassableInfoCardProps } from "@/components/cards-and-items/cards";
