@@ -5,7 +5,7 @@ import { Container, Nav, NavLink } from "@/client-wrappers/bootstrap";
 
 function Header() {
     return (
-        <HeaderCommon interfaceRoot="/lab-profile">
+        <HeaderCommon interfaceRoot="/test">
             <Nav id="entries">
                 <NavLink as={Link} href="/lab-profile">
                     Your Profile
@@ -23,7 +23,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     return (
         <>
             <Header />
-            <div className="main-lab">
+            <div className="main">
                 <Container fluid className="fit">
                     {children}
                 </Container>
