@@ -15,23 +15,27 @@
         grid-template-columns: 2fr 2fr 0.75fr;
         column-gap: 1em;
 
-        h3 {
+        input[type="text"] {
             @extend .bebas_font;
+            background: transparent;
+            border: none;
             padding-left: 0.5em;
             max-width: 90%;
             font-size: 1.5em;
             position: relative;
+            color: white;
+            border-bottom: 0.15em solid rgba(255, 255, 255, 0.8);      
 
-            // Create the borders
-            &:before {
-                content: "";
-                position: absolute;
-                left: 0;
-                top: 1.5em;
-                height: 1px;
-                width: 90%;
-                border-bottom: 0.15em solid rgba(255, 255, 255, 0.8);
-            }          
+            &:focus {
+                outline: none;
+                border: none;
+                color: white;
+                border-bottom: 0.15em solid rgba(255, 255, 255, 0.8); 
+            }
+
+            &::placeholder {
+                color: white;
+            }
         }
     }
 }

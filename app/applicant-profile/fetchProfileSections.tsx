@@ -1,24 +1,30 @@
+// TODO: Should be hydrated with actual API call FOR THE WHOLE PAGE
+
+// Function to fetch personal information of a user
 export function fetchPersonalInfo() {
     return {
-        "name": "Mojtaba Javid",
+        "name": "Scholar Scholara",
         "degree": "B.S.",
         "major": "Computer Sciences",
         "school": "University of Wisconsin - Madison",
         "classYear": 2024,
-        "GPA": 3.89,
-        "phone": 6085728750,
-        "email": "javid2@wisc.edu"
+        "GPA": 10.0,
+        "phone": 1234567890,
+        "email": "ursearch.edu@gmail.com"
     };
 }
 
+// Function to check if GPA should be hidden
 export function fetchGPAhidden() {
     return {
         GPAhidden: true
     }
 }
 
+// Function to fetch documents related to the user
 export function fetchDocuments() {
     return [
+        // Placeholder addresses, replace with actual API URLs
         {
             "name": "resume",
             "url": "file1/address/hosted/in/the/backend.com"
@@ -30,8 +36,10 @@ export function fetchDocuments() {
     ]
 }
 
+// Function to fetch affiliations related to the user
 export function fetchAffiliations() {
     return [
+        // Placeholder addresses, replace with actual API URLs
         {
             "name": "UW-Madison",
             "url": "url/to/that/affiliation/on/ursearch/website.com"
@@ -51,6 +59,7 @@ export function fetchAffiliations() {
     ]
 }
 
+// Function to fetch experiences related to the user
 export function fetchExperiences() {
     return [
         {
@@ -68,6 +77,7 @@ export function fetchExperiences() {
     ]
 }
 
+// Function to fetch projects related to the user
 export function fetchProjects() {
     return [
         {
@@ -79,6 +89,7 @@ export function fetchProjects() {
     ]
 }
 
+// Function to fetch publications related to the user
 export function fetchPublications() {
     return [
         {
@@ -92,12 +103,14 @@ export function fetchPublications() {
     ]
 }
 
+// Function to fetch a video URL related to the user
 export function fetchVideo() {
     return {
         "url": "url/to/video/hosted/on/backend.webm"
     }
 }
 
+// Function to fetch skills related to the user
 export function fetchSkills() {
     return [
         "Python",
@@ -107,6 +120,7 @@ export function fetchSkills() {
     ]
 }
 
+// Function to fetch accomplishments related to the user
 export function fetchAccomplishments() {
     return [
         "Dean's List 2021–2023",
@@ -114,6 +128,7 @@ export function fetchAccomplishments() {
     ]
 }
 
+// Function to check if quick apply feature is activated
 export function fetchQuickApplyActivated() {
     return {
         "quickApply": true

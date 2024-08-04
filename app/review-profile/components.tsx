@@ -1,22 +1,18 @@
 "use client"; // needed because I need to pass a function to cards
 
 import { CardWithImg, InfoCard, PassableInfoCardProps } from "@/components/cards-and-items/cards";
-import { fetchAccomplishments, fetchAffiliations, fetchDocuments, fetchExperiences, fetchGPAhidden, fetchPersonalInfo, fetchProjects, fetchSkills, fetchVideo, fetchApplicationInfo } from "./fetchProfileSections";
 import { BigLi, SmallLi } from "@/components/cards-and-items/listItems";
 import Profile from "./profileSolid.svg";
-import { useContext, useMemo, useState } from "react";
-import { UserContext } from "../context";
+import { useMemo, useState } from "react";
 import WorkIcon from "./work.svg";
 import ProjectIcon from "./project.svg";
 import fakeResponse from "@/utils/fakeResponse";
 import { ButtonTextEnum, QuickApplyTemplate, createButtonStatus } from "@/components/functionalities/quickApply";
 import { Button } from "react-bootstrap";
+import { PersonalInfoInterface, DocumentsInterface, AffiliationsInterface, ExperiencesInterface, ProjectsInterface, VideoInterface, SkillsInterface, AccomplishmentsInterface, QuickApplyInterface } from "./interfaces";
+import { fetchApplicationInfo } from "./fetchProfileSections";
 
-export function PersonalInfo() {
-    const { user, setUser } = useContext(UserContext);
-    const { name, degree, major, school, classYear, GPA, phone, email } = useMemo(fetchPersonalInfo, [user]);
-    const { GPAhidden } = useMemo(fetchGPAhidden, [user]);
-    // TO-DO: move data fetching to server components
+export function PersonalInfo({ name, degree, major, school, classYear, GPA, phone, email, GPAhidden }: PersonalInfoInterface) {
     const cardProps: PassableInfoCardProps = useMemo(() => {
         return {
             title: name,
@@ -27,25 +23,67 @@ export function PersonalInfo() {
     }, [name]);
 
     return (
-        <div className="white-bg">
-            <CardWithImg CardComponent={InfoCard} cardProps={cardProps} ImgSrc={Profile}>
-                <p>
-                    {degree} {major}
-                </p>
-                <p>{school}</p>
-                <p>class of {classYear}</p>
-                <p className="stand-out">
-                    GPA: {GPA} <span className="secondary-text">{GPAhidden ? "hidden" : "shown"}</span>
-                </p>
-                <p>phone: {phone}</p>
-                <p>email: {email}</p>
-            </CardWithImg>
-        </div>
+        <CardWithImg CardComponent={InfoCard} cardProps={cardProps} ImgSrc={Profile}>
+            <p>
+                {degree} {major}
+            </p>
+            <p>{school}</p>
+            <p>class of {classYear}</p>
+            <p className="stand-out">
+                GPA: {GPA} <span className="secondary-text">{GPAhidden ? "hidden" : "shown"}</span>
+            </p>
+            <p>phone: {phone}</p>
+            <p>email: {email}</p>
+        </CardWithImg>
     );
 }
 
-export function Documents() {
-    const documents = useMemo(fetchDocuments, []);
+export function Documents({ documents, resume, coverLetter, applicationId }: DocumentsInterface) {
+    const handleResumeDownload = async () => {
+        const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/";
+        // const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+        const url = baseUrl + `api/lab/me/application/${applicationId}/resume`;
+
+        const res = await fetch(url, {
+            method: "GET",
+            credentials: "include",
+        });
+
+        if (res.status == 200) {
+            const blob = await res.blob();
+            const blobURL = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = blobURL;
+            a.download = resume;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(blobURL);
+        }
+    };
+
+    const handleCoverLetterDownload = async () => {
+        const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/";
+        // const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+        const url = baseUrl + `api/lab/me/application/${applicationId}/coverletter`;
+
+        const res = await fetch(url, {
+            method: "GET",
+            credentials: "include",
+        });
+
+        if (res.status == 200) {
+            const blob = await res.blob();
+            const blobURL = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = blobURL;
+            a.download = coverLetter;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(blobURL);
+        }
+    };
 
     return (
         <InfoCard
@@ -54,17 +92,22 @@ export function Documents() {
                 console.log("TO-DO: edit documents");
             }}
         >
-            {documents.map((document) => (
-                <SmallLi text={document.name} url={document.url} key={document.name} />
-            ))}
+            {resume.length > 0 && (
+                <div id="downloadable-document" onClick={handleResumeDownload}>
+                    <SmallLi text={resume} />
+                </div>
+            )}
+            {coverLetter.length > 0 && (
+                <div id="downloadable-document" onClick={handleCoverLetterDownload}>
+                    <SmallLi text={coverLetter} />
+                </div>
+            )}
+            {documents && documents.map((document) => <SmallLi text={document.name} url={document.url} key={document.ID} />)}
         </InfoCard>
     );
 }
 
-export function Affiliations() {
-    const [reload, setReload] = useState(false);
-    const affiliations = useMemo(fetchAffiliations, [reload]);
-
+export function Affiliations({ affiliations }: AffiliationsInterface) {
     return (
         <InfoCard
             title="Affiliations"
@@ -72,33 +115,28 @@ export function Affiliations() {
                 console.log("TO-Do: edit affiliations");
             }}
         >
-            {affiliations.map((affiliation) => (
-                <SmallLi text={affiliation.name} url={affiliation.url} key={affiliation.name} />
-            ))}
+            {affiliations && affiliations.map((affiliation) => <SmallLi text={affiliation.name} url={affiliation.url} key={affiliation.ID} />)}
         </InfoCard>
     );
 }
 
-export function Experiences() {
-    const experiences = useMemo(fetchExperiences, []);
-
+export function Experiences({ experiences }: ExperiencesInterface) {
     return (
         <InfoCard
-            title="Work and Volunteer Experiences"
+            title="Experiences"
             editFunc={() => {
                 console.log("TO-DO: edit experiences");
             }}
         >
-            {experiences.map((experience) => {
-                return <BigLi key={experience.name} title={experience.name} subtitle={experience.role} note={experience.start + " – " + experience.end} ImgSrc={WorkIcon} />;
-            })}
+            {experiences &&
+                experiences.map((experience) => {
+                    return <BigLi key={experience.ID} title={experience.name} subtitle={experience.role} note={experience.start + " – " + experience.end} ImgSrc={WorkIcon} />;
+                })}
         </InfoCard>
     );
 }
 
-export function Projects() {
-    const projects = useMemo(fetchProjects, []);
-
+export function Projects({ projects }: ProjectsInterface) {
     return (
         <InfoCard
             title="Projects and Publications"
@@ -106,16 +144,15 @@ export function Projects() {
                 console.log("TO-DO: edit experiences");
             }}
         >
-            {projects.map((project) => {
-                return <BigLi key={project.name} title={project.name} subtitle={project.description} note={project.start + " – " + project.end} ImgSrc={ProjectIcon} />;
-            })}
+            {projects &&
+                projects.map((project) => {
+                    return <BigLi key={project.ID} title={project.name} subtitle={project.description} note={project.start + " – " + project.end} ImgSrc={ProjectIcon} />;
+                })}
         </InfoCard>
     );
 }
 
-export function Video(): JSX.Element {
-    const video = useMemo(fetchVideo, []);
-
+export function Video({ videos }: VideoInterface): JSX.Element {
     return (
         <InfoCard
             title="Let me introduce myself..."
@@ -125,16 +162,13 @@ export function Video(): JSX.Element {
         >
             {/* <iframe src="https://www.youtube.com/embed/GYkq9Rgoj8E" width={560} height={315} title="video" allowFullScreen={true} /> */}
             <video controls>
-                <source src={video.url} type="video/webm" />
+                <source src={videos[0]?.url || ""} type="video/webm" />
             </video>
         </InfoCard>
     );
 }
 
-export function Skills() {
-    const [reload, setReload] = useState(false);
-    const skills = useMemo(fetchSkills, [reload]);
-
+export function Skills({ skills }: SkillsInterface) {
     return (
         <InfoCard
             title="Skills"
@@ -142,17 +176,12 @@ export function Skills() {
                 console.log("TO-Do: edit skills");
             }}
         >
-            {skills.map((skill) => (
-                <SmallLi text={skill} url="" key={skill} />
-            ))}
+            {skills && skills.map((skill, i) => <SmallLi text={skill} url="" key={i} />)}
         </InfoCard>
     );
 }
 
-export function Accomplishments() {
-    const [reload, setReload] = useState(false);
-    const accomplishments = useMemo(fetchAccomplishments, [reload]);
-
+export function Accomplishments({ accomplishments }: AccomplishmentsInterface) {
     return (
         <InfoCard
             title="Accomplishments"
@@ -160,9 +189,7 @@ export function Accomplishments() {
                 console.log("TO-Do: edit skills");
             }}
         >
-            {accomplishments.map((accomplishment) => (
-                <SmallLi text={accomplishment} url="" key={accomplishment} />
-            ))}
+            {accomplishments && accomplishments.map((accomplishment, i) => <SmallLi text={accomplishment} url="" key={i} />)}
         </InfoCard>
     );
 }
@@ -175,7 +202,7 @@ const buttonTextEnum: ButtonTextEnum = {
 
 const buttonStatus = createButtonStatus(buttonTextEnum);
 
-export function QuickApply({ quickApply }: { quickApply: boolean }) {
+export function QuickApply({ quickApply }: QuickApplyInterface) {
     return (
         <QuickApplyTemplate
             initialStatus={quickApply ? buttonStatus.ACTIVATED : buttonStatus.NOT_ACTIVATED}
@@ -210,21 +237,45 @@ export function ApplicationInformation() {
 export function Shadow() {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 904 10" fill="none">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.25481 -8.59499e-05H903.744V10H0.25481V-8.59499e-05Z" fill="black" fill-opacity="0.1" />
+            <path fillRule="evenodd" clipRule="evenodd" d="M0.25481 -8.59499e-05H903.744V10H0.25481V-8.59499e-05Z" fill="black" fillOpacity="0.1" />
         </svg>
     );
 }
 
-export function FunctionButtons({ activeButton, clicked }: { activeButton: string | null; clicked: (buttonName: string) => void }) {
+export function FunctionButtons({ activeButton, clicked, applicationId }: { activeButton: string | null; applicationId: string | null; clicked: (buttonName: string) => void }) {
+    const handleDescision = async (descision: string) => {
+        if (applicationId === null) return;
+        const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/";
+        // const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+        const url = baseUrl + `api/lab/me/application/${applicationId}/status`;
+        const res = await fetch(url, {
+            method: "POST",
+            credentials: "include",
+            body: JSON.stringify({ status: descision }),
+        });
+        const data = await res.json();
+        if (res.status == 200 && data.code == 0) {
+            if (descision == "accept") {
+                clicked("Accept");
+            } else if (descision == "interview") {
+                clicked("Interview");
+            } else if (descision == "reject") {
+                clicked("Reject");
+            } else {
+                console.log("Invalid descision");
+            }
+        }
+    };
+
     return (
         <>
-            <Button onClick={() => clicked("Interview")} className={activeButton === "Interview" ? "interview" : ""}>
+            <Button onClick={() => handleDescision("interview")} className={activeButton === "Interview" ? "interview" : ""}>
                 Extend Interview
             </Button>
-            <Button onClick={() => clicked("Accept")} className={activeButton === "Accept" ? "accept" : ""}>
+            <Button onClick={() => handleDescision("accept")} className={activeButton === "Accept" ? "accept" : ""}>
                 Quick Accept
             </Button>
-            <Button onClick={() => clicked("Reject")} className={activeButton === "Reject" ? "reject" : ""}>
+            <Button onClick={() => handleDescision("reject")} className={activeButton === "Reject" ? "reject" : ""}>
                 Reject
             </Button>
         </>

@@ -53,6 +53,7 @@ function NavProfile() {
     const handleLogout = () => {
         localStorage.removeItem("userName");
         localStorage.removeItem("userState");
+        localStorage.removeItem("userId");
         setUser({
             name: "",
             state: 0,

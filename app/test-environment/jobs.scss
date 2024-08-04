@@ -1,0 +1,437 @@
+.main {
+    padding-bottom: 10rem;
+}
+
+.top-margin {
+    margin-top: 2rem;
+}
+
+.form-control {
+    display: flex;
+    margin-top: 4rem;
+}
+
+.form-search-input {
+    font-family: Bebas Neue;
+    font-weight: 400;
+    letter-spacing: 2px;
+    background-color: transparent;
+    color: #FFF;
+    border: none;
+    outline: none;
+    flex: 1;
+}
+
+.form-search-input:focus {
+    box-shadow: none;
+}
+
+.form-search-input::placeholder {
+    color: #FFF;
+    text-transform: uppercase;
+}
+
+.form-search-input::-webkit-search-decoration,
+.form-search-input::-webkit-search-cancel-button,
+.form-search-input::-webkit-search-results-button,
+.form-search-input::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+}
+
+.pr {
+    flex: 0 0 auto;
+    padding: 0 1rem 0 0;
+    width: fit-content;
+}
+
+.pl {
+    flex: 0 0 auto;
+    padding: 0 0 0 1rem;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.row > button {
+    width: fit-content;
+    margin: 0.75rem;
+}
+
+.sigma {
+    border-color: #F2C50F;
+}
+
+.sigma:hover {
+    border-color: #F2C50F;
+}
+
+.sigma-img {
+    margin-left: 0.25rem;
+}
+
+h2 {
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Cabin;
+    font-size: 2rem;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.card {
+    height: 18rem;
+    border: 0.25rem solid #FFF;
+    border-radius: 0;
+    padding: 0.625rem;
+    background: rgba(255, 255, 255, 0.30);
+    box-shadow: 1.02343px 1.02343px 8.18742px 0px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-row {
+    display: flex;
+    align-items: center;
+}
+
+h3 {
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Cabin;
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+}
+
+h5 {
+    color: #CF3030;
+    font-family: Montserrat;
+    font-size: 0.4375rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 0.125rem;
+}
+
+.right-aligned {
+    margin-left: 5rem;
+}
+
+.uw-logo {
+    position: relative;
+    top: 3.25rem;
+    left: -1rem;
+    border-radius: 50%;
+    border: 0.25rem solid #FFF;
+    z-index: 100;
+}
+
+h4 {
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 0.5rem 0 0 0;
+}
+
+.affiliation {
+    @extend h4;
+    color: #000;
+    font-size: 0.5rem;
+    text-shadow: none;
+    opacity: 0.8;
+    margin-top: 0;
+}
+
+.position {
+    @extend h4;
+    color: #000;
+    font-size: 0.5rem;
+    text-shadow: none;
+    margin-top: 0.25rem;
+}
+
+p {
+    @extend h4;
+    font-size: 0.5rem;
+}
+
+.saved-jobs-container {
+    border: 0.25rem solid #FFF;
+    padding: 1rem;
+}
+
+.saved-jobs {
+    padding: 2rem 0;
+}
+
+.job-info {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.jobs-left {
+    display: flex;
+    align-items: center;
+}
+
+.jobs-left h6 {
+    font-family: Cabin;
+    font-size: 0.875rem;
+    font-style: italic;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.jobs-left p {
+    font-family: Montserrat;
+    font-size: 0.625rem;
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.jobs-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.jobs-right > p {
+    font-size: 0.6875rem;
+    font-family: Cabin;
+    font-style: italic;
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+
+.small-button {
+    font-size: 1rem;
+    padding: 0 3rem;
+}
+
+.sigma-button {
+    @extend .small-button;
+    border-color: #F2C50F;
+}
+
+.saved-filters-container {
+    border: 0.25rem solid #FFF;
+    padding: 1rem 4rem 1rem 1rem;
+    height: 100%;
+}
+
+.saved-filters {
+    padding: 2rem 0;
+}
+
+.filter-info {
+    display: flex;
+    padding: 0.25rem 0;
+    width: 100%;
+}
+
+.filter-info h6 {
+    font-family: Montserrat;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-decoration-line: underline;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.filter-time {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.filter-info p {
+    opacity: 0.9;
+    font-family: Montserrat;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.popup-hidden {
+    position: absolute;
+    top: -100rem;
+    left: 0;
+    z-index: 1000;
+    padding: 0 5rem;
+}
+
+.popup-visible {
+    @extend .popup-hidden;
+    top: 3.50rem;
+}
+
+.advanced-filters-container {
+    border: 4px solid #FFF;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 1.02343px 1.02343px 8.18742px 0px rgba(0, 0, 0, 0.12);
+    width: 100%;
+    padding: 1rem 2rem;
+    color: #000;
+    font-family: Cabin;
+}
+
+.black {
+    color: #000;
+    border-color: #000;
+}
+
+.black:hover {
+    color: #000;
+    border-color: #000;
+}
+
+.sigma-black {
+    color: black;;
+}
+
+.sigma-black:hover {
+    color: black;;
+}
+
+.form-control .black {
+    padding-left: 0.5rem;
+}
+
+.form-control .black::placeholder {
+    color: #000;
+}
+
+.filter-search-options {
+    font-family: Bebas Neue;
+    font-size: 1.75rem;
+    border: none;
+    color: #000;
+    height: 2rem;
+    background-color: transparent;
+    margin-top: 1rem;
+    width: 80%;
+}
+
+.filter-search-options::placeholder {
+    font-family: Bebas Neue;
+    font-size: 1.75rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.filter-search-options:focus {
+    outline: none;
+}
+
+.form-title {
+    font-size: 1.875rem;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.margin-top {
+    margin-top: 3rem;
+}
+
+.others {
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+}
+
+.checkbox-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkbox-container label {
+    color: #000;
+    font-family: Montserrat;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-left: 1rem;
+}
+
+.checkbox-container input[type="checkbox"] {
+    appearance: none;
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 2px solid #000;
+    border-radius: 0;
+    color: #000;
+    cursor: pointer;
+}
+
+.checkbox-container input[type="checkbox"]:checked {
+    background-color: #000;
+}
+
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.checkbox-container input[type="radio"] {
+    appearance: none;
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 2px solid #000;
+    border-radius: 50%;
+    color: #000;
+    cursor: pointer;
+}
+
+.checkbox-container input[type="radio"]:checked {
+    background-color: #000;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-top: 10rem;
+}
+
+.footer-buttons {
+    display: flex;
+}
+
+.footer-buttons button {
+    font-size: 1.125rem;
+    width: fit-content;
+    padding: 0.25rem 2rem;
+    margin-right: 1rem;
+}
+
+.footer p {
+    font-family: Montserrat;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
