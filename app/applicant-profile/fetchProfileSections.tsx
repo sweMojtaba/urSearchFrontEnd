@@ -9,7 +9,7 @@ export function fetchPersonalInfo() {
         "school": "University of Wisconsin - Madison",
         "classYear": 2024,
         "GPA": 10.0,
-        "phone": 0123456789,
+        "phone": 1234567890,
         "email": "ursearch.edu@gmail.com"
     };
 }
