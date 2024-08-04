@@ -80,7 +80,7 @@ export function QuickApplyTemplate({
                 active: buttonState.buttonActive,
             }}
         >
-            <p className="note">{note}</p>
+            <p className="note" style={{fontSize:"12px"}}>{note}</p>
         </ActionableCard>
     );
 }
