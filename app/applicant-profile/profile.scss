@@ -1,15 +1,20 @@
+/* Apply styles for screens with a width between 768px and 1200px */
 @media screen and (min-width: 768px) and (max-width: 1200px) {
+    /* Select the element with id 'lastCol' and apply flexbox layout */
     #lastCol {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+        display: flex; /* Enable flexbox layout */
+        flex-direction: row; /* Arrange children in a row */
+        justify-content: space-between; /* Distribute space between children */
     }
+    
+    /* Select all direct children of the element with id 'lastCol' */
     #lastCol > * {
-        margin: 0 0.5rem;
+        margin: 0 0.5rem; /* Add horizontal margin to children */
     }
 }
 
+/* Apply styles for elements with class 'scroll-page' */
 .scroll-page {
-    margin-bottom: 2rem;
-    margin-top: 2rem
+    margin-bottom: 2rem; /* Add bottom margin */
+    margin-top: 2rem; /* Add top margin */
 }
