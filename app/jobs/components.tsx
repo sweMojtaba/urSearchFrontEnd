@@ -347,7 +347,7 @@ export function SearchBar({ advancedFilterStatus }: SearchBarProps) {
         }
     }
 
-    function handleKeyPress(event) {
+    function handleKeyPress(event: React.ChangeEvent<HTMLInputElement>) {
         if (event.key == "Enter") {
             event.preventDefault(); 
             handleSearch(event);  
