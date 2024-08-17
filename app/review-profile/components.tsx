@@ -1,17 +1,18 @@
-"use client"; // needed because I need to pass a function to cards
+"use client"; // Indicates that this component uses client-side features, allowing functions to be passed to cards
 
-import { CardWithImg, InfoCard, PassableInfoCardProps } from "@/components/cards-and-items/cards";
-import { BigLi, SmallLi } from "@/components/cards-and-items/listItems";
-import Profile from "./profileSolid.svg";
-import { useMemo, useState } from "react";
-import WorkIcon from "./work.svg";
-import ProjectIcon from "./project.svg";
-import fakeResponse from "@/utils/fakeResponse";
-import { ButtonTextEnum, QuickApplyTemplate, createButtonStatus } from "@/components/functionalities/quickApply";
-import { Button } from "react-bootstrap";
-import { PersonalInfoInterface, DocumentsInterface, AffiliationsInterface, ExperiencesInterface, ProjectsInterface, VideoInterface, SkillsInterface, AccomplishmentsInterface, QuickApplyInterface } from "./interfaces";
-import { fetchApplicationInfo } from "./fetchProfileSections";
+import { CardWithImg, InfoCard, PassableInfoCardProps } from "@/components/cards-and-items/cards"; // Imports components for displaying cards with images
+import { BigLi, SmallLi } from "@/components/cards-and-items/listItems"; // Imports components for list items with different sizes
+import Profile from "./profileSolid.svg"; // Importing an SVG image for profile
+import { useMemo, useState } from "react"; // Importing React hooks
+import WorkIcon from "./work.svg"; // Importing an SVG image for work experiences
+import ProjectIcon from "./project.svg"; // Importing an SVG image for projects
+import fakeResponse from "@/utils/fakeResponse"; // Importing a utility for fake responses
+import { ButtonTextEnum, QuickApplyTemplate, createButtonStatus } from "@/components/functionalities/quickApply"; // Imports components and enums for quick apply functionality
+import { Button } from "react-bootstrap"; // Importing Bootstrap Button component
+import { PersonalInfoInterface, DocumentsInterface, AffiliationsInterface, ExperiencesInterface, ProjectsInterface, VideoInterface, SkillsInterface, AccomplishmentsInterface, QuickApplyInterface } from "./interfaces"; // Importing TypeScript interfaces
+import { fetchApplicationInfo } from "./fetchProfileSections"; // Importing a function for fetching application info
 
+// Component for displaying personal information
 export function PersonalInfo({ name, degree, major, school, classYear, GPA, phone, email, GPAhidden }: PersonalInfoInterface) {
     const cardProps: PassableInfoCardProps = useMemo(() => {
         return {
@@ -24,9 +25,7 @@ export function PersonalInfo({ name, degree, major, school, classYear, GPA, phon
 
     return (
         <CardWithImg CardComponent={InfoCard} cardProps={cardProps} ImgSrc={Profile}>
-            <p>
-                {degree} {major}
-            </p>
+            <p>{degree} {major}</p>
             <p>{school}</p>
             <p>class of {classYear}</p>
             <p className="stand-out">
@@ -38,11 +37,11 @@ export function PersonalInfo({ name, degree, major, school, classYear, GPA, phon
     );
 }
 
+// Component for displaying and downloading documents
 export function Documents({ documents, resume, coverLetter, applicationId }: DocumentsInterface) {
     const handleResumeDownload = async () => {
-        const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/";
-        // const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-        const url = baseUrl + `api/lab/me/application/${applicationId}/resume`;
+        const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/"; // Base URL for API
+        const url = baseUrl + `api/lab/me/application/${applicationId}/resume`; // URL for fetching resume
 
         const res = await fetch(url, {
             method: "GET",
@@ -63,9 +62,8 @@ export function Documents({ documents, resume, coverLetter, applicationId }: Doc
     };
 
     const handleCoverLetterDownload = async () => {
-        const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/";
-        // const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-        const url = baseUrl + `api/lab/me/application/${applicationId}/coverletter`;
+        const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/"; // Base URL for API
+        const url = baseUrl + `api/lab/me/application/${applicationId}/coverletter`; // URL for fetching cover letter
 
         const res = await fetch(url, {
             method: "GET",
@@ -107,6 +105,7 @@ export function Documents({ documents, resume, coverLetter, applicationId }: Doc
     );
 }
 
+// Component for displaying affiliations
 export function Affiliations({ affiliations }: AffiliationsInterface) {
     return (
         <InfoCard
@@ -120,6 +119,7 @@ export function Affiliations({ affiliations }: AffiliationsInterface) {
     );
 }
 
+// Component for displaying work experiences
 export function Experiences({ experiences }: ExperiencesInterface) {
     return (
         <InfoCard
@@ -136,12 +136,13 @@ export function Experiences({ experiences }: ExperiencesInterface) {
     );
 }
 
+// Component for displaying projects and publications
 export function Projects({ projects }: ProjectsInterface) {
     return (
         <InfoCard
             title="Projects and Publications"
             editFunc={() => {
-                console.log("TO-DO: edit experiences");
+                console.log("TO-DO: edit projects");
             }}
         >
             {projects &&
@@ -152,6 +153,7 @@ export function Projects({ projects }: ProjectsInterface) {
     );
 }
 
+// Component for displaying a video introduction
 export function Video({ videos }: VideoInterface): JSX.Element {
     return (
         <InfoCard
@@ -160,7 +162,6 @@ export function Video({ videos }: VideoInterface): JSX.Element {
                 console.log("TO-DO: edit video");
             }}
         >
-            {/* <iframe src="https://www.youtube.com/embed/GYkq9Rgoj8E" width={560} height={315} title="video" allowFullScreen={true} /> */}
             <video controls>
                 <source src={videos[0]?.url || ""} type="video/webm" />
             </video>
@@ -168,6 +169,7 @@ export function Video({ videos }: VideoInterface): JSX.Element {
     );
 }
 
+// Component for displaying skills
 export function Skills({ skills }: SkillsInterface) {
     return (
         <InfoCard
@@ -181,12 +183,13 @@ export function Skills({ skills }: SkillsInterface) {
     );
 }
 
+// Component for displaying accomplishments
 export function Accomplishments({ accomplishments }: AccomplishmentsInterface) {
     return (
         <InfoCard
             title="Accomplishments"
             editFunc={() => {
-                console.log("TO-Do: edit skills");
+                console.log("TO-Do: edit accomplishments");
             }}
         >
             {accomplishments && accomplishments.map((accomplishment, i) => <SmallLi text={accomplishment} url="" key={i} />)}
@@ -194,14 +197,17 @@ export function Accomplishments({ accomplishments }: AccomplishmentsInterface) {
     );
 }
 
+// Define button text enum for Quick Apply button
 const buttonTextEnum: ButtonTextEnum = {
     ACTIVATED: "Activated",
     ACTIVATING: "Activating...",
     NOT_ACTIVATED: "Accept Quick Apply!",
 };
 
+// Create button status based on enum
 const buttonStatus = createButtonStatus(buttonTextEnum);
 
+// Component for Quick Apply functionality
 export function QuickApply({ quickApply }: QuickApplyInterface) {
     return (
         <QuickApplyTemplate
@@ -214,6 +220,7 @@ export function QuickApply({ quickApply }: QuickApplyInterface) {
     );
 }
 
+// Component for displaying application information
 export function ApplicationInformation() {
     const [reload, setReload] = useState(false);
     const applicationInfo = useMemo(fetchApplicationInfo, [reload]);
@@ -223,7 +230,7 @@ export function ApplicationInformation() {
             <InfoCard
                 title="Application Info"
                 editFunc={() => {
-                    console.log("TO-Do: edit skills");
+                    console.log("TO-Do: edit application info");
                 }}
             >
                 {applicationInfo.map((info) => (
@@ -234,6 +241,7 @@ export function ApplicationInformation() {
     );
 }
 
+// Component for displaying a shadow effect
 export function Shadow() {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 904 10" fill="none">
@@ -242,12 +250,12 @@ export function Shadow() {
     );
 }
 
+// Component for rendering function buttons for decision making
 export function FunctionButtons({ activeButton, clicked, applicationId }: { activeButton: string | null; applicationId: string | null; clicked: (buttonName: string) => void }) {
     const handleDescision = async (descision: string) => {
         if (applicationId === null) return;
-        const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/";
-        // const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-        const url = baseUrl + `api/lab/me/application/${applicationId}/status`;
+        const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/"; // Base URL for API
+        const url = baseUrl + `api/lab/me/application/${applicationId}/status`; // URL for updating application status
         const res = await fetch(url, {
             method: "POST",
             credentials: "include",
@@ -282,7 +290,7 @@ export function FunctionButtons({ activeButton, clicked, applicationId }: { acti
     );
 }
 
-// TODO: Use active button to change email being sent, below text is just an example
+// Component for rendering email content based on active button
 export function Email({ activeButton, handleSendClick }: { activeButton: string | null; handleSendClick: () => void }) {
     return (
         <div className="email-container">
