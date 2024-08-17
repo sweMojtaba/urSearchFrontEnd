@@ -2,23 +2,20 @@
 
 import { HeaderAuth, HeaderCommon } from "@/components/header/headers";
 import { PropsWithChildren } from "react";
-
 import { Container, Nav, NavLink } from "@/client-wrappers/bootstrap";
 import { FaFacebookF, FaTwitter, FaLinkedin } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
-
 import Link from "next/link";
-
 import { useContext } from "react";
 import { UserContext } from "@/app/context";
+import "./slides.scss"; // Import the stylesheet for the Layout component
 
-import "./slides.scss";
-
+// Header component with navigation and social media links
 function Header() {
     return (
         <HeaderCommon interfaceRoot="/welcome">
             <Nav id="icons">
-                {/* To-do: add sharing links (backend) */}
+                {/* Social media links - To be implemented in the backend */}
                 <NavLink>
                     <FaFacebookF />
                 </NavLink>
@@ -48,15 +45,16 @@ function Header() {
     );
 }
 
+// Main layout component that includes the header and wraps around the content
 export default function Layout({ children }: PropsWithChildren<{}>) {
-    const { user, setUser } = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext); // Access user context
 
     return (
         <>
             <Header />
             <div className={user.state === 2 ? "main-lab" : "main"}>
                 <Container fluid className="fit-no-image">
-                    {children}
+                    {children} {/* Render child components here */}
                 </Container>
             </div>
         </>
