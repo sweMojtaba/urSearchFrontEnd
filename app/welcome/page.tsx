@@ -11,21 +11,21 @@ import Slide3 from "./assets/slide3.png";
 import Slide4 from "./assets/slide4.png";
 import Go from "./assets/go.svg";
 import { Button, Container } from "react-bootstrap";
-
 import Image from "next/image";
 
 // SlideButtons--------------------------------------------------------------
 
-const nums = [0, 1, 2, 3];
-
+// Props type for SlideButtons component
 type SlideButtonsProps = {
     activeIndex: number;
-    goToSlides: Array<() => void>;
+    goToSlides: Array<() => void>; // Array of functions to navigate to different slides
 };
 
+// Component for rendering slide buttons with active state handling
 function SlideButtons(props: SlideButtonsProps): JSX.Element[] {
     const [activeTags, setActiveTags] = useState(["", "", "", ""]);
 
+    // Update active tags when activeIndex changes
     useEffect(() => {
         setActiveTags(() => {
             const newActiveTags = ["", "", "", ""];
@@ -34,12 +34,13 @@ function SlideButtons(props: SlideButtonsProps): JSX.Element[] {
         });
     }, [props.activeIndex]);
 
-    // valid inputs: 1, 2, 3, 4
+    // Handle click to navigate to the corresponding slide
     const handleClick = (num: number) => {
         props.goToSlides[num - 1]();
         console.log(`Just went to slide ${num + 1}`);
     };
 
+    // Render buttons for each slide
     return nums.map((num) => {
         return (
             <a key={num} href={`#slide${num + 1}`}>
@@ -97,24 +98,27 @@ const slidesInfoApplicant = [
     },
 ];
 
+// Main Slides component
 function Slides(): JSX.Element {
     const [activeIndex, setActiveIndex] = useState(0);
-    const { user, setUser } = useContext(UserContext);
+    const { user } = useContext(UserContext); // Access user context
     const slidesInfo = user.state === 2 ? slidesInfoLab : slidesInfoApplicant;
 
+    // Redirect hooks based on user state
     const redirectIndividual = useRedirectWithUserState(
         user.state,
         (userState) => userState === 1,
         RedirectNotes.LOGGED_IN,
-        "/applicant-profile" // To-do
+        "/applicant-profile" // Placeholder for redirect URL
     );
     const redirectLab = useRedirectWithUserState(
         user.state,
         (userState) => userState === 2,
         RedirectNotes.LOGGED_IN,
-        "/lab/profile" // To-do
+        "/lab/profile" // Placeholder for redirect URL
     );
 
+    // Automatic slide transition every 3 seconds
     useEffect(() => {
         const interval = setInterval(() => {
             setActiveIndex((prev) => {
@@ -126,6 +130,7 @@ function Slides(): JSX.Element {
         return () => clearInterval(interval);
     }, []);
 
+    // Redirect based on user state
     useEffect(() => {
         if (user.state === 1) {
             redirectIndividual();
@@ -134,8 +139,7 @@ function Slides(): JSX.Element {
         }
     }, [redirectIndividual, redirectLab, user]);
 
-    // navigate
-
+    // Navigation functions for slides
     const goToSlide1 = useCallback(() => {
         setActiveIndex(0);
     }, []);
