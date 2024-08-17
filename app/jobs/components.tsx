@@ -336,7 +336,8 @@ export function SearchBar({ advancedFilterStatus }: SearchBarProps) {
 
     // Error occured on this line, due to not having specific time for even will change to "React.ChangeEvent<HTMLInputElement"
     // TODO: may need change
-    function handleSearch(event: React.ChangeEvent<HTMLInputElement) {
+    
+    function handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
         if (event.target.value) {
             router.push("/jobs?query=" + event.target.value); 
             router.refresh(); 
