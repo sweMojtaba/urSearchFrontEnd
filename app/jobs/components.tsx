@@ -334,7 +334,9 @@ interface SearchBarProps {
 export function SearchBar({ advancedFilterStatus }: SearchBarProps) {
     const router = useRouter(); 
 
-    function handleSearch(event) {
+    // Error occured on this line, due to not having specific time for even will change to "React.ChangeEvent<HTMLInputElement"
+    // TODO: may need change
+    function handleSearch(event: React.ChangeEvent<HTMLInputElement) {
         if (event.target.value) {
             router.push("/jobs?query=" + event.target.value); 
             router.refresh(); 
