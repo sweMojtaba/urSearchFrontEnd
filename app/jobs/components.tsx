@@ -421,9 +421,9 @@ export function Application() {
     function submitApplication() {
     // Check veteran status
     let protectedVeteranType = 0; 
-    let vet1Element = document.getElementById("vet1");
-    let vet2Element = document.getElementById("vet2");
-    let vet3Element = document.getElementById("vet3");
+    let vet1Element = document.getElementById("vet1") as HTMLInputElement | null;
+    let vet2Element = document.getElementById("vet2") as HTMLInputElement | null;
+    let vet3Element = document.getElementById("vet3") as HTMLInputElement | null;
 
     if (!vet1Element || !vet2Element || !vet3Element) {
         alert("Veteran status elements are missing"); 
@@ -450,9 +450,9 @@ export function Application() {
 
     // Check disability status
     let disabilitiesType = 0; 
-    let dis1Element = document.getElementById("dis1");
-    let dis2Element = document.getElementById("dis2");
-    let dis3Element = document.getElementById("dis3");
+    let dis1Element = document.getElementById("dis1") as HTMLInputElement | null;
+    let dis2Element = document.getElementById("dis2") as HTMLInputElement | null;
+    let dis3Element = document.getElementById("dis3") as HTMLInputElement | null;
 
     if (!dis1Element || !dis2Element || !dis3Element) {
         alert("Disability status elements are missing"); 
@@ -477,7 +477,7 @@ export function Application() {
         disabilitiesType = 2;
     }
 
-    let videoElement = document.getElementById("video");
+    let videoElement = document.getElementById("video") as HTMLInputElement | null;
     let isVideoAttached = videoElement ? videoElement.checked : false; 
 
     postApplication(1, 1, "submitted", protectedVeteranType, disabilitiesType, "cover-letter.pdf", isVideoAttached)
