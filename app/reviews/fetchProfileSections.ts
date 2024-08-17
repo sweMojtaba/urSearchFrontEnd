@@ -1,32 +1,38 @@
+// Define the structure for lab information
 export type LabInfo = {
-    university: string,
-    department: string,
-    labTitle: string,
-    address: string,
-    phone: string,
-    email: string
-}
+    university: string; // Name of the university
+    department: string; // Name of the department
+    labTitle: string; // Title of the lab
+    address: string; // Address of the lab
+    phone: string; // Phone number of the lab
+    email: string; // Email address of the lab
+};
 
+// Function to fetch lab information
 export function fetchLabInfo(): LabInfo {
-    const labInfo = {
+    // Mock lab information data
+    const labInfo: LabInfo = {
         university: "University of Wisconsin–Madison",
         department: "Department of Urology",
         labTitle: "Ricke Lab",
         address: "1685 Highland Avenue Madison, WI 53705",
         phone: "(608) 265-3278",
         email: "ricke@urology.wisc.edu",
-    }
-    return labInfo;
+    };
+    return labInfo; // Return the lab information
 }
 
+// Define the structure for lab keywords
 export type LabKeywords = {
-    type: string,
-    field: string,
-    keywords: string[]
-}
+    type: string; // Type of the lab (e.g., research)
+    field: string; // Field of study (e.g., urology)
+    keywords: string[]; // List of keywords related to the lab
+};
 
-export function fetchLabKeywords() {
-    const labKeywords = {
+// Function to fetch lab keywords
+export function fetchLabKeywords(): LabKeywords {
+    // Mock lab keywords data
+    const labKeywords: LabKeywords = {
         type: "research",
         field: "urology",
         keywords: [
@@ -34,17 +40,20 @@ export function fetchLabKeywords() {
             "animal studies",
             "pathogenesis"
         ]
-    }
-    return labKeywords;
+    };
+    return labKeywords; // Return the lab keywords
 }
 
+// Define the structure for lab resources
 export type LabResources = {
-    title: string,
-    link: string
-}[]
+    title: string; // Title of the resource
+    link: string; // URL of the resource
+}[]; // Array of resources
 
-export function fetchResources() {
-    const resources: { title: string, link: string }[] = [
+// Function to fetch lab resources
+export function fetchResources(): LabResources {
+    // Mock lab resources data
+    const resources: LabResources = [
         {
             title: "People",
             link: "https://www.urology.wisc.edu/research/research-labs/ricke-lab/people/"
@@ -69,32 +78,38 @@ export function fetchResources() {
             title: "Staff",
             link: "https://www.urology.wisc.edu/research/research-labs/ricke-lab/staff/"
         }
-    ]
-    return resources;
+    ];
+    return resources; // Return the lab resources
 }
 
+// Function to fetch reviews
 export function fetchReviews() {
-    const reviews: { rating: number, text: string, timestamp: string }[] = [
+    // Mock reviews data
+    const reviews = [
         {
-            rating: 5,
+            rating: 5, // Rating given in the review
             text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl quis aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl. Sed euismod, nisl quis aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl.",
-            timestamp: "2020-01-01"
+            timestamp: "2020-01-01" // Date of the review
         },
         {
-            rating: 4.5,
+            rating: 4.5, // Rating given in the review
             text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl quis aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl. Sed euismod, nisl quis aliquam ultricies, nunc nisl aliquet nunc, vitae aliquam nisl nunc vitae nisl.",
-            timestamp: "2020-01-01"
+            timestamp: "2020-01-01" // Date of the review
         }
-    ]
-    return reviews;
+    ];
+    return reviews; // Return the reviews
 }
 
+// Function to fetch rating
 export function fetchRating() {
-    const rating = 4.5;
-    return rating;
+    // Mock rating data
+    const rating = 4.5; // Rating value
+    return rating; // Return the rating
 }
 
+// Function to fetch quick apply status
 export function fetchQuickApply() {
-    const quickApply = true;
-    return quickApply;
+    // Mock quick apply status
+    const quickApply = true; // Indicates whether quick apply is activated
+    return quickApply; // Return the quick apply status
 }
