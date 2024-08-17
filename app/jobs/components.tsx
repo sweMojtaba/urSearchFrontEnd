@@ -487,33 +487,35 @@ export function Application() {
 }
 
 
+    // "for" replaced with "htmlFor" due to error
+    // TODO: more change may be needed
     return <div>
         <h2>ARE YOU A PROTECTED VETERAN?</h2>
         <div className="protectedVet">
             <input type="radio" id="vet1" name="vet" value="vet1"></input>
-            <label for="vet1">YES, I AM A PROTECTED VETERAN</label><br />
+            <label htmlFor="vet1">YES, I AM A PROTECTED VETERAN</label><br />
             <input type="radio" id="vet2" name="vet" value="vet2"></input>
-            <label for="vet2">NO, I AM NOT A PROTECTED VETERAN</label><br />
+            <label htmlFor="vet2">NO, I AM NOT A PROTECTED VETERAN</label><br />
             <input type="radio" id="vet3" name="vet" value="vet3"></input>
-            <label for="vet3">I DO NOT WISH TO DISCLOSE THAT INFORMATION</label><br />
+            <label htmlFor="vet3">I DO NOT WISH TO DISCLOSE THAT INFORMATION</label><br />
         </div>
         <h2>DO YOU HAVE ANY DISABILITIES?</h2>
         <div className="disability">
             <input type="radio" id="dis1" name="dis" value="dis1"></input>
-            <label for="dis1">YES, I HAVE DISABILITY/IES</label><br />
+            <label htmlFor="dis1">YES, I HAVE DISABILITY/IES</label><br />
             <input type="radio" id="dis2" name="dis" value="dis2"></input>
-            <label for="dis2">NO, I DO NOT HAVE DISABILITY/IES</label><br />
+            <label htmlFor="dis2">NO, I DO NOT HAVE DISABILITY/IES</label><br />
             <input type="radio" id="dis3" name="dis" value="dis3"></input>
-            <label for="dis3">I DO NOT WISH TO DISCLOSE THAT INFORMATION</label><br />
+            <label htmlFor="dis3">I DO NOT WISH TO DISCLOSE THAT INFORMATION</label><br />
         </div>
         <h2>VERIFYING THE FOLLOWING DOCUMENTS FOR SUBMISSION:</h2>
         <div className="documents">
             <input type="checkbox" id="resume" name="resume"></input>
-            <label for="resume">RESUME</label><br></br>
+            <label htmlFor="resume">RESUME</label><br></br>
             <input type="checkbox" id="cv" name="cv"></input>
-            <label for="cv">UPLOAD A COVER LETTER</label><br></br>
+            <label htmlFor="cv">UPLOAD A COVER LETTER</label><br></br>
             <input type="checkbox" id="video" name="video"></input>
-            <label for="video">SUBMIT THE VIDEO</label><br></br>
+            <label htmlFor="video">SUBMIT THE VIDEO</label><br></br>
         </div>
         <Button onClick={submitApplication}>APPLY</Button>
     </div>
