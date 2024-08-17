@@ -416,52 +416,76 @@ export function Application() {
         return res;
     }
 
+    // code changed due to null error
+    // TODO: may need change
     function submitApplication() {
-        // Check veteran status
-        let protectedVeteranType = 0; 
-        let vet1 = document.getElementById("vet1").checked; 
-        let vet2 = document.getElementById("vet2").checked; 
-        let vet3 = document.getElementById("vet3").checked; 
-        if (!vet1  && !vet2 && !vet3) {
-            alert("Please indicate your veteran type"); 
-            return; 
-        }
-        else if (vet1) {
-            protectedVeteranType = 1; 
-        }
-        else if (vet2) {
-            protectedVeteranType = 0; 
-        }
-        else {
-            protectedVeteranType = 2;
-        }
+    // Check veteran status
+    let protectedVeteranType = 0; 
+    let vet1Element = document.getElementById("vet1");
+    let vet2Element = document.getElementById("vet2");
+    let vet3Element = document.getElementById("vet3");
 
-        let disabilitiesType = 0; 
-        let dis1 = document.getElementById("dis1").checked;
-        let dis2 = document.getElementById("dis2").checked;
-        let dis3 = document.getElementById("dis3").checked;
-        if (!dis1 && !dis2 && !dis3) {
-            alert("Please indicate your disability type"); 
-            return; 
-        }
-        else if (dis1) {
-            disabilitiesType = 1; 
-        }
-        else if (dis2) {
-            disabilitiesType = 0; 
-        }
-        else {
-            disabilitiesType = 2;
-        }
-
-        let video = document.getElementById("video").checked;        
-        let isVideoAttached = video; 
-
-        postApplication(1, 1, "submitted", protectedVeteranType, disabilitiesType, "cover-letter.pdf", isVideoAttached)
-            .then((res) => res.json())
-            .then((res) => console.log(res))
-            .catch((error) => console.log(error))
+    if (!vet1Element || !vet2Element || !vet3Element) {
+        alert("Veteran status elements are missing"); 
+        return;
     }
+
+    let vet1 = vet1Element.checked; 
+    let vet2 = vet2Element.checked; 
+    let vet3 = vet3Element.checked; 
+
+    if (!vet1 && !vet2 && !vet3) {
+        alert("Please indicate your veteran type"); 
+        return; 
+    }
+    else if (vet1) {
+        protectedVeteranType = 1; 
+    }
+    else if (vet2) {
+        protectedVeteranType = 0; 
+    }
+    else {
+        protectedVeteranType = 2;
+    }
+
+    // Check disability status
+    let disabilitiesType = 0; 
+    let dis1Element = document.getElementById("dis1");
+    let dis2Element = document.getElementById("dis2");
+    let dis3Element = document.getElementById("dis3");
+
+    if (!dis1Element || !dis2Element || !dis3Element) {
+        alert("Disability status elements are missing"); 
+        return;
+    }
+
+    let dis1 = dis1Element.checked;
+    let dis2 = dis2Element.checked;
+    let dis3 = dis3Element.checked;
+
+    if (!dis1 && !dis2 && !dis3) {
+        alert("Please indicate your disability type"); 
+        return; 
+    }
+    else if (dis1) {
+        disabilitiesType = 1; 
+    }
+    else if (dis2) {
+        disabilitiesType = 0; 
+    }
+    else {
+        disabilitiesType = 2;
+    }
+
+    let videoElement = document.getElementById("video");
+    let isVideoAttached = videoElement ? videoElement.checked : false; 
+
+    postApplication(1, 1, "submitted", protectedVeteranType, disabilitiesType, "cover-letter.pdf", isVideoAttached)
+        .then((res) => res.json())
+        .then((res) => console.log(res))
+        .catch((error) => console.log(error));
+}
+
 
     return <div>
         <h2>ARE YOU A PROTECTED VETERAN?</h2>
