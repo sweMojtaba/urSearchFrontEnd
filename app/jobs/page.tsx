@@ -63,9 +63,6 @@ export default function JobsPage() {
         setadvancedFilterIsVisible(true);
         // Function to set the advancedFilterIsVisible state to true, indicating that the advanced filter popup should be displayed.
     };
-    const urlParams = new URLSearchParams(window.location.search);
-    const myParam = urlParams.get("query");
-    console.log(myParam);
 
     return (
         <Container>

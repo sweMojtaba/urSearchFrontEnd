@@ -1,6 +1,6 @@
 //TODO: needs hydration
 
-import { Container, Button } from '@/client-wrappers/bootstrap';
+import { Container, Button } from "@/client-wrappers/bootstrap";
 import Image from "next/image";
 import "./job.scss"; // Import the stylesheet for the Job page
 
@@ -10,7 +10,7 @@ export default function Job() {
         <Container className="medium-container">
             {/* Banner image for the lab */}
             <Image src={"/RickeLab.png"} alt="Ricke Lab Image" width={1920} height={300} id="lab-image" />
-            
+
             <div id="job-container">
                 {/* Title and details section */}
                 <div id="title-container-relative">
@@ -21,25 +21,23 @@ export default function Job() {
                             <h3 id="title-description-text">Research Assistant</h3>
                             <div id="title-rating">
                                 {/* Display star rating */}
-                                <img src="/star.svg" />
-                                <img src="/star.svg" />
-                                <img src="/star.svg" />
-                                <img src="/star.svg" />
-                                <img src="/star-60.svg" />
+                                <Image src="/star.svg" alt="star" />
+                                <Image src="/star.svg" alt="star" />
+                                <Image src="/star.svg" alt="star" />
+                                <Image src="/star.svg" alt="star" />
+                                <Image src="/star-60.svg" alt="60% star" />
                                 <p>4.6</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 {/* Job description, qualifications, and other details */}
                 <div id="description-container">
                     <div>
                         <div>
                             <h4>Description</h4>
-                            <p>
-                                Dr. Ricke&apos;s research program encompasses basic and translational sciences as it pertains to the pathogenesis of the lower urinary tract. The synergy of both sciences allows his lab to explore both molecular underlying mechanisms associated with disease progression, but also to pre-clinically treat the same pathways, which may lead to the therapies of tomorrow.
-                            </p>
+                            <p>Dr. Ricke&apos;s research program encompasses basic and translational sciences as it pertains to the pathogenesis of the lower urinary tract. The synergy of both sciences allows his lab to explore both molecular underlying mechanisms associated with disease progression, but also to pre-clinically treat the same pathways, which may lead to the therapies of tomorrow.</p>
                         </div>
                         <div>
                             <h4>Qualifications</h4>
@@ -61,9 +59,7 @@ export default function Job() {
                     <div>
                         <div>
                             <h4>Location</h4>
-                            <p>
-                                Department of Urology Third Floor 1685 Highland Avenue Madison, WI 53705
-                            </p>
+                            <p>Department of Urology Third Floor 1685 Highland Avenue Madison, WI 53705</p>
                         </div>
                         <div>
                             <h4>Responsibilities</h4>
@@ -82,7 +78,7 @@ export default function Job() {
                         </div>
                     </div>
                 </div>
-                
+
                 {/* Footer with action buttons */}
                 <div id="footer">
                     <div id="footer-infobox">
@@ -95,7 +91,7 @@ export default function Job() {
                     <p>84% Match</p>
                 </div>
             </div>
-            
+
             {/* Navigation buttons for job listings */}
             <div id="job-buttons">
                 <div>
