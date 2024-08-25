@@ -3,10 +3,9 @@
 import { JobCard, JobResultCard } from "@/components/cards-and-items/cards";
 import { SearchBarWithAdvancedFilters } from "@/components/functionalities/filters";
 import { Container } from "@/client-wrappers/bootstrap";
+import "./search-for-jobs.scss"; // Import the stylesheet for search-for-jobs
 
-
-import "./search-for-jobs.scss";
-
+// Sample data for recommended job cards
 const reccomendedCardData = [
   {
     company: "Ricke Lab",
@@ -40,13 +39,16 @@ const reccomendedCardData = [
   }
 ];
 
+// Main component for displaying job opportunities
 export default function Opportunities() {
     return (
         <Container className="medium-content">
+            {/* Render the search bar with advanced filters */}
             <SearchBarWithAdvancedFilters />
             <div id="jobs-container">
                 <div id="results-container">
                     <h2 id="title">Results:</h2>
+                    {/* Render a list of job result cards */}
                     {Array.from({ length: 12 }, (_, index) => (
                         <JobResultCard key={index} />
                     ))}
@@ -54,15 +56,28 @@ export default function Opportunities() {
                 <div id="top-matches-container">
                     <h2 id="top-matches">Top Matches:</h2>
                     <div>
-                      {reccomendedCardData.map((card, index) => {
-                          return <JobCard key={index} company={card.company} location={card.location} sigma={card.sigma} affiliation={card.affiliation} typeOfPosition={card.typeOfPosition} description={card.description} bookmarked={card.bookmarked} />;
-                      })}
+                      {/* Render recommended job cards */}
+                      {reccomendedCardData.map((card, index) => (
+                          <JobCard 
+                              key={index} 
+                              company={card.company} 
+                              location={card.location} 
+                              sigma={card.sigma} 
+                              affiliation={card.affiliation} 
+                              typeOfPosition={card.typeOfPosition} 
+                              description={card.description} 
+                              bookmarked={card.bookmarked} 
+                          />
+                      ))}
                     </div>
                 </div>
             </div>
             <div id="footer">
               <h1 id="exclamation">!</h1>
-              <h2>“Propose Idea” listings are an opportunity for you to share your Research or Innovation with a recruiting team and if accepted, use their resources and collaborate with them to bring your idea to Life.</h2>
+              {/* Display a message about “Propose Idea” listings */}
+              <h2>
+                “Propose Idea” listings are an opportunity for you to share your Research or Innovation with a recruiting team and if accepted, use their resources and collaborate with them to bring your idea to Life.
+              </h2>
             </div>
         </Container>
     );
