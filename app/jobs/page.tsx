@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 // This directive indicates that this file is intended to be used in a client-side environment. It may be used in frameworks that differentiate between client and server code, ensuring this file is processed on the client side.
 
 import { useState } from "react"; 

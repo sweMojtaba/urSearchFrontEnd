@@ -1,9 +1,15 @@
+'use client'
+
 // Importing necessary components and modules for UI and functionality
 import { Button } from "@/client-wrappers/bootstrap"; // Importing the Button component from a custom Bootstrap wrapper
 import { JobCard, JobResultCard } from "@/components/cards-and-items/cards"; // Importing custom JobCard and JobResultCard components from a specific directory
 import { SearchBarWithAdvancedFilters } from "@/components/functionalities/filters"; // Importing a custom SearchBar with advanced filter functionalities
 import { Container, Col, Row } from "@/client-wrappers/bootstrap"; // Importing Bootstrap layout components (Container, Col, Row) from a custom wrapper
 import Image from "next/image"; // Importing the Image component from Next.js for optimized image loading
+import { getData } from "./fetchJobStatus"; // Importing the getData function to get job status data
+import { useState, useEffect, useContext, useMemo } from "react"; // Importing react hooks
+import { UserContext } from "../context"; // Importing UserContext
+
 
 // Function component that renders a search bar with various filter buttons
 export function SearchBar() {
@@ -37,40 +43,42 @@ type StatusJob = {
     saved?: boolean // Optional field indicating if the job is saved
 };
 
-// Sample data array for job statuses, using the StatusJob type
-const statusData: StatusJob[] = [
-    {
-        company: "Ricke Lab", 
-        position: "Research Assistant", 
-        date: "4/13/2023", 
-        status: "Under Review",
-        sigma: true, // Indicates that the job is Sigma-affiliated
-    }, 
-    {
-        company: "Happy Lab", 
-        position: "Lab Technician", 
-        date: "4/13/2023", 
-        status: "Interview Extended",
-        sigma: true
-    }, 
-    {
-        company: "AI Club", 
-        position: "Workshop Coordinator", 
-        date: "1/23/2022", 
-        status: "Accepted",
-        sigma: false
-    }, 
-    {
-        company: "Telesec Labs", 
-        position: "Data Analyst", 
-        date: "4/13/2023", 
-        status: "Rejected",
-        sigma: true
-    }
-];
+// const statusData: StatusJob[] = [
+//     {
+//         company: "Ricke Lab", 
+//         position: "Research Assistant", 
+//         date: "4/13/2023", 
+//         status: "Under Review",
+//         sigma: true,
+//     }, 
+//     {
+//         company: "Happy Lab", 
+//         position: "Lab Technician", 
+//         date: "4/13/2023", 
+//         status: "Interview Extended",
+//         sigma: true
+//     }, 
+//     {
+//         company: "AI Club", 
+//         position: "Workshop Coordinator", 
+//         date: "1/23/2022", 
+//         status: "Accepted",
+//         sigma: false
+//     }, 
+//     {
+//         company: "Telesec Labs", 
+//         position: "Data Analyst", 
+//         date: "4/13/2023", 
+//         status: "Rejected",
+//         sigma: true
+//     }
+// ];
 
 // Function component that renders a board displaying the status of various job applications
 export function StatusBoard() {
+    const { user, setUser } = useContext(UserContext);
+    const statusData : StatusJob[] = useMemo(getData, [user])
+
     // Mapping over the statusData array to create a list of job status elements
     const displayList = statusData.map((job, i) => 
         <div key={i} className="status-job">
@@ -190,6 +198,17 @@ export function SimilarOpportunity() {
 
 // Function component that renders a list of job status cards using Bootstrap Row and Col components
 export function JobStatusCards() {
+    const { user, setUser } = useContext(UserContext);
+    const [statusData, setStatusData] = useState<StatusJob[]>([]);
+
+    useEffect(() => {
+        const fetchStatusData = () => {
+            setStatusData(getData());
+        };
+
+        fetchStatusData();
+    }, [user]);
+
     // Mapping over the statusData array to create a list of job status cards
     const displayList = statusData.map((card, i) => 
         <Row key={i} className="job-results-card">
