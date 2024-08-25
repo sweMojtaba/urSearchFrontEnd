@@ -7,7 +7,7 @@ import { SearchBarWithAdvancedFilters } from "@/components/functionalities/filte
 import { Container, Col, Row } from "@/client-wrappers/bootstrap"; // Importing Bootstrap layout components (Container, Col, Row) from a custom wrapper
 import Image from "next/image"; // Importing the Image component from Next.js for optimized image loading
 import { getData } from "./fetchJobStatus"; // Importing the getData function to get job status data
-import { useContext, useMemo } from "react"; // Importing react hooks
+import { useState, useEffect, useContext, useMemo } from "react"; // Importing react hooks
 import { UserContext } from "../context"; // Importing UserContext
 
 
