@@ -1,11 +1,13 @@
-"use client" // needed for onClick interactions to work
+"use client"; // needed for onClick interactions to work
 
 import { Button, Col, Row, Container } from "@/client-wrappers/bootstrap";
 import Edit from "./edit.svg";
 
-import "./info-card.scss"
+import "./info-card.scss";
 import Image from "next/image";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export interface InfoCardProps {
     title: string;
@@ -14,17 +16,15 @@ export interface InfoCardProps {
 }
 
 export function InfoCard({ title, children, editFunc }: InfoCardProps) {
-    return <Container className="info-card">
-        <div className="first-line line line-start">
-            <p className="heading">{title}</p>
-            {editFunc &&
-                <Image src={Edit} alt="edit" onClick={editFunc} />
-            }
-        </div>
-        <div className="paragraph main-info">
-            {children}
-        </div>
-    </Container>
+    return (
+        <Container className="info-card">
+            <div className="first-line line line-start">
+                <p className="heading">{title}</p>
+                {editFunc && <Image src={Edit} alt="edit" onClick={editFunc} />}
+            </div>
+            <div className="paragraph main-info">{children}</div>
+        </Container>
+    );
 }
 
 export interface ActionableCardProps {
@@ -42,22 +42,19 @@ export interface ActionableCardButtonProps {
 }
 
 export function ActionableCard({ title, children, buttonProps }: ActionableCardProps): JSX.Element {
-    return <Container className="info-card actionable-card">
-        <div className="first-line line line-start">
-            <p className="heading">{title}</p>
-        </div>
-        <div className="paragraph main-info">
-            {children}
-        </div>
-        {buttonProps &&
-            <Button
-                href={buttonProps.href}
-                onClick={buttonProps.buttonAction}
-                disabled={buttonProps.disabled ?? false}
-                active={buttonProps.active ?? false}>
-                {buttonProps.buttonText}
-            </Button>}
-    </Container>
+    return (
+        <Container className="info-card actionable-card">
+            <div className="first-line line line-start">
+                <p className="heading">{title}</p>
+            </div>
+            <div className="paragraph main-info">{children}</div>
+            {buttonProps && (
+                <Button href={buttonProps.href} onClick={buttonProps.buttonAction} disabled={buttonProps.disabled ?? false} active={buttonProps.active ?? false}>
+                    {buttonProps.buttonText}
+                </Button>
+            )}
+        </Container>
+    );
 }
 
 export type PassableInfoCardProps = Omit<InfoCardProps, "children">;
@@ -80,13 +77,12 @@ export interface ActionableCardWithImgProps {
 export type CardWithImgProps = InfoCardWithImgProps | ActionableCardWithImgProps;
 
 export function CardWithImg({ CardComponent, cardProps, children, ImgSrc }: CardWithImgProps): JSX.Element {
-    return <div className="info-card-with-img">
-        <Image src={ImgSrc} alt="image for card" className="img-on-card" />
-        <CardComponent
-            {...cardProps}>
-            {children}
-        </CardComponent>
-    </div>
+    return (
+        <div className="info-card-with-img">
+            <Image src={ImgSrc} alt="image for card" className="img-on-card" />
+            <CardComponent {...cardProps}>{children}</CardComponent>
+        </div>
+    );
 }
 
 interface JobCardProps {
@@ -135,7 +131,9 @@ export function JobResultCard() {
                 <Image src={"/uw-logo.png"} alt="UW Madison Logo" width={50} height={50} className="results-photo" />
                 <Col className="results-title-container">
                     <h3>Lab Name</h3>
-                    <h4><i>Research Assistant</i></h4>
+                    <h4>
+                        <i>Research Assistant</i>
+                    </h4>
                 </Col>
             </div>
             <div className="results-end">
@@ -149,8 +147,30 @@ export function JobResultCard() {
     );
 }
 
-export function OpportunityResultCard() {
-    let allowEdit = true;
+interface OpportunityResultCardProps {
+    labName: string;
+    title: string;
+    jobId: string;
+    jobUserId: string;
+    // isSigma: boolean;
+}
+
+export function OpportunityResultCard({ labName, title, jobId, jobUserId }: OpportunityResultCardProps) {
+    const [userId, setUserId] = useState("");
+    const [allowEdit, setAllowEdit] = useState(false);
+
+    useEffect(() => {
+        const storedUserId = localStorage.getItem("userId");
+        if (storedUserId) {
+            setUserId(storedUserId);
+        }
+    }, []);
+
+    useEffect(() => {
+        setAllowEdit(jobUserId === userId);
+    }, [userId, jobUserId]);
+
+    // TODO, how does this work?
     let isSigma = true;
 
     return (
@@ -159,26 +179,26 @@ export function OpportunityResultCard() {
                 <Image src={"/uw-logo.png"} alt="UW Madison Logo" width={50} height={50} className="results-photo-opportunity" />
                 <Col className="results-title-container">
                     <div className="results-title">
-                        <h3><i>Lab Name</i></h3>
+                        <h3>
+                            <i>{labName}</i>
+                        </h3>
                         {isSigma && <Image src={"/sigma.png"} alt="Sigma" width={24} height={24} className="results-sigma" />}
                     </div>
-                    <h4>Research Assistant</h4>
+                    <h4>{title}</h4>
                 </Col>
             </div>
             <div className="results-end-opportunity">
-                {allowEdit ? 
+                {allowEdit ? (
                     <div>
                         <Button className="results-button-opportunity">Edit</Button>
                     </div>
-                    :
-                    <>
-                    </>
-                }
-                <div>
+                ) : (
+                    <></>
+                )}
+                <Link href={`/applicants?jobId=${jobId}`} className="button-link">
                     <Button className="results-button-opportunity">View Applicants</Button>
-                </div>
+                </Link>
             </div>
         </div>
     );
 }
-

@@ -1,22 +1,19 @@
-"use client"; // needed because I need to pass a function to cards
+"use client"; // Indicates that this component uses client-side features, allowing functions to be passed to cards
 
-import { CardWithImg, InfoCard, PassableInfoCardProps } from "@/components/cards-and-items/cards";
-import { fetchAccomplishments, fetchAffiliations, fetchDocuments, fetchExperiences, fetchGPAhidden, fetchPersonalInfo, fetchProjects, fetchSkills, fetchVideo, fetchApplicationInfo } from "./fetchProfileSections";
-import { BigLi, SmallLi } from "@/components/cards-and-items/listItems";
-import Profile from "./profileSolid.svg";
-import { useContext, useMemo, useState } from "react";
-import { UserContext } from "../context";
-import WorkIcon from "./work.svg";
-import ProjectIcon from "./project.svg";
-import fakeResponse from "@/utils/fakeResponse";
-import { ButtonTextEnum, QuickApplyTemplate, createButtonStatus } from "@/components/functionalities/quickApply";
-import { Button } from "react-bootstrap";
+import { CardWithImg, InfoCard, PassableInfoCardProps } from "@/components/cards-and-items/cards"; // Imports components for displaying cards with images
+import { BigLi, SmallLi } from "@/components/cards-and-items/listItems"; // Imports components for list items with different sizes
+import Profile from "./profileSolid.svg"; // Importing an SVG image for profile
+import { useMemo, useState } from "react"; // Importing React hooks
+import WorkIcon from "./work.svg"; // Importing an SVG image for work experiences
+import ProjectIcon from "./project.svg"; // Importing an SVG image for projects
+import fakeResponse from "@/utils/fakeResponse"; // Importing a utility for fake responses
+import { ButtonTextEnum, QuickApplyTemplate, createButtonStatus } from "@/components/functionalities/quickApply"; // Imports components and enums for quick apply functionality
+import { Button } from "react-bootstrap"; // Importing Bootstrap Button component
+import { PersonalInfoInterface, DocumentsInterface, AffiliationsInterface, ExperiencesInterface, ProjectsInterface, VideoInterface, SkillsInterface, AccomplishmentsInterface, QuickApplyInterface } from "./interfaces"; // Importing TypeScript interfaces
+import { fetchApplicationInfo } from "./fetchProfileSections"; // Importing a function for fetching application info
 
-export function PersonalInfo() {
-    const { user, setUser } = useContext(UserContext);
-    const { name, degree, major, school, classYear, GPA, phone, email } = useMemo(fetchPersonalInfo, [user]);
-    const { GPAhidden } = useMemo(fetchGPAhidden, [user]);
-    // TO-DO: move data fetching to server components
+// Component for displaying personal information
+export function PersonalInfo({ name, degree, major, school, classYear, GPA, phone, email, GPAhidden }: PersonalInfoInterface) {
     const cardProps: PassableInfoCardProps = useMemo(() => {
         return {
             title: name,
@@ -27,25 +24,64 @@ export function PersonalInfo() {
     }, [name]);
 
     return (
-        <div className="white-bg">
-            <CardWithImg CardComponent={InfoCard} cardProps={cardProps} ImgSrc={Profile}>
-                <p>
-                    {degree} {major}
-                </p>
-                <p>{school}</p>
-                <p>class of {classYear}</p>
-                <p className="stand-out">
-                    GPA: {GPA} <span className="secondary-text">{GPAhidden ? "hidden" : "shown"}</span>
-                </p>
-                <p>phone: {phone}</p>
-                <p>email: {email}</p>
-            </CardWithImg>
-        </div>
+        <CardWithImg CardComponent={InfoCard} cardProps={cardProps} ImgSrc={Profile}>
+            <p>{degree} {major}</p>
+            <p>{school}</p>
+            <p>class of {classYear}</p>
+            <p className="stand-out">
+                GPA: {GPA} <span className="secondary-text">{GPAhidden ? "hidden" : "shown"}</span>
+            </p>
+            <p>phone: {phone}</p>
+            <p>email: {email}</p>
+        </CardWithImg>
     );
 }
 
-export function Documents() {
-    const documents = useMemo(fetchDocuments, []);
+// Component for displaying and downloading documents
+export function Documents({ documents, resume, coverLetter, applicationId }: DocumentsInterface) {
+    const handleResumeDownload = async () => {
+        const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/"; // Base URL for API
+        const url = baseUrl + `api/lab/me/application/${applicationId}/resume`; // URL for fetching resume
+
+        const res = await fetch(url, {
+            method: "GET",
+            credentials: "include",
+        });
+
+        if (res.status == 200) {
+            const blob = await res.blob();
+            const blobURL = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = blobURL;
+            a.download = resume;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(blobURL);
+        }
+    };
+
+    const handleCoverLetterDownload = async () => {
+        const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/"; // Base URL for API
+        const url = baseUrl + `api/lab/me/application/${applicationId}/coverletter`; // URL for fetching cover letter
+
+        const res = await fetch(url, {
+            method: "GET",
+            credentials: "include",
+        });
+
+        if (res.status == 200) {
+            const blob = await res.blob();
+            const blobURL = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = blobURL;
+            a.download = coverLetter;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(blobURL);
+        }
+    };
 
     return (
         <InfoCard
@@ -54,17 +90,23 @@ export function Documents() {
                 console.log("TO-DO: edit documents");
             }}
         >
-            {documents.map((document) => (
-                <SmallLi text={document.name} url={document.url} key={document.name} />
-            ))}
+            {resume.length > 0 && (
+                <div id="downloadable-document" onClick={handleResumeDownload}>
+                    <SmallLi text={resume} />
+                </div>
+            )}
+            {coverLetter.length > 0 && (
+                <div id="downloadable-document" onClick={handleCoverLetterDownload}>
+                    <SmallLi text={coverLetter} />
+                </div>
+            )}
+            {documents && documents.map((document) => <SmallLi text={document.name} url={document.url} key={document.ID} />)}
         </InfoCard>
     );
 }
 
-export function Affiliations() {
-    const [reload, setReload] = useState(false);
-    const affiliations = useMemo(fetchAffiliations, [reload]);
-
+// Component for displaying affiliations
+export function Affiliations({ affiliations }: AffiliationsInterface) {
     return (
         <InfoCard
             title="Affiliations"
@@ -72,50 +114,47 @@ export function Affiliations() {
                 console.log("TO-Do: edit affiliations");
             }}
         >
-            {affiliations.map((affiliation) => (
-                <SmallLi text={affiliation.name} url={affiliation.url} key={affiliation.name} />
-            ))}
+            {affiliations && affiliations.map((affiliation) => <SmallLi text={affiliation.name} url={affiliation.url} key={affiliation.ID} />)}
         </InfoCard>
     );
 }
 
-export function Experiences() {
-    const experiences = useMemo(fetchExperiences, []);
-
+// Component for displaying work experiences
+export function Experiences({ experiences }: ExperiencesInterface) {
     return (
         <InfoCard
-            title="Work and Volunteer Experiences"
+            title="Experiences"
             editFunc={() => {
                 console.log("TO-DO: edit experiences");
             }}
         >
-            {experiences.map((experience) => {
-                return <BigLi key={experience.name} title={experience.name} subtitle={experience.role} note={experience.start + " – " + experience.end} ImgSrc={WorkIcon} />;
-            })}
+            {experiences &&
+                experiences.map((experience) => {
+                    return <BigLi key={experience.ID} title={experience.name} subtitle={experience.role} note={experience.start + " – " + experience.end} ImgSrc={WorkIcon} />;
+                })}
         </InfoCard>
     );
 }
 
-export function Projects() {
-    const projects = useMemo(fetchProjects, []);
-
+// Component for displaying projects and publications
+export function Projects({ projects }: ProjectsInterface) {
     return (
         <InfoCard
             title="Projects and Publications"
             editFunc={() => {
-                console.log("TO-DO: edit experiences");
+                console.log("TO-DO: edit projects");
             }}
         >
-            {projects.map((project) => {
-                return <BigLi key={project.name} title={project.name} subtitle={project.description} note={project.start + " – " + project.end} ImgSrc={ProjectIcon} />;
-            })}
+            {projects &&
+                projects.map((project) => {
+                    return <BigLi key={project.ID} title={project.name} subtitle={project.description} note={project.start + " – " + project.end} ImgSrc={ProjectIcon} />;
+                })}
         </InfoCard>
     );
 }
 
-export function Video(): JSX.Element {
-    const video = useMemo(fetchVideo, []);
-
+// Component for displaying a video introduction
+export function Video({ videos }: VideoInterface): JSX.Element {
     return (
         <InfoCard
             title="Let me introduce myself..."
@@ -123,18 +162,15 @@ export function Video(): JSX.Element {
                 console.log("TO-DO: edit video");
             }}
         >
-            {/* <iframe src="https://www.youtube.com/embed/GYkq9Rgoj8E" width={560} height={315} title="video" allowFullScreen={true} /> */}
             <video controls>
-                <source src={video.url} type="video/webm" />
+                <source src={videos[0]?.url || ""} type="video/webm" />
             </video>
         </InfoCard>
     );
 }
 
-export function Skills() {
-    const [reload, setReload] = useState(false);
-    const skills = useMemo(fetchSkills, [reload]);
-
+// Component for displaying skills
+export function Skills({ skills }: SkillsInterface) {
     return (
         <InfoCard
             title="Skills"
@@ -142,40 +178,37 @@ export function Skills() {
                 console.log("TO-Do: edit skills");
             }}
         >
-            {skills.map((skill) => (
-                <SmallLi text={skill} url="" key={skill} />
-            ))}
+            {skills && skills.map((skill, i) => <SmallLi text={skill} url="" key={i} />)}
         </InfoCard>
     );
 }
 
-export function Accomplishments() {
-    const [reload, setReload] = useState(false);
-    const accomplishments = useMemo(fetchAccomplishments, [reload]);
-
+// Component for displaying accomplishments
+export function Accomplishments({ accomplishments }: AccomplishmentsInterface) {
     return (
         <InfoCard
             title="Accomplishments"
             editFunc={() => {
-                console.log("TO-Do: edit skills");
+                console.log("TO-Do: edit accomplishments");
             }}
         >
-            {accomplishments.map((accomplishment) => (
-                <SmallLi text={accomplishment} url="" key={accomplishment} />
-            ))}
+            {accomplishments && accomplishments.map((accomplishment, i) => <SmallLi text={accomplishment} url="" key={i} />)}
         </InfoCard>
     );
 }
 
+// Define button text enum for Quick Apply button
 const buttonTextEnum: ButtonTextEnum = {
     ACTIVATED: "Activated",
     ACTIVATING: "Activating...",
     NOT_ACTIVATED: "Accept Quick Apply!",
 };
 
+// Create button status based on enum
 const buttonStatus = createButtonStatus(buttonTextEnum);
 
-export function QuickApply({ quickApply }: { quickApply: boolean }) {
+// Component for Quick Apply functionality
+export function QuickApply({ quickApply }: QuickApplyInterface) {
     return (
         <QuickApplyTemplate
             initialStatus={quickApply ? buttonStatus.ACTIVATED : buttonStatus.NOT_ACTIVATED}
@@ -187,6 +220,7 @@ export function QuickApply({ quickApply }: { quickApply: boolean }) {
     );
 }
 
+// Component for displaying application information
 export function ApplicationInformation() {
     const [reload, setReload] = useState(false);
     const applicationInfo = useMemo(fetchApplicationInfo, [reload]);
@@ -196,7 +230,7 @@ export function ApplicationInformation() {
             <InfoCard
                 title="Application Info"
                 editFunc={() => {
-                    console.log("TO-Do: edit skills");
+                    console.log("TO-Do: edit application info");
                 }}
             >
                 {applicationInfo.map((info) => (
@@ -207,31 +241,56 @@ export function ApplicationInformation() {
     );
 }
 
+// Component for displaying a shadow effect
 export function Shadow() {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 904 10" fill="none">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.25481 -8.59499e-05H903.744V10H0.25481V-8.59499e-05Z" fill="black" fill-opacity="0.1" />
+            <path fillRule="evenodd" clipRule="evenodd" d="M0.25481 -8.59499e-05H903.744V10H0.25481V-8.59499e-05Z" fill="black" fillOpacity="0.1" />
         </svg>
     );
 }
 
-export function FunctionButtons({ activeButton, clicked }: { activeButton: string | null; clicked: (buttonName: string) => void }) {
+// Component for rendering function buttons for decision making
+export function FunctionButtons({ activeButton, clicked, applicationId }: { activeButton: string | null; applicationId: string | null; clicked: (buttonName: string) => void }) {
+    const handleDescision = async (descision: string) => {
+        if (applicationId === null) return;
+        const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/"; // Base URL for API
+        const url = baseUrl + `api/lab/me/application/${applicationId}/status`; // URL for updating application status
+        const res = await fetch(url, {
+            method: "POST",
+            credentials: "include",
+            body: JSON.stringify({ status: descision }),
+        });
+        const data = await res.json();
+        if (res.status == 200 && data.code == 0) {
+            if (descision == "accept") {
+                clicked("Accept");
+            } else if (descision == "interview") {
+                clicked("Interview");
+            } else if (descision == "reject") {
+                clicked("Reject");
+            } else {
+                console.log("Invalid descision");
+            }
+        }
+    };
+
     return (
         <>
-            <Button onClick={() => clicked("Interview")} className={activeButton === "Interview" ? "interview" : ""}>
+            <Button onClick={() => handleDescision("interview")} className={activeButton === "Interview" ? "interview" : ""}>
                 Extend Interview
             </Button>
-            <Button onClick={() => clicked("Accept")} className={activeButton === "Accept" ? "accept" : ""}>
+            <Button onClick={() => handleDescision("accept")} className={activeButton === "Accept" ? "accept" : ""}>
                 Quick Accept
             </Button>
-            <Button onClick={() => clicked("Reject")} className={activeButton === "Reject" ? "reject" : ""}>
+            <Button onClick={() => handleDescision("reject")} className={activeButton === "Reject" ? "reject" : ""}>
                 Reject
             </Button>
         </>
     );
 }
 
-// TODO: Use active button to change email being sent, below text is just an example
+// Component for rendering email content based on active button
 export function Email({ activeButton, handleSendClick }: { activeButton: string | null; handleSendClick: () => void }) {
     return (
         <div className="email-container">
