@@ -38,13 +38,13 @@ export function AvgRating({ rating }: { rating: number }) {
 // Defining and exporting a functional component named AvgRating that takes a rating prop of type number.
 
     return <div className={styles.avgRating}> 
-    // Render a div with a class name of avgRating from the imported styles.
+    {/* // Render a div with a class name of avgRating from the imported styles. */}
 
         <Rating value={rating} readOnly={true} style={{ maxWidth: "12em" }} /> 
-        // Render the Rating component with the given rating value, set to readOnly to prevent user interaction. Styling the component with a maximum width of 12em.
+        {/* // Render the Rating component with the given rating value, set to readOnly to prevent user interaction. Styling the component with a maximum width of 12em. */}
 
         <p>{rating} out of 5</p> 
-        // Display the numerical rating value with a text label "out of 5".
+        {/* // Display the numerical rating value with a text label "out of 5". */}
     </div>
 }
 
@@ -52,26 +52,26 @@ export function Review({ data }: { data: { rating: number, text: string, timesta
 // Defining and exporting a functional component named Review that takes a data prop with rating, text, and timestamp fields.
 
     return <div className={styles.review}> 
-    // Render a div with a class name of review from the imported styles.
+    {/* // Render a div with a class name of review from the imported styles. */}
 
         <Image src={ReviewProfile} alt="profile picture" className={styles.profilePicture} /> 
-        // Render an Image component with the imported ReviewProfile SVG, used as a profile picture. The image has a class name profilePicture for styling.
+        {/* // Render an Image component with the imported ReviewProfile SVG, used as a profile picture. The image has a class name profilePicture for styling. */}
 
         <div className={styles.reviewContent}> 
-        // Render a div with a class name of reviewContent to contain the review's content.
+        {/* // Render a div with a class name of reviewContent to contain the review's content. */}
 
             <div>{data.timestamp}</div> 
-            // Display the timestamp of the review.
+            {/* // Display the timestamp of the review. */}
 
             <div>{data.text}</div>   
-            // Display the text content of the review.
+            {/* // Display the text content of the review. */}
         </div>
 
         <div> 
-        // Render a div to contain the rating component.
+        {/* // Render a div to contain the rating component. */}
 
             <Rating value={data.rating} readOnly={true} style={{ maxWidth: "10em", minWidth: "8.5em" }} /> 
-            // Render the Rating component with the rating value from the data prop, set to readOnly. Styling with a maximum width of 10em and minimum width of 8.5em.
+            {/* // Render the Rating component with the rating value from the data prop, set to readOnly. Styling with a maximum width of 10em and minimum width of 8.5em. */}
         </div>
     </div>
 }
@@ -86,16 +86,16 @@ export function Info({ data }: { data: LabInfo }) {
         // Provide an edit function that logs a placeholder message. This function is intended for future editing functionality.
     >
         <p style={{fontSize: "15px"}}>{data.department}</p> 
-        // Render the department information with inline styling for font size.
+        {/* // Render the department information with inline styling for font size. */}
 
         <p style={{fontSize: "15px"}}>{data.address}</p> 
-        // Render the address information with inline styling for font size.
+        {/* // Render the address information with inline styling for font size. */}
 
         <p style={{fontSize: "15px"}}>{data.phone}</p> 
-        // Render the phone information with inline styling for font size.
+        {/* // Render the phone information with inline styling for font size. */}
 
         <p style={{fontSize: "15px"}}>{data.email}</p> 
-        // Render the email information with inline styling for font size.
+        {/* // Render the email information with inline styling for font size. */}
     </InfoCard>
 }
 
@@ -109,13 +109,13 @@ export function Keywords({ data }: { data: LabKeywords }) {
         // Provide an edit function that logs a placeholder message. This function is intended for future editing functionality.
     >
         <SmallLi text={data.type + " Lab"} /> 
-        // Render a SmallLi component displaying the lab type.
+        {/* // Render a SmallLi component displaying the lab type. */}
 
         <SmallLi text={"Field of study: " + data.field} /> 
-        // Render a SmallLi component displaying the field of study.
+        {/* // Render a SmallLi component displaying the field of study. */}
 
         <SmallLi text={"Keywords: " + data.keywords.join(", ")} /> 
-        // Render a SmallLi component displaying the keywords as a comma-separated list.
+        {/* // Render a SmallLi component displaying the keywords as a comma-separated list. */}
     </InfoCard>
 }
 
@@ -139,25 +139,24 @@ export function Resources({ data }: { data: LabResources }) {
                 // Render a Button component for each resource with a link and title.
             )}
             <Form style={{marginTop: "100px"}}> 
-            // Render a Form component with inline styling for margin-top.
+            {/* // Render a Form component with inline styling for margin-top. */}
 
                 <Form.Group className="mb-3 line"> 
-                // Render a Form.Group component with Bootstrap margin-bottom styling and a custom class name line.
+                {/* // Render a Form.Group component with Bootstrap margin-bottom styling and a custom class name line. */}
 
                     <Form.Control type="text" placeholder="TITLE" id="title" name="title" required /> 
-                    // Render a Form.Control component for entering a title. It is a required field.
+                    {/* // Render a Form.Control component for entering a title. It is a required field. */}
                 </Form.Group>
 
                 <Form.Group className="mb-5 line"> 
-                // Render another Form.Group component with Bootstrap margin-bottom styling and a custom class name line.
+                {/* // Render another Form.Group component with Bootstrap margin-bottom styling and a custom class name line. */}
 
                     <Form.Control type="text" placeholder="LINK" id="link" name="link" required /> 
-                    // Render a Form.Control component for entering a link. It is a required field.
+                    {/* // Render a Form.Control component for entering a link. It is a required field. */}
                 </Form.Group>
 
                 <Button> 
-                // Render a Button component for submitting the form.
-
+                {/* // Render a Button component for submitting the form. */}
                     Add 
                 </Button>
             </Form>

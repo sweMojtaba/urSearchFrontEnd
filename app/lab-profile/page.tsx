@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image";
 // Importing the Image component from Next.js to handle optimized image rendering.
 
@@ -20,22 +22,85 @@ import styles from "./styles.module.scss";
 // Importing a stylesheet (styles.module.scss) for component-specific styling.
 
 import { AvgRating, Info, Keywords, QuickApply, Resources, Review } from "./client-side-components";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 // Importing various client-side components (AvgRating, Info, Keywords, QuickApply, Resources, Review) to build the profile page.
+
+const defaultLab = {
+    labName: "Ricke Lab",
+    university: "University of Wisconsin–Madison", 
+    department: "Department of Urology", 
+    labTitle: "Ricke Lab", 
+    address: "1685 Highland Avenue Madison, WI 53705", 
+    phone: "(608) 265-3278", 
+    email: "ricke@urology.wisc.edu",
+    type: "research", 
+    field: "urology", 
+    keywords: [ 
+        "urology", 
+        "animal studies", 
+        "pathogenesis" 
+    ],
+    resources: [ 
+        { 
+            title: "People", 
+            link: "https://www.urology.wisc.edu/research/research-labs/ricke-lab/people/" 
+        }, 
+        { 
+            title: "Honors and Awards", 
+            link: "https://www.urology.wisc.edu/research/research-labs/ricke-lab/honors-and-awards/" 
+        }, 
+        { 
+            title: "Active Grants", 
+            link: "https://www.urology.wisc.edu/research/research-labs/ricke-lab/active-grants/" 
+        }, 
+        { 
+            title: "News", 
+            link: "https://www.urology.wisc.edu/research/research-labs/ricke-lab/news/" 
+        }, 
+        { 
+            title: "Alumni", 
+            link: "https://www.urology.wisc.edu/research/research-labs/ricke-lab/alumni/" 
+        }, 
+        { 
+            title: "Staff", 
+            link: "https://www.urology.wisc.edu/research/research-labs/ricke-lab/staff/" 
+        } 
+    ] 
+}
 
 export default function LabProfile() { 
     // Exporting the default functional component named LabProfile.
 
-    const labName = "Ricke Lab"; 
-    // Declaring a constant for the lab name.
-
-    const labInfo = fetchLabInfo(); 
-    // Fetching lab information using the fetchLabInfo function.
-
-    const labKeywords: LabKeywords = fetchLabKeywords(); 
-    // Fetching lab keywords using the fetchLabKeywords function and assigning them to a variable of type LabKeywords.
-
-    const resources = fetchResources(); 
-    // Fetching lab resources using the fetchResources function.
+        // Retrieve search parameters from URL
+        const searchParams = useSearchParams();
+        const labId = searchParams.get("ID") || ""; // Extract the lab ID from the URL
+    
+        const [labData, setLabData] = useState<any>(defaultLab);
+    
+        useEffect(() => {
+            const baseUrl = "https://ursearch-api.salmonmeadow-33eeb5e6.westus2.azurecontainerapps.io/";
+            // const baseUrl = process.env.NEXT_PUBLIC_API_URL; // Optionally use environment variable
+            const url = baseUrl + `api/lab/${labId}`;
+            const getLabData = async () => {
+                try {
+                    const res = await fetch(url, {
+                        method: "GET",
+                        credentials: "include",
+                    });
+                    const data = await res.json();
+                    if (res.status === 200 && data.code === 0) {
+                        setLabData(data.data.person); // Set lab data state
+                    } else {
+                        console.log(data.msg); // Log error message if not successful
+                    }
+                } catch (error) {
+                    console.error("Error fetching lab data:", error); // Catch and log fetch errors
+                }
+            };
+    
+            getLabData();
+        }, [labId])
 
     const reviews = fetchReviews(); 
     // Fetching lab reviews using the fetchReviews function.
@@ -61,7 +126,7 @@ export default function LabProfile() {
                 <Image src={SchoolIcon} alt="school icon" className={styles.schoolIcon} />
                 {/* Rendering the school icon image with alt text and applying styling from the "schoolIcon" class. */}
                 
-                <h1 className={styles.header}>{labName}</h1>
+                <h1 className={styles.header}>{labData.labName}</h1>
                 {/* Rendering the lab name as an h1 element with styling from the "header" class. */}
             </Row>
             
@@ -71,14 +136,14 @@ export default function LabProfile() {
                 <Col md={6}>
                     {/* Rendering a Col component with a medium breakpoint of 6 for layout. */}
                     
-                    <Info data={labInfo}/>
+                    <Info data={labData}/>
                     {/* Rendering the Info component with labInfo data as a prop. */}
                 </Col>
                 
                 <Col md={6}>
                     {/* Rendering another Col component with a medium breakpoint of 6 for layout. */}
                     
-                    <Keywords data={labKeywords} />
+                    <Keywords data={labData} />
                     {/* Rendering the Keywords component with labKeywords data as a prop. */}
                 </Col>
             </Row>
@@ -89,7 +154,7 @@ export default function LabProfile() {
                 <Col md={4}>
                     {/* Rendering a Col component with a medium breakpoint of 4 for layout. */}
                     
-                    <Resources data={resources} />
+                    <Resources data={labData.resources} />
                     {/* Rendering the Resources component with resources data as a prop. */}
                 </Col>
                 
